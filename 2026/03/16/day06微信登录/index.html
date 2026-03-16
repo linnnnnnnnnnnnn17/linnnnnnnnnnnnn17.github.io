@@ -25,7 +25,7 @@
 <meta property="og:description" content="用户表user：   字段名 数据类型 说明 备注    id bigint 主键 自增   openid varchar(45) 微信用户的唯一标识    name varchar(32) 用户姓名    phone varchar(11) 手机号    sex varchar(2) 性别    id_number varchar(18) 身份证号    avatar varchar(500)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-16T08:20:56.000Z">
-<meta property="article:modified_time" content="2026-03-16T08:24:12.487Z">
+<meta property="article:modified_time" content="2026-03-16T11:07:18.488Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="苍穹外卖">
 <meta property="article:tag" content="java后端项目">
@@ -154,13 +154,13 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1773649452487"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1773659238488"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A1%A8user%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">用户表user：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HttpClient"><span class="toc-number">2.</span> <span class="toc-text">1.HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-GET%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">1.2.1 GET方式请求</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-POST%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.2 POST方式请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">2.微信小程序开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text">3.微信登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 微信登录流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">3.2.1 定义相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Controller%E5%B1%82"><span class="toc-number">4.2.2.</span> <span class="toc-text">3.2.2 Controller层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.2.3.</span> <span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">4.2.4.</span> <span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-number">4.2.5.</span> <span class="toc-text">3.2.5 Mapper层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E7%BC%96%E5%86%99%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">4.2.6.</span> <span class="toc-text">3.2.6 编写拦截器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD"><span class="toc-number">5.</span> <span class="toc-text">4.商品浏览功能</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A1%A8user%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">用户表user：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HttpClient"><span class="toc-number">2.</span> <span class="toc-text">1.HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-GET%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.1 GET方式请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-POST%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.2.</span> <span class="toc-text">1.2.2 POST方式请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">2.微信小程序开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text">3.微信登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 微信登录流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">3.2.1 定义相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Controller%E5%B1%82"><span class="toc-number">4.2.2.</span> <span class="toc-text">3.2.2 Controller层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.2.3.</span> <span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">4.2.4.</span> <span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-number">4.2.5.</span> <span class="toc-text">3.2.5 Mapper层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E7%BC%96%E5%86%99%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">4.2.6.</span> <span class="toc-text">3.2.6 编写拦截器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD"><span class="toc-number">5.</span> <span class="toc-text">4.商品浏览功能</span></a></li></ol>
                 </div>
             
             <hr />
@@ -253,7 +253,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-sdk-oss<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>上述依赖的底层已经包含了HttpClient相关依赖。</p>
-<h4 id="1-2-1-GET方式请求"><a href="#1-2-1-GET方式请求" class="headerlink" title="1.2.1 GET方式请求"></a>1.2.1 GET方式请求</h4><p>进入到sky-server模块，编写测试代码，发送GET请求。</p>
+<h3 id="1-2-1-GET方式请求"><a href="#1-2-1-GET方式请求" class="headerlink" title="1.2.1 GET方式请求"></a>1.2.1 GET方式请求</h3><p>进入到sky-server模块，编写测试代码，发送GET请求。</p>
 <p><strong>实现步骤：</strong></p>
 <ol>
 <li>创建HttpClient对象</li>
@@ -445,7 +445,7 @@ varchar...`;
                     <a class="tag-none-link" href="/tags/HttpClient/" rel="tag">HttpClient</a>, <a class="tag-none-link" href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" rel="tag">java后端项目</a>, <a class="tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" rel="tag">微信登录</a>, <a class="tag-none-link" href="/tags/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" rel="tag">苍穹外卖</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2026-03-16T08:24:12.487Z" itemprop="dateModified">最后编辑：2026-03-16</time>
+                    <time datetime="2026-03-16T11:07:18.488Z" itemprop="dateModified">最后编辑：2026-03-16</time>
                 </div>
             </div>
         </footer>
@@ -496,7 +496,7 @@ varchar...`;
                 文章
             </span>
             <span class="count">
-                15
+                16
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -512,7 +512,7 @@ varchar...`;
                 标签
             </span>
             <span class="count">
-                26
+                27
             </span>
         </a>
     </div>
@@ -528,14 +528,14 @@ varchar...`;
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A1%A8user%EF%BC%9A"><span class="toc-text">用户表user：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HttpClient"><span class="toc-text">1.HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">1.2 入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-GET%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">1.2.1 GET方式请求</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-POST%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">1.2.2 POST方式请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91"><span class="toc-text">2.微信小程序开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95"><span class="toc-text">3.微信登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B"><span class="toc-text">3.1 微信登录流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-text">3.2 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-text">3.2.1 定义相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Controller%E5%B1%82"><span class="toc-text">3.2.2 Controller层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-text">3.2.5 Mapper层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E7%BC%96%E5%86%99%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">3.2.6 编写拦截器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD"><span class="toc-text">4.商品浏览功能</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A1%A8user%EF%BC%9A"><span class="toc-text">用户表user：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HttpClient"><span class="toc-text">1.HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">1.2 入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-GET%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">1.2.1 GET方式请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-POST%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">1.2.2 POST方式请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91"><span class="toc-text">2.微信小程序开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95"><span class="toc-text">3.微信登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B"><span class="toc-text">3.1 微信登录流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-text">3.2 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-text">3.2.1 定义相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Controller%E5%B1%82"><span class="toc-text">3.2.2 Controller层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-text">3.2.5 Mapper层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E7%BC%96%E5%86%99%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">3.2.6 编写拦截器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD"><span class="toc-text">4.商品浏览功能</span></a></li></ol>
     </div>
 </aside>
                 
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li></ul>
   </aside>
 
 
@@ -544,7 +544,7 @@ varchar...`;
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.73em;">C++</a> <a href="/tags/HttpClient/" style="font-size: 0.6em;">HttpClient</a> <a href="/tags/JWT/" style="font-size: 0.6em;">JWT</a> <a href="/tags/Java/" style="font-size: 0.67em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/PageHelper/" style="font-size: 0.6em;">PageHelper</a> <a href="/tags/RequestBody%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">RequestBody注解</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/Spring-Cache/" style="font-size: 0.6em;">Spring Cache</a> <a href="/tags/Swagger/" style="font-size: 0.6em;">Swagger</a> <a href="/tags/ThreadLocal/" style="font-size: 0.6em;">ThreadLocal</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" style="font-size: 0.8em;">java后端项目</a> <a href="/tags/redis/" style="font-size: 0.67em;">redis</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size: 0.6em;">微信登录</a>
+        <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.75em;">C++</a> <a href="/tags/HttpClient/" style="font-size: 0.6em;">HttpClient</a> <a href="/tags/JWT/" style="font-size: 0.6em;">JWT</a> <a href="/tags/Java/" style="font-size: 0.65em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/PageHelper/" style="font-size: 0.6em;">PageHelper</a> <a href="/tags/RequestBody%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">RequestBody注解</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/Spring-Cache/" style="font-size: 0.65em;">Spring Cache</a> <a href="/tags/Swagger/" style="font-size: 0.6em;">Swagger</a> <a href="/tags/ThreadLocal/" style="font-size: 0.6em;">ThreadLocal</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" style="font-size: 0.8em;">java后端项目</a> <a href="/tags/redis/" style="font-size: 0.7em;">redis</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" style="font-size: 0.6em;">微信支付</a>
       </div>
   </aside>
 
@@ -555,6 +555,12 @@ varchar...`;
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day08%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86%E3%80%81%E4%B8%8B%E5%8D%95%E3%80%81%E6%94%AF%E4%BB%98/"><i class="fa  fa-book"></i> day08地址管理、下单、支付</a>
+            
+          
         
           
           
@@ -581,11 +587,7 @@ varchar...`;
           
         
           
-          
-            <a class="list-group-item" href="/2026/03/16/day03%E8%8F%9C%E5%93%81%E7%AE%A1%E7%90%86/"><i class="fa  fa-book"></i> day03菜品管理</a>
             
-          
-        
           
             
           
