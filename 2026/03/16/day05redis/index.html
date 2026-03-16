@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>day05redis | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="java后端项目, redis, 接口分组, 苍穹外卖" />
+  
+  <meta name="description" content="1. Redis入门1.1 Redis简介Redis是一个基于内存的key-value结构数据库。Redis 是互联网技术领域使用最为广泛的存储中间件。 官网：https:&#x2F;&#x2F;redis.io中文网：https:&#x2F;&#x2F;www.redis.net.cn&#x2F; key-value结构存储：    key value    id 101   name lin   city hk   主要特点：  基于内存存储">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day05redis">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Redis入门1.1 Redis简介Redis是一个基于内存的key-value结构数据库。Redis 是互联网技术领域使用最为广泛的存储中间件。 官网：https:&#x2F;&#x2F;redis.io中文网：https:&#x2F;&#x2F;www.redis.net.cn&#x2F; key-value结构存储：    key value    id 101   name lin   city hk   主要特点：  基于内存存储">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/assets/image-20221130205351403.png">
+<meta property="article:published_time" content="2026-03-16T08:12:23.000Z">
+<meta property="article:modified_time" content="2026-03-16T08:14:58.771Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="苍穹外卖">
+<meta property="article:tag" content="java后端项目">
+<meta property="article:tag" content="redis">
+<meta property="article:tag" content="接口分组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/assets/image-20221130205351403.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">day05redis</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-03-16T08:12:23.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-03-16</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~13.85K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1773648898771"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Redis%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">1. Redis入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Redis%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Redis简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Redis%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Redis服务启动与停止</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 服务启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.2.2 客户端连接命令</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">2. Redis数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">3. Redis常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%AD%97%E7%AC%A6%E4%B8%B2-string-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 字符串(string)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%93%88%E5%B8%8C-hash-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 哈希(hash)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%88%97%E8%A1%A8-list-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 列表(list)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E9%9B%86%E5%90%88-set-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 集合(set)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-zset-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 有序集合(zset)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 通用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9C%A8Java%E4%B8%AD%E6%93%8D%E4%BD%9CRedis"><span class="toc-number">4.</span> <span class="toc-text">4.在Java中操作Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Spring-Data-Redis%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Spring Data Redis使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2 环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-%E6%93%8D%E4%BD%9C%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">4.1.3.</span> <span class="toc-text">4.1.3 操作常见类型数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%BA%97%E9%93%BA%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">5.店铺营业状态设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 营业状态存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">5.2.</span> <span class="toc-text">5.2代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E8%AE%BE%E7%BD%AE%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-number">5.2.1.</span> <span class="toc-text">5.2.1 设置营业状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E7%AE%A1%E7%90%86%E7%AB%AF%E6%9F%A5%E8%AF%A2%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-number">5.2.2.</span> <span class="toc-text">5.2.2 管理端查询营业状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-3-%E7%94%A8%E6%88%B7%E7%AB%AF%E6%9F%A5%E8%AF%A2%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-number">5.2.3.</span> <span class="toc-text">5.2.3 用户端查询营业状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%8E%A5%E5%8F%A3%E5%88%86%E7%BB%84%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">6.接口分组展示</span></a></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="1-Redis入门"><a href="#1-Redis入门" class="headerlink" title="1. Redis入门"></a>1. Redis入门</h1><h2 id="1-1-Redis简介"><a href="#1-1-Redis简介" class="headerlink" title="1.1 Redis简介"></a>1.1 Redis简介</h2><p>Redis是一个基于<strong>内存</strong>的key-value结构数据库。Redis 是互联网技术领域使用最为广泛的<strong>存储中间件</strong>。</p>
+<p><strong>官网</strong>：<a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io</a><br><strong>中文网</strong>：<a target="_blank" rel="noopener" href="https://www.redis.net.cn/">https://www.redis.net.cn/</a></p>
+<p><strong>key-value结构存储：</strong></p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>101</td>
+</tr>
+<tr>
+<td>name</td>
+<td>lin</td>
+</tr>
+<tr>
+<td>city</td>
+<td>hk</td>
+</tr>
+</tbody></table>
+<p><strong>主要特点：</strong></p>
+<ul>
+<li>基于内存存储，读写性能高  </li>
+<li>适合存储热点数据（热点商品、资讯、新闻）</li>
+<li>企业应用广泛</li>
+</ul>
+<p>Redis是用C语言开发的一个开源的高性能键值对(key-value)数据库，官方提供的数据是可以达到100000+的QPS（每秒内查询次数）。它存储的value类型比较丰富，也被称为结构化的NoSql数据库。</p>
+<p>NoSql（Not Only SQL），不仅仅是SQL，泛指<strong>非关系型数据库</strong>。NoSql数据库并不是要取代关系型数据库，而是关系型数据库的补充。</p>
+<p><strong>关系型数据库(RDBMS)：</strong></p>
+<ul>
+<li>Mysql</li>
+<li>Oracle</li>
+<li>DB2</li>
+<li>SQLServer</li>
+</ul>
+<p><strong>非关系型数据库(NoSql)：</strong></p>
+<ul>
+<li>Redis</li>
+<li>Mongo db</li>
+<li>MemCached</li>
+</ul>
+<h2 id="1-2-Redis服务启动与停止"><a href="#1-2-Redis服务启动与停止" class="headerlink" title="1.2 Redis服务启动与停止"></a>1.2 Redis服务启动与停止</h2><h3 id="1-2-1-服务启动命令"><a href="#1-2-1-服务启动命令" class="headerlink" title="1.2.1 服务启动命令"></a>1.2.1 服务启动命令</h3><p><strong>redis-server.exe redis.windows.conf</strong><br>Redis服务默认端口号为 <strong>6379</strong> ，通过快捷键<strong>Ctrl + C</strong> 即可停止Redis服务.<br>当Redis服务启动成功后，可通过客户端进行连接。</p>
+<h4 id="1-2-2-客户端连接命令"><a href="#1-2-2-客户端连接命令" class="headerlink" title="1.2.2 客户端连接命令"></a>1.2.2 客户端连接命令</h4><p><strong>redis-cli.exe</strong></p>
+<p>通过redis-cli.exe命令默认连接的是本地的redis服务，并且使用默认6379端口。也可以通过指定如下参数连接：</p>
+<ul>
+<li>-h ip地址</li>
+<li>-p 端口号</li>
+<li>-a 密码（如果需要）</li>
+</ul>
+<h1 id="2-Redis数据类型"><a href="#2-Redis数据类型" class="headerlink" title="2. Redis数据类型"></a>2. Redis数据类型</h1><p>五种常用数据类型介绍</p>
+<p>Redis存储的是key-value结构的数据，其中key是字符串类型，value有5种常用的数据类型：</p>
+<ul>
+<li>**字符串(string)**：普通字符串，Redis中最简单的数据类型</li>
+<li>**哈希(hash)**：也叫散列，类似于Java中的HashMap结构</li>
+<li>**列表(list)**：按照插入顺序排序，可以有重复元素，类似于Java中的LinkedList</li>
+<li>**集合(set)**：无序集合，没有重复元素，类似于Java中的HashSet</li>
+<li>**有序集合(sorted set&#x2F;zset)**：集合中每个元素关联一个分数(score)，根据分数升序排序，没有重复元素</li>
+</ul>
+<h1 id="3-Redis常用命令"><a href="#3-Redis常用命令" class="headerlink" title="3. Redis常用命令"></a>3. Redis常用命令</h1><h2 id="3-1-字符串-string-操作命令"><a href="#3-1-字符串-string-操作命令" class="headerlink" title="3.1 字符串(string)操作命令"></a>3.1 字符串(string)操作命令</h2><p>Redis 中字符串类型常用命令：</p>
+<ul>
+<li><strong>SET</strong> key value 					         设置指定key的值</li>
+<li><strong>GET</strong> key                                        获取指定key的值</li>
+<li><strong>SETEX</strong> key seconds value         设置指定key的值，并将 key 的过期时间设为 seconds 秒</li>
+<li><strong>SETNX</strong> key value                        只有在 key    不存在时设置 key 的值</li>
+</ul>
+<p>更多命令可以参考Redis中文网：<a target="_blank" rel="noopener" href="https://www.redis.net.cn/">https://www.redis.net.cn</a></p>
+<h2 id="3-2-哈希-hash-操作命令"><a href="#3-2-哈希-hash-操作命令" class="headerlink" title="3.2 哈希(hash)操作命令"></a>3.2 哈希(hash)操作命令</h2><p>Redis hash 是一个string类型的 field 和 value 的映射表，hash特别适合用于存储对象，常用命令：</p>
+<ul>
+<li><strong>HSET</strong> key field value             将哈希表 key 中的字段 field 的值设为 value</li>
+<li><strong>HGET</strong> key field                       获取存储在哈希表中指定字段的值</li>
+<li><strong>HDEL</strong> key field                       删除存储在哈希表中的指定字段</li>
+<li><strong>HKEYS</strong> key                              获取哈希表中所有字段</li>
+<li><strong>HVALS</strong> key                              获取哈希表中所有值</li>
+</ul>
+<h2 id="3-3-列表-list-操作命令"><a href="#3-3-列表-list-操作命令" class="headerlink" title="3.3 列表(list)操作命令"></a>3.3 列表(list)操作命令</h2><p>Redis 列表是简单的字符串列表，按照插入顺序排序，常用命令：</p>
+<ul>
+<li><strong>LPUSH</strong> key value1 [value2]         将一个或多个值插入到列表头部</li>
+<li><strong>LRANGE</strong> key start stop                获取列表指定范围内的元素</li>
+<li><strong>RPOP</strong> key                                       移除并获取列表最后一个元素</li>
+<li><strong>LLEN</strong> key                                        获取列表长度</li>
+<li><strong>BRPOP</strong> key1 [key2 ] timeout       移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超    时或发现可弹出元素为止</li>
+</ul>
+<h2 id="3-4-集合-set-操作命令"><a href="#3-4-集合-set-操作命令" class="headerlink" title="3.4 集合(set)操作命令"></a>3.4 集合(set)操作命令</h2><p>Redis set 是string类型的无序集合。集合成员是唯一的，这就意味着集合中不能出现重复的数据，常用命令：</p>
+<ul>
+<li><strong>SADD</strong> key member1 [member2]            向集合添加一个或多个成员</li>
+<li><strong>SMEMBERS</strong> key                                         返回集合中的所有成员</li>
+<li><strong>SCARD</strong> key                                                  获取集合的成员数</li>
+<li><strong>SINTER</strong> key1 [key2]                                   返回给定所有集合的交集</li>
+<li><strong>SUNION</strong> key1 [key2]                                 返回所有给定集合的并集</li>
+<li><strong>SREM</strong> key member1 [member2]            移除集合中一个或多个成员</li>
+</ul>
+<h2 id="3-5-有序集合-zset-操作命令"><a href="#3-5-有序集合-zset-操作命令" class="headerlink" title="3.5 有序集合(zset)操作命令"></a>3.5 有序集合(zset)操作命令</h2><p>Redis有序集合是string类型元素的集合，且不允许有重复成员。每个元素都会关联一个double类型的分数。常用命令：</p>
+<p>常用命令：</p>
+<ul>
+<li><strong>ZADD</strong> key score1 member1 [score2 member2]     向有序集合添加一个或多个成员</li>
+<li><strong>ZRANGE</strong> key start stop [WITHSCORES]                     通过索引区间返回有序集合中指定区间内的成员</li>
+<li><strong>ZINCRBY</strong> key increment member                              有序集合中对指定成员的分数加上增量 increment</li>
+<li><strong>ZREM</strong> key member [member …]                                移除有序集合中的一个或多个成员</li>
+</ul>
+<h2 id="3-6-通用命令"><a href="#3-6-通用命令" class="headerlink" title="3.6 通用命令"></a>3.6 通用命令</h2><p>Redis的通用命令是不分数据类型的，都可以使用的命令：</p>
+<ul>
+<li><strong>KEYS</strong> pattern 		查找所有符合给定模式( pattern)的 key </li>
+<li><strong>EXISTS</strong> key 		检查给定 key 是否存在</li>
+<li><strong>TYPE</strong> key 		返回 key 所储存的值的类型</li>
+<li><strong>DEL</strong> key 		该命令用于在 key 存在是删除 key</li>
+</ul>
+<h1 id="4-在Java中操作Redis"><a href="#4-在Java中操作Redis" class="headerlink" title="4.在Java中操作Redis"></a>4.在Java中操作Redis</h1><h2 id="4-1-Spring-Data-Redis使用方式"><a href="#4-1-Spring-Data-Redis使用方式" class="headerlink" title="4.1 Spring Data Redis使用方式"></a>4.1 Spring Data Redis使用方式</h2><h3 id="4-1-1-介绍"><a href="#4-1-1-介绍" class="headerlink" title="4.1.1 介绍"></a>4.1.1 介绍</h3><p>Spring Data Redis 是 Spring 的一部分，提供了在 Spring 应用中通过简单的配置就可以访问 Redis 服务，对 Redis 底层开发包进行了高度封装。在 Spring 项目中，可以使用Spring Data Redis来简化 Redis 操作。</p>
+<p>网址：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data-redis">https://spring.io/projects/spring-data-redis</a></p>
+<p>Spring Boot提供了对应的Starter，maven坐标：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Spring Data Redis中提供了一个高度封装的类：<strong>RedisTemplate</strong>，对相关api进行了归类封装,将同一类型操作封装为operation接口，具体分类如下：</p>
+<ul>
+<li><strong>ValueOperations</strong>：string数据操作</li>
+<li><strong>SetOperations</strong>：set类型数据操作</li>
+<li><strong>ZSetOperations</strong>：zset类型数据操作</li>
+<li><strong>HashOperations</strong>：hash类型的数据操作</li>
+<li><strong>ListOperations</strong>：list类型的数据操作</li>
+</ul>
+<h3 id="4-1-2-环境搭建"><a href="#4-1-2-环境搭建" class="headerlink" title="4.1.2 环境搭建"></a>4.1.2 环境搭建</h3><p>进入到sky-server模块</p>
+<p><strong>1). 导入Spring Data Redis的maven坐标(已完成)</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). 配置Redis数据源</strong></p>
+<p>在application-dev.yml中添加</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sky:</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">database:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释说明：</strong></p>
+<p>database:指定使用Redis的哪个数据库，Redis服务启动后默认有16个数据库，编号分别是从0到15。</p>
+<p>可以通过修改Redis配置文件来指定数据库的数量。</p>
+<p>在application.yml中添加读取application-dev.yml中的相关Redis配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">$&#123;sky.redis.host&#125;</span></span><br><span class="line">    <span class="attr">port:</span> <span class="string">$&#123;sky.redis.port&#125;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">$&#123;sky.redis.password&#125;</span></span><br><span class="line">    <span class="attr">database:</span> <span class="string">$&#123;sky.redis.database&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3). 编写配置类，创建RedisTemplate对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;开始创建redis模板对象...&quot;</span>);</span><br><span class="line">        <span class="type">RedisTemplate</span> <span class="variable">redisTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>();</span><br><span class="line">        <span class="comment">//设置redis的连接工厂对象</span></span><br><span class="line">        redisTemplate.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        <span class="comment">//设置redis key的序列化器</span></span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> <span class="title class_">StringRedisSerializer</span>());</span><br><span class="line">        <span class="keyword">return</span> redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释说明：</strong></p>
+<p>当前配置类不是必须的，因为 Spring Boot 框架会自动装配 RedisTemplate 对象，但是默认的key序列化器为</p>
+<p>JdkSerializationRedisSerializer，导致我们存到Redis中后的数据和原始数据有差别，故设置为</p>
+<p>StringRedisSerializer序列化器。</p>
+<p><strong>4). 通过RedisTemplate对象操作Redis</strong></p>
+<p>在test下新建测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringDataRedisTest</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testRedisTemplate</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(redisTemplate);</span><br><span class="line">        <span class="comment">//string数据操作</span></span><br><span class="line">        <span class="type">ValueOperations</span> <span class="variable">valueOperations</span> <span class="operator">=</span> redisTemplate.opsForValue();</span><br><span class="line">        <span class="comment">//hash类型的数据操作</span></span><br><span class="line">        <span class="type">HashOperations</span> <span class="variable">hashOperations</span> <span class="operator">=</span> redisTemplate.opsForHash();</span><br><span class="line">        <span class="comment">//list类型的数据操作</span></span><br><span class="line">        <span class="type">ListOperations</span> <span class="variable">listOperations</span> <span class="operator">=</span> redisTemplate.opsForList();</span><br><span class="line">        <span class="comment">//set类型数据操作</span></span><br><span class="line">        <span class="type">SetOperations</span> <span class="variable">setOperations</span> <span class="operator">=</span> redisTemplate.opsForSet();</span><br><span class="line">        <span class="comment">//zset类型数据操作</span></span><br><span class="line">        <span class="type">ZSetOperations</span> <span class="variable">zSetOperations</span> <span class="operator">=</span> redisTemplate.opsForZSet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<img src="assets/image-20221130205351403.png" alt="image-20221130205351403" style="zoom:50%;" /> 
+
+<p>说明RedisTemplate对象注入成功，并且通过该RedisTemplate对象获取操作5种数据类型相关对象。</p>
+<p>上述环境搭建完毕后，接下来，我们就来具体对常见5种数据类型进行操作。</p>
+<h3 id="4-1-3-操作常见类型数据"><a href="#4-1-3-操作常见类型数据" class="headerlink" title="4.1.3 操作常见类型数据"></a>4.1.3 操作常见类型数据</h3><p><strong>1). 操作字符串类型数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 操作字符串类型的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">// set get setex setnx</span></span><br><span class="line">       redisTemplate.opsForValue().set(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">       <span class="type">String</span> <span class="variable">city</span> <span class="operator">=</span> (String) redisTemplate.opsForValue().get(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">       System.out.println(city);</span><br><span class="line">       redisTemplate.opsForValue().set(<span class="string">&quot;code&quot;</span>,<span class="string">&quot;1234&quot;</span>,<span class="number">3</span>, TimeUnit.MINUTES);</span><br><span class="line">       redisTemplate.opsForValue().setIfAbsent(<span class="string">&quot;lock&quot;</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line">       redisTemplate.opsForValue().setIfAbsent(<span class="string">&quot;lock&quot;</span>,<span class="string">&quot;2&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). 操作哈希类型数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 操作哈希类型的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHash</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">//hset hget hdel hkeys hvals</span></span><br><span class="line">       <span class="type">HashOperations</span> <span class="variable">hashOperations</span> <span class="operator">=</span> redisTemplate.opsForHash();</span><br><span class="line"></span><br><span class="line">       hashOperations.put(<span class="string">&quot;100&quot;</span>,<span class="string">&quot;name&quot;</span>,<span class="string">&quot;tom&quot;</span>);</span><br><span class="line">       hashOperations.put(<span class="string">&quot;100&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;20&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> (String) hashOperations.get(<span class="string">&quot;100&quot;</span>, <span class="string">&quot;name&quot;</span>);</span><br><span class="line">       System.out.println(name);</span><br><span class="line"></span><br><span class="line">       <span class="type">Set</span> <span class="variable">keys</span> <span class="operator">=</span> hashOperations.keys(<span class="string">&quot;100&quot;</span>);</span><br><span class="line">       System.out.println(keys);</span><br><span class="line"></span><br><span class="line">       <span class="type">List</span> <span class="variable">values</span> <span class="operator">=</span> hashOperations.values(<span class="string">&quot;100&quot;</span>);</span><br><span class="line">       System.out.println(values);</span><br><span class="line"></span><br><span class="line">       hashOperations.delete(<span class="string">&quot;100&quot;</span>,<span class="string">&quot;age&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3). 操作列表类型数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 操作列表类型的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testList</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">//lpush lrange rpop llen</span></span><br><span class="line">       <span class="type">ListOperations</span> <span class="variable">listOperations</span> <span class="operator">=</span> redisTemplate.opsForList();</span><br><span class="line"></span><br><span class="line">       listOperations.leftPushAll(<span class="string">&quot;mylist&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>);</span><br><span class="line">       listOperations.leftPush(<span class="string">&quot;mylist&quot;</span>,<span class="string">&quot;d&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">List</span> <span class="variable">mylist</span> <span class="operator">=</span> listOperations.range(<span class="string">&quot;mylist&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">       System.out.println(mylist);</span><br><span class="line"></span><br><span class="line">       listOperations.rightPop(<span class="string">&quot;mylist&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">Long</span> <span class="variable">size</span> <span class="operator">=</span> listOperations.size(<span class="string">&quot;mylist&quot;</span>);</span><br><span class="line">       System.out.println(size);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4). 操作集合类型数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 操作集合类型的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSet</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">//sadd smembers scard sinter sunion srem</span></span><br><span class="line">       <span class="type">SetOperations</span> <span class="variable">setOperations</span> <span class="operator">=</span> redisTemplate.opsForSet();</span><br><span class="line"></span><br><span class="line">       setOperations.add(<span class="string">&quot;set1&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>);</span><br><span class="line">       setOperations.add(<span class="string">&quot;set2&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;x&quot;</span>,<span class="string">&quot;y&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">Set</span> <span class="variable">members</span> <span class="operator">=</span> setOperations.members(<span class="string">&quot;set1&quot;</span>);</span><br><span class="line">       System.out.println(members);</span><br><span class="line"></span><br><span class="line">       <span class="type">Long</span> <span class="variable">size</span> <span class="operator">=</span> setOperations.size(<span class="string">&quot;set1&quot;</span>);</span><br><span class="line">       System.out.println(size);</span><br><span class="line"></span><br><span class="line">       <span class="type">Set</span> <span class="variable">intersect</span> <span class="operator">=</span> setOperations.intersect(<span class="string">&quot;set1&quot;</span>, <span class="string">&quot;set2&quot;</span>);</span><br><span class="line">       System.out.println(intersect);</span><br><span class="line"></span><br><span class="line">       <span class="type">Set</span> <span class="variable">union</span> <span class="operator">=</span> setOperations.union(<span class="string">&quot;set1&quot;</span>, <span class="string">&quot;set2&quot;</span>);</span><br><span class="line">       System.out.println(union);</span><br><span class="line"></span><br><span class="line">       setOperations.remove(<span class="string">&quot;set1&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>5). 操作有序集合类型数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 操作有序集合类型的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testZset</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">//zadd zrange zincrby zrem</span></span><br><span class="line">       <span class="type">ZSetOperations</span> <span class="variable">zSetOperations</span> <span class="operator">=</span> redisTemplate.opsForZSet();</span><br><span class="line"></span><br><span class="line">       zSetOperations.add(<span class="string">&quot;zset1&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="number">10</span>);</span><br><span class="line">       zSetOperations.add(<span class="string">&quot;zset1&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="number">12</span>);</span><br><span class="line">       zSetOperations.add(<span class="string">&quot;zset1&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="number">9</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">Set</span> <span class="variable">zset1</span> <span class="operator">=</span> zSetOperations.range(<span class="string">&quot;zset1&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">       System.out.println(zset1);</span><br><span class="line"></span><br><span class="line">       zSetOperations.incrementScore(<span class="string">&quot;zset1&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">       zSetOperations.remove(<span class="string">&quot;zset1&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>6). 通用命令操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 通用命令操作</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testCommon</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="comment">//keys exists type del</span></span><br><span class="line">       <span class="type">Set</span> <span class="variable">keys</span> <span class="operator">=</span> redisTemplate.keys(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">       System.out.println(keys);</span><br><span class="line"></span><br><span class="line">       <span class="type">Boolean</span> <span class="variable">name</span> <span class="operator">=</span> redisTemplate.hasKey(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">       <span class="type">Boolean</span> <span class="variable">set1</span> <span class="operator">=</span> redisTemplate.hasKey(<span class="string">&quot;set1&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (Object key : keys) &#123;</span><br><span class="line">           <span class="type">DataType</span> <span class="variable">type</span> <span class="operator">=</span> redisTemplate.type(key);</span><br><span class="line">           System.out.println(type.name());</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       redisTemplate.delete(<span class="string">&quot;mylist&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="5-店铺营业状态设置"><a href="#5-店铺营业状态设置" class="headerlink" title="5.店铺营业状态设置"></a>5.店铺营业状态设置</h1><h2 id="5-1-营业状态存储方式"><a href="#5-1-营业状态存储方式" class="headerlink" title="5.1 营业状态存储方式"></a>5.1 营业状态存储方式</h2><p>虽然，可以通过一张表来存储营业状态数据，但整个表中只有一个字段，所以意义不大。</p>
+<p>营业状态数据存储方式：基于Redis的字符串来进行存储</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SHOP_STATUS</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p><strong>约定</strong>：1表示营业 0表示打烊</p>
+<h2 id="5-2代码开发"><a href="#5-2代码开发" class="headerlink" title="5.2代码开发"></a>5.2代码开发</h2><h3 id="5-2-1-设置营业状态"><a href="#5-2-1-设置营业状态" class="headerlink" title="5.2.1 设置营业状态"></a>5.2.1 设置营业状态</h3><p>在sky-server模块中，创建ShopController.java</p>
+<p><strong>根据接口定义创建ShopController的setStatus设置营业状态方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController(&quot;adminShopController&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin/shop&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;店铺相关接口&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShopController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">KEY</span> <span class="operator">=</span> <span class="string">&quot;SHOP_STATUS&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置店铺的营业状态</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> status</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/&#123;status&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;设置店铺的营业状态&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">setStatus</span><span class="params">(<span class="meta">@PathVariable</span> Integer status)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;设置店铺的营业状态为：&#123;&#125;&quot;</span>,status == <span class="number">1</span> ? <span class="string">&quot;营业中&quot;</span> : <span class="string">&quot;打烊中&quot;</span>);</span><br><span class="line">        redisTemplate.opsForValue().set(KEY,status);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-2-2-管理端查询营业状态"><a href="#5-2-2-管理端查询营业状态" class="headerlink" title="5.2.2 管理端查询营业状态"></a>5.2.2 管理端查询营业状态</h3><p><strong>根据接口定义创建ShopController的getStatus查询营业状态方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取店铺的营业状态</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@GetMapping(&quot;/status&quot;)</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;获取店铺的营业状态&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result&lt;Integer&gt; <span class="title function_">getStatus</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="type">Integer</span> <span class="variable">status</span> <span class="operator">=</span> (Integer) redisTemplate.opsForValue().get(KEY);</span><br><span class="line">       log.info(<span class="string">&quot;获取到店铺的营业状态为：&#123;&#125;&quot;</span>,status == <span class="number">1</span> ? <span class="string">&quot;营业中&quot;</span> : <span class="string">&quot;打烊中&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> Result.success(status);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-2-3-用户端查询营业状态"><a href="#5-2-3-用户端查询营业状态" class="headerlink" title="5.2.3 用户端查询营业状态"></a>5.2.3 用户端查询营业状态</h3><p>创建com.sky.controller.user包，在该包下创建ShopController.java</p>
+<p><strong>根据接口定义创建ShopController的getStatus查询营业状态方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController(&quot;userShopController&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user/shop&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;店铺相关接口&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShopController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">KEY</span> <span class="operator">=</span> <span class="string">&quot;SHOP_STATUS&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取店铺的营业状态</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/status&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;获取店铺的营业状态&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;Integer&gt; <span class="title function_">getStatus</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">status</span> <span class="operator">=</span> (Integer) redisTemplate.opsForValue().get(KEY);</span><br><span class="line">        log.info(<span class="string">&quot;获取到店铺的营业状态为：&#123;&#125;&quot;</span>,status == <span class="number">1</span> ? <span class="string">&quot;营业中&quot;</span> : <span class="string">&quot;打烊中&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> Result.success(status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="6-接口分组展示"><a href="#6-接口分组展示" class="headerlink" title="6.接口分组展示"></a>6.接口分组展示</h1><p>在上述接口文档测试中，管理端和用户端的接口放在一起，不方便区分。</p>
+<p>接下来，我们要实现管理端和用户端接口进行<strong>区分</strong>。</p>
+<p>在WebMvcConfiguration.java中，分别扫描”com.sky.controller.admin”和”com.sky.controller.user”这两个包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> Docket <span class="title function_">docket1</span><span class="params">()</span>&#123;</span><br><span class="line">       log.info(<span class="string">&quot;准备生成接口文档...&quot;</span>);</span><br><span class="line">       <span class="type">ApiInfo</span> <span class="variable">apiInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">               .title(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">               .version(<span class="string">&quot;2.0&quot;</span>)</span><br><span class="line">               .description(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">               .build();</span><br><span class="line"></span><br><span class="line">       <span class="type">Docket</span> <span class="variable">docket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">               .groupName(<span class="string">&quot;管理端接口&quot;</span>)</span><br><span class="line">               .apiInfo(apiInfo)</span><br><span class="line">               .select()</span><br><span class="line">               <span class="comment">//指定生成接口需要扫描的包</span></span><br><span class="line">               .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.sky.controller.admin&quot;</span>))</span><br><span class="line">               .paths(PathSelectors.any())</span><br><span class="line">               .build();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> docket;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> Docket <span class="title function_">docket2</span><span class="params">()</span>&#123;</span><br><span class="line">       log.info(<span class="string">&quot;准备生成接口文档...&quot;</span>);</span><br><span class="line">       <span class="type">ApiInfo</span> <span class="variable">apiInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">               .title(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">               .version(<span class="string">&quot;2.0&quot;</span>)</span><br><span class="line">               .description(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">               .build();</span><br><span class="line"></span><br><span class="line">       <span class="type">Docket</span> <span class="variable">docket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">               .groupName(<span class="string">&quot;用户端接口&quot;</span>)</span><br><span class="line">               .apiInfo(apiInfo)</span><br><span class="line">               .select()</span><br><span class="line">               <span class="comment">//指定生成接口需要扫描的包</span></span><br><span class="line">               .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.sky.controller.user&quot;</span>))</span><br><span class="line">               .paths(PathSelectors.any())</span><br><span class="line">               .build();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> docket;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/03/16/day05redis/";
+            const title         = "「day05redis」";
+            const excerpt       = `1. Redis入门1.1 Redis简介Redis是一个基于内存的key-value结构数据库。Redis 是互联网技术领域使用最为广泛的存储中间件。
+官网：https://redis.io中文网：https://www.redis...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" rel="tag">java后端项目</a>, <a class="tag-none-link" href="/tags/redis/" rel="tag">redis</a>, <a class="tag-none-link" href="/tags/%E6%8E%A5%E5%8F%A3%E5%88%86%E7%BB%84/" rel="tag">接口分组</a>, <a class="tag-none-link" href="/tags/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" rel="tag">苍穹外卖</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-03-16T08:14:58.771Z" itemprop="dateModified">最后编辑：2026-03-16</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" day04套餐管理" href="/2026/03/16/day04套餐管理/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                13
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                22
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Redis%E5%85%A5%E9%97%A8"><span class="toc-text">1. Redis入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Redis%E7%AE%80%E4%BB%8B"><span class="toc-text">1.1 Redis简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Redis%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="toc-text">1.2 Redis服务启动与停止</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">1.2.1 服务启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="toc-text">1.2.2 客户端连接命令</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2. Redis数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">3. Redis常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%AD%97%E7%AC%A6%E4%B8%B2-string-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.1 字符串(string)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%93%88%E5%B8%8C-hash-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.2 哈希(hash)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%88%97%E8%A1%A8-list-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.3 列表(list)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E9%9B%86%E5%90%88-set-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.4 集合(set)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-zset-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.5 有序集合(zset)操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">3.6 通用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9C%A8Java%E4%B8%AD%E6%93%8D%E4%BD%9CRedis"><span class="toc-text">4.在Java中操作Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Spring-Data-Redis%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">4.1 Spring Data Redis使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">4.1.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">4.1.2 环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-%E6%93%8D%E4%BD%9C%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">4.1.3 操作常见类型数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%BA%97%E9%93%BA%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81%E8%AE%BE%E7%BD%AE"><span class="toc-text">5.店铺营业状态设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">5.1 营业状态存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-text">5.2代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E8%AE%BE%E7%BD%AE%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-text">5.2.1 设置营业状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E7%AE%A1%E7%90%86%E7%AB%AF%E6%9F%A5%E8%AF%A2%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-text">5.2.2 管理端查询营业状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-3-%E7%94%A8%E6%88%B7%E7%AB%AF%E6%9F%A5%E8%AF%A2%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-text">5.2.3 用户端查询营业状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%8E%A5%E5%8F%A3%E5%88%86%E7%BB%84%E5%B1%95%E7%A4%BA"><span class="toc-text">6.接口分组展示</span></a></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">5</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/JWT/" style="font-size: 0.6em;">JWT</a> <a href="/tags/Java/" style="font-size: 0.7em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/PageHelper/" style="font-size: 0.6em;">PageHelper</a> <a href="/tags/RequestBody%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">RequestBody注解</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/Swagger/" style="font-size: 0.6em;">Swagger</a> <a href="/tags/ThreadLocal/" style="font-size: 0.6em;">ThreadLocal</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" style="font-size: 0.8em;">java后端项目</a> <a href="/tags/redis/" style="font-size: 0.6em;">redis</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%88%86%E7%BB%84/" style="font-size: 0.6em;">接口分组</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 0.6em;">文件上传</a> <a href="/tags/%E6%A0%88/" style="font-size: 0.6em;">栈</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day05redis/"><i class="fa  fa-book"></i> day05redis</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day04%E5%A5%97%E9%A4%90%E7%AE%A1%E7%90%86/"><i class="fa  fa-book"></i> day04套餐管理</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day03%E8%8F%9C%E5%93%81%E7%AE%A1%E7%90%86/"><i class="fa  fa-book"></i> day03菜品管理</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day02%E5%91%98%E5%B7%A5%E7%AE%A1%E7%90%86%EF%BC%8C%E5%88%86%E7%B1%BB%E7%AE%A1%E7%90%86/"><i class="fa  fa-book"></i> day02员工管理，分类管理</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/day01%E6%80%BB%E8%A7%88/"><i class="fa  fa-book"></i> day01总览</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
