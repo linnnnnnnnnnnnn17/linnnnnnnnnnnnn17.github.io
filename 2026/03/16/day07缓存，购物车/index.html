@@ -15,16 +15,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="Spring Cache, java后端项目, redis, 缓存, 苍穹外卖" />
   
-  <meta property="og:type" content="article">
+  <meta name="description" content="购物车表shopping_cart:   字段名 数据类型 说明 备注    id bigint 主键 自增   name varchar(32) 商品名称 冗余字段   image varchar(255) 商品图片路径 冗余字段   user_id bigint 用户id 逻辑外键   dish_id bigint 菜品id 逻辑外键   setmeal_id bigint 套餐id 逻辑外键">
+<meta property="og:type" content="article">
 <meta property="og:title" content="day07缓存，购物车">
 <meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/03/16/day07%E7%BC%93%E5%AD%98%EF%BC%8C%E8%B4%AD%E7%89%A9%E8%BD%A6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="购物车表shopping_cart:   字段名 数据类型 说明 备注    id bigint 主键 自增   name varchar(32) 商品名称 冗余字段   image varchar(255) 商品图片路径 冗余字段   user_id bigint 用户id 逻辑外键   dish_id bigint 菜品id 逻辑外键   setmeal_id bigint 套餐id 逻辑外键">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-16T08:30:22.000Z">
-<meta property="article:modified_time" content="2026-03-16T08:30:22.554Z">
+<meta property="article:modified_time" content="2026-03-16T08:37:07.963Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="苍穹外卖">
+<meta property="article:tag" content="java后端项目">
+<meta property="article:tag" content="redis">
+<meta property="article:tag" content="Spring Cache">
+<meta property="article:tag" content="缓存">
 <meta name="twitter:card" content="summary">
   
   <!-- 站点验证相关 -->
@@ -129,14 +136,14 @@
             <ul class="kratos-post-meta text-center">
                 <li><time datetime="2026-03-16T08:30:22.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-03-16</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <i class="fa fa-user"></i> 作者 <span itemprop="name">John Doe</span>
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
                 </li>
                 
                     <li>
                         <i class="fa fa-edit"></i> 
                         
                         
-                            0
+                            ~13.57K
                         
                         字
                     </li>
@@ -148,13 +155,264 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1773649822554"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1773650227963"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E8%A1%A8shopping-cart"><span class="toc-number">1.</span> <span class="toc-text">购物车表shopping_cart:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%BC%93%E5%AD%98%E8%8F%9C%E5%93%81"><span class="toc-number">2.</span> <span class="toc-text">1. 缓存菜品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%BC%93%E5%AD%98%E5%A5%97%E9%A4%90"><span class="toc-number">3.</span> <span class="toc-text">2.缓存套餐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Spring-Cache"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Spring Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.1.</span> <span class="toc-text">2.1.1 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">2.1.2 常用注解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 代码开发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-number">4.</span> <span class="toc-text">3.添加购物车</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Controller%E5%B1%82"><span class="toc-number">4.1.1.</span> <span class="toc-text">3.1.1 Controller层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">4.1.1.2.</span> <span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-number">4.1.1.3.</span> <span class="toc-text">3.2.5 Mapper层</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-number">5.</span> <span class="toc-text">4. 查看购物车</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B8%85%E7%A9%BA%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-number">6.</span> <span class="toc-text">5.清空购物车</span></a></li></ol>
+                </div>
+            
             <hr />
-            <div itemprop="articleBody"></div>
+            <div itemprop="articleBody"><h1 id="购物车表shopping-cart"><a href="#购物车表shopping-cart" class="headerlink" title="购物车表shopping_cart:"></a>购物车表shopping_cart:</h1><table>
+<thead>
+<tr>
+<th><strong>字段名</strong></th>
+<th><strong>数据类型</strong></th>
+<th><strong>说明</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td>主键</td>
+<td>自增</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(32)</td>
+<td>商品名称</td>
+<td>冗余字段</td>
+</tr>
+<tr>
+<td>image</td>
+<td>varchar(255)</td>
+<td>商品图片路径</td>
+<td>冗余字段</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>bigint</td>
+<td>用户id</td>
+<td>逻辑外键</td>
+</tr>
+<tr>
+<td>dish_id</td>
+<td>bigint</td>
+<td>菜品id</td>
+<td>逻辑外键</td>
+</tr>
+<tr>
+<td>setmeal_id</td>
+<td>bigint</td>
+<td>套餐id</td>
+<td>逻辑外键</td>
+</tr>
+<tr>
+<td>dish_flavor</td>
+<td>varchar(50)</td>
+<td>菜品口味</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>int</td>
+<td>商品数量</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal(10,2)</td>
+<td>商品单价</td>
+<td>冗余字段</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>创建时间</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>说明：</strong> </p>
+<ul>
+<li>购物车数据是关联用户的，在表结构中，我们需要记录，每一个用户的购物车数据是哪些</li>
+<li>菜品列表展示出来的既有套餐，又有菜品，如果用户选择的是套餐，就保存套餐ID(setmeal_id)，如果用户选择的是菜品，就保存菜品ID(dish_id)</li>
+<li>对同一个菜品&#x2F;套餐，如果选择多份不需要添加多条记录，增加数量number即可</li>
+</ul>
+<h1 id="1-缓存菜品"><a href="#1-缓存菜品" class="headerlink" title="1. 缓存菜品"></a>1. 缓存菜品</h1><h2 id="1-1-实现思路"><a href="#1-1-实现思路" class="headerlink" title="1.1 实现思路"></a>1.1 实现思路</h2><p>通过Redis来缓存菜品数据，减少数据库查询操作。</p>
+<p><strong>缓存逻辑分析：</strong></p>
+<ul>
+<li>每个分类下的菜品保存一份缓存数据</li>
+<li>数据库中菜品数据有变更时清理缓存数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dish_1</td>
+<td>string(…)</td>
+</tr>
+<tr>
+<td>dish_2</td>
+<td>string(…)</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-代码实现"><a href="#1-2-代码实现" class="headerlink" title="1.2 代码实现"></a>1.2 代码实现</h2><p><strong>修改用户端接口 DishController 的 list 方法，加入缓存处理逻辑：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据分类id查询菜品</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> categoryId</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;根据分类id查询菜品&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result&lt;List&lt;DishVO&gt;&gt; <span class="title function_">list</span><span class="params">(Long categoryId)</span> &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//构造redis中的key，规则：dish_分类id</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> <span class="string">&quot;dish_&quot;</span> + categoryId;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//查询redis中是否存在菜品数据</span></span><br><span class="line">       List&lt;DishVO&gt; list = (List&lt;DishVO&gt;) redisTemplate.opsForValue().get(key);</span><br><span class="line">       <span class="keyword">if</span>(list != <span class="literal">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">           <span class="comment">//如果存在，直接返回，无须查询数据库</span></span><br><span class="line">           <span class="keyword">return</span> Result.success(list);</span><br><span class="line">       &#125;</span><br><span class="line">	<span class="comment">////////////////////////////////////////////////////////</span></span><br><span class="line">       <span class="type">Dish</span> <span class="variable">dish</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dish</span>();</span><br><span class="line">       dish.setCategoryId(categoryId);</span><br><span class="line">       dish.setStatus(StatusConstant.ENABLE);<span class="comment">//查询起售中的菜品</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">//如果不存在，查询数据库，将查询到的数据放入redis中</span></span><br><span class="line">       list = dishService.listWithFlavor(dish);</span><br><span class="line">       <span class="comment">////////////////////////////////////////////////////////</span></span><br><span class="line">       redisTemplate.opsForValue().set(key, list);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> Result.success(list);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了保证<strong>数据库</strong>和<strong>Redis</strong>中的数据保持一致，修改<strong>管理端接口 DishController</strong> 的相关方法，加入清理缓存逻辑。</p>
+<p>需要改造的方法：</p>
+<ul>
+<li>新增菜品</li>
+<li>修改菜品</li>
+<li>批量删除菜品</li>
+<li>起售、停售菜品</li>
+</ul>
+<p><strong>抽取清理缓存的方法：</strong></p>
+<p>在管理端DishController中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 清理缓存数据</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> pattern</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">cleanCache</span><span class="params">(String pattern)</span>&#123;</span><br><span class="line">       <span class="type">Set</span> <span class="variable">keys</span> <span class="operator">=</span> redisTemplate.keys(pattern);</span><br><span class="line">       redisTemplate.delete(keys);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>调用清理缓存的方法，保证数据一致性：</strong></p>
+<p><strong>1). 新增菜品优化</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 新增菜品</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> dishDTO</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PostMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;新增菜品&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> DishDTO dishDTO)</span> &#123;</span><br><span class="line">       log.info(<span class="string">&quot;新增菜品：&#123;&#125;&quot;</span>, dishDTO);</span><br><span class="line">       dishService.saveWithFlavor(dishDTO);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//清理缓存数据</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> <span class="string">&quot;dish_&quot;</span> + dishDTO.getCategoryId();</span><br><span class="line">       cleanCache(key);</span><br><span class="line">       <span class="keyword">return</span> Result.success();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2). 菜品批量删除优化</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 菜品批量删除</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@DeleteMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;菜品批量删除&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">delete</span><span class="params">(<span class="meta">@RequestParam</span> List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">       log.info(<span class="string">&quot;菜品批量删除：&#123;&#125;&quot;</span>, ids);</span><br><span class="line">       dishService.deleteBatch(ids);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//将所有的菜品缓存数据清理掉，所有以dish_开头的key</span></span><br><span class="line">       cleanCache(<span class="string">&quot;dish_*&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> Result.success();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3). 修改菜品优化</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 修改菜品</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> dishDTO</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PutMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;修改菜品&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> DishDTO dishDTO)</span> &#123;</span><br><span class="line">       log.info(<span class="string">&quot;修改菜品：&#123;&#125;&quot;</span>, dishDTO);</span><br><span class="line">       dishService.updateWithFlavor(dishDTO);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//将所有的菜品缓存数据清理掉，所有以dish_开头的key</span></span><br><span class="line">       cleanCache(<span class="string">&quot;dish_*&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> Result.success();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4). 菜品起售停售优化</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 菜品起售停售</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> status</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PostMapping(&quot;/status/&#123;status&#125;&quot;)</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;菜品起售停售&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Result&lt;String&gt; <span class="title function_">startOrStop</span><span class="params">(<span class="meta">@PathVariable</span> Integer status, Long id)</span> &#123;</span><br><span class="line">       dishService.startOrStop(status, id);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//将所有的菜品缓存数据清理掉，所有以dish_开头的key</span></span><br><span class="line">       cleanCache(<span class="string">&quot;dish_*&quot;</span>);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> Result.success();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-缓存套餐"><a href="#2-缓存套餐" class="headerlink" title="2.缓存套餐"></a>2.缓存套餐</h1><h2 id="2-1-Spring-Cache"><a href="#2-1-Spring-Cache" class="headerlink" title="2.1 Spring Cache"></a>2.1 Spring Cache</h2><h3 id="2-1-1-介绍"><a href="#2-1-1-介绍" class="headerlink" title="2.1.1 介绍"></a>2.1.1 介绍</h3><p>Spring Cache 是一个框架，实现了基于注解的缓存功能，只需要简单地加一个注解，就能实现缓存功能。</p>
+<p>Spring Cache 提供了一层抽象，底层可以切换不同的缓存实现，例如：</p>
+<ul>
+<li>EHCache</li>
+<li>Caffeine</li>
+<li>Redis(常用)</li>
+</ul>
+<p><strong>起步依赖：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-1-2-常用注解"><a href="#2-1-2-常用注解" class="headerlink" title="2.1.2 常用注解"></a>2.1.2 常用注解</h4><p>在SpringCache中提供了很多缓存操作的注解，常见的是以下的几个：</p>
+<table>
+<thead>
+<tr>
+<th><strong>注解</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@EnableCaching</td>
+<td>开启缓存注解功能，通常加在启动类上</td>
+</tr>
+<tr>
+<td>@Cacheable</td>
+<td>在方法执行前先查询缓存中是否有数据，如果有数据，则直接返回缓存数据；如果没有缓存数据，调用方法并将方法返回值放到缓存中</td>
+</tr>
+<tr>
+<td>@CachePut</td>
+<td>将方法的返回值放到缓存中</td>
+</tr>
+<tr>
+<td>@CacheEvict</td>
+<td>将一条或多条数据从缓存中删除</td>
+</tr>
+</tbody></table>
+<p>在spring boot项目中，使用缓存技术只需在项目中导入相关缓存技术的依赖包，并在启动类上使用@EnableCaching开启缓存支持即可。</p>
+<p>例如，使用Redis作为缓存技术，只需要导入Spring data Redis的maven坐标即可。</p>
+<p><strong>1). @CachePut注解</strong></p>
+<p><strong>@CachePut 说明：</strong> </p>
+<ul>
+<li>作用: 将方法返回值，放入缓存</li>
+<li>value: 缓存的名称, 每个缓存名称下面可以有很多key</li>
+<li>key: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</li>
+</ul>
+<p><strong>在save方法上加注解@CachePut</strong><br><strong>说明：</strong> key的写法如下</p>
+<p>user.id :  user指的是方法形参的名称, id指的是user的id属性 , 也就是使用user的id属性作为key ;</p>
+<p>result.id : result代表方法返回值，该表达式 代表以返回对象的id属性作为key ；</p>
+<p>p0.id：p0指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数的id属性作为key ;</p>
+<p>a0.id：a0指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数的id属性作为key ;</p>
+<p>root.args[0].id: root.args[0]指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数的id属性作为key ;</p>
+<p><strong>2). @Cacheable注解</strong></p>
+<p><strong>@Cacheable 说明:</strong></p>
+<ul>
+<li>作用: 在方法执行前，spring先查看缓存中是否有数据，如果有数据，则直接返回缓存数据；若没有数据，调用方法并将方法返回值放到缓存中</li>
+<li>value: 缓存的名称，每个缓存名称下面可以有多个key</li>
+<li>key: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</li>
+</ul>
+<p> <strong>在getById上加注解@Cacheable</strong></p>
+<p> <strong>3). @CacheEvict注解</strong></p>
+<p><strong>@CacheEvict 说明：</strong> </p>
+<ul>
+<li>作用: 清理指定缓存</li>
+<li>value: 缓存的名称，每个缓存名称下面可以有多个key</li>
+<li>key: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</li>
+</ul>
+<p><strong>在 delete 方法上加注解@CacheEvict</strong></p>
+<h2 id="2-2-实现思路"><a href="#2-2-实现思路" class="headerlink" title="2.2 实现思路"></a>2.2 实现思路</h2><p><strong>实现步骤：</strong></p>
+<p>1). 导入Spring Cache和Redis相关maven坐标</p>
+<p>2). 在启动类上加入@EnableCaching注解，开启缓存注解功能</p>
+<p>3). 在用户端接口SetmealController的 list 方法上加入@Cacheable注解</p>
+<p>4). 在管理端接口SetmealController的 save、delete、update、startOrStop等方法上加入@CacheEvict注解</p>
+<h2 id="2-3-代码开发"><a href="#2-3-代码开发" class="headerlink" title="2.3 代码开发"></a>2.3 代码开发</h2><p>按照上述实现步骤：</p>
+<p><strong>1). 导入Spring Cache和Redis相关maven坐标(已实现)</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). 在启动类上加入@EnableCaching注解，开启缓存注解功能</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span> <span class="comment">//开启注解方式的事务管理</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SkyApplication</span> ...</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3). 在用户端接口SetmealController的 list 方法上加入@Cacheable注解</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 条件查询</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> categoryId</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;根据分类id查询套餐&quot;)</span></span><br><span class="line">   <span class="meta">@Cacheable(cacheNames = &quot;setmealCache&quot;,key = &quot;#categoryId&quot;)</span> <span class="comment">//key: setmealCache::100</span></span><br><span class="line">   <span class="keyword">public</span> Result&lt;List&lt;Setmeal&gt;&gt; <span class="title function_">list</span><span class="params">(Long categoryId)</span> ...</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4). 在管理端接口SetmealController的 save、delete、update、startOrStop等方法上加入CacheEvict注解</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 新增套餐</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> setmealDTO</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PostMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;新增套餐&quot;)</span></span><br><span class="line">   <span class="meta">@CacheEvict(cacheNames = &quot;setmealCache&quot;,key = &quot;#setmealDTO.categoryId&quot;)</span><span class="comment">//key: setmealCache::100</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> SetmealDTO setmealDTO)</span> ...</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 批量删除套餐</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@DeleteMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;批量删除套餐&quot;)</span></span><br><span class="line">   <span class="meta">@CacheEvict(cacheNames = &quot;setmealCache&quot;,allEntries = true)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">delete</span><span class="params">(<span class="meta">@RequestParam</span> List&lt;Long&gt; ids)</span> ...</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 修改套餐</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> setmealDTO</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PutMapping</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;修改套餐&quot;)</span></span><br><span class="line">   <span class="meta">@CacheEvict(cacheNames = &quot;setmealCache&quot;,allEntries = true)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> SetmealDTO setmealDTO)</span> ...</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 套餐起售停售</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> status</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@PostMapping(&quot;/status/&#123;status&#125;&quot;)</span></span><br><span class="line">   <span class="meta">@ApiOperation(&quot;套餐起售停售&quot;)</span></span><br><span class="line">   <span class="meta">@CacheEvict(cacheNames = &quot;setmealCache&quot;,allEntries = true)</span></span><br><span class="line">   <span class="keyword">public</span> Result <span class="title function_">startOrStop</span><span class="params">(<span class="meta">@PathVariable</span> Integer status, Long id)</span> ...</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-添加购物车"><a href="#3-添加购物车" class="headerlink" title="3.添加购物车"></a>3.添加购物车</h1><h2 id="3-1-代码开发"><a href="#3-1-代码开发" class="headerlink" title="3.1 代码开发"></a>3.1 代码开发</h2><h3 id="3-1-1-Controller层"><a href="#3-1-1-Controller层" class="headerlink" title="3.1.1 Controller层"></a>3.1.1 Controller层</h3><p><strong>根据添加购物车接口创建ShoppingCartController：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 购物车</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user/shoppingCart&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;C端-购物车接口&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShoppingCartController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加购物车</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCartDTO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;添加购物车&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;String&gt; <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> ShoppingCartDTO shoppingCartDTO)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;添加购物车：&#123;&#125;&quot;</span>, shoppingCartDTO);</span><br><span class="line">        shoppingCartService.addShoppingCart(shoppingCartDTO);<span class="comment">//后绪步骤实现</span></span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-2-3-Service层接口"><a href="#3-2-3-Service层接口" class="headerlink" title="3.2.3 Service层接口"></a>3.2.3 Service层接口</h4><p><strong>创建ShoppingCartService接口：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ShoppingCartService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加购物车</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCartDTO</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">addShoppingCart</span><span class="params">(ShoppingCartDTO shoppingCartDTO)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-2-4-Service层实现类"><a href="#3-2-4-Service层实现类" class="headerlink" title="3.2.4 Service层实现类"></a>3.2.4 Service层实现类</h4><p><strong>创建ShoppingCartServiceImpl实现类，并实现add方法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShoppingCartServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ShoppingCartService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShoppingCartMapper shoppingCartMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishMapper dishMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SetmealMapper setmealMapper;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加购物车</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCartDTO</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addShoppingCart</span><span class="params">(ShoppingCartDTO shoppingCartDTO)</span> &#123;</span><br><span class="line">        <span class="type">ShoppingCart</span> <span class="variable">shoppingCart</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShoppingCart</span>();</span><br><span class="line">        BeanUtils.copyProperties(shoppingCartDTO, shoppingCart);</span><br><span class="line">        <span class="comment">//只能查询自己的购物车数据</span></span><br><span class="line">        shoppingCart.setUserId(BaseContext.getCurrentId());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断当前商品是否在购物车中</span></span><br><span class="line">        List&lt;ShoppingCart&gt; shoppingCartList = shoppingCartMapper.list(shoppingCart);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shoppingCartList != <span class="literal">null</span> &amp;&amp; shoppingCartList.size() == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">//如果已经存在，就更新数量，数量加1</span></span><br><span class="line">            shoppingCart = shoppingCartList.get(<span class="number">0</span>);</span><br><span class="line">            shoppingCart.setNumber(shoppingCart.getNumber() + <span class="number">1</span>);</span><br><span class="line">            shoppingCartMapper.updateNumberById(shoppingCart);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果不存在，插入数据，数量就是1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断当前添加到购物车的是菜品还是套餐</span></span><br><span class="line">            <span class="type">Long</span> <span class="variable">dishId</span> <span class="operator">=</span> shoppingCartDTO.getDishId();</span><br><span class="line">            <span class="keyword">if</span> (dishId != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">//添加到购物车的是菜品</span></span><br><span class="line">                <span class="type">Dish</span> <span class="variable">dish</span> <span class="operator">=</span> dishMapper.getById(dishId);</span><br><span class="line">                shoppingCart.setName(dish.getName());</span><br><span class="line">                shoppingCart.setImage(dish.getImage());</span><br><span class="line">                shoppingCart.setAmount(dish.getPrice());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//添加到购物车的是套餐</span></span><br><span class="line">                <span class="type">Setmeal</span> <span class="variable">setmeal</span> <span class="operator">=</span> setmealMapper.getById(shoppingCartDTO.getSetmealId());</span><br><span class="line">                shoppingCart.setName(setmeal.getName());</span><br><span class="line">                shoppingCart.setImage(setmeal.getImage());</span><br><span class="line">                shoppingCart.setAmount(setmeal.getPrice());</span><br><span class="line">            &#125;</span><br><span class="line">            shoppingCart.setNumber(<span class="number">1</span>);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartMapper.insert(shoppingCart);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-2-5-Mapper层"><a href="#3-2-5-Mapper层" class="headerlink" title="3.2.5 Mapper层"></a>3.2.5 Mapper层</h4><p><strong>创建ShoppingCartMapper接口:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ShoppingCartMapper</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 条件查询</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCart</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    List&lt;ShoppingCart&gt; <span class="title function_">list</span><span class="params">(ShoppingCart shoppingCart)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新商品数量</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCart</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Update(&quot;update shopping_cart set number = #&#123;number&#125; where id = #&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">updateNumberById</span><span class="params">(ShoppingCart shoppingCart)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入购物车数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shoppingCart</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into shopping_cart (name, user_id, dish_id, setmeal_id, dish_flavor, number, amount, image, create_time) &quot; +</span></span><br><span class="line"><span class="meta">            &quot; values (#&#123;name&#125;,#&#123;userId&#125;,#&#123;dishId&#125;,#&#123;setmealId&#125;,#&#123;dishFlavor&#125;,#&#123;number&#125;,#&#123;amount&#125;,#&#123;image&#125;,#&#123;createTime&#125;)&quot;)</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">insert</span><span class="params">(ShoppingCart shoppingCart)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建ShoppingCartMapper.xml：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.sky.mapper.ShoppingCartMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;ShoppingCart&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;ShoppingCart&quot;</span>&gt;</span></span><br><span class="line">        select * from shopping_cart</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;userId != null&quot;</span>&gt;</span></span><br><span class="line">                and user_id = #&#123;userId&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;dishId != null&quot;</span>&gt;</span></span><br><span class="line">                and dish_id = #&#123;dishId&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;setmealId != null&quot;</span>&gt;</span></span><br><span class="line">                and setmeal_id = #&#123;setmealId&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;dishFlavor != null&quot;</span>&gt;</span></span><br><span class="line">                and dish_flavor = #&#123;dishFlavor&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">        order by create_time desc</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="4-查看购物车"><a href="#4-查看购物车" class="headerlink" title="4. 查看购物车"></a>4. 查看购物车</h1><p>Impl实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看购物车</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> List&lt;ShoppingCart&gt; <span class="title function_">showShoppingCart</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> shoppingCartMapper.list(ShoppingCart.</span><br><span class="line">                                   builder().</span><br><span class="line">                                   userId(BaseContext.getCurrentId()).</span><br><span class="line">                                   build());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-清空购物车"><a href="#5-清空购物车" class="headerlink" title="5.清空购物车"></a>5.清空购物车</h1><p>Impl实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 清空购物车商品</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cleanShoppingCart</span><span class="params">()</span> &#123;</span><br><span class="line">       shoppingCartMapper.deleteByUserId(BaseContext.getCurrentId());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Mapper接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据用户id删除购物车数据</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Delete(&quot;delete from shopping_cart where user_id = #&#123;userId&#125;&quot;)</span></span><br><span class="line">   <span class="keyword">void</span> <span class="title function_">deleteByUserId</span><span class="params">(Long userId)</span>;</span><br></pre></td></tr></table></figure>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -221,7 +479,33 @@
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/03/16/day07%E7%BC%93%E5%AD%98%EF%BC%8C%E8%B4%AD%E7%89%A9%E8%BD%A6/";
             const title         = "「day07缓存，购物车」";
-            const excerpt       = ``;
+            const excerpt       = `购物车表shopping_cart:
+
+
+字段名
+数据类型
+说明
+备注
+
+
+
+id
+bigint
+主键
+自增
+
+
+name
+varchar(32)
+商品名称
+冗余字段
+
+
+image
+varchar(255)
+商品图片路径
+冗余字段
+...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -240,10 +524,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    
+                    <a class="tag-none-link" href="/tags/Spring-Cache/" rel="tag">Spring Cache</a>, <a class="tag-none-link" href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" rel="tag">java后端项目</a>, <a class="tag-none-link" href="/tags/redis/" rel="tag">redis</a>, <a class="tag-none-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a>, <a class="tag-none-link" href="/tags/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" rel="tag">苍穹外卖</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2026-03-16T08:30:22.554Z" itemprop="dateModified">最后编辑：2026-03-16</time>
+                    <time datetime="2026-03-16T08:37:07.963Z" itemprop="dateModified">最后编辑：2026-03-16</time>
                 </div>
             </div>
         </footer>
@@ -306,7 +590,7 @@
                 标签
             </span>
             <span class="count">
-                24
+                26
             </span>
         </a>
     </div>
@@ -314,10 +598,22 @@
             
                     <div class="sticky-area">
                 
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E8%A1%A8shopping-cart"><span class="toc-text">购物车表shopping_cart:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%BC%93%E5%AD%98%E8%8F%9C%E5%93%81"><span class="toc-text">1. 缓存菜品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-text">1.1 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.2 代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%BC%93%E5%AD%98%E5%A5%97%E9%A4%90"><span class="toc-text">2.缓存套餐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Spring-Cache"><span class="toc-text">2.1 Spring Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1.1 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-text">2.1.2 常用注解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-text">2.2 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-text">2.3 代码开发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-text">3.添加购物车</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-text">3.1 代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Controller%E5%B1%82"><span class="toc-text">3.1.1 Controller层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-Service%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.2.3 Service层接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-Service%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-text">3.2.4 Service层实现类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-Mapper%E5%B1%82"><span class="toc-text">3.2.5 Mapper层</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-text">4. 查看购物车</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B8%85%E7%A9%BA%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-text">5.清空购物车</span></a></li></ol>
+    </div>
+</aside>
+                
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">7</span></li></ul>
   </aside>
 
 
@@ -326,7 +622,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.73em;">C++</a> <a href="/tags/HttpClient/" style="font-size: 0.6em;">HttpClient</a> <a href="/tags/JWT/" style="font-size: 0.6em;">JWT</a> <a href="/tags/Java/" style="font-size: 0.67em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/PageHelper/" style="font-size: 0.6em;">PageHelper</a> <a href="/tags/RequestBody%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">RequestBody注解</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/Swagger/" style="font-size: 0.6em;">Swagger</a> <a href="/tags/ThreadLocal/" style="font-size: 0.6em;">ThreadLocal</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" style="font-size: 0.8em;">java后端项目</a> <a href="/tags/redis/" style="font-size: 0.6em;">redis</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size: 0.6em;">微信登录</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%88%86%E7%BB%84/" style="font-size: 0.6em;">接口分组</a>
+        <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.73em;">C++</a> <a href="/tags/HttpClient/" style="font-size: 0.6em;">HttpClient</a> <a href="/tags/JWT/" style="font-size: 0.6em;">JWT</a> <a href="/tags/Java/" style="font-size: 0.67em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/PageHelper/" style="font-size: 0.6em;">PageHelper</a> <a href="/tags/RequestBody%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">RequestBody注解</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/Spring-Cache/" style="font-size: 0.6em;">Spring Cache</a> <a href="/tags/Swagger/" style="font-size: 0.6em;">Swagger</a> <a href="/tags/ThreadLocal/" style="font-size: 0.6em;">ThreadLocal</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" style="font-size: 0.8em;">java后端项目</a> <a href="/tags/redis/" style="font-size: 0.67em;">redis</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size: 0.6em;">微信登录</a>
       </div>
   </aside>
 
