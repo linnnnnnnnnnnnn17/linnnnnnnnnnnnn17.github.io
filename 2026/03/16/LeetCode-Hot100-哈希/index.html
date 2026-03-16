@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="C++, Java, 哈希" />
+    <meta name="keywords" content="C++, Java, 哈希, 算法" />
   
   <meta name="description" content="1.两数之和 C++创建一个空哈希表（unordered_map&lt;int, int&gt;  idx;），枚举 j，不要带结束条件，不然会报错没有返回值在 j 左边找 i ，满足 nums[i] + nums[j] &#x3D; target，(auto it &#x3D; idx.find(target - nums[j);)找到了(it !&#x3D; idx.end())，返回两数下标(用{}括起来)，n">
 <meta property="og:type" content="article">
@@ -25,11 +25,12 @@
 <meta property="og:description" content="1.两数之和 C++创建一个空哈希表（unordered_map&lt;int, int&gt;  idx;），枚举 j，不要带结束条件，不然会报错没有返回值在 j 左边找 i ，满足 nums[i] + nums[j] &#x3D; target，(auto it &#x3D; idx.find(target - nums[j);)找到了(it !&#x3D; idx.end())，返回两数下标(用{}括起来)，n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-16T02:57:07.000Z">
-<meta property="article:modified_time" content="2026-03-16T03:00:26.603Z">
+<meta property="article:modified_time" content="2026-03-16T03:02:59.586Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="哈希">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
   <!-- 站点验证相关 -->
@@ -153,7 +154,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1773630026603"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1773630179586"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -257,10 +258,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2026-03-16T03:00:26.603Z" itemprop="dateModified">最后编辑：2026-03-16</time>
+                    <time datetime="2026-03-16T03:02:59.586Z" itemprop="dateModified">最后编辑：2026-03-16</time>
                 </div>
             </div>
         </footer>
@@ -272,6 +273,10 @@
                 <a title=" C++的STL" href="/2026/03/16/C++的STL/">&lt; 上一篇</a>
             </div>
             
+            
+            <div class="nav-next clearfix">
+                <a title=" LeetCode-Hot100-栈" href="/2026/03/16/LeetCode-Hot100-栈/">下一篇 &gt;</a>
+            </div>
             
         </nav>
     
@@ -307,7 +312,7 @@
                 文章
             </span>
             <span class="count">
-                4
+                5
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -323,7 +328,7 @@
                 标签
             </span>
             <span class="count">
-                5
+                7
             </span>
         </a>
     </div>
@@ -346,7 +351,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li></ul>
   </aside>
 
 
@@ -355,7 +360,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/Java/" style="font-size: 0.6em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a>
+        <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/Java/" style="font-size: 0.6em;">Java</a> <a href="/tags/MySQL/" style="font-size: 0.6em;">MySQL</a> <a href="/tags/STL/" style="font-size: 0.6em;">STL</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 0.6em;">哈希</a> <a href="/tags/%E6%A0%88/" style="font-size: 0.6em;">栈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.7em;">算法</a>
       </div>
   </aside>
 
@@ -366,6 +371,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2026/03/16/LeetCode-Hot100-%E6%A0%88/"><i class="fa  fa-book"></i> LeetCode-Hot100-栈</a>
+            
+          
         
           
           
