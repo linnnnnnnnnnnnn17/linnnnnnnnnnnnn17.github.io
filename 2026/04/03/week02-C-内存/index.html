@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>week02-C++内存 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, C++内存, godbolt" />
+  
+  <meta name="description" content="引子：打破幻觉main函数是程序执行的第一个函数？任务：用VS，写一个win32控制台程序，定义一个全局变量的类对象，调试程序观察如何运行。 内存分区   分区 描述    stack 栈区（向下增长）↓ 由编译器自动分配释放。存放：局部变量，形参，返回值   heap 堆区（向上增长）↑ 由程序员分配释放内存。调用函数：malloc()，free()   全局（静态）区 未初始化(.bss)，已">
+<meta property="og:type" content="article">
+<meta property="og:title" content="week02-C++内存">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="引子：打破幻觉main函数是程序执行的第一个函数？任务：用VS，写一个win32控制台程序，定义一个全局变量的类对象，调试程序观察如何运行。 内存分区   分区 描述    stack 栈区（向下增长）↓ 由编译器自动分配释放。存放：局部变量，形参，返回值   heap 堆区（向上增长）↑ 由程序员分配释放内存。调用函数：malloc()，free()   全局（静态）区 未初始化(.bss)，已">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-1.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-2.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-3.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-5.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-6.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-7.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-8.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-9.png">
+<meta property="article:published_time" content="2026-04-03T06:49:08.000Z">
+<meta property="article:modified_time" content="2026-04-05T09:45:06.924Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="C++内存">
+<meta property="article:tag" content="godbolt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">week02-C++内存</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-04-03T06:49:08.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-04-03</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~11.11K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1775382306924"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%AD%90%EF%BC%9A%E6%89%93%E7%A0%B4%E5%B9%BB%E8%A7%89"><span class="toc-number">1.</span> <span class="toc-text">引子：打破幻觉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA"><span class="toc-number">2.</span> <span class="toc-text">内存分区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%87%E5%87%86%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA%E6%80%BB%E8%A7%88"><span class="toc-number">2.1.</span> <span class="toc-text">一、标准内存分区总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%90%84%E5%8C%BA%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">2.2.</span> <span class="toc-text">二、各区详细说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%A3%E7%A0%81%E6%AE%B5%EF%BC%88-text%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 代码段（.text）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E9%87%8F%E5%8C%BA%EF%BC%88-rodata%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 常量区（.rodata）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%AD%98%E5%82%A8%E5%8C%BA%EF%BC%88-data-bss%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. 全局&#x2F;静态存储区（.data + .bss）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-data-%E6%AE%B5%EF%BC%88%E5%B7%B2%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">（1）.data 段（已初始化全局&#x2F;静态变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-bss-%E6%AE%B5%EF%BC%88%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">（2）.bss 段（未初始化全局&#x2F;静态变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8C%BA%E7%BB%9F%E4%B8%80%E7%89%B9%E7%82%B9"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">全局&#x2F;静态区统一特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A0%88%E5%8C%BA%EF%BC%88Stack%EF%BC%89"><span class="toc-number">2.2.4.</span> <span class="toc-text">4. 栈区（Stack）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A0%86%E5%8C%BA%EF%BC%88Heap%EF%BC%89"><span class="toc-number">2.2.5.</span> <span class="toc-text">5. 堆区（Heap）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E6%A1%A3%E9%87%8D%E7%82%B9%E7%BB%93%E8%AE%BA%EF%BC%88%E5%86%85%E5%AD%98%E7%9B%B8%E5%85%B3%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">三、文档重点结论（内存相关）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0-%E6%9E%90%E6%9E%84%E6%97%B6%E6%9C%BA"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 全局对象构造 &#x2F; 析构时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%BD%E9%87%8F%E9%81%BF%E5%85%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 尽量避免直接使用全局对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BC%98%E5%8C%96%E8%A6%81%E7%82%B9"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. 字符串优化要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E9%80%9F%E8%AE%B0%E6%80%BB%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">四、一句话速记总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">重要的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88%EF%BC%8C%E8%80%8C%E9%9D%9E%E6%95%B0%E7%BB%84"><span class="toc-number">4.1.</span> <span class="toc-text">1. 优先使用常量指针，而非数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E4%B8%8E%E7%A8%8B%E5%BA%8F%E5%90%8C%E7%94%9F%E5%85%B1%E6%AD%BB"><span class="toc-number">4.2.</span> <span class="toc-text">2. 全局变量与程序同生共死</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%9E%81%E5%85%B6%E5%8D%B1%E9%99%A9%EF%BC%8C%E5%B0%BD%E9%87%8F%E5%B0%91%E7%94%A8%EF%BC%8C%E5%A6%82%E9%9C%80%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%B0%BD%E9%87%8F%E5%BB%B6%E8%BF%9F"><span class="toc-number">4.3.</span> <span class="toc-text">3. 全局变量极其危险，尽量少用，如需使用，尽量延迟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-number">4.3.1.</span> <span class="toc-text">核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E5%99%A8%E7%94%9F%E6%88%90%E4%BA%86%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.2.</span> <span class="toc-text">1. 编译器生成了两个关键全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E5%85%A5-func-%E5%90%8E%E7%AC%AC%E4%B8%80%E4%BB%B6%E4%BA%8B%EF%BC%9A%E6%A3%80%E6%9F%A5%E6%A0%87%E8%AE%B0"><span class="toc-number">4.3.3.</span> <span class="toc-text">2. 进入 func 后第一件事：检查标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AA%E6%9C%89%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%B5%B0%E5%88%B0%E8%BF%99%E9%87%8C%EF%BC%9A%E6%89%A7%E8%A1%8C%E6%9E%84%E9%80%A0"><span class="toc-number">4.3.4.</span> <span class="toc-text">3. 只有第一次会走到这里：执行构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9E%84%E9%80%A0%E5%AE%8C%E7%AB%8B%E5%88%BB%E5%81%9A%E4%B8%A4%E4%BB%B6%E4%BA%8B"><span class="toc-number">4.3.5.</span> <span class="toc-text">4. 构造完立刻做两件事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%B0%83%E7%94%A8-func"><span class="toc-number">4.3.6.</span> <span class="toc-text">5. 第二次调用 func()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E6%9C%80%E5%85%B3%E9%94%AE-3-%E5%8F%A5%E8%AF%9D%EF%BC%89"><span class="toc-number">4.3.7.</span> <span class="toc-text">总结（最关键 3 句话）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E8%A1%A8%E7%A7%92%E6%87%82"><span class="toc-number">4.3.8.</span> <span class="toc-text">图表秒懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.9.</span> <span class="toc-text">4. 静态变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%A0%88-%E5%A0%86"><span class="toc-number">4.3.10.</span> <span class="toc-text">5. 栈 &amp; 堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%8A%A0%E5%BC%95%E7%94%A8"><span class="toc-number">4.3.11.</span> <span class="toc-text">6. 复杂类型的函数参数默认加引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%85%B3%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.3.12.</span> <span class="toc-text">7. 关于初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.4.</span> <span class="toc-text">内存管理导致的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E7%B1%BB"><span class="toc-number">4.4.1.</span> <span class="toc-text">问题分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B4%A9%E6%BA%83%E6%8D%95%E8%8E%B7"><span class="toc-number">4.4.2.</span> <span class="toc-text">崩溃捕获</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E8%A1%A5%E5%85%85"><span class="toc-number">4.4.3.</span> <span class="toc-text">调用约定补充</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="引子：打破幻觉"><a href="#引子：打破幻觉" class="headerlink" title="引子：打破幻觉"></a>引子：打破幻觉</h1><p>main函数是程序执行的第一个函数？<br>任务：用VS，写一个win32控制台程序，定义一个全局变量的类对象，调试程序观察如何运行。</p>
+<h1 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h1><table>
+<thead>
+<tr>
+<th>分区</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stack 栈区（向下增长）↓</td>
+<td>由编译器自动分配释放。存放：局部变量，形参，返回值</td>
+</tr>
+<tr>
+<td>heap 堆区（向上增长）↑</td>
+<td>由程序员分配释放内存。调用函数：malloc()，free()</td>
+</tr>
+<tr>
+<td>全局（静态）区</td>
+<td>未初始化(.bss)，已初始化(.data)</td>
+</tr>
+<tr>
+<td>.rodata 常量区</td>
+<td>字符串”ABCD”等</td>
+</tr>
+<tr>
+<td>.text 代码区</td>
+<td>存放程序的代码</td>
+</tr>
+</tbody></table>
+<h2 id="一、标准内存分区总览"><a href="#一、标准内存分区总览" class="headerlink" title="一、标准内存分区总览"></a>一、标准内存分区总览</h2><p>C++ 程序运行时，内存<strong>从低到高</strong>通常分为 <strong>5 个核心区域</strong>：</p>
+<ol>
+<li><strong>代码段（.text &#x2F; Code Segment）</strong></li>
+<li><strong>常量区（.rodata &#x2F; Read-only Data）</strong></li>
+<li><strong>全局&#x2F;静态存储区（.data + .bss）</strong></li>
+<li><strong>栈区（Stack）</strong></li>
+<li><strong>堆区（Heap &#x2F; 自由存储区）</strong></li>
+</ol>
+<hr>
+<h2 id="二、各区详细说明"><a href="#二、各区详细说明" class="headerlink" title="二、各区详细说明"></a>二、各区详细说明</h2><h3 id="1-代码段（-text）"><a href="#1-代码段（-text）" class="headerlink" title="1. 代码段（.text）"></a>1. 代码段（.text）</h3><ul>
+<li>存放：<strong>程序编译后的二进制指令、函数体代码</strong></li>
+<li>特点：<ul>
+<li><strong>只读</strong>，防止程序被意外修改</li>
+<li>运行期间<strong>大小固定</strong></li>
+<li><strong>共享</strong>，多个进程可同享一份代码</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-常量区（-rodata）"><a href="#2-常量区（-rodata）" class="headerlink" title="2. 常量区（.rodata）"></a>2. 常量区（.rodata）</h3><ul>
+<li>存放：<ul>
+<li>字符串字面量（<code>&quot;hello&quot;</code>）</li>
+<li><code>const</code> 修饰的全局常量、全局常量数组</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li><strong>只读</strong>，修改会直接崩溃</li>
+<li>编译器可能做<strong>常量合并</strong>（相同字符串只存一份）</li>
+</ul>
+</li>
+<li>文档对应示例：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span>* g_cstr = <span class="string">&quot;asdf&quot;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* g_cstr1 = <span class="string">&quot;as&quot;</span><span class="string">&quot;df&quot;</span>;   <span class="comment">// 与上面可能指向同一块内存</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> g_arr[<span class="number">6</span>] = &#123;<span class="number">8</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="3-全局-静态存储区（-data-bss）"><a href="#3-全局-静态存储区（-data-bss）" class="headerlink" title="3. 全局&#x2F;静态存储区（.data + .bss）"></a>3. 全局&#x2F;静态存储区（.data + .bss）</h3><p>分为两部分：</p>
+<h4 id="（1）-data-段（已初始化全局-静态变量）"><a href="#（1）-data-段（已初始化全局-静态变量）" class="headerlink" title="（1）.data 段（已初始化全局&#x2F;静态变量）"></a>（1）.data 段（已初始化全局&#x2F;静态变量）</h4><ul>
+<li>存放：<ul>
+<li>已初始化的<strong>全局变量</strong></li>
+<li>已初始化的<strong>static 静态变量</strong>（全局&#x2F;局部）</li>
+</ul>
+</li>
+<li>文档对应示例：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> g_var = <span class="number">10</span>;                <span class="comment">// 全局变量</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> gs_var = <span class="number">11</span>;        <span class="comment">// 全局静态变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> s_val = <span class="number">20</span>;     <span class="comment">// 局部静态变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="（2）-bss-段（未初始化全局-静态变量）"><a href="#（2）-bss-段（未初始化全局-静态变量）" class="headerlink" title="（2）.bss 段（未初始化全局&#x2F;静态变量）"></a>（2）.bss 段（未初始化全局&#x2F;静态变量）</h4><ul>
+<li>存放：未初始化的全局&#x2F;静态变量</li>
+<li>特点：程序加载时<strong>自动清零</strong></li>
+</ul>
+<h4 id="全局-静态区统一特点"><a href="#全局-静态区统一特点" class="headerlink" title="全局&#x2F;静态区统一特点"></a>全局&#x2F;静态区统一特点</h4><ul>
+<li>生命周期：<strong>程序启动创建 → 程序结束销毁</strong></li>
+<li>作用域：<ul>
+<li>全局变量：<strong>整个工程</strong></li>
+<li>static 变量：只在<strong>当前</strong>文件&#x2F;函数可见</li>
+</ul>
+</li>
+<li>多个实例<strong>共享</strong>同一块内存</li>
+</ul>
+<hr>
+<h3 id="4-栈区（Stack）"><a href="#4-栈区（Stack）" class="headerlink" title="4. 栈区（Stack）"></a>4. 栈区（Stack）</h3><ul>
+<li>存放：<ul>
+<li>函数<strong>形参</strong></li>
+<li><strong>局部非静态</strong>变量</li>
+<li>函数<strong>调用栈信息</strong>（返回地址等）</li>
+</ul>
+</li>
+<li>文档对应示例：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">test4</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> value = i + <span class="number">10</span>;   <span class="comment">// value 在栈上</span></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>特点：<ul>
+<li>由<strong>系统自动</strong>分配&#x2F;释放，无需手动管理</li>
+<li>空间小、分配快、连续</li>
+<li>生命周期：函数进入创建，函数退出销毁</li>
+<li>线程<strong>私有</strong>，不共享</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-堆区（Heap）"><a href="#5-堆区（Heap）" class="headerlink" title="5. 堆区（Heap）"></a>5. 堆区（Heap）</h3><ul>
+<li>存放：<code>new / malloc</code> <strong>动态申请</strong>的内存</li>
+<li>特点：<ul>
+<li><strong>手动</strong>申请、手动释放（<code>delete / free</code>）</li>
+<li>空间大、分配慢、不连续</li>
+<li>生命周期由<strong>程序员控制</strong></li>
+<li>多线程<strong>共享</strong>，需注意线程安全</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="三、文档重点结论（内存相关）"><a href="#三、文档重点结论（内存相关）" class="headerlink" title="三、文档重点结论（内存相关）"></a>三、文档重点结论（内存相关）</h2><h3 id="1-全局对象构造-析构时机"><a href="#1-全局对象构造-析构时机" class="headerlink" title="1. 全局对象构造 &#x2F; 析构时机"></a>1. 全局对象构造 &#x2F; 析构时机</h3><ul>
+<li><strong>构造</strong>：在 <strong>main 函数执行之前</strong> 完成（动态初始化）</li>
+<li><strong>析构</strong>：在 <strong>main 函数返回之后</strong> 执行</li>
+<li>危险点：<ul>
+<li>全局对象间初始化顺序不确定</li>
+<li>容易引发<strong>未定义行为、死锁、崩溃</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-尽量避免直接使用全局对象"><a href="#2-尽量避免直接使用全局对象" class="headerlink" title="2. 尽量避免直接使用全局对象"></a>2. 尽量避免直接使用全局对象</h3><p>推荐方案：<strong>局部静态单例（延迟初始化）</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Test&amp; <span class="title">get_test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">static</span> Test t;   <span class="comment">// 第一次调用时才初始化</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优点：</p>
+<ul>
+<li>避免 main 前的不确定初始化顺序</li>
+<li>线程安全（C++11 后）</li>
+<li>用到才创建，节约启动时间</li>
+</ul>
+<h3 id="3-字符串优化要点"><a href="#3-字符串优化要点" class="headerlink" title="3. 字符串优化要点"></a>3. 字符串优化要点</h3><ul>
+<li><code>const char* p = &quot;xxx&quot;</code> → 字符串在<strong>常量区</strong>，只读</li>
+<li><code>char arr[] = &quot;xxx&quot;</code> → 字符串在<strong>栈&#x2F;全局区</strong>，可修改</li>
+<li>高优化下，相同字符串字面量会被合并，地址相同</li>
+</ul>
+<hr>
+<h2 id="四、一句话速记总结"><a href="#四、一句话速记总结" class="headerlink" title="四、一句话速记总结"></a>四、一句话速记总结</h2><ul>
+<li><strong>代码段</strong>：存指令</li>
+<li><strong>常量区</strong>：存只读常量</li>
+<li><strong>全局静态区</strong>：存全局、static，程序全程存在</li>
+<li><strong>栈</strong>：局部变量，<strong>自动</strong>管理</li>
+<li><strong>堆</strong>：动态内存，<strong>手动</strong>管理</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p><strong>万能编译器</strong><br><a target="_blank" rel="noopener" href="https://godbolt.org/">https://godbolt.org/</a> (跨平台的实践神器)<br><strong>编译参数设置</strong><br>约定一下编译器与编译参数：<br><strong>Windows端</strong><br>x86 msvc v19.24<br>编译参数: &#x2F;std:c++ 17 &#x2F;O2 （&#x2F;Zc:threadSafeInit-：关闭线程安全，默认是安全）<br><strong>Mac端</strong><br>x86-64 clang 9.0.1<br>编译参数: -std&#x3D;c++ 17 -O2<br><strong>Linux端</strong><br>x86-64 gcc 15.2<br><strong>实践的代码</strong><br>分段给出，引导学生调试、理解各种变量的内存分布</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* g_cstr = <span class="string">&quot;asdf&quot;</span>; <span class="comment">// 常量字符串常量</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* g_cstr1 = <span class="string">&quot;as&quot;</span><span class="string">&quot;df&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> g_strArray1[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span> g_strArray2[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> g_arr[<span class="number">6</span>] = &#123; <span class="comment">// 常量数组</span></span><br><span class="line">    <span class="number">8</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">static</span> <span class="type">int</span> gs_var = <span class="number">9</span> + <span class="number">2</span>; <span class="comment">// 全局静态变量</span></span><br><span class="line"><span class="type">int</span> g_var = <span class="number">10</span>; <span class="comment">// 全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test1</span><span class="params">(<span class="type">int</span> i)</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">const</span> <span class="type">int</span> arr2[<span class="number">10</span>] = &#123; <span class="comment">// 局部静态常量</span></span><br><span class="line">        <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> arr2[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test2</span><span class="params">(<span class="type">int</span> i)</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> g_arr[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test3</span><span class="params">(<span class="type">int</span> i)</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    g_var = i * <span class="number">2</span>;</span><br><span class="line">    gs_var = i;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test4</span><span class="params">(<span class="type">int</span> i)</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> value = i + <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="built_in">Test</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">srand</span>(<span class="number">100</span>);</span><br><span class="line">        a = <span class="built_in">rand</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">Test</span>()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> c = <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导致全局变量动态初始化</span></span><br><span class="line">Test g_test;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过单例，延迟静态变量初始化，避免动态初始化</span></span><br><span class="line"><span class="function">Test&amp; <span class="title">get_test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">static</span> Test t;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test5</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">get_test</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AllocID</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> s_id = <span class="built_in">rand</span>();</span><br><span class="line">    <span class="keyword">return</span> ++s_id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 输出全局常量</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_cstr: &quot;</span> &lt;&lt; g_cstr &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_cstr1: &quot;</span> &lt;&lt; g_cstr1 &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_strArray1: &quot;</span> &lt;&lt; g_strArray1 &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_strArray2: &quot;</span> &lt;&lt; g_strArray2 &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_arr: &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; g_arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出全局变量</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;gs_var: &quot;</span> &lt;&lt; gs_var &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_var: &quot;</span> &lt;&lt; g_var &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用测试函数</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;test1(5): &quot;</span> &lt;&lt; <span class="built_in">test1</span>(<span class="number">5</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;test2(3): &quot;</span> &lt;&lt; <span class="built_in">test2</span>(<span class="number">3</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;test3(4): &quot;</span> &lt;&lt; <span class="built_in">test3</span>(<span class="number">4</span>) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出全局结构体</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_test.a: &quot;</span> &lt;&lt; g_test.a &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_test.b: &quot;</span> &lt;&lt; g_test.b &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_test.c: &quot;</span> &lt;&lt; g_test.c &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">test5</span>();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">srand</span>(<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">AllocID</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="重要的结论"><a href="#重要的结论" class="headerlink" title="重要的结论"></a>重要的结论</h1><h2 id="1-优先使用常量指针，而非数组"><a href="#1-优先使用常量指针，而非数组" class="headerlink" title="1. 优先使用常量指针，而非数组"></a>1. 优先使用常量指针，而非数组</h2><p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image.png" alt="可见不开启/O2优化且main未使用时，字符串指针常量也会直接占用内存，而且相同的常量指针还占两份空间，而字符数组因为main未使用而不会被初始化。"></p>
+<p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-1.png" alt="开启/O2优化后，相同的常量指针只占一份空间，main使用字符数组后，在有/O2优化的情况下，相同的字符数组仍然占两份空间。"></p>
+<ul>
+<li>存储观察：相同字符串常量在Debug模式下可能存储多份，在Release（优化）模式下可能合并 </li>
+<li>编码建议：<strong>优先使用字符指针</strong>而非字符数组定义字符串常量，避免定义未使用的常量造成浪费</li>
+</ul>
+<h2 id="2-全局变量与程序同生共死"><a href="#2-全局变量与程序同生共死" class="headerlink" title="2. 全局变量与程序同生共死"></a>2. 全局变量与程序同生共死</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">Test</span>() </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> a = <span class="number">10</span>;                     <span class="comment">//7</span></span><br><span class="line">	&#125;</span><br><span class="line">	~<span class="built_in">Test</span>()</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;                                   <span class="comment">//11</span></span><br><span class="line">	<span class="built_in">Test</span>(<span class="type">const</span> Test&amp; ts)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;m_value = ts.m_value;</span><br><span class="line">		<span class="keyword">this</span>-&gt;m_str = ts.m_str;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> m_value = <span class="number">1</span>;                    <span class="comment">//19</span></span><br><span class="line">	std::string m_str = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Test g_test;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;func&quot;</span> &lt;&lt; std::endl;   <span class="comment">//27</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">func</span>();                             <span class="comment">//32</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;                           <span class="comment">//33</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分别在7，11，19，27，32，33行加断点，按F5调试运行，执行顺序为：19，7，32，27，33，11。可见在main函数执行前，会先执行全局类的构造，在main函数结束后又进行析构。</p>
+<p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-2.png"></p>
+<p><strong>动态初始化机制，先于main函数执行</strong><br>编译器为每个需要动态初始化的全局对象生成一个<strong>小函数</strong>，在函数里调用该对象的构造函数；再由 C++ 运行时在启动阶段（在进入 main 之前）依次调用这些函数。<br>和“内存&#x2F;生命周期”的对应关系</p>
+<ul>
+<li>存储位置：g_test 本身占用的内存（例如在数据段或 BSS 里）在程序加载时就已经存在，但里面的值在动态初始化之前是未定义或零；</li>
+<li>何时“真正成为有效对象”：就是在执行完 Test::Test() 的那次 call 之后，即动态初始化完成的时刻；<br><strong>销毁时机晚于main函数后</strong><br>在 main 返回后，运行时执行已注册的 atexit 回调时，会调用 <code>dynamic atexit destructor for &#39;g_test&#39;</code>，进而调用 ~Test()，完成析构。</li>
+</ul>
+<p><strong>核心发现</strong>：main函数并非程序执行的第一个入口，全局&#x2F;静态对象初始化代码更早执行<br><strong>全局对象</strong>：全局&#x2F;静态对象的构造函数在main函数之前被调用，析构函数在之后调用<br><strong>潜在风险</strong>：全局&#x2F;静态对象的构造与析构时机不可控，可能拖慢程序启动或导致关闭问题<br><strong>优化建议</strong>：谨慎使用全局&#x2F;静态对象，避免在构造&#x2F;析构中进行复杂或耗时操作<br><strong>延迟初始化</strong>：通过函数内静态变量（<code>static</code>）实现按需构造，但析构时机仍不可控<br><strong>线程安全</strong>：函数内静态变量的初始化在默认编译选项下是线程安全的，但需注意编译选项差异</p>
+<h2 id="3-全局变量极其危险，尽量少用，如需使用，尽量延迟"><a href="#3-全局变量极其危险，尽量少用，如需使用，尽量延迟" class="headerlink" title="3. 全局变量极其危险，尽量少用，如需使用，尽量延迟"></a>3. 全局变量极其危险，尽量少用，如需使用，尽量延迟</h2><p>通过单例，延迟全局变量的初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">Test</span>() </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> a = <span class="number">10</span>;                 <span class="comment">//7</span></span><br><span class="line">	&#125;</span><br><span class="line">	~<span class="built_in">Test</span>()</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;                               <span class="comment">//11</span></span><br><span class="line">	<span class="built_in">Test</span>(<span class="type">const</span> Test&amp; ts)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;m_value = ts.m_value;</span><br><span class="line">		<span class="keyword">this</span>-&gt;m_str = ts.m_str;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> m_value = <span class="number">1</span>;</span><br><span class="line">	std::string m_str = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过单例，延迟静态变量初始化，避免动态初始化</span></span><br><span class="line"><span class="function">Test&amp; <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">static</span> Test ts;                 <span class="comment">//25</span></span><br><span class="line">	<span class="keyword">return</span> ts;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">func</span>();                         <span class="comment">//31</span></span><br><span class="line">	<span class="type">int</span> a = <span class="number">10</span>;                     <span class="comment">//32</span></span><br><span class="line">	<span class="built_in">func</span>();                         <span class="comment">//33</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;                       <span class="comment">//34</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分别在7，11，25，31，32，33，34行加断点，按F5调试运行，执行顺序为：31，25，7，32，33，25，34，11。可见单例延迟了初始化，使程序成功在main开始，而且7行的构造函数初始化动作也只执行了一次。但是这种方式也只能控制什么时候构造，控制不了析构，析构还是固定在 <code>return 0</code> 后调用这个 <code>dynamic atexit destructor for &#39;ts&#39;&#39;()</code></p>
+<p><strong>这段汇编里，C++ 是怎么保证 <code>static Test ts;</code> 只构造一次的！</strong></p>
+<p><strong>局部静态变量 &#x3D; 全局变量 + 一个「是否已初始化」的标记 + 线程安全锁</strong><br>编译器靠<strong>这个标记</strong>实现「只构造一次」。</p>
+<hr>
+<h3 id="核心原理"><a href="#核心原理" class="headerlink" title="核心原理"></a>核心原理</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Test&amp; <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> Test ts;  <span class="comment">// 重点在这里</span></span><br><span class="line">    <span class="keyword">return</span> ts;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译器会自动生成：</p>
+<ol>
+<li><strong>静态变量本身</strong>（全局区，程序一运行就存在）</li>
+<li><strong>一个初始化标记</strong>（0 &#x3D; 未初始化，1 &#x3D; 已初始化）</li>
+<li><strong>线程安全的初始化逻辑</strong>（C++11 后默认）</li>
+</ol>
+<p><strong>第一次调用 func() → 标记是 0 → 执行构造 → 把标记改成 1</strong><br><strong>第二次调用 func() → 标记是 1 → 直接跳过构造，直接返回</strong></p>
+<hr>
+<h3 id="1-编译器生成了两个关键全局变量"><a href="#1-编译器生成了两个关键全局变量" class="headerlink" title="1. 编译器生成了两个关键全局变量"></a>1. 编译器生成了两个关键全局变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Test `func&#x27;::ts DB 01cH DUP (?)     ; 静态对象本体（全局区）</span><br><span class="line">int `func&#x27;::$TSS0 DD 01H DUP (?)    ; 初始化标记（0=未初始化，1=已初始化）</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ts</code>：你的静态对象</li>
+<li><code>$TSS0</code>：<strong>是否已经构造过的标记</strong></li>
+</ul>
+<hr>
+<h3 id="2-进入-func-后第一件事：检查标记"><a href="#2-进入-func-后第一件事：检查标记" class="headerlink" title="2. 进入 func 后第一件事：检查标记"></a>2. 进入 func 后第一件事：检查标记</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmp     eax, DWORD PTR __Init_thread_epoch[edx]</span><br><span class="line">jle     SHORT $LN2@func</span><br></pre></td></tr></table></figure>
+<p>翻译：<br><strong>如果已经初始化过（标记&#x3D;1），直接跳走，不执行构造！</strong></p>
+<hr>
+<h3 id="3-只有第一次会走到这里：执行构造"><a href="#3-只有第一次会走到这里：执行构造" class="headerlink" title="3. 只有第一次会走到这里：执行构造"></a>3. 只有第一次会走到这里：执行构造</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov     ecx, OFFSET ts</span><br><span class="line">call    Test::Test(void)     ; 🔥 只在这里执行一次构造</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-构造完立刻做两件事"><a href="#4-构造完立刻做两件事" class="headerlink" title="4. 构造完立刻做两件事"></a>4. 构造完立刻做两件事</h3><ol>
+<li><strong>把标记改成「已初始化」</strong></li>
+<li><strong>注册析构函数（程序结束时自动析构）</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push    offset $TSS0</span><br><span class="line">call    __Init_thread_footer   ; 标记变 1</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push    offset destructor</span><br><span class="line">call    _atexit                ; 程序结束自动析构</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-第二次调用-func"><a href="#5-第二次调用-func" class="headerlink" title="5. 第二次调用 func()"></a>5. 第二次调用 func()</h3><p>直接走到这里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$LN2@func:</span><br><span class="line">mov     eax, OFFSET ts   ; 直接返回对象地址，不构造</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="总结（最关键-3-句话）"><a href="#总结（最关键-3-句话）" class="headerlink" title="总结（最关键 3 句话）"></a>总结（最关键 3 句话）</h3><ol>
+<li><p><strong>局部静态变量本质 &#x3D; 全局变量</strong><br>存在<strong>全局&#x2F;静态区</strong>，不是栈！</p>
+</li>
+<li><p><strong>编译器偷偷加了一个「初始化标记」</strong><br>0 &#x3D; 没构造<br>1 &#x3D; 已构造</p>
+</li>
+<li><p><strong>执行流程</strong><br>第一次 → 标记0 → 构造 → 标记变1<br>第二次 → 标记1 → 直接返回 → <strong>不执行构造</strong></p>
+</li>
+</ol>
+<hr>
+<h3 id="图表秒懂"><a href="#图表秒懂" class="headerlink" title="图表秒懂"></a>图表秒懂</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次调用 func()</span><br><span class="line">[检查标记: 0] → 执行构造 → [标记设为 1] → 返回</span><br><span class="line"></span><br><span class="line">第二次调用 func()</span><br><span class="line">[检查标记: 1] → 跳过构造 → 直接返回</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-静态变量"><a href="#4-静态变量" class="headerlink" title="4. 静态变量"></a>4. 静态变量</h3><p>编译器（MSVC）默认开启 <code>/Zc:threadSafeInit</code>，局部 static 动态初始化时默认是线程安全的。加入 <code>/Zc:threadSafeInit-</code> 编译选项关闭线程安全。没有线程安全的话，就需要自己加锁。<br><strong>少用静态变量，少用全局变量，他们都非常危险。</strong> 危险就指的是你控制不了他们的生命周期。咱们说控制不了这个是我们 <strong>没办法直接控制它，没办法说我什么时候用你，什么时候删你，</strong> 这我们我们搞不定，我们不能这么去干干预干预这个东西全部是系统来帮我们做的，有时候是帮我们做他他是个坏事情。因为C++，我们说了C++我就是想 <strong>操控所有的内存管理。</strong></p>
+<h3 id="5-栈-堆"><a href="#5-栈-堆" class="headerlink" title="5. 栈 &amp; 堆"></a>5. 栈 &amp; 堆</h3><p>栈空间小，堆空间大，栈自动销毁，堆要手动销毁。<br>栈 (Stack)<br>极速分配，函数 <strong>退出即销毁</strong>。</p>
+<p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-3.png"></p>
+<ul>
+<li><p>参数传递：按值传递会触发拷贝构造与析构，按引用传递则不会，应根据需求选择<br><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-5.png"><br><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-6.png"></p>
+</li>
+<li><p>作用域优化：对于大型栈对象，应及时使用{}限定作用域以提前释放资源，避免栈空间浪费<br><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-7.png" alt="不加{}，在`return 0`才析构。"></p>
+</li>
+</ul>
+<p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-8.png" alt="加{}，在 } 处即析构，节省栈空间。"></p>
+<p>堆 (Heap)<br>跨越函数生命周期，必须 <strong>手动或利用 RAII</strong> “接力” 管理。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test7</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Test* pTest = <span class="keyword">new</span> <span class="built_in">Test</span>();</span><br><span class="line">    pTest-&gt;b = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">delete</span> pTest; <span class="comment">//不写会内存泄漏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>delete pTest 在 C++ 里等价于 “先析构再释放”，编译器用一条 call 完成这两步，便于统一处理、避免漏调。</p>
+<p><img src="/2026/04/03/week02-C-%E5%86%85%E5%AD%98/image-9.png"></p>
+<ul>
+<li>基本操作：使用new&#x2F;delete进行堆内存的申请与释放，需手动管理生命周期 </li>
+<li>析构调用：即使汇编代码未显式调用，delete操作符最终会触发对象的析构函数 </li>
+<li>内存泄漏：忘记delete会导致内存泄漏，需遵循“谁申请，谁释放”原则</li>
+</ul>
+<h3 id="6-复杂类型的函数参数默认加引用"><a href="#6-复杂类型的函数参数默认加引用" class="headerlink" title="6. 复杂类型的函数参数默认加引用"></a>6. 复杂类型的函数参数默认加引用</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Test</span>()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">Test</span>()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Test</span>(<span class="type">const</span> Test&amp; ts)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;m_value1 = ts.m_value1;</span><br><span class="line">        <span class="keyword">this</span>-&gt;m_value2 = ts.m_value2;</span><br><span class="line">        <span class="keyword">this</span>-&gt;m_str = ts.m_str;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_value1 = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> m_value2 = <span class="number">2</span>;</span><br><span class="line">    std::string m_str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test1</span><span class="params">(Test ts)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test2</span><span class="params">(Test&amp; ts)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Test temp;</span><br><span class="line">    <span class="built_in">test1</span>(temp);</span><br><span class="line">    <span class="built_in">test2</span>(temp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实践思考<br>删掉 11 行～16 行的拷贝构造，观察函数的调用：编译器会自动生成一个拷贝构造函数？平凡拷贝？<br>删掉类的 m_str 变量，观察函数的调用<br>对比 24 和 28 不同函数参数调用的区别</p>
+<h3 id="7-关于初始化"><a href="#7-关于初始化" class="headerlink" title="7. 关于初始化"></a>7. 关于初始化</h3><p>初始化方式：推荐在<strong>类定义中直接初始化</strong>成员变量，而非在构造函数体内赋值，后者可能产生额外指令</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TestResult</span> &#123;</span><br><span class="line">    std::string errorPinyin;</span><br><span class="line">    <span class="type">double</span> correctionTime &#123;&#125;;</span><br><span class="line">    <span class="type">bool</span> parseSuccess = <span class="literal">true</span>;</span><br><span class="line">    <span class="type">int</span> correctionSuccessNum &#123;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TestResult result;</span><br><span class="line">    result.correctionTime = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实践思考<br>分析代码 5~7 行起到的作用。</p>
+<h2 id="内存管理导致的问题"><a href="#内存管理导致的问题" class="headerlink" title="内存管理导致的问题"></a>内存管理导致的问题</h2><h3 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h3><p><code>Resource leak</code>: 资源泄漏<br><code>Out-of-Bounds access</code>: 越界访问<br><code>Uninitialized scalar variable</code>: 未初始化标量变量<br><code>No virtual destructor</code>: 无虚析构<br><code>Use after free</code>: 释放后使用<br><code>Double free</code>: 双重释放<br><code>Uninitialized pointer read</code>: 未初始化指针读取<br><code>String not null terminated</code>: 字符串未以空字符结尾<br><code>Reference leak in object</code>: 对象中的引用泄漏<br><code>Buffer not null terminated</code>: 缓冲区未以空字符结尾<br><code>Deleting void pointer</code>: 删除空指针</p>
+<h3 id="崩溃捕获"><a href="#崩溃捕获" class="headerlink" title="崩溃捕获"></a>崩溃捕获</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SetUnhandledExceptionFilter</span></span><br><span class="line"><span class="function">LONG WINAPI <span class="title">unhandledException</span><span class="params">(...)</span></span></span><br></pre></td></tr></table></figure>
+<p>让自己的程序 “优雅” 崩溃！</p>
+<h3 id="调用约定补充"><a href="#调用约定补充" class="headerlink" title="调用约定补充"></a>调用约定补充</h3><p>x64 调用约定<br><strong>在 x64 调用约定中，函数参数优先通过寄存器传递：</strong><br>第 1 个参数：RCX<br>第 2 个参数：RDX<br>第 3 个参数：R8<br>第 4 个参数：R9<br>其余参数：按照 <strong>从右向左</strong> 的顺序压入栈中。</p>
+<p>x86 调用约定<br>在 x86 调用约定主要通过 <strong>栈（Stack）</strong> 来传递参数<br>压栈顺序：参数通常按<strong>从右向左</strong>的顺序压入栈中。<br>返回值：通常存储在 <strong>EAX</strong> 寄存器中。</p>
+<p><strong>栈帧平衡</strong><br><code>__cdecl</code>：由调用者（caller）负责清理栈（手动增加 ESP）<br><code>__stdcall</code>：由被调用者（callee）负责清理栈（通过 <code>ret n</code> 指令）</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/04/03/week02-C-%E5%86%85%E5%AD%98/";
+            const title         = "「week02-C++内存」";
+            const excerpt       = `引子：打破幻觉main函数是程序执行的第一个函数？任务：用VS，写一个win32控制台程序，定义一个全局变量的类对象，调试程序观察如何运行。
+内存分区
+
+
+分区
+描述
+
+
+
+stack 栈区（向下增长）↓
+由编译器自动分配释放。存放：...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/C-%E5%86%85%E5%AD%98/" rel="tag">C++内存</a>, <a class="tag-none-link" href="/tags/godbolt/" rel="tag">godbolt</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-04-05T09:45:06.924Z" itemprop="dateModified">最后编辑：2026-04-05</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" week01-CMake" href="/2026/03/31/week01-CMake/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" week02-实践思考笔记" href="/2026/04/03/week02-实践思考笔记/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                36
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                116
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%AD%90%EF%BC%9A%E6%89%93%E7%A0%B4%E5%B9%BB%E8%A7%89"><span class="toc-text">引子：打破幻觉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA"><span class="toc-text">内存分区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%87%E5%87%86%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA%E6%80%BB%E8%A7%88"><span class="toc-text">一、标准内存分区总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%90%84%E5%8C%BA%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-text">二、各区详细说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%A3%E7%A0%81%E6%AE%B5%EF%BC%88-text%EF%BC%89"><span class="toc-text">1. 代码段（.text）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E9%87%8F%E5%8C%BA%EF%BC%88-rodata%EF%BC%89"><span class="toc-text">2. 常量区（.rodata）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%AD%98%E5%82%A8%E5%8C%BA%EF%BC%88-data-bss%EF%BC%89"><span class="toc-text">3. 全局&#x2F;静态存储区（.data + .bss）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-data-%E6%AE%B5%EF%BC%88%E5%B7%B2%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-text">（1）.data 段（已初始化全局&#x2F;静态变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-bss-%E6%AE%B5%EF%BC%88%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-text">（2）.bss 段（未初始化全局&#x2F;静态变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81%E5%8C%BA%E7%BB%9F%E4%B8%80%E7%89%B9%E7%82%B9"><span class="toc-text">全局&#x2F;静态区统一特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A0%88%E5%8C%BA%EF%BC%88Stack%EF%BC%89"><span class="toc-text">4. 栈区（Stack）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A0%86%E5%8C%BA%EF%BC%88Heap%EF%BC%89"><span class="toc-text">5. 堆区（Heap）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E6%A1%A3%E9%87%8D%E7%82%B9%E7%BB%93%E8%AE%BA%EF%BC%88%E5%86%85%E5%AD%98%E7%9B%B8%E5%85%B3%EF%BC%89"><span class="toc-text">三、文档重点结论（内存相关）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0-%E6%9E%90%E6%9E%84%E6%97%B6%E6%9C%BA"><span class="toc-text">1. 全局对象构造 &#x2F; 析构时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%BD%E9%87%8F%E9%81%BF%E5%85%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1"><span class="toc-text">2. 尽量避免直接使用全局对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BC%98%E5%8C%96%E8%A6%81%E7%82%B9"><span class="toc-text">3. 字符串优化要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E9%80%9F%E8%AE%B0%E6%80%BB%E7%BB%93"><span class="toc-text">四、一句话速记总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-text">重要的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88%EF%BC%8C%E8%80%8C%E9%9D%9E%E6%95%B0%E7%BB%84"><span class="toc-text">1. 优先使用常量指针，而非数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E4%B8%8E%E7%A8%8B%E5%BA%8F%E5%90%8C%E7%94%9F%E5%85%B1%E6%AD%BB"><span class="toc-text">2. 全局变量与程序同生共死</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%9E%81%E5%85%B6%E5%8D%B1%E9%99%A9%EF%BC%8C%E5%B0%BD%E9%87%8F%E5%B0%91%E7%94%A8%EF%BC%8C%E5%A6%82%E9%9C%80%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%B0%BD%E9%87%8F%E5%BB%B6%E8%BF%9F"><span class="toc-text">3. 全局变量极其危险，尽量少用，如需使用，尽量延迟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E5%99%A8%E7%94%9F%E6%88%90%E4%BA%86%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">1. 编译器生成了两个关键全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E5%85%A5-func-%E5%90%8E%E7%AC%AC%E4%B8%80%E4%BB%B6%E4%BA%8B%EF%BC%9A%E6%A3%80%E6%9F%A5%E6%A0%87%E8%AE%B0"><span class="toc-text">2. 进入 func 后第一件事：检查标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AA%E6%9C%89%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%B5%B0%E5%88%B0%E8%BF%99%E9%87%8C%EF%BC%9A%E6%89%A7%E8%A1%8C%E6%9E%84%E9%80%A0"><span class="toc-text">3. 只有第一次会走到这里：执行构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9E%84%E9%80%A0%E5%AE%8C%E7%AB%8B%E5%88%BB%E5%81%9A%E4%B8%A4%E4%BB%B6%E4%BA%8B"><span class="toc-text">4. 构造完立刻做两件事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%B0%83%E7%94%A8-func"><span class="toc-text">5. 第二次调用 func()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E6%9C%80%E5%85%B3%E9%94%AE-3-%E5%8F%A5%E8%AF%9D%EF%BC%89"><span class="toc-text">总结（最关键 3 句话）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E8%A1%A8%E7%A7%92%E6%87%82"><span class="toc-text">图表秒懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-text">4. 静态变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%A0%88-%E5%A0%86"><span class="toc-text">5. 栈 &amp; 堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%8A%A0%E5%BC%95%E7%94%A8"><span class="toc-text">6. 复杂类型的函数参数默认加引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%85%B3%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7. 关于初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">内存管理导致的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E7%B1%BB"><span class="toc-text">问题分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B4%A9%E6%BA%83%E6%8D%95%E8%8E%B7"><span class="toc-text">崩溃捕获</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E8%A1%A5%E5%85%85"><span class="toc-text">调用约定补充</span></a></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">4</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a> <a href="/tags/G1-Garbage-first/" style="font-size: 0.6em;">G1(Garbage first)</a> <a href="/tags/GC-Garbage-Collection-%E4%B8%8EJava%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" style="font-size: 0.6em;">GC(Garbage Collection) 与Java引用类型</a> <a href="/tags/HTTP/" style="font-size: 0.6em;">HTTP</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/13/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1%E9%A2%98/"><i class="fa  fa-book"></i> 高频算法手撕题--场景设计题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"><i class="fa  fa-book"></i> 高频算法手撕题--滑动窗口</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/"><i class="fa  fa-book"></i> 高频算法手撕题--C++输入输出练习</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/11/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E9%93%BE%E8%A1%A8/"><i class="fa  fa-book"></i> 高频算法手撕题--链表</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/11/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-Java%E5%9F%BA%E7%A1%80/"><i class="fa  fa-book"></i> Java高频八股--Java基础</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>高频算法手撕题--C++输入输出练习 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, 算法, 输入输出" />
+  
+  <meta name="description" content="PIO1 只有输出描述欢迎来到牛客网！本题不需要输入，仅需输出字符串 Hello Nowcoder! 即可通过。 输入描述：本题无输入。 输出描述：输出一个字符串 Hello Nowcoder! 。 示例1输入：无输出：Hello Nowcoder! 解答12345678#include &lt;iostream&gt;using namespace std;int main() &#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高频算法手撕题--C++输入输出练习">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PIO1 只有输出描述欢迎来到牛客网！本题不需要输入，仅需输出字符串 Hello Nowcoder! 即可通过。 输入描述：本题无输入。 输出描述：输出一个字符串 Hello Nowcoder! 。 示例1输入：无输出：Hello Nowcoder! 解答12345678#include &lt;iostream&gt;using namespace std;int main() &#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-12T06:29:20.000Z">
+<meta property="article:modified_time" content="2026-04-12T09:37:22.666Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="输入输出">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">高频算法手撕题--C++输入输出练习</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-04-12T06:29:20.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-04-12</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~11.09K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1775986642666"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO1-%E5%8F%AA%E6%9C%89%E8%BE%93%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">PIO1 只有输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-number">1.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">1.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO2-%E5%8D%95%E7%BB%84-A-B"><span class="toc-number">2.</span> <span class="toc-text">PIO2 单组_A+B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-number">2.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-number">2.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-1"><span class="toc-number">2.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-1"><span class="toc-number">2.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO3-%E5%A4%9A%E7%BB%84-A-B-EOF%E5%BD%A2%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">PIO3 多组_A+B_EOF形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">3.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-number">3.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-number">3.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-2"><span class="toc-number">3.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-2"><span class="toc-number">3.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO4-%E5%A4%9A%E7%BB%84-A-B-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">PIO4 多组_A+B_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="toc-number">4.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-3"><span class="toc-number">4.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-3"><span class="toc-number">4.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-3"><span class="toc-number">4.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-3"><span class="toc-number">4.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO5-%E5%A4%9A%E7%BB%84-A-B-%E5%B0%BE0%E5%BD%A2%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">PIO5 多组_A+B_尾0形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="toc-number">5.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-4"><span class="toc-number">5.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-4"><span class="toc-number">5.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-4"><span class="toc-number">5.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-4"><span class="toc-number">5.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO6-%E5%8D%95%E7%BB%84-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">6.</span> <span class="toc-text">PIO6 单组_一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="toc-number">6.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-5"><span class="toc-number">6.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-5"><span class="toc-number">6.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-5"><span class="toc-number">6.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-5"><span class="toc-number">6.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO7-%E5%A4%9A%E7%BB%84-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">PIO7 多组_一维数组_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-6"><span class="toc-number">7.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-6"><span class="toc-number">7.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-6"><span class="toc-number">7.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-6"><span class="toc-number">7.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-6"><span class="toc-number">7.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO8-%E5%8D%95%E7%BB%84-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">8.</span> <span class="toc-text">PIO8 单组_二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-7"><span class="toc-number">8.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-7"><span class="toc-number">8.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-7"><span class="toc-number">8.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-7"><span class="toc-number">8.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-7"><span class="toc-number">8.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO9-%E5%A4%9A%E7%BB%84-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">PIO9 多组_二维数组_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-8"><span class="toc-number">9.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-8"><span class="toc-number">9.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-8"><span class="toc-number">9.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-8"><span class="toc-number">9.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-8"><span class="toc-number">9.5.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-number">9.5.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO10-%E5%8D%95%E7%BB%84-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">10.</span> <span class="toc-text">PIO10 单组_字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-9"><span class="toc-number">10.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-9"><span class="toc-number">10.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-9"><span class="toc-number">10.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-9"><span class="toc-number">10.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-9"><span class="toc-number">10.5.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-1"><span class="toc-number">10.5.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO11-%E5%A4%9A%E7%BB%84-%E5%AD%97%E7%AC%A6%E4%B8%B2-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">PIO11 多组_字符串_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-10"><span class="toc-number">11.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-10"><span class="toc-number">11.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-10"><span class="toc-number">11.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-10"><span class="toc-number">11.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-10"><span class="toc-number">11.5.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO12-%E5%8D%95%E7%BB%84-%E4%BA%8C%E7%BB%B4%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">12.</span> <span class="toc-text">PIO12 单组_二维字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-11"><span class="toc-number">12.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-11"><span class="toc-number">12.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-11"><span class="toc-number">12.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-11"><span class="toc-number">12.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-11"><span class="toc-number">12.5.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-2"><span class="toc-number">12.5.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO13-%E5%A4%9A%E7%BB%84-%E5%B8%A6%E7%A9%BA%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">13.</span> <span class="toc-text">PIO13 多组_带空格的字符串_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-12"><span class="toc-number">13.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-12"><span class="toc-number">13.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-12"><span class="toc-number">13.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-12"><span class="toc-number">13.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-12"><span class="toc-number">13.5.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-3"><span class="toc-number">13.5.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO14-%E5%8D%95%E7%BB%84-%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E4%BD%8D%E6%95%B0"><span class="toc-number">14.</span> <span class="toc-text">PIO14 单组_保留小数位数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-13"><span class="toc-number">14.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-13"><span class="toc-number">14.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-13"><span class="toc-number">14.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-13"><span class="toc-number">14.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-number">14.5.</span> <span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B3"><span class="toc-number">14.6.</span> <span class="toc-text">示例3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-13"><span class="toc-number">14.7.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-4"><span class="toc-number">14.7.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO15-%E5%8D%95%E7%BB%84-%E8%A1%A5%E5%85%85%E5%89%8D%E5%AF%BC%E9%9B%B6"><span class="toc-number">15.</span> <span class="toc-text">PIO15 单组_补充前导零</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-14"><span class="toc-number">15.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-14"><span class="toc-number">15.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-14"><span class="toc-number">15.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-14"><span class="toc-number">15.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2-1"><span class="toc-number">15.5.</span> <span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-14"><span class="toc-number">15.6.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO16-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%ADYES%E4%B8%8ENO"><span class="toc-number">16.</span> <span class="toc-text">PIO16 单组_spj判断YES与NO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-15"><span class="toc-number">16.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-15"><span class="toc-number">16.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-15"><span class="toc-number">16.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-15"><span class="toc-number">16.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2-2"><span class="toc-number">16.5.</span> <span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-15"><span class="toc-number">16.6.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-5"><span class="toc-number">16.6.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO17-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%AD%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE"><span class="toc-number">17.</span> <span class="toc-text">PIO17 单组_spj判断浮点误差</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-16"><span class="toc-number">17.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-16"><span class="toc-number">17.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-16"><span class="toc-number">17.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-16"><span class="toc-number">17.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-16"><span class="toc-number">17.5.</span> <span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-6"><span class="toc-number">17.5.1.</span> <span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO18-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B9%8B%E5%92%8C"><span class="toc-number">18.</span> <span class="toc-text">PIO18 单组_spj判断数组之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-17"><span class="toc-number">18.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-17"><span class="toc-number">18.2.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-17"><span class="toc-number">18.3.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-17"><span class="toc-number">18.4.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-17"><span class="toc-number">18.5.</span> <span class="toc-text">解答</span></a></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="PIO1-只有输出"><a href="#PIO1-只有输出" class="headerlink" title="PIO1 只有输出"></a>PIO1 只有输出</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>欢迎来到牛客网！<br>本题不需要输入，仅需输出字符串 Hello Nowcoder! 即可通过。</p>
+<h2 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h2><p>本题无输入。</p>
+<h2 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个字符串 Hello Nowcoder! 。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：无<br><strong>输出</strong>：Hello Nowcoder!</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Hello Nowcoder!&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO2-单组-A-B"><a href="#PIO2-单组-A-B" class="headerlink" title="PIO2 单组_A+B"></a>PIO2 单组_A+B</h1><h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>给定两个整数 a 和 b ，请你求出 a+b 的值。</p>
+<h2 id="输入描述：-1"><a href="#输入描述：-1" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有两个整数 a (1≤a≤10^9) 和 b (1≤b≤10^9) 。</p>
+<h2 id="输出描述：-1"><a href="#输出描述：-1" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个整数，代表 a+b 的值。</p>
+<h2 id="示例1-1"><a href="#示例1-1" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：1 2<br><strong>输出</strong>：3</p>
+<h2 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a, b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO3-多组-A-B-EOF形式"><a href="#PIO3-多组-A-B-EOF形式" class="headerlink" title="PIO3 多组_A+B_EOF形式"></a>PIO3 多组_A+B_EOF形式</h1><h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>给定若干组测试数据，读取至文件末尾为止。<br>每组数据有两个整数 a 和 b ，请你求出 a+b 的值。</p>
+<h2 id="输入描述：-2"><a href="#输入描述：-2" class="headerlink" title="输入描述："></a>输入描述：</h2><p>每行有两个整数 a (1≤a≤10^9) 和 b (1≤b≤10^9) 。<br>读取至文件末尾为止。</p>
+<h2 id="输出描述：-2"><a href="#输出描述：-2" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出若干行，每行一个整数，代表 a+b 的值。</p>
+<h2 id="示例1-2"><a href="#示例1-2" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>1 2<br>114 514<br>2024 727<br><strong>输出</strong>：<br>3<br>628<br>2751</p>
+<h2 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a, b;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; a &gt;&gt; b) &#123; <span class="comment">// 注意 while 处理多个 case</span></span><br><span class="line">        cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO4-多组-A-B-T组形式"><a href="#PIO4-多组-A-B-T组形式" class="headerlink" title="PIO4 多组_A+B_T组形式"></a>PIO4 多组_A+B_T组形式</h1><h2 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h2><p>给定 t 组测试数据。<br>每组数据有两个整数 a 和 b ，请你求出 a+b 的值。</p>
+<h2 id="输入描述：-3"><a href="#输入描述：-3" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 t (1≤t≤10^5) 。<br>每行有两个整数<br>a (1≤a≤10^9) 和 b (1≤b≤10^9) 。</p>
+<h2 id="输出描述：-3"><a href="#输出描述：-3" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 t 行，每行一个整数，代表 a+b 的值。</p>
+<h2 id="示例1-3"><a href="#示例1-3" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>1 2<br>114 514<br>2024 727<br><strong>输出</strong>：<br>3<br>628<br>2751</p>
+<h2 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a, b;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO5-多组-A-B-尾0形式"><a href="#PIO5-多组-A-B-尾0形式" class="headerlink" title="PIO5 多组_A+B_尾0形式"></a>PIO5 多组_A+B_尾0形式</h1><h2 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h2><p>给定若干组测试数据，最后一组数据为 0 0 ，作为输入的结尾。<br>每组数据有两个整数 a 和 b ，请你求出 a+b 的值。</p>
+<h2 id="输入描述：-4"><a href="#输入描述：-4" class="headerlink" title="输入描述："></a>输入描述：</h2><p>每行有两个整数 a (0≤a≤10^9) 和 b (0≤b≤10^9) 。<br>最后一组数据为 0 0 ，作为输入的结尾。</p>
+<h2 id="输出描述：-4"><a href="#输出描述：-4" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出若干行，每行一个整数，代表 a+b 的值。</p>
+<h2 id="示例1-4"><a href="#示例1-4" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>1 2<br>114 514<br>2024 727<br>0 0<br><strong>输出</strong>：<br>3<br>628<br>2751</p>
+<h2 id="解答-4"><a href="#解答-4" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a, b;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; a &gt;&gt; b&amp;&amp;a!=<span class="number">0</span>&amp;&amp;b!=<span class="number">0</span>) &#123; <span class="comment">// 注意 while 处理多个 case</span></span><br><span class="line">        cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO6-单组-一维数组"><a href="#PIO6-单组-一维数组" class="headerlink" title="PIO6 单组_一维数组"></a>PIO6 单组_一维数组</h1><h2 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h2><p>给定一个长度为 n 的正整数数组 a ，第 i 个元素的值为 a[i]。<br>请你求出数组元素之和。</p>
+<h2 id="输入描述：-5"><a href="#输入描述：-5" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 n (1≤n≤10^5) 。<br>第二行有 n 个整数 a[i]  (1≤a[i]≤10^9) 。</p>
+<h2 id="输出描述：-5"><a href="#输出描述：-5" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个整数，代表数组元素之和。</p>
+<h2 id="示例1-5"><a href="#示例1-5" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>1 4 7<br><strong>输出</strong>：<br>12</p>
+<h2 id="解答-5"><a href="#解答-5" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a[<span class="number">100005</span>],s=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        s+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO7-多组-一维数组-T组形式"><a href="#PIO7-多组-一维数组-T组形式" class="headerlink" title="PIO7 多组_一维数组_T组形式"></a>PIO7 多组_一维数组_T组形式</h1><h2 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h2><p>给定 t 组询问，每次询问给出一个长度为 n 的正整数数组 a ，第 i 个元素的值为 a[i]。<br>请你分别求出每个数组的元素之和。</p>
+<h2 id="输入描述：-6"><a href="#输入描述：-6" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 t (1≤t≤10^5) 。<br>随后 t 组数据。<br>每组的第一行有一个整数 n ( 1≤n≤10^5) 。<br>每组的第二行有 n 个整数 a[i]  ( 1≤a[i]≤10^9) 。<br>保证 ∑n≤10^5。</p>
+<h2 id="输出描述：-6"><a href="#输出描述：-6" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 t 行，每行一个整数，代表数组元素之和。</p>
+<h2 id="示例1-6"><a href="#示例1-6" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>3<br>1 4 7<br>1<br>1000<br>2<br>1 2<br><strong>输出</strong>：<br>12<br>1000<br>3</p>
+<h2 id="解答-6"><a href="#解答-6" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t,n;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> a[<span class="number">100005</span>]=&#123;<span class="number">0</span>&#125;,s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;a[j];</span><br><span class="line">            s+=a[j];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO8-单组-二维数组"><a href="#PIO8-单组-二维数组" class="headerlink" title="PIO8 单组_二维数组"></a>PIO8 单组_二维数组</h1><h2 id="描述-7"><a href="#描述-7" class="headerlink" title="描述"></a>描述</h2><p>给定一个 n 行 m 列的二维正整数数组 a [i][j]，其中 1≦i≦n，1≦j≦m，且 1≦a[i][j]≦10^9。<br>请计算数组中所有元素之和。</p>
+<h2 id="输入描述：-7"><a href="#输入描述：-7" class="headerlink" title="输入描述："></a>输入描述：</h2><p>在一行上输入两个整数 n,m (1≦n,m≦10^3)。<br>接下来 n 行，每行输入 m 个整数 a[i][1], a[i][2], … , a[i][m]  (1≦a[i][j]≦10^9)。</p>
+<h2 id="输出描述：-7"><a href="#输出描述：-7" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个整数，表示二维数组所有元素之和。</p>
+<h2 id="示例1-7"><a href="#示例1-7" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3 4<br>1 2 3 4<br>5 6 7 8<br>9 10 11 12<br><strong>输出</strong>：<br>78</p>
+<h2 id="解答-7"><a href="#解答-7" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a[<span class="number">1003</span>][<span class="number">1003</span>], s = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            s += a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; s &lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO9-多组-二维数组-T组形式"><a href="#PIO9-多组-二维数组-T组形式" class="headerlink" title="PIO9 多组_二维数组_T组形式"></a>PIO9 多组_二维数组_T组形式</h1><h2 id="描述-8"><a href="#描述-8" class="headerlink" title="描述"></a>描述</h2><p>给定 t 组询问，每次询问给出一个 n 行 m 列的二维正整数数组 a ，第 i 行第 j 列元素的值为 a[i][j]。<br>请你分别求出每个数组的元素之和。</p>
+<h2 id="输入描述：-8"><a href="#输入描述：-8" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 t (1≤t≤10^5) 。<br>随后 t 组数据。<br>每组的第一行有两个整数 n (1≤n≤10^3) 和 m (1≤m≤10^3) 。<br>每组的随后 n 行，每行有 m 个整数 a[i][j]  ( 1≤a[i][j]≤10^9) 。<br>保证 ∑n⋅m≤10^6。</p>
+<h2 id="输出描述：-8"><a href="#输出描述：-8" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 t 行，每行一个整数，代表数组元素之和。</p>
+<h2 id="示例1-8"><a href="#示例1-8" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>3 4<br>1 2 3 4<br>5 6 7 8<br>9 10 11 12<br>1 1<br>2024<br>3 2<br>1 1<br>4 5<br>1 4<br><strong>输出</strong>：<br>78<br>2024<br>16</p>
+<h2 id="解答-8"><a href="#解答-8" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t, n, m;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= t; i++) &#123;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> a,s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= m;k++) &#123;</span><br><span class="line">                cin &gt;&gt; a;</span><br><span class="line">                s += a;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h3><p>用数组会超时，且内存占用大，此处只用求和，不必存储每一个数字信息，统一用 a 这一个变量即可。</p>
+<h1 id="PIO10-单组-字符串"><a href="#PIO10-单组-字符串" class="headerlink" title="PIO10 单组_字符串"></a>PIO10 单组_字符串</h1><h2 id="描述-9"><a href="#描述-9" class="headerlink" title="描述"></a>描述</h2><p>给定一个长度为 n 的字符串 s ，请你将其倒置，然后输出。</p>
+<h2 id="输入描述：-9"><a href="#输入描述：-9" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 n (1≤n≤10^5) 。<br>第二行有一个字符串 s，仅包含小写英文字符。</p>
+<h2 id="输出描述：-9"><a href="#输出描述：-9" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个字符串，代表倒置后的字符串 s 。</p>
+<h2 id="示例1-9"><a href="#示例1-9" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>5<br>abcde<br><strong>输出</strong>：<br>edcba</p>
+<h2 id="解答-9"><a href="#解答-9" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">char</span> s[n];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; s[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        cout &lt;&lt; s[i];</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-1"><a href="#tips-1" class="headerlink" title="tips:"></a>tips:</h3><p>要先 cin &gt;&gt; n 再 char s[n]，否则输出是aaaaa，即只成功读取了第一个字符。</p>
+<h1 id="PIO11-多组-字符串-T组形式"><a href="#PIO11-多组-字符串-T组形式" class="headerlink" title="PIO11 多组_字符串_T组形式"></a>PIO11 多组_字符串_T组形式</h1><h2 id="描述-10"><a href="#描述-10" class="headerlink" title="描述"></a>描述</h2><p>给定 t 组询问，每次给出一个长度为 n 的字符串 s ，请你将其倒置，然后输出。</p>
+<h2 id="输入描述：-10"><a href="#输入描述：-10" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 t (1≤t≤10^5) 。<br>随后 t 组数据。<br>每组的第一行有一个整数 n (1≤n≤10^5) 。<br>每组的第二行有一个字符串 s，仅包含小写英文字符。<br>保证 ∑n≤10^5。</p>
+<h2 id="输出描述：-10"><a href="#输出描述：-10" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 t 行，每行一个字符串，代表倒置后的字符串 s 。</p>
+<h2 id="示例1-10"><a href="#示例1-10" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>5<br>abcde<br>8<br>redocwon<br>9<br>tfarcenim<br><strong>输出</strong>：<br>edcba<br>nowcoder<br>minecraft</p>
+<h2 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= t; i++) &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="type">char</span> s[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">            cin &gt;&gt; s[j];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = n - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">            cout &lt;&lt; s[j];</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO12-单组-二维字符数组"><a href="#PIO12-单组-二维字符数组" class="headerlink" title="PIO12 单组_二维字符数组"></a>PIO12 单组_二维字符数组</h1><h2 id="描述-11"><a href="#描述-11" class="headerlink" title="描述"></a>描述</h2><p>给定一个 n 行 m 列的二维字符数组 a ，第 i 行第 j 列元素的值为 a[i][j]。<br>请你对行和列都倒置，然后输出之。</p>
+<h2 id="输入描述：-11"><a href="#输入描述：-11" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有两个整数 n (1≤n≤10^3) 和 m (1≤m≤10^3) 。<br>随后 n 行，每行有 m 个字符，仅包含小写英文字符 。</p>
+<h2 id="输出描述：-11"><a href="#输出描述：-11" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个二维字符数组。</p>
+<h2 id="示例1-11"><a href="#示例1-11" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3 4<br>abcd<br>efgh<br>ijkl<br><strong>输出</strong>：<br>lkji<br>hgfe<br>dcba</p>
+<h2 id="解答-11"><a href="#解答-11" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="type">char</span> a[n][m];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            cout &lt;&lt; a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-2"><a href="#tips-2" class="headerlink" title="tips:"></a>tips:</h3><p>i, j 从 1 开始会超时（？）</p>
+<h1 id="PIO13-多组-带空格的字符串-T组形式"><a href="#PIO13-多组-带空格的字符串-T组形式" class="headerlink" title="PIO13 多组_带空格的字符串_T组形式"></a>PIO13 多组_带空格的字符串_T组形式</h1><h2 id="描述-12"><a href="#描述-12" class="headerlink" title="描述"></a>描述</h2><p>给定 t 组询问，每次给出一个长度为 n 的带空格的字符串 s ，请你去掉空格之后，将其倒置，然后输出。</p>
+<h2 id="输入描述：-12"><a href="#输入描述：-12" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 t (1≤t≤10^5) 。<br>随后 t 组数据。<br>每组的第一行有一个整数 n (1≤n≤10^5) 。<br>每组的第二行有一个字符串 s，仅包含小写英文字符和空格，保证字符串首尾都不是空格。<br>保证 ∑n≤10^5。</p>
+<h2 id="输出描述：-12"><a href="#输出描述：-12" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 t 行，每行一个字符串，代表倒置后的字符串 s 。</p>
+<h2 id="示例1-12"><a href="#示例1-12" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：<br>3<br>9<br>one space<br>11<br>two  spaces<br>14<br>three   spaces<br><strong>输出</strong>：<br>ecapseno<br>secapsowt<br>secapseerht</p>
+<h2 id="解答-12"><a href="#解答-12" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++) &#123;</span><br><span class="line">        <span class="type">int</span> n; </span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="built_in">getchar</span>();</span><br><span class="line">        string s;</span><br><span class="line">        <span class="built_in">getline</span>(cin, s);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = n - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">            <span class="keyword">if</span> (s[j] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                cout &lt;&lt; s[j];</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-3"><a href="#tips-3" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li>头文件函数说明：<ul>
+<li><code>&lt;cstdio&gt;</code>: C标准输入输出库，提供 <code>getchar()</code> 函数</li>
+<li><code>&lt;iostream&gt;</code>: C++输入输出流库，提供 <code>cin</code>、<code>cout</code> 对象</li>
+<li><code>&lt;string&gt;</code>: C++字符串类，提供 <code>std::string</code> 类型和 <code>getline()</code> 函数</li>
+</ul>
+</li>
+<li><code>getchar()</code> 的作用：<code>cin &gt;&gt; n</code> 会留下换行符在缓冲区，需要用 <code>getchar()</code> 消耗这个换行符，否则 <code>getline()</code> 会直接读到空行</li>
+<li><code>getline()</code> 用法：<code>getline(cin, s)</code> 表示从标准输入读取一整行到 string 变量 s 中，遇到换行符停止</li>
+<li>一定要用 <code>getline()</code> 按行读取，因为给的 n 是包含空格在内的所有字符数，而不是所有非空格字符数。</li>
+</ul>
+<h1 id="PIO14-单组-保留小数位数"><a href="#PIO14-单组-保留小数位数" class="headerlink" title="PIO14 单组_保留小数位数"></a>PIO14 单组_保留小数位数</h1><h2 id="描述-13"><a href="#描述-13" class="headerlink" title="描述"></a>描述</h2><p>给定一个小数 n ，请你保留 3 位小数后输出。<br>如果原来的小数位数少于 3 ，需要补充 0 。<br>如果原来的小数位数多于 3 ，需要四舍五入到 3 位。</p>
+<h2 id="输入描述：-13"><a href="#输入描述：-13" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个小数 n (1≤n≤10^9) 。</p>
+<h2 id="输出描述：-13"><a href="#输出描述：-13" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个小数，保留 3 位。</p>
+<h2 id="示例1-13"><a href="#示例1-13" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：1.23<br><strong>输出</strong>：1.230</p>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p><strong>输入</strong>：114.514<br><strong>输出</strong>：114.514</p>
+<h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><p><strong>输入</strong>：123<br><strong>输出</strong>：123.000</p>
+<h2 id="解答-13"><a href="#解答-13" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">3</span>) &lt;&lt; n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-4"><a href="#tips-4" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li><code>&lt;iomanip&gt;</code> 是 C++ 输入输出格式化库，提供格式化输出的函数：<ul>
+<li><code>fixed</code>: 固定小数点格式，不使用科学计数法</li>
+<li><code>setprecision(n)</code>: 设置输出精度，配合 <code>fixed</code> 表示保留 n 位小数</li>
+</ul>
+</li>
+<li>以上代码等价于 <code>printf(&quot;%.3f&quot;, n)</code></li>
+</ul>
+<p>使用 <code>scanf</code> 和 <code>printf</code> 的简单写法:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3lf&quot;</span>, n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO15-单组-补充前导零"><a href="#PIO15-单组-补充前导零" class="headerlink" title="PIO15 单组_补充前导零"></a>PIO15 单组_补充前导零</h1><h2 id="描述-14"><a href="#描述-14" class="headerlink" title="描述"></a>描述</h2><p>给定一个正整数 n ，请你保留 9 个数位，然后输出。<br>如果数位少于 9 个，那么需要补充前导零。</p>
+<h2 id="输入描述：-14"><a href="#输入描述：-14" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 n (1≤n&lt;10^9) 。</p>
+<h2 id="输出描述：-14"><a href="#输出描述：-14" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个数字，保留 9 个数位。</p>
+<h2 id="示例1-14"><a href="#示例1-14" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：123<br><strong>输出</strong>：000000123</p>
+<h2 id="示例2-1"><a href="#示例2-1" class="headerlink" title="示例2"></a>示例2</h2><p><strong>输入</strong>：123456789<br><strong>输出</strong>：123456789</p>
+<h2 id="解答-14"><a href="#解答-14" class="headerlink" title="解答"></a>解答</h2><p><code>scanf</code> 和 <code>printf</code>解法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%09d&quot;</span>,n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<p><code>cin</code> 和 <code>cout</code> 解法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">9</span> - n.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ( a-- ) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;0&#x27;</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="PIO16-单组-spj判断YES与NO"><a href="#PIO16-单组-spj判断YES与NO" class="headerlink" title="PIO16 单组_spj判断YES与NO"></a>PIO16 单组_spj判断YES与NO</h1><h2 id="描述-15"><a href="#描述-15" class="headerlink" title="描述"></a>描述</h2><p>给定一个正整数 n 。<br>如果 n 是奇数，输出 YES 。<br>如果 n 是偶数，输出 NO 。<br>你可以输出任意大小写形式的 YES 和 NO 。<br>比如， yes , Yes , yEs 都会被视为 YES 。</p>
+<h2 id="输入描述：-15"><a href="#输入描述：-15" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 n ( 1≤n≤10^9) 。</p>
+<h2 id="输出描述：-15"><a href="#输出描述：-15" class="headerlink" title="输出描述："></a>输出描述：</h2><p>如果 n 是奇数，输出 YES 。<br>如果 n 是偶数，输出 NO 。</p>
+<h2 id="示例1-15"><a href="#示例1-15" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：123<br><strong>输出</strong>：YES</p>
+<h2 id="示例2-2"><a href="#示例2-2" class="headerlink" title="示例2"></a>示例2</h2><p><strong>输入</strong>：124<br><strong>输出</strong>：no</p>
+<h2 id="解答-15"><a href="#解答-15" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s = n % <span class="number">2</span> ? <span class="string">&quot;YES&quot;</span> : <span class="string">&quot;NO&quot;</span>;</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-5"><a href="#tips-5" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li><code>&lt;iostream&gt;</code>: C++输入输出流库，提供 <code>cin</code>、<code>cout</code>、<code>string</code></li>
+<li><code>&lt;sys/types.h&gt;</code>: POSIX系统类型头文件，提供基本数据类型定义（如 <code>size_t</code>），此处实际未用到，可省略</li>
+</ul>
+<h1 id="PIO17-单组-spj判断浮点误差"><a href="#PIO17-单组-spj判断浮点误差" class="headerlink" title="PIO17 单组_spj判断浮点误差"></a>PIO17 单组_spj判断浮点误差</h1><h2 id="描述-16"><a href="#描述-16" class="headerlink" title="描述"></a>描述</h2><p>给定一个圆的半径 r ，请你求出该圆的面积。<br>保证半径r 是整数。<br>如果你的答案和标准答案的误差不超过 10^−3 ，即可通过本题。</p>
+<h2 id="输入描述：-16"><a href="#输入描述：-16" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有一个整数 n (1≤n≤10^3) 。</p>
+<h2 id="输出描述：-16"><a href="#输出描述：-16" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出一个数字，代表圆的面积。</p>
+<h2 id="示例1-16"><a href="#示例1-16" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：123<br><strong>输出</strong>：47529.155256</p>
+<h2 id="解答-16"><a href="#解答-16" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> r;</span><br><span class="line">    cin &gt;&gt; r;</span><br><span class="line">    cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">6</span>) &lt;&lt; M_PI * r * r &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="tips-6"><a href="#tips-6" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li><code>&lt;iomanip&gt;</code>: C++输入输出格式化库，提供 <code>fixed</code>、<code>setprecision</code>，不使用 <code>setprecision</code> 的话，输出只有一位小数</li>
+<li><code>&lt;iostream&gt;</code>: C++输入输出流库，提供 <code>cin</code>、<code>cout</code></li>
+<li><code>&lt;cmath&gt;</code>: C++数学库，提供数学函数和常量，如 <code>M_PI</code>（圆周率π），不使用 <code>M_PI</code> 的话，不能保证误差在10^-3以内</li>
+</ul>
+<h1 id="PIO18-单组-spj判断数组之和"><a href="#PIO18-单组-spj判断数组之和" class="headerlink" title="PIO18 单组_spj判断数组之和"></a>PIO18 单组_spj判断数组之和</h1><h2 id="描述-17"><a href="#描述-17" class="headerlink" title="描述"></a>描述</h2><p>给定两个整数 n 和 m ，请你构造一个长度为 n 的正整数数组，使得其元素之和为 m 。<br>保证有 n≤m 。</p>
+<h2 id="输入描述：-17"><a href="#输入描述：-17" class="headerlink" title="输入描述："></a>输入描述：</h2><p>第一行有两个整数 n (1≤n≤10^5) 和 m (n≤m≤10^9) 。</p>
+<h2 id="输出描述：-17"><a href="#输出描述：-17" class="headerlink" title="输出描述："></a>输出描述：</h2><p>输出 n 个正整数，它们的和需要为 m 。</p>
+<h2 id="示例1-17"><a href="#示例1-17" class="headerlink" title="示例1"></a>示例1</h2><p><strong>输入</strong>：3 6<br><strong>输出</strong>：1 2 3</p>
+<h2 id="解答-17"><a href="#解答-17" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; m - n + <span class="number">1</span> &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/";
+            const title         = "「高频算法手撕题--C++输入输出练习」";
+            const excerpt       = `PIO1 只有输出描述欢迎来到牛客网！本题不需要输入，仅需输出字符串 Hello Nowcoder! 即可通过。
+输入描述：本题无输入。
+输出描述：输出一个字符串 Hello Nowcoder! 。
+示例1输入：无输出：Hello N...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-none-link" href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" rel="tag">输入输出</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-04-12T09:37:22.666Z" itemprop="dateModified">最后编辑：2026-04-12</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 高频算法手撕题--链表" href="/2026/04/11/高频算法手撕题-链表/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 高频算法手撕题--滑动窗口" href="/2026/04/12/高频算法手撕题-滑动窗口/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                36
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                116
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO1-%E5%8F%AA%E6%9C%89%E8%BE%93%E5%87%BA"><span class="toc-text">PIO1 只有输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO2-%E5%8D%95%E7%BB%84-A-B"><span class="toc-text">PIO2 单组_A+B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-1"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-1"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO3-%E5%A4%9A%E7%BB%84-A-B-EOF%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO3 多组_A+B_EOF形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-2"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-2"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO4-%E5%A4%9A%E7%BB%84-A-B-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO4 多组_A+B_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-3"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-3"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-3"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-3"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO5-%E5%A4%9A%E7%BB%84-A-B-%E5%B0%BE0%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO5 多组_A+B_尾0形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-4"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-4"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-4"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-4"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO6-%E5%8D%95%E7%BB%84-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">PIO6 单组_一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-5"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-5"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-5"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-5"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO7-%E5%A4%9A%E7%BB%84-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO7 多组_一维数组_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-6"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-6"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-6"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-6"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-6"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO8-%E5%8D%95%E7%BB%84-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">PIO8 单组_二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-7"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-7"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-7"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-7"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-7"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO9-%E5%A4%9A%E7%BB%84-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO9 多组_二维数组_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-8"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-8"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-8"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-8"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-8"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO10-%E5%8D%95%E7%BB%84-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">PIO10 单组_字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-9"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-9"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-9"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-9"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-9"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-1"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO11-%E5%A4%9A%E7%BB%84-%E5%AD%97%E7%AC%A6%E4%B8%B2-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO11 多组_字符串_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-10"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-10"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-10"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-10"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-10"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO12-%E5%8D%95%E7%BB%84-%E4%BA%8C%E7%BB%B4%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-text">PIO12 单组_二维字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-11"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-11"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-11"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-11"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-11"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-2"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO13-%E5%A4%9A%E7%BB%84-%E5%B8%A6%E7%A9%BA%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2-T%E7%BB%84%E5%BD%A2%E5%BC%8F"><span class="toc-text">PIO13 多组_带空格的字符串_T组形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-12"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-12"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-12"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-12"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-12"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-3"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO14-%E5%8D%95%E7%BB%84-%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E4%BD%8D%E6%95%B0"><span class="toc-text">PIO14 单组_保留小数位数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-13"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-13"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-13"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-13"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B3"><span class="toc-text">示例3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-13"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-4"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO15-%E5%8D%95%E7%BB%84-%E8%A1%A5%E5%85%85%E5%89%8D%E5%AF%BC%E9%9B%B6"><span class="toc-text">PIO15 单组_补充前导零</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-14"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-14"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-14"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-14"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2-1"><span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-14"><span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO16-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%ADYES%E4%B8%8ENO"><span class="toc-text">PIO16 单组_spj判断YES与NO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-15"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-15"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-15"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-15"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2-2"><span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-15"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-5"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO17-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%AD%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE"><span class="toc-text">PIO17 单组_spj判断浮点误差</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-16"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-16"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-16"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-16"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-16"><span class="toc-text">解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips-6"><span class="toc-text">tips:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIO18-%E5%8D%95%E7%BB%84-spj%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B9%8B%E5%92%8C"><span class="toc-text">PIO18 单组_spj判断数组之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-17"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-17"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-17"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-17"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-17"><span class="toc-text">解答</span></a></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">4</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a> <a href="/tags/G1-Garbage-first/" style="font-size: 0.6em;">G1(Garbage first)</a> <a href="/tags/GC-Garbage-Collection-%E4%B8%8EJava%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" style="font-size: 0.6em;">GC(Garbage Collection) 与Java引用类型</a> <a href="/tags/HTTP/" style="font-size: 0.6em;">HTTP</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/13/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1%E9%A2%98/"><i class="fa  fa-book"></i> 高频算法手撕题--场景设计题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"><i class="fa  fa-book"></i> 高频算法手撕题--滑动窗口</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/"><i class="fa  fa-book"></i> 高频算法手撕题--C++输入输出练习</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/11/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E9%93%BE%E8%A1%A8/"><i class="fa  fa-book"></i> 高频算法手撕题--链表</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/11/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-Java%E5%9F%BA%E7%A1%80/"><i class="fa  fa-book"></i> Java高频八股--Java基础</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
