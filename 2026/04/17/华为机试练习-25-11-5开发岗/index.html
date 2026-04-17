@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>华为机试练习--25.11.5开发岗 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, Java, lambda表达式, set_intersection, vector 初始化, 算法" />
+  
+  <meta name="description" content="REALHW84 星港交通调度描述在星际纪元 2333 年，您是“星尘港务局”最先进的交通调度AI。您负责管理银河系中最繁忙的垂直太空港——“天穹站”。空间站从上到下共分为 F 个停泊层级，每个层级都配备了 M 个标准化的无人对接泊位。 每天，数以万计的星舰涌入“天穹站”的管辖空域，提交停泊申请。您的核心任务是以最低的能源消耗，最高效地为这些星舰分配泊位。 星舰的停泊规则非常特殊： 停泊分配 ：每">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为机试练习--25.11.5开发岗">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-5%E5%BC%80%E5%8F%91%E5%B2%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="REALHW84 星港交通调度描述在星际纪元 2333 年，您是“星尘港务局”最先进的交通调度AI。您负责管理银河系中最繁忙的垂直太空港——“天穹站”。空间站从上到下共分为 F 个停泊层级，每个层级都配备了 M 个标准化的无人对接泊位。 每天，数以万计的星舰涌入“天穹站”的管辖空域，提交停泊申请。您的核心任务是以最低的能源消耗，最高效地为这些星舰分配泊位。 星舰的停泊规则非常特殊： 停泊分配 ：每">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-17T08:42:48.000Z">
+<meta property="article:modified_time" content="2026-04-17T14:15:30.241Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="set_intersection">
+<meta property="article:tag" content="lambda表达式">
+<meta property="article:tag" content="vector 初始化">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-5%E5%BC%80%E5%8F%91%E5%B2%97/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">华为机试练习--25.11.5开发岗</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-04-17T08:42:48.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-04-17</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~4.42K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1776435330241"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW84-%E6%98%9F%E6%B8%AF%E4%BA%A4%E9%80%9A%E8%B0%83%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text">REALHW84 星港交通调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-number">1.1.3.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-number">1.1.4.</span> <span class="toc-text">示例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">本题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%85%B3%E9%94%AE%E7%82%B9%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码关键点解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8C%89%E8%88%B9%E5%91%98%E4%BA%BA%E6%95%B0%E9%99%8D%E5%BA%8F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">1. 按船员人数降序排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%B0%E5%BD%95%E6%AF%8F%E5%B1%82%E5%89%A9%E4%BD%99%E6%B3%8A%E4%BD%8D"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2. 记录每层剩余泊位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%B4%AA%E5%BF%83%E5%88%86%E9%85%8D%EF%BC%9A%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%BE%E7%A9%BA%E9%97%B2%E6%B3%8A%E4%BD%8D"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3. 贪心分配：从上往下找空闲泊位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AE%A1%E7%AE%97%E8%83%BD%E8%80%97%E5%B9%B6%E7%B4%AF%E5%8A%A0"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">4. 计算能耗并累加</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="REALHW84-星港交通调度"><a href="#REALHW84-星港交通调度" class="headerlink" title="REALHW84 星港交通调度"></a>REALHW84 星港交通调度</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在星际纪元 2333 年，您是“星尘港务局”最先进的交通调度AI。<br>您负责管理银河系中最繁忙的垂直太空港——“天穹站”。<br>空间站从上到下共分为 <code>F</code> 个停泊层级，每个层级都配备了 <code>M</code> 个标准化的无人对接泊位。</p>
+<p>每天，数以万计的星舰涌入“天穹站”的管辖空域，提交停泊申请。<br>您的核心任务是以最低的能源消耗，最高效地为这些星舰分配泊位。</p>
+<p>星舰的停泊规则非常特殊：</p>
+<p>停泊分配 ：每艘星舰 <code>i</code> 的申请中会包含一个 首选停泊层级 <code>R[i]</code> 和一个 船员人数  <code>P[i]</code> 。根据空间站的设计，星舰只能被安排在其首选层级 <code>R[i]</code> 或 其下方的任意层级（直至最底部的1层）。<br>能源消耗计算 ：为一次停泊分配计算总能耗是您的关键绩效指标（KPI）。总能耗由两部分构成：</p>
+<ol>
+<li>基础能耗 ：无论在哪一层停泊，仅对接过程本身就需要消耗 <code>2</code> 个单位的能量。</li>
+<li>调度能耗 ：如果一艘星舰被安排在低于其首选层级的位置，为了转运船员和货物，每向下一层，就需要额外消耗 <code>1</code> 个单位的能量。</li>
+</ol>
+<p>总能耗公式 ：对于一艘首选层级为 <code>R[i]</code> ，最终停在 <code>A[i]</code> 层 (<code>A[i] ≤ R[i]</code>)，载有 <code>P[i]</code> 名船员的星舰，其单次任务能耗为：<code>P[i] ×(2+(R[i] − A[i]))</code>。<br>任务目标 ：您的目标是为所有 <code>N</code> 艘申请的星舰找到一个停泊方案，使得 总能耗（所有星舰的能耗之和）达到最小值。<br>异常情况 ：如果泊位总数不足以容纳所有申请的星舰，调度计划无法完成，此时应报告异常，输出 <code>−1</code>。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>第一行包含三个整数 <code>F,M,N</code>。<br><code>F</code> ：空间站的总层级数 (<code>1≤F≤1000</code>)。<br><code>M</code> ：每层的泊位数 (<code>1≤M≤100</code>)。<br><code>N</code> ：总共收到的星舰停泊申请数 (<code>1≤N≤100000</code>)。<br>接下来 <code>N</code> 行，每行包含两个整数 <code>R[i], P[i]</code>。<br><code>R[i]</code> ：第 <code>i</code> 艘星舰的首选停泊层级 (<code>1 ≤ R[i] ≤ F</code>)。<br><code>P[i]</code> ：第 <code>i</code> 艘星舰的船员人数 (<code>1 ≤ P[i] ≤50</code>)。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出一个整数，表示能够实现的最低总能耗。<br>如果无法为所有星舰安排泊位，则输出 <code>−1</code>。</p>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><p><strong>输入</strong>：<br>3 3 4<br>2 20<br>1 10<br>2 10<br>2 10</p>
+<p><strong>输出</strong>：<br>100</p>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><p><strong>输入</strong>：<br>1 1 2<br>1 10<br>1 20</p>
+<p><strong>输出</strong>：<br>-1</p>
+<h2 id="ACM模式完整代码"><a href="#ACM模式完整代码" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">stop</span>&#123;</span><br><span class="line">    <span class="type">int</span> r, p, a;</span><br><span class="line">&#125;; <span class="comment">// 停泊申请</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minEnergyCost</span><span class="params">(<span class="type">int</span> f, <span class="type">int</span> m, <span class="type">int</span> n, vector&lt;stop&gt; rp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (f * m &lt; n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="built_in">sort</span>(rp.<span class="built_in">begin</span>(), rp.<span class="built_in">end</span>(), [](<span class="type">const</span> stop&amp; a, <span class="type">const</span> stop&amp; b)&#123;</span><br><span class="line">            <span class="keyword">return</span> a.p &gt; b.p;</span><br><span class="line">        &#125;); <span class="comment">// 按船员人数 p 降序排列，先保证 p 大的尽量接近首选层</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">left</span><span class="params">(f, m)</span></span>; <span class="comment">// 记录各层剩余泊位数，初始都为 m ，即所有泊位都是空闲状态</span></span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            rp[i].a = rp[i].r;</span><br><span class="line">            <span class="keyword">while</span> (left[rp[i].a - <span class="number">1</span>] == <span class="number">0</span>) rp[i].a--;</span><br><span class="line">            <span class="comment">// 注意下标从 0 开始，而层数从 1 开始，所以，rp[i].a 对应的层的剩余泊位数是 left[rp[i].a - 1]</span></span><br><span class="line">            left[rp[i].a - <span class="number">1</span>]--;</span><br><span class="line">            ans += rp[i].p * (<span class="number">2</span> + rp[i].r - rp[i].a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> f, m, n;</span><br><span class="line">    cin &gt;&gt; f &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;stop&gt; <span class="title">rp</span><span class="params">(n)</span></span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">        cin &gt;&gt; rp[i].r &gt;&gt; rp[i].p;</span><br><span class="line">    Solution sol;</span><br><span class="line">    cout &lt;&lt; sol.<span class="built_in">minEnergyCost</span>(f, m, n, rp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明"><a href="#思路及必要说明" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="本题思路"><a href="#本题思路" class="headerlink" title="本题思路"></a>本题思路</h3><p><strong>核心问题</strong>：如何为N艘星舰分配泊位，使得总能耗最小。</p>
+<p><strong>关键洞察</strong>：能耗公式 <code>P[i] × (2 + (R[i] - A[i]))</code> 中，<code>P[i]</code> 是系数，<code>R[i] - A[i]</code> 是向下偏移的层数。船员人数P越大的星舰，每向下偏移一层额外消耗的能量越多。因此，<strong>船员多的星舰应尽量分配到更高的层级（接近其首选层）</strong>。</p>
+<p><strong>算法步骤</strong>：</p>
+<ol>
+<li><strong>检查可行性</strong>：若 <code>F × M &lt; N</code>，直接输出 <code>-1</code>（泊位不够）</li>
+<li><strong>按船员人数降序排序</strong>：P大的星舰优先分配，确保其能占据更高位置</li>
+<li><strong>贪心分配</strong>：对每艘星舰，从其首选层级R[i]开始向下查找，直到找到空闲泊位为止</li>
+<li><strong>计算能耗</strong>：使用公式 <code>P[i] × (2 + R[i] - A[i])</code> 累加</li>
+</ol>
+<p><strong>正确性证明（贪心策略）</strong>：</p>
+<ul>
+<li>假设有两艘星舰 A(P₁) 和 B(P₂)，且 P₁ &gt; P₂</li>
+<li>若把 A 安排在低层、B 安排在高层，总能耗 &#x3D; P₁×(2+d₁) + P₂×(2+d₂)</li>
+<li>若调换位置，总能耗 &#x3D; P₁×(2+d₁’) + P₂×(2+d₂’)</li>
+<li>因为 P₁ &gt; P₂，将 P₁ 放在更高位置（更小偏移）能让总能耗更小</li>
+<li>因此按 P 降序贪心是最优策略</li>
+</ul>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(N log N)（排序）+ O(N × F)（最坏情况遍历），实际可优化</li>
+<li>空间复杂度：O(F) 用于记录每层剩余泊位</li>
+</ul>
+<h3 id="代码关键点解析"><a href="#代码关键点解析" class="headerlink" title="代码关键点解析"></a>代码关键点解析</h3><h4 id="1-按船员人数降序排序"><a href="#1-按船员人数降序排序" class="headerlink" title="1. 按船员人数降序排序"></a>1. 按船员人数降序排序</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(rp.<span class="built_in">begin</span>(), rp.<span class="built_in">end</span>(), [](<span class="type">const</span> stop&amp; a, <span class="type">const</span> stop&amp; b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a.p &gt; b.p;  <span class="comment">// 降序，P大的在前</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>lambda表达式说明</strong>：</p>
+<ul>
+<li><code>[](const stop&amp; a, const stop&amp; b)</code> 是匿名函数（闭包），<code>[]</code> 内不捕获外部变量</li>
+<li><code>const stop&amp; a</code> 和 <code>const stop&amp; b</code> 是参数，传入待比较的两个元素</li>
+<li><code>return a.p &gt; b.p;</code> 返回 bool，true 表示 a 排在 b 前面</li>
+<li>相当于自定义比较函数，可以替代传统的 <code>bool cmp()</code> 函数</li>
+</ul>
+<p><strong>多种写法对比</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lambda（推荐，简洁）</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), [](<span class="type">int</span> a, <span class="type">int</span> b)&#123; <span class="keyword">return</span> a &gt; b; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// bool函数</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b; &#125;</span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), cmp);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 标准库greater（降序）</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line"></span><br><span class="line"><span class="comment">// std::sort 默认升序</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());  <span class="comment">// 等同于 a &lt; b</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-记录每层剩余泊位"><a href="#2-记录每层剩余泊位" class="headerlink" title="2. 记录每层剩余泊位"></a>2. 记录每层剩余泊位</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">left</span><span class="params">(f, m)</span></span>;  <span class="comment">// 初始每层都有 m 个泊位</span></span><br></pre></td></tr></table></figure>
+<p><strong>vector初始化语法</strong>：<br><code>vector&lt;int&gt; left(f, m)</code> 的含义是：创建一个大小为 f 的 vector，<strong>所有元素都初始化为 m</strong>。</p>
+<p><strong>对比其他初始化方式</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v1</span><span class="params">(<span class="number">10</span>)</span></span>;       <span class="comment">// 大小10，元素默认0 → &#123;0,0,0,0,0,0,0,0,0,0&#125;</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v2</span><span class="params">(<span class="number">10</span>, <span class="number">5</span>)</span></span>;     <span class="comment">// 大小10，元素都是5 → &#123;5,5,5,5,5,5,5,5,5,5&#125;</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v3&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;     <span class="comment">// 大小3，元素是1,2,3 → &#123;1,2,3&#125;</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v4</span><span class="params">(<span class="number">10</span>, <span class="number">0</span>)</span></span>;    <span class="comment">// 大小10，元素都是0（等价于v1）</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v5</span><span class="params">(f, m)</span></span>;     <span class="comment">// 大小f，元素都是m</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 场景对应</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">count</span><span class="params">(F, M)</span></span>;  <span class="comment">// F层，每层M个泊位</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">arr</span><span class="params">(<span class="number">100</span>, <span class="number">0</span>)</span></span>;  <span class="comment">// 100个计数器，初始为0</span></span><br><span class="line"><span class="function">vector&lt;string&gt; <span class="title">names</span><span class="params">(<span class="number">5</span>, <span class="string">&quot;&quot;</span>)</span></span>; <span class="comment">// 5个空字符串</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：<code>vector&lt;int&gt; left(f, m)</code> 不同于 <code>vector&lt;int&gt; left = &#123;f, m&#125;</code>，后者只有2个元素。</p>
+<h4 id="3-贪心分配：从上往下找空闲泊位"><a href="#3-贪心分配：从上往下找空闲泊位" class="headerlink" title="3. 贪心分配：从上往下找空闲泊位"></a>3. 贪心分配：从上往下找空闲泊位</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rp[i].a = rp[i].r;  <span class="comment">// 先尝试首选层级</span></span><br><span class="line"><span class="keyword">while</span> (left[rp[i].a - <span class="number">1</span>] == <span class="number">0</span>) rp[i].a--;  <span class="comment">// 依次向下找，直到找到空位</span></span><br><span class="line">left[rp[i].a - <span class="number">1</span>]--;  <span class="comment">// 占用该泊位</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-计算能耗并累加"><a href="#4-计算能耗并累加" class="headerlink" title="4. 计算能耗并累加"></a>4. 计算能耗并累加</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ans += rp[i].p * (<span class="number">2</span> + rp[i].r - rp[i].a);</span><br><span class="line"><span class="comment">// 其中 (rp[i].r - rp[i].a) 是向下偏移的层数</span></span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-5%E5%BC%80%E5%8F%91%E5%B2%97/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-5%E5%BC%80%E5%8F%91%E5%B2%97/";
+            const title         = "「华为机试练习--25.11.5开发岗」";
+            const excerpt       = `REALHW84 星港交通调度描述在星际纪元 2333 年，您是“星尘港务局”最先进的交通调度AI。您负责管理银河系中最繁忙的垂直太空港——“天穹站”。空间站从上到下共分为 F 个停泊层级，每个层级都配备了 M 个标准化的无人对接泊位...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">lambda表达式</a>, <a class="tag-none-link" href="/tags/set-intersection/" rel="tag">set_intersection</a>, <a class="tag-none-link" href="/tags/vector-%E5%88%9D%E5%A7%8B%E5%8C%96/" rel="tag">vector 初始化</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-04-17T14:15:30.241Z" itemprop="dateModified">最后编辑：2026-04-17</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 华为机试练习--25.11.19开发岗" href="/2026/04/17/华为机试练习-25-11-19开发岗/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                39
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                8
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                123
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW84-%E6%98%9F%E6%B8%AF%E4%BA%A4%E9%80%9A%E8%B0%83%E5%BA%A6"><span class="toc-text">REALHW84 星港交通调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-text">示例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">本题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%85%B3%E9%94%AE%E7%82%B9%E8%A7%A3%E6%9E%90"><span class="toc-text">代码关键点解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8C%89%E8%88%B9%E5%91%98%E4%BA%BA%E6%95%B0%E9%99%8D%E5%BA%8F%E6%8E%92%E5%BA%8F"><span class="toc-text">1. 按船员人数降序排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%B0%E5%BD%95%E6%AF%8F%E5%B1%82%E5%89%A9%E4%BD%99%E6%B3%8A%E4%BD%8D"><span class="toc-text">2. 记录每层剩余泊位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%B4%AA%E5%BF%83%E5%88%86%E9%85%8D%EF%BC%9A%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%BE%E7%A9%BA%E9%97%B2%E6%B3%8A%E4%BD%8D"><span class="toc-text">3. 贪心分配：从上往下找空闲泊位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AE%A1%E7%AE%97%E8%83%BD%E8%80%97%E5%B9%B6%E7%B4%AF%E5%8A%A0"><span class="toc-text">4. 计算能耗并累加</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">4</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a> <a href="/tags/G1-Garbage-first/" style="font-size: 0.6em;">G1(Garbage first)</a> <a href="/tags/GC-Garbage-Collection-%E4%B8%8EJava%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" style="font-size: 0.6em;">GC(Garbage Collection) 与Java引用类型</a> <a href="/tags/HTTP/" style="font-size: 0.6em;">HTTP</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-5%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--25.11.5开发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-25-11-19%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--25.11.19开发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/16/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-4-8%E7%A0%94%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--26.4.8研发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/13/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1%E9%A2%98/"><i class="fa  fa-book"></i> 高频算法手撕题--场景设计题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/12/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"><i class="fa  fa-book"></i> 高频算法手撕题--滑动窗口</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
