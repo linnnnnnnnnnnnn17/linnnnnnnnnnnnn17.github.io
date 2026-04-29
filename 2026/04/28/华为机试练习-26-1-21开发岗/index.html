@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>华为机试练习--26.1.21开发岗 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="01背包, C++, Java, unordered_map的key是自定义struct怎么处理, 动态规划, 算法, 自定义hash函数" />
+  
+  <meta name="description" content="REALHW132 魔法相册的重复记忆题目链接：REALHW132 魔法相册的重复记忆 描述小红正在整理自己的 n 本魔法相册，她发现有些珍贵的记忆（照片）由于备份原因，同时出现在了多本相册中。每张照片由一个唯一的标识符 id 和一个时间戳 t 组成。在一个相册内部，所有照片的 id 互不相同；但在不同的相册之间，可能存在 id 相同的照片。已知相同的 id 总是对应相同的时间戳 t。小红需要找出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为机试练习--26.1.21开发岗">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-1-21%E5%BC%80%E5%8F%91%E5%B2%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="REALHW132 魔法相册的重复记忆题目链接：REALHW132 魔法相册的重复记忆 描述小红正在整理自己的 n 本魔法相册，她发现有些珍贵的记忆（照片）由于备份原因，同时出现在了多本相册中。每张照片由一个唯一的标识符 id 和一个时间戳 t 组成。在一个相册内部，所有照片的 id 互不相同；但在不同的相册之间，可能存在 id 相同的照片。已知相同的 id 总是对应相同的时间戳 t。小红需要找出">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-28T06:32:26.000Z">
+<meta property="article:modified_time" content="2026-04-28T07:33:30.543Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="01背包">
+<meta property="article:tag" content="unordered_map的key是自定义struct怎么处理">
+<meta property="article:tag" content="自定义hash函数">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-1-21%E5%BC%80%E5%8F%91%E5%B2%97/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">华为机试练习--26.1.21开发岗</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-04-28T06:32:26.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-04-28</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~10.96K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1777361610543"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW132-%E9%AD%94%E6%B3%95%E7%9B%B8%E5%86%8C%E7%9A%84%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BF%86"><span class="toc-number">1.</span> <span class="toc-text">REALHW132 魔法相册的重复记忆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-number">1.1.3.</span> <span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">本题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E9%9A%BE%E7%82%B9"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">关键难点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-map%E7%9A%84key%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89struct%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">unordered_map的key是自定义struct怎么处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%99%AE%E9%80%9A%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%BD%93-key"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">一、为什么普通结构体不能直接当 key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E6%95%B4%E5%8F%AF%E8%BF%90%E8%A1%8C%E5%86%99%E6%B3%95%EF%BC%88%E4%B8%A4%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%96%B9%E6%A1%88%EF%BC%89"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">二、完整可运行写法（两种常用方案）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%881%EF%BC%9A%E9%87%8D%E8%BD%BD-%E7%89%B9%E5%8C%96-std-hash%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.3.2.2.1.</span> <span class="toc-text">方案1：重载 &#x3D;&#x3D; + 特化 std::hash（推荐）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%882%EF%BC%9A%E4%BC%A0%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%93%88%E5%B8%8C-%E5%88%A4%E7%AD%89%EF%BC%88%E4%B8%8D%E6%B1%A1%E6%9F%93std%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="toc-number">1.3.2.2.2.</span> <span class="toc-text">方案2：传入自定义哈希+判等（不污染std命名空间）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%A5%E5%85%85%E5%8C%BA%E5%88%86%EF%BC%9Amap-%E5%92%8C-unordered-map"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">三、补充区分：map 和 unordered_map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">四、注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89hash%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">自定义hash函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%90%9E%E6%87%82%EF%BC%9A%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E5%88%B0%E5%BA%95%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%9F"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">一、先搞懂：哈希函数到底是干嘛的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%A0%E7%9C%8B%E4%B8%8D%E6%87%82%E7%9A%84%E8%BF%99%E5%8F%A5%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%88%91%E6%8B%86%E5%BC%80%E8%AE%B2"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">二、你看不懂的这句代码，我拆开讲</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-hash"><span class="toc-number">1.3.3.2.1.</span> <span class="toc-text">1. hash&lt;int&gt;()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-hash-n-id"><span class="toc-number">1.3.3.2.2.</span> <span class="toc-text">2. hash&lt;int&gt;()(n.id)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-hash-n-val-1"><span class="toc-number">1.3.3.2.3.</span> <span class="toc-text">3. hash&lt;int&gt;()(n.val) &lt;&lt; 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4"><span class="toc-number">1.3.3.2.4.</span> <span class="toc-text">4. ^</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E5%A4%A7%E7%99%BD%E8%AF%9D%E7%BF%BB%E8%AF%91%E6%95%B4%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">三、用大白话翻译整行代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%86%99%E6%B3%95%EF%BC%88%E4%BD%A0%E4%BB%A5%E5%90%8E%E7%9B%B4%E6%8E%A5%E7%94%A8%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">四、更简单的写法（你以后直接用这个）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E5%86%99-%EF%BC%9F"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">五、为什么必须写 &#x3D;&#x3D; ？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%80%E7%BB%88%E6%80%BB%E7%BB%93%EF%BC%88%E4%BD%A0%E4%B8%80%E5%AE%9A%E8%83%BD%E6%87%82%EF%BC%89"><span class="toc-number">1.3.3.6.</span> <span class="toc-text">六、最终总结（你一定能懂）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%88%91%E7%BB%99%E4%BD%A0%E4%B8%80%E4%B8%AA%E3%80%90%E8%B6%85%E7%BA%A7%E7%AE%80%E5%8D%95%E6%A8%A1%E6%9D%BF%E3%80%91"><span class="toc-number">1.3.3.7.</span> <span class="toc-text">七、我给你一个【超级简单模板】</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW133-%E5%B9%BB%E5%85%BD%E9%98%B2%E5%BE%A1%E6%88%98"><span class="toc-number">2.</span> <span class="toc-text">REALHW133 幻兽防御战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-1"><span class="toc-number">2.1.3.</span> <span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-number">2.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">本题思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW134-%E9%81%97%E8%BF%B9%E6%8E%A2%E9%99%A9%E5%AE%B6%E5%B0%8F%E7%BA%A2"><span class="toc-number">3.</span> <span class="toc-text">REALHW134 遗迹探险家小红</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">3.1.</span> <span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-number">3.1.2.</span> <span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-2"><span class="toc-number">3.1.3.</span> <span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-number">3.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-number">3.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">3.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F"><span class="toc-number">3.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84"><span class="toc-number">3.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="REALHW132-魔法相册的重复记忆"><a href="#REALHW132-魔法相册的重复记忆" class="headerlink" title="REALHW132 魔法相册的重复记忆"></a>REALHW132 魔法相册的重复记忆</h1><p>题目链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/878ab473951d4e3a94bdf965da751d97?tpId=390&tags=&title=&difficulty=0&judgeStatus=0&rp=0&sourceUrl=/exam/oj/ta?tpId=37">REALHW132 魔法相册的重复记忆</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小红正在整理自己的 <code>n</code> 本魔法相册，她发现有些珍贵的记忆（照片）由于备份原因，同时出现在了多本相册中。<br>每张照片由一个唯一的标识符 <code>id</code> 和一个时间戳 <code>t</code> 组成。在一个相册内部，所有照片的 <code>id</code> 互不相同；但在不同的相册之间，可能存在 <code>id</code> 相同的照片。已知相同的 <code>id</code> 总是对应相同的时间戳 <code>t</code>。<br>小红需要找出所有在超过一本相册中出现过的照片，并统计它们在所有相册中出现的总次数。请将这些重复的照片按照时间戳 <code>t</code> 从小到大排序后输出。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>第一行输入一个整数 <code>n（0 &lt; n &lt; 10）</code>，表示相册的数量。<br>接下来的 <code>n</code> 行，每行包含若干个由空格分隔的整数，表示该相册内的照片信息。每两个整数为一个组合，前一个为照片的 <code>id</code>，后一个为该照片的时间戳 <code>t</code>。<br>每行照片的数量 <code>m</code> 满足 <code>0 &lt; m &lt; 100</code>。所有 <code>id</code> 和 <code>t</code> 均为非负整数。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出一行整数，每两个整数为一个组合，分别为重复出现的照片 <code>id</code> 及其在所有相册中出现的总次数。<br>组合之间按时间戳 <code>t</code> 升序排列。输入保证至少存在一张重复的照片，且排序结果唯一。</p>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><p><strong>输入</strong>：<br>4<br>999 1 998 2 997 3 996 4 995 5<br>994 6 993 7 992 8 991 9 990 10<br>989 11 988 12 987 13<br>999 1 995 5 986 14</p>
+<p><strong>输出</strong>：<br>999 2 995 2</p>
+<p><strong>说明</strong>：</p>
+<pre><code>样例说明：
+
+- 照片 id 为 999 的时间戳为 1，在第 1 本和第 4 本相册中出现，总次数为 2。
+
+- 照片 id 为 995 的时间戳为 5，在第 1 本和第 4 本相册中出现，总次数为 2。
+
+- 其余照片均只出现了一次。
+
+- 按照时间戳排序，1&lt;5，故先输出 999 2，再输出 995 2。
+</code></pre>
+<h2 id="ACM模式完整代码"><a href="#ACM模式完整代码" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">photo</span> &#123;</span><br><span class="line">    <span class="type">int</span> id, t;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 必须重载相等比较</span></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> photo&amp; other) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id == other.id &amp;&amp; t == other.t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 特化std::hash，提供哈希规则</span></span><br><span class="line"><span class="keyword">namespace</span> std &#123;</span><br><span class="line">    <span class="keyword">template</span>&lt;&gt;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">hash</span>&lt;photo&gt; &#123;</span><br><span class="line">        <span class="function"><span class="type">size_t</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> photo&amp; n)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 简单哈希合并：拼接两个整数哈希</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) ^ (<span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.t) &lt;&lt; <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    unordered_map&lt;photo, <span class="type">int</span>&gt; cnt;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        cin.<span class="built_in">ignore</span>();</span><br><span class="line">        <span class="keyword">while</span> (cin &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">            cnt[&#123;a, b&#125;]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;pair&lt;photo, <span class="type">int</span>&gt;&gt; <span class="built_in">vec</span>(cnt.<span class="built_in">begin</span>(), cnt.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), [](pair&lt;photo, <span class="type">int</span>&gt;&amp; x, pair&lt;photo, <span class="type">int</span>&gt;&amp; y)&#123;</span><br><span class="line">        <span class="keyword">return</span> x.first.t &lt; y.first.t;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> v : vec) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v.second &gt; <span class="number">1</span>)</span><br><span class="line">            cout &lt;&lt; v.first.id &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; v.second &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明"><a href="#思路及必要说明" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="本题思路"><a href="#本题思路" class="headerlink" title="本题思路"></a>本题思路</h3><p>用结构体把 <code>id</code> 和 <code>t</code> 封装到 <code>photo</code> 里，用 <code>unordered_map</code> 记录出现次数，再转成 <code>vector</code> 按 <code>t</code> 排序，最后输出出现次数大于 <code>1</code> 的。</p>
+<h4 id="关键难点"><a href="#关键难点" class="headerlink" title="关键难点"></a>关键难点</h4><ol>
+<li><code>unordered_map</code> 的 <code>key</code> 是自定义 <code>struct</code> 需要重载 <code>==</code> 和手写哈希函数</li>
+<li><code>unordered_map</code> 不能直接排序，要转成 <code>vector</code></li>
+</ol>
+<h3 id="unordered-map的key是自定义struct怎么处理"><a href="#unordered-map的key是自定义struct怎么处理" class="headerlink" title="unordered_map的key是自定义struct怎么处理"></a>unordered_map的key是自定义struct怎么处理</h3><p><strong>可以，但必须手动满足两个条件</strong>，否则直接编译报错：</p>
+<ol>
+<li>提供<strong>哈希函数</strong>（<code>std::hash</code> 特化 &#x2F; 自定义哈希）</li>
+<li>提供<strong>相等比较运算符 <code>==</code></strong></li>
+</ol>
+<hr>
+<h4 id="一、为什么普通结构体不能直接当-key"><a href="#一、为什么普通结构体不能直接当-key" class="headerlink" title="一、为什么普通结构体不能直接当 key"></a>一、为什么普通结构体不能直接当 key</h4><p><code>unordered_map</code> 底层是<strong>哈希表</strong>：</p>
+<ul>
+<li>插入&#x2F;查找：先对 key 算<strong>哈希值</strong></li>
+<li>冲突时：用 <code>==</code> 判断元素是否相等</li>
+</ul>
+<p>C++ 标准库<strong>没有默认提供</strong>：</p>
+<ul>
+<li>自定义结构体的 <code>std::hash</code> 哈希实现</li>
+<li>所以直接写会报错：<code>no specialization of std::hash</code></li>
+</ul>
+<hr>
+<h4 id="二、完整可运行写法（两种常用方案）"><a href="#二、完整可运行写法（两种常用方案）" class="headerlink" title="二、完整可运行写法（两种常用方案）"></a>二、完整可运行写法（两种常用方案）</h4><h5 id="方案1：重载-特化-std-hash（推荐）"><a href="#方案1：重载-特化-std-hash（推荐）" class="headerlink" title="方案1：重载 &#x3D;&#x3D; + 特化 std::hash（推荐）"></a>方案1：重载 &#x3D;&#x3D; + 特化 std::hash（推荐）</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 必须重载相等比较</span></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Node&amp; other) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id == other.id &amp;&amp; val == other.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 特化std::hash，提供哈希规则</span></span><br><span class="line"><span class="keyword">namespace</span> std &#123;</span><br><span class="line">    <span class="keyword">template</span>&lt;&gt;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">hash</span>&lt;Node&gt; &#123;</span><br><span class="line">        <span class="function"><span class="type">size_t</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> Node&amp; n)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 简单哈希合并：拼接两个整数哈希</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) ^ (<span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.val) &lt;&lt; <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::unordered_map&lt;Node, <span class="type">int</span>&gt; mp;</span><br><span class="line">    mp[&#123;<span class="number">1</span>, <span class="number">10</span>&#125;] = <span class="number">100</span>;</span><br><span class="line">    mp[&#123;<span class="number">2</span>, <span class="number">20</span>&#125;] = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; p : mp) &#123;</span><br><span class="line">        std::cout &lt;&lt; p.first.id &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; p.first.val &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; p.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="方案2：传入自定义哈希-判等（不污染std命名空间）"><a href="#方案2：传入自定义哈希-判等（不污染std命名空间）" class="headerlink" title="方案2：传入自定义哈希+判等（不污染std命名空间）"></a>方案2：传入自定义哈希+判等（不污染std命名空间）</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义相等判断</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">EqualNode</span> &#123;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> Node&amp; a, <span class="type">const</span> Node&amp; b)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.id == b.id &amp;&amp; a.val == b.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义哈希函数</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">HashNode</span> &#123;</span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> Node&amp; n)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) * <span class="number">31</span> + std::<span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板参数：key, value, 哈希器, 相等判断</span></span><br><span class="line">std::unordered_map&lt;Node, <span class="type">int</span>, HashNode, EqualNode&gt; mp;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="三、补充区分：map-和-unordered-map"><a href="#三、补充区分：map-和-unordered-map" class="headerlink" title="三、补充区分：map 和 unordered_map"></a>三、补充区分：map 和 unordered_map</h4><ol>
+<li><strong><code>std::map&lt;结构体, T&gt;</code></strong><ul>
+<li>底层红黑树，需要：<strong>重载 <code>&lt;</code> 小于号</strong></li>
+<li>不需要哈希</li>
+</ul>
+</li>
+<li><strong><code>std::unordered_map&lt;结构体, T&gt;</code></strong><ul>
+<li>底层哈希表，需要：**<code>==</code> + 哈希函数**</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h4><ol>
+<li>哈希函数尽量<strong>分散</strong>，减少哈希冲突；</li>
+<li>作为 key 的结构体成员，<strong>不要随意修改</strong>（改了哈希值失效，找不到元素）；</li>
+<li>C++11 及以上才支持以上写法，竞赛&#x2F;日常都通用。</li>
+</ol>
+<h3 id="自定义hash函数"><a href="#自定义hash函数" class="headerlink" title="自定义hash函数"></a>自定义hash函数</h3><h4 id="一、先搞懂：哈希函数到底是干嘛的？"><a href="#一、先搞懂：哈希函数到底是干嘛的？" class="headerlink" title="一、先搞懂：哈希函数到底是干嘛的？"></a>一、先搞懂：哈希函数到底是干嘛的？</h4><p><code>unordered_map</code> 是<strong>哈希表</strong>，它要把你的结构体 <code>Node</code> 变成一个<strong>数字</strong>，才能存进表里。</p>
+<p>这个<strong>把结构体 → 变成数字</strong>的函数，就叫<strong>哈希函数</strong>。</p>
+<p>系统知道 int、string 怎么转数字，<br>但<strong>系统不知道你的 Node 怎么转成数字</strong>，所以必须你自己写！</p>
+<hr>
+<h4 id="二、你看不懂的这句代码，我拆开讲"><a href="#二、你看不懂的这句代码，我拆开讲" class="headerlink" title="二、你看不懂的这句代码，我拆开讲"></a>二、你看不懂的这句代码，我拆开讲</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) ^ (<span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.val) &lt;&lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>我拆成 4 步，超级简单：</p>
+<h5 id="1-hash"><a href="#1-hash" class="headerlink" title="1. hash&lt;int&gt;()"></a>1. <code>hash&lt;int&gt;()</code></h5><p>系统自带的、给整数算哈希的工具。</p>
+<h5 id="2-hash-n-id"><a href="#2-hash-n-id" class="headerlink" title="2. hash&lt;int&gt;()(n.id)"></a>2. <code>hash&lt;int&gt;()(n.id)</code></h5><p>用系统工具，把 <code>id</code> 变成一个哈希值（数字）。</p>
+<h5 id="3-hash-n-val-1"><a href="#3-hash-n-val-1" class="headerlink" title="3. hash&lt;int&gt;()(n.val) &lt;&lt; 1"></a>3. <code>hash&lt;int&gt;()(n.val) &lt;&lt; 1</code></h5><p>把 <code>val</code> 也变成哈希值，然后<strong>向左移 1 位</strong>（避免和 id 重复）。</p>
+<h5 id="4"><a href="#4" class="headerlink" title="4. ^"></a>4. <code>^</code></h5><p>把两个哈希值<strong>混合在一起</strong>，变成一个最终的哈希值。</p>
+<hr>
+<h4 id="三、用大白话翻译整行代码"><a href="#三、用大白话翻译整行代码" class="headerlink" title="三、用大白话翻译整行代码"></a>三、用大白话翻译整行代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把 id 的哈希值 和 val 的哈希值 混合成一个唯一数字</span><br></pre></td></tr></table></figure>
+
+<p>就是这么简单！</p>
+<hr>
+<h4 id="四、更简单的写法（你以后直接用这个）"><a href="#四、更简单的写法（你以后直接用这个）" class="headerlink" title="四、更简单的写法（你以后直接用这个）"></a>四、更简单的写法（你以后直接用这个）</h4><p>我给你一个<strong>更好记、更安全、不绕</strong>的哈希函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> Node&amp; n)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 把两个数组合成一个哈希值，简单、稳定、好记</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) * <span class="number">31</span> + <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>翻译：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id × 31 + val</span><br></pre></td></tr></table></figure>
+<p>变成一个数字，就是哈希值！</p>
+<hr>
+<h4 id="五、为什么必须写-？"><a href="#五、为什么必须写-？" class="headerlink" title="五、为什么必须写 &#x3D;&#x3D; ？"></a>五、为什么必须写 &#x3D;&#x3D; ？</h4><p>因为哈希表会出现<strong>冲突</strong>：<br>两个不一样的结构体，可能算出同一个哈希值。</p>
+<p>这时系统就用 <code>==</code> 来判断：<br><strong>到底是不是同一个元素？</strong></p>
+<p>所以：</p>
+<ul>
+<li><strong>哈希函数 &#x3D; 定位</strong></li>
+<li><strong>&#x3D;&#x3D; &#x3D; 确认</strong></li>
+</ul>
+<p>两个缺一不可！</p>
+<hr>
+<h4 id="六、最终总结（你一定能懂）"><a href="#六、最终总结（你一定能懂）" class="headerlink" title="六、最终总结（你一定能懂）"></a>六、最终总结（你一定能懂）</h4><ol>
+<li><strong>哈希函数</strong>：把你的结构体变成一个数字。</li>
+<li>系统不会自动变，<strong>必须你自己写</strong>。</li>
+<li><code>hash&lt;int&gt;()(x)</code> 就是把 x 变成哈希数字。</li>
+<li><code>^</code> 或 <code>*31 +</code> 都是为了<strong>把多个成员混合成一个数字</strong>。</li>
+<li><code>==</code> 用来判断两个 key 是否真的一样。</li>
+</ol>
+<hr>
+<h4 id="七、我给你一个【超级简单模板】"><a href="#七、我给你一个【超级简单模板】" class="headerlink" title="七、我给你一个【超级简单模板】"></a>七、我给你一个【超级简单模板】</h4><p>以后自定义结构体当 unordered_map 的 key，<strong>直接复制这个</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> id, val;</span><br><span class="line"></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Node&amp; other) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id == other.id &amp;&amp; val == other.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> std &#123;</span><br><span class="line">    <span class="keyword">template</span>&lt;&gt; <span class="keyword">struct</span> <span class="title class_">hash</span>&lt;Node&gt; &#123;</span><br><span class="line">        <span class="function"><span class="type">size_t</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> Node&amp; n)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.id) * <span class="number">31</span> + <span class="built_in">hash</span>&lt;<span class="type">int</span>&gt;()(n.val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="REALHW133-幻兽防御战"><a href="#REALHW133-幻兽防御战" class="headerlink" title="REALHW133 幻兽防御战"></a>REALHW133 幻兽防御战</h1><p>题目链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/13a2e8a30e414f3f964548a834c26f7c?tpId=390&tags=&title=&difficulty=0&judgeStatus=0&rp=0&sourceUrl=/exam/oj/ta?tpId=37">REALHW133 幻兽防御战</a></p>
+<h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>小红正在守卫一座神秘遗迹，共有 <code>n</code> 只怪兽正向遗迹冲来。<br>第 <code>i</code> 只怪兽的初始距离为 <code>dist[i]</code>，移动速度为 <code>speed[i]</code>。小红拥有一把每分钟只能发射一次的弩箭，在第 <code>k</code> 分钟开始的瞬间<code>（k=0,1,2,…）</code>，小红可以消灭任意一只尚未到达遗迹的怪兽。<br>对于第 <code>i</code>只怪兽，其到达遗迹的时间为 <code>t[i] =dist[i] /speed[i]</code> 。如果存在某只未被消灭的怪兽满足 <code>t[i] ≦k</code>，则该怪兽会<strong>在小红准备好第 <code>k</code> 次射击时或之前抵达并摧毁遗迹，防守立即失败。</strong><br>请帮小红计算，<strong>在遗迹被摧毁前</strong>，她最多能消灭多少只怪兽。</p>
+<h3 id="输入描述：-1"><a href="#输入描述：-1" class="headerlink" title="输入描述："></a>输入描述：</h3><p>输入共三行。<br>第一行包含一个整数 <code>n（1≦n≦10^5）</code>，表示怪兽的数量。<br>第二行包含 <code>n</code> 个整数 <code>dist[1], dist[2], …, dist[n]（1≦dist[i] ≦10^5）</code>，表示每只怪兽的初始距离。<br>第三行包含 <code>n</code> 个整数 <code>speed[1], speed[2], …, speed[n]（1≦speed[i] ≦20）</code>，表示每只怪兽的移动速度。</p>
+<h3 id="输出描述：-1"><a href="#输出描述：-1" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出一个整数，表示小红最多能消灭的怪兽数量。</p>
+<h3 id="示例1-1"><a href="#示例1-1" class="headerlink" title="示例1"></a>示例1</h3><p><strong>输入</strong>：<br>3<br>1 4 4<br>5 2 3</p>
+<p><strong>输出</strong>：<br>2<br><strong>说明</strong>：</p>
+<pre><code>样例中三只怪兽的预期到达时间分别为 0.2,2.0,1.33：
+
+- 第 0 分钟：小红准备好第 1 次射击，消灭第 1 只怪兽（到达时间 0.2）。
+
+- 第 1 分钟：小红准备好第 2 次射击，消灭第 3 只怪兽（到达时间 1.33）。
+
+- 第 2 分钟：最后一只怪兽的到达时间为 2.0。此时小红刚准备好第 3 次射击，但怪兽已经同时到达遗迹，防御失败。
+
+因此，小红总共能消灭 2 只怪兽。
+</code></pre>
+<h2 id="ACM模式完整代码-1"><a href="#ACM模式完整代码-1" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n; </span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">dist</span><span class="params">(n)</span>, <span class="title">speed</span><span class="params">(n)</span>, <span class="title">time</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">        cin &gt;&gt; dist[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; speed[i];</span><br><span class="line">        time[i] = dist[i] / speed[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(time.<span class="built_in">begin</span>(), time.<span class="built_in">end</span>());</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> ti : time) </span><br><span class="line">        <span class="keyword">if</span> (ans &lt; ti) </span><br><span class="line">            ans++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-1"><a href="#思路及必要说明-1" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="本题思路-1"><a href="#本题思路-1" class="headerlink" title="本题思路"></a>本题思路</h3><p>需要注意题目描述中加粗部分，被摧毁后就不用管了。<br>整体流程就是，先算出每个怪兽到达时间，并排升序，再遍历，每次抵达时间大于当前答案时，答案+1，否则直接break，因为被摧毁了就结束了。</p>
+<h1 id="REALHW134-遗迹探险家小红"><a href="#REALHW134-遗迹探险家小红" class="headerlink" title="REALHW134 遗迹探险家小红"></a>REALHW134 遗迹探险家小红</h1><p>题目链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/f0d69841d8fa421a92c15d9feb72f9e2?tpId=390&tags=&title=&difficulty=0&judgeStatus=0&rp=0&sourceUrl=/exam/oj/ta?tpId=37">REALHW134 遗迹探险家小红</a></p>
+<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>小红正在一座神秘遗迹中收集宝藏。遗迹中共有 n 件宝藏，第 i 件宝藏需要花费 t[i] 分钟来收集，其价值为 p[i] 。<br>小红的总探险时间不能超过 T 分钟。此外，如果某件宝藏的收集时间 t[i] 严格大于 30 分钟，该宝藏将被视为“重型宝藏”。小红在本次探险中收集的“重型宝藏”总数不得超过 m 个。<br>每件宝藏最多只能收集一次。请你帮小红计算，在满足时间和重型宝藏数量限制的前提下，她能获得的最大价值总和。</p>
+<h3 id="输入描述：-2"><a href="#输入描述：-2" class="headerlink" title="输入描述："></a>输入描述：</h3><p>第一行包含三个整数 n,T,m (1≦n≦100,1≦T≦5000,0≦m≦100)，分别表示宝藏总数、最大允许总时间、以及最大允许的重型宝藏数量。<br>接下来的 n 行，每行包含两个整数 t[i] 和 p[i] (1≦t[i]≦60,1≦p[i]≦1000)，分别表示第 i 件宝藏的收集时间与价值。</p>
+<h3 id="输出描述：-2"><a href="#输出描述：-2" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出一个整数，表示小红能获得的最大总价值。</p>
+<h3 id="示例1-2"><a href="#示例1-2" class="headerlink" title="示例1"></a>示例1</h3><p><strong>输入</strong>：<br>4 100 1<br>20 50<br>35 60<br>25 30<br>40 70</p>
+<p><strong>输出</strong>：<br>150</p>
+<p><strong>说明</strong>：</p>
+<pre><code>在样例中，n=4,T=100,m=1。宝藏详情如下：
+
+- 宝藏 1：耗时 20，价值 50（普通）
+
+- 宝藏 2：耗时 35，价值 60（重型，因为 35 &gt; 30）
+
+- 宝藏 3：耗时 25，价值 30（普通）
+
+- 宝藏 4：耗时 40，价值 70（重型，因为 40 &gt; 30）
+
+
+小红可以选择收集宝藏 1、宝藏 3 和 宝藏 4。
+
+总耗时：20+25+40=85≦100。
+
+重型宝藏数量：仅宝藏 4 一件，数量为 1≦1。
+
+总价值：50+30+70=150。
+
+可以证明这是满足条件的最大价值方案。
+</code></pre>
+<h2 id="ACM模式完整代码-2"><a href="#ACM模式完整代码-2" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">treasure</span> &#123;</span><br><span class="line">    <span class="type">int</span> time, val;</span><br><span class="line">    <span class="type">bool</span> heavy = <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, t, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; t &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;treasure&gt; <span class="title">treas</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; treas[i].time &gt;&gt; treas[i].val;</span><br><span class="line">        <span class="keyword">if</span> (treas[i].time &gt; <span class="number">30</span>) treas[i].heavy = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(m + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(t + <span class="number">1</span>, <span class="number">-1</span>));</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> tr : treas) </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = m; j &gt;= <span class="number">0</span>; j--) </span><br><span class="line">            <span class="keyword">if</span> (tr.heavy &amp;&amp; j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> k = t; k &gt;= tr.time; k--) </span><br><span class="line">                    <span class="keyword">if</span> (dp[j - <span class="number">1</span>][k - tr.time] != <span class="number">-1</span>)</span><br><span class="line">                        dp[j][k] = <span class="built_in">max</span>(dp[j][k], dp[j - <span class="number">1</span>][k - tr.time] + tr.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!tr.heavy) </span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> k = t; k &gt;= tr.time; k--) </span><br><span class="line">                    <span class="keyword">if</span> (dp[j][k - tr.time] != <span class="number">-1</span>)</span><br><span class="line">                        dp[j][k] = <span class="built_in">max</span>(dp[j][k], dp[j][k - tr.time] + tr.val);</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> d : dp) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> p : d) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p &gt; ans) ans = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 64 位输出请用 printf(&quot;%lld&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-2"><a href="#思路及必要说明-2" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲"><a href="#动态规划五部曲" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义"><a href="#1-确定-dp-数组的下标及含义" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><p><code>dp[j][k]</code> 表示：使用不超过 <code>j</code> 个重型宝藏名额、总时间不超过 <code>k</code> 分钟时，能获得的最大价值。</p>
+<ul>
+<li><code>j</code> 的范围：<code>0</code> 到 <code>m</code>（重型宝藏数量限制）</li>
+<li><code>k</code> 的范围：<code>0</code> 到 <code>T</code>（总时间限制）</li>
+<li>初始值设为 <code>-1</code> 表示该状态不可达</li>
+</ul>
+<h4 id="2-确定递推公式"><a href="#2-确定递推公式" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><p>对于每个宝藏 <code>tr</code>：</p>
+<ul>
+<li><p><strong>如果是重型宝藏</strong>（<code>tr.heavy == true</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j][k] = max(dp[j][k], dp[j-1][k-tr.time] + tr.val)</span><br></pre></td></tr></table></figure>
+<p>需要消耗1个重型名额，从 <code>dp[j-1][k-tr.time]</code> 转移而来</p>
+</li>
+<li><p><strong>如果是普通宝藏</strong>（<code>tr.heavy == false</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j][k] = max(dp[j][k], dp[j][k-tr.time] + tr.val)</span><br></pre></td></tr></table></figure>
+<p>不消耗重型名额，从 <code>dp[j][k-tr.time]</code> 转移而来</p>
+</li>
+</ul>
+<h4 id="3-dp-数组的初始化"><a href="#3-dp-数组的初始化" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li><code>dp[0][0] = 0</code>：不使用任何重型宝藏、不花时间，价值为0（这是唯一的初始可达状态）</li>
+<li>其他所有状态初始化为 <code>-1</code>，表示不可达</li>
+</ul>
+<h4 id="4-确定遍历顺序"><a href="#4-确定遍历顺序" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li><strong>外层遍历物品</strong>：遍历每个宝藏 <code>tr</code></li>
+<li><strong>内层遍历容量</strong>：<ul>
+<li>重型名额 <code>j</code>：从 <code>m</code> 倒序遍历到 <code>0</code>（01背包倒序，避免重复选择）</li>
+<li>时间 <code>k</code>：从 <code>T</code> 倒序遍历到 <code>tr.time</code>（01背包倒序）</li>
+</ul>
+</li>
+<li><strong>倒序遍历的原因</strong>：这是01背包问题的经典做法，确保每个物品只被选择一次</li>
+</ul>
+<h4 id="5-举例推导-dp-数组"><a href="#5-举例推导-dp-数组" class="headerlink" title="5. 举例推导 dp 数组"></a>5. 举例推导 dp 数组</h4><p>以示例为例：<code>n=4, T=100, m=1</code></p>
+<ul>
+<li>宝藏1：耗时20，价值50（普通）</li>
+<li>宝藏2：耗时35，价值60（重型）</li>
+<li>宝藏3：耗时25，价值30（普通）</li>
+<li>宝藏4：耗时40，价值70（重型）</li>
+</ul>
+<p>初始化：<code>dp[0][0]=0</code>，其余为-1</p>
+<p>遍历宝藏1（普通，t&#x3D;20, v&#x3D;50）后：</p>
+<ul>
+<li><code>dp[0][20] = 50</code></li>
+</ul>
+<p>遍历宝藏2（重型，t&#x3D;35, v&#x3D;60）后：</p>
+<ul>
+<li><code>dp[0][20] = 50</code>（不变）</li>
+<li><code>dp[1][35] = 60</code></li>
+<li><code>dp[1][55] = 110</code>（选宝藏1+宝藏2）</li>
+</ul>
+<p>遍历宝藏3（普通，t&#x3D;25, v&#x3D;30）后：</p>
+<ul>
+<li><code>dp[0][20] = 50</code></li>
+<li><code>dp[0][25] = 30</code></li>
+<li><code>dp[0][45] = 80</code>（选宝藏1+宝藏3）</li>
+<li><code>dp[1][35] = 60</code></li>
+<li><code>dp[1][55] = 110</code></li>
+<li><code>dp[1][60] = 90</code>（选宝藏2+宝藏3）</li>
+<li><code>dp[1][80] = 140</code>（选宝藏1+宝藏2+宝藏3）</li>
+</ul>
+<p>遍历宝藏4（重型，t&#x3D;40, v&#x3D;70）后：</p>
+<ul>
+<li><code>dp[0][45] = 80</code>（宝藏1+宝藏3）</li>
+<li><code>dp[1][40] = 70</code></li>
+<li><code>dp[1][60] = 120</code>（宝藏1+宝藏4）</li>
+<li><code>dp[1][65] = 100</code>（宝藏3+宝藏4）</li>
+<li><code>dp[1][85] = 150</code>（宝藏1+宝藏3+宝藏4）← <strong>最优解</strong></li>
+<li><code>dp[1][80] = 140</code>（宝藏1+宝藏2+宝藏3）</li>
+<li><code>dp[1][95] = 130</code>（宝藏2+宝藏3+宝藏4）</li>
+<li><code>dp[1][100] = 180</code>（宝藏1+宝藏2+宝藏3+宝藏4，但重型&#x3D;2&gt;m&#x3D;1，不可行）</li>
+</ul>
+<p>最终答案：遍历整个dp数组，最大值为 <code>150</code>（<code>dp[1][85]</code>，使用1个重型名额，耗时85分钟）</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-1-21%E5%BC%80%E5%8F%91%E5%B2%97/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-1-21%E5%BC%80%E5%8F%91%E5%B2%97/";
+            const title         = "「华为机试练习--26.1.21开发岗」";
+            const excerpt       = `REALHW132 魔法相册的重复记忆题目链接：REALHW132 魔法相册的重复记忆
+描述小红正在整理自己的 n 本魔法相册，她发现有些珍贵的记忆（照片）由于备份原因，同时出现在了多本相册中。每张照片由一个唯一的标识符 id 和一个...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/01%E8%83%8C%E5%8C%85/" rel="tag">01背包</a>, <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/unordered-map%E7%9A%84key%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89struct%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/" rel="tag">unordered_map的key是自定义struct怎么处理</a>, <a class="tag-none-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-none-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89hash%E5%87%BD%E6%95%B0/" rel="tag">自定义hash函数</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-04-28T07:33:30.543Z" itemprop="dateModified">最后编辑：2026-04-28</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" pdd23笔试真题练习" href="/2026/04/26/pdd23笔试真题练习/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 华为机试练习--26.4.22开发岗" href="/2026/04/28/华为机试练习-26-4-22开发岗/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                47
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                8
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                137
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW132-%E9%AD%94%E6%B3%95%E7%9B%B8%E5%86%8C%E7%9A%84%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BF%86"><span class="toc-text">REALHW132 魔法相册的重复记忆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">本题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E9%9A%BE%E7%82%B9"><span class="toc-text">关键难点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-map%E7%9A%84key%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89struct%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-text">unordered_map的key是自定义struct怎么处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%99%AE%E9%80%9A%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%BD%93-key"><span class="toc-text">一、为什么普通结构体不能直接当 key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E6%95%B4%E5%8F%AF%E8%BF%90%E8%A1%8C%E5%86%99%E6%B3%95%EF%BC%88%E4%B8%A4%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%96%B9%E6%A1%88%EF%BC%89"><span class="toc-text">二、完整可运行写法（两种常用方案）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%881%EF%BC%9A%E9%87%8D%E8%BD%BD-%E7%89%B9%E5%8C%96-std-hash%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">方案1：重载 &#x3D;&#x3D; + 特化 std::hash（推荐）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%882%EF%BC%9A%E4%BC%A0%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%93%88%E5%B8%8C-%E5%88%A4%E7%AD%89%EF%BC%88%E4%B8%8D%E6%B1%A1%E6%9F%93std%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="toc-text">方案2：传入自定义哈希+判等（不污染std命名空间）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%A5%E5%85%85%E5%8C%BA%E5%88%86%EF%BC%9Amap-%E5%92%8C-unordered-map"><span class="toc-text">三、补充区分：map 和 unordered_map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">四、注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89hash%E5%87%BD%E6%95%B0"><span class="toc-text">自定义hash函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%90%9E%E6%87%82%EF%BC%9A%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E5%88%B0%E5%BA%95%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%9F"><span class="toc-text">一、先搞懂：哈希函数到底是干嘛的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%A0%E7%9C%8B%E4%B8%8D%E6%87%82%E7%9A%84%E8%BF%99%E5%8F%A5%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%88%91%E6%8B%86%E5%BC%80%E8%AE%B2"><span class="toc-text">二、你看不懂的这句代码，我拆开讲</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-hash"><span class="toc-text">1. hash&lt;int&gt;()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-hash-n-id"><span class="toc-text">2. hash&lt;int&gt;()(n.id)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-hash-n-val-1"><span class="toc-text">3. hash&lt;int&gt;()(n.val) &lt;&lt; 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4"><span class="toc-text">4. ^</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E5%A4%A7%E7%99%BD%E8%AF%9D%E7%BF%BB%E8%AF%91%E6%95%B4%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-text">三、用大白话翻译整行代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%86%99%E6%B3%95%EF%BC%88%E4%BD%A0%E4%BB%A5%E5%90%8E%E7%9B%B4%E6%8E%A5%E7%94%A8%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="toc-text">四、更简单的写法（你以后直接用这个）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E5%86%99-%EF%BC%9F"><span class="toc-text">五、为什么必须写 &#x3D;&#x3D; ？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%80%E7%BB%88%E6%80%BB%E7%BB%93%EF%BC%88%E4%BD%A0%E4%B8%80%E5%AE%9A%E8%83%BD%E6%87%82%EF%BC%89"><span class="toc-text">六、最终总结（你一定能懂）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%88%91%E7%BB%99%E4%BD%A0%E4%B8%80%E4%B8%AA%E3%80%90%E8%B6%85%E7%BA%A7%E7%AE%80%E5%8D%95%E6%A8%A1%E6%9D%BF%E3%80%91"><span class="toc-text">七、我给你一个【超级简单模板】</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW133-%E5%B9%BB%E5%85%BD%E9%98%B2%E5%BE%A1%E6%88%98"><span class="toc-text">REALHW133 幻兽防御战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-1"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-1"><span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-text">本题思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REALHW134-%E9%81%97%E8%BF%B9%E6%8E%A2%E9%99%A9%E5%AE%B6%E5%B0%8F%E7%BA%A2"><span class="toc-text">REALHW134 遗迹探险家小红</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-text">输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="toc-text">输出描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1-2"><span class="toc-text">示例1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84"><span class="toc-text">5. 举例推导 dp 数组</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/01%E8%83%8C%E5%8C%85/" style="font-size: 0.7em;">01背包</a> <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a> <a href="/tags/G1-Garbage-first/" style="font-size: 0.6em;">G1(Garbage first)</a> <a href="/tags/GC-Garbage-Collection-%E4%B8%8EJava%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" style="font-size: 0.6em;">GC(Garbage Collection) 与Java引用类型</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/29/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-4-15%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--26.4.15开发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-4-22%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--26.4.22开发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/28/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-1-21%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--26.1.21开发岗</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/26/pdd23%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98%E7%BB%83%E4%B9%A0/"><i class="fa  fa-book"></i> pdd23笔试真题练习</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/25/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95%E9%A2%98-%E5%9B%9E%E6%BA%AF/"><i class="fa  fa-book"></i> 高频算法手撕题--回溯</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
