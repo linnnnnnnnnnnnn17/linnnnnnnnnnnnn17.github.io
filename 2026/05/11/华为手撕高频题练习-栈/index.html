@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>华为手撕高频题练习--栈 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, Java, 优先队列, 栈, 算法" />
+  
+  <meta name="description" content="频次数据   排名 题目 频次    ① LC 20 有效的括号 22次   ② LC 394 字符串解码 15次   ③ LC 739 每日温度 6次   ③ LC 155 最小栈 6次   ④ LC 23 合并K个升序链表 5次   LC 20 有效的括号 22次 题目链接：LC 20 有效的括号  题目描述给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为手撕高频题练习--栈">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="频次数据   排名 题目 频次    ① LC 20 有效的括号 22次   ② LC 394 字符串解码 15次   ③ LC 739 每日温度 6次   ③ LC 155 最小栈 6次   ④ LC 23 合并K个升序链表 5次   LC 20 有效的括号 22次 题目链接：LC 20 有效的括号  题目描述给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-11T06:28:04.000Z">
+<meta property="article:modified_time" content="2026-05-11T10:32:18.834Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="优先队列">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">华为手撕高频题练习--栈</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-05-11T06:28:04.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-05-11</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~17.61K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1778495538834"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%91%E6%AC%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">频次数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7-22%E6%AC%A1"><span class="toc-number">2.</span> <span class="toc-text">LC 20 有效的括号 22次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A"><span class="toc-number">2.1.3.</span> <span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-4%EF%BC%9A"><span class="toc-number">2.1.4.</span> <span class="toc-text">示例 4：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-5%EF%BC%9A"><span class="toc-number">2.1.5.</span> <span class="toc-text">示例 5：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-number">2.1.6.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isValid-%E7%9A%84%E5%85%B6%E4%BB%96%E5%86%99%E6%B3%952%E7%A7%8D"><span class="toc-number">2.2.1.</span> <span class="toc-text">isValid 的其他写法2种</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.</span> <span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81-15%E6%AC%A1"><span class="toc-number">3.</span> <span class="toc-text">LC 394 字符串解码 15次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-1"><span class="toc-number">3.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-1"><span class="toc-number">3.1.3.</span> <span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-4%EF%BC%9A-1"><span class="toc-number">3.1.4.</span> <span class="toc-text">示例 4：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-1"><span class="toc-number">3.1.5.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-number">3.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-number">3.3.</span> <span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-6%E6%AC%A1"><span class="toc-number">4.</span> <span class="toc-text">LC 739 每日温度 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">4.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">示例 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">4.1.2.</span> <span class="toc-text">示例 2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-number">4.1.3.</span> <span class="toc-text">示例 3:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-2"><span class="toc-number">4.1.4.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">4.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-number">4.3.</span> <span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-155-%E6%9C%80%E5%B0%8F%E6%A0%88-6%E6%AC%A1"><span class="toc-number">5.</span> <span class="toc-text">LC 155 最小栈 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1-1"><span class="toc-number">5.1.1.</span> <span class="toc-text">示例 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-3"><span class="toc-number">5.1.2.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-number">5.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-3"><span class="toc-number">5.3.</span> <span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-23-%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8-5%E6%AC%A1"><span class="toc-number">6.</span> <span class="toc-text">LC 23 合并K个升序链表 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="toc-number">6.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-2"><span class="toc-number">6.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-2"><span class="toc-number">6.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-2"><span class="toc-number">6.1.3.</span> <span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-4"><span class="toc-number">6.1.4.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-number">6.2.</span> <span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-4"><span class="toc-number">6.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97-priority-queue-%E8%B6%85%E6%B8%85%E6%99%B0%E8%AE%B2%E8%A7%A3%EF%BC%88%E5%88%B7%E9%A2%98%E5%BF%85%E7%94%A8%EF%BC%8C%E4%B8%80%E7%9C%8B%E5%B0%B1%E4%BC%9A%EF%BC%89"><span class="toc-number">6.3.1.</span> <span class="toc-text">C++ 优先队列 priority_queue 超清晰讲解（刷题必用，一看就会）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%83%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">1. 它是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.1.2.</span> <span class="toc-text">2. 头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%80%E5%B8%B8%E7%94%A8-3-%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="toc-number">6.3.1.3.</span> <span class="toc-text">3. 最常用 3 种定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0-%E9%BB%98%E8%AE%A4%EF%BC%9A%E5%A4%A7%E9%A1%B6%E5%A0%86%EF%BC%88%E5%A4%A7%E7%9A%84%E4%BC%98%E5%85%88%EF%BC%89"><span class="toc-number">6.3.1.3.1.</span> <span class="toc-text">① 默认：大顶堆（大的优先）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-%E5%B0%8F%E9%A1%B6%E5%A0%86%EF%BC%88%E5%B0%8F%E7%9A%84%E4%BC%98%E5%85%88%EF%BC%8C%E5%88%B7%E9%A2%98%E6%9C%80%E5%B8%B8%E7%94%A8%EF%BC%81%EF%BC%89"><span class="toc-number">6.3.1.3.2.</span> <span class="toc-text">② 小顶堆（小的优先，刷题最常用！）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BD%93-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%88%E5%90%8E%E9%9D%A2%E8%AE%B2%EF%BC%89"><span class="toc-number">6.3.1.3.3.</span> <span class="toc-text">③ 存储结构体&#x2F;自定义排序（后面讲）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%EF%BC%88%E5%B0%B1-5-%E4%B8%AA%EF%BC%8C%E8%83%8C%E4%B8%8B%E6%9D%A5%EF%BC%89"><span class="toc-number">6.3.1.4.</span> <span class="toc-text">4. 核心操作（就 5 个，背下来）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%81"><span class="toc-number">6.3.1.4.1.</span> <span class="toc-text">注意！</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%B6%85%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90"><span class="toc-number">6.3.1.5.</span> <span class="toc-text">5. 超简单例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%B7%E9%A2%98%E5%BF%85%E8%83%8C%E6%80%BB%E7%BB%93"><span class="toc-number">6.3.1.6.</span> <span class="toc-text">6. 刷题必背总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue-%E4%B8%89%E4%B8%AA%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">6.3.2.</span> <span class="toc-text">priority_queue 三个模板参数到底是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%E4%BE%9D%E6%AC%A1%E6%98%AF%EF%BC%9A"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">三个参数依次是：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BB%98%E8%AE%A4%E6%98%AF%E5%A4%A7%E9%A1%B6%E5%A0%86%EF%BC%9F"><span class="toc-number">6.3.2.2.</span> <span class="toc-text">为什么默认是大顶堆？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%A0%E5%86%99%E5%B0%8F%E9%A1%B6%E5%A0%86%E5%BF%85%E9%A1%BB%E6%94%B9%E6%88%90%EF%BC%9Agreater"><span class="toc-number">6.3.2.2.1.</span> <span class="toc-text">你写小顶堆必须改成：greater&lt;int&gt;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%85%B3%E9%94%AE%EF%BC%9A%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E9%80%BB%E8%BE%91%E5%92%8C%E4%BD%A0%E7%9B%B4%E8%A7%89%E7%9B%B8%E5%8F%8D%EF%BC%81"><span class="toc-number">6.3.2.3.</span> <span class="toc-text">最关键：比较函数逻辑和你直觉相反！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%97%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="toc-number">6.3.2.4.</span> <span class="toc-text">通俗大白话</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="频次数据"><a href="#频次数据" class="headerlink" title="频次数据"></a>频次数据</h1><table>
+<thead>
+<tr>
+<th>排名</th>
+<th>题目</th>
+<th>频次</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>①</td>
+<td>LC 20 有效的括号</td>
+<td>22次</td>
+</tr>
+<tr>
+<td>②</td>
+<td>LC 394 字符串解码</td>
+<td>15次</td>
+</tr>
+<tr>
+<td>③</td>
+<td>LC 739 每日温度</td>
+<td>6次</td>
+</tr>
+<tr>
+<td>③</td>
+<td>LC 155 最小栈</td>
+<td>6次</td>
+</tr>
+<tr>
+<td>④</td>
+<td>LC 23 合并K个升序链表</td>
+<td>5次</td>
+</tr>
+</tbody></table>
+<h1 id="LC-20-有效的括号-22次"><a href="#LC-20-有效的括号-22次" class="headerlink" title="LC 20 有效的括号 22次"></a>LC 20 有效的括号 22次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/description/?envType=study-plan-v2&envId=top-100-liked">LC 20 有效的括号</a></p>
+</blockquote>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>每个右括号都有一个对应的相同类型的左括号。</p>
+<h3 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：s &#x3D; “()”<br>输出：true</p>
+<h3 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：s &#x3D; “()[]{}”<br>输出：true</p>
+<h3 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h3><p>输入：s &#x3D; “(]”<br>输出：false</p>
+<h3 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a>示例 4：</h3><p>输入：s &#x3D; “([])”<br>输出：true</p>
+<h3 id="示例-5："><a href="#示例-5：" class="headerlink" title="示例 5："></a>示例 5：</h3><p>输入：s &#x3D; “([)]”<br>输出：false</p>
+<h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; s.length &lt;&#x3D; 104<br>s 仅由括号 ‘()[]{}’ 组成</p>
+<h2 id="ACM完整代码"><a href="#ACM完整代码" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">size</span>() % <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) st.<span class="built_in">push</span>(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) st.<span class="built_in">push</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#123;&#x27;</span>) st.<span class="built_in">push</span>(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> st.<span class="built_in">empty</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isValid</span>(s)) cout &lt;&lt; <span class="string">&quot;true&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;false&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isValid-的其他写法2种"><a href="#isValid-的其他写法2种" class="headerlink" title="isValid 的其他写法2种"></a>isValid 的其他写法2种</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">char</span>,<span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;(&#x27;</span>,<span class="string">&#x27;)&#x27;</span>&#125;,&#123;<span class="string">&#x27;[&#x27;</span>,<span class="string">&#x27;]&#x27;</span>&#125;,&#123;<span class="string">&#x27;&#123;&#x27;</span>,<span class="string">&#x27;&#125;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) &#123; <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">        <span class="comment">// mp.contains(c) 用来判断c是不是 mp 的一个key</span></span><br><span class="line">        <span class="keyword">if</span> (mp.<span class="built_in">contains</span>(c)) &#123; <span class="comment">// c是左括号</span></span><br><span class="line">            st.<span class="built_in">push</span>(mp[c]); <span class="comment">// 入栈对应的右括号</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">            <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">            &#125;</span><br><span class="line">            st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">char</span>,<span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;)&#x27;</span>,<span class="string">&#x27;(&#x27;</span>&#125;,&#123;<span class="string">&#x27;]&#x27;</span>,<span class="string">&#x27;[&#x27;</span>&#125;,&#123;<span class="string">&#x27;&#125;&#x27;</span>,<span class="string">&#x27;&#123;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) &#123; <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">        <span class="comment">// mp.contains(c) 用来判断c是不是 mp 的一个key</span></span><br><span class="line">        <span class="keyword">if</span> (!mp.<span class="built_in">contains</span>(c)) &#123; <span class="comment">// c是左括号</span></span><br><span class="line">            st.<span class="built_in">push</span>(c); <span class="comment">// 入栈</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">            <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != mp[c]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">            &#125;</span><br><span class="line">            st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明"><a href="#思路及必要说明" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p>这是一道经典的栈应用题目，核心是利用栈来匹配括号的正确性。</p>
+<p><strong>关键观察：</strong></p>
+<ul>
+<li>有效字符串的长度必须是偶数</li>
+<li>右括号必须与最近的左括号匹配，且类型相同</li>
+<li>栈可以很好地处理这种嵌套结构</li>
+</ul>
+<p><strong>算法策略：</strong></p>
+<ol>
+<li><strong>初始化检查</strong>：如果字符串长度为奇数，直接返回false</li>
+<li><strong>遍历字符串</strong>：<ul>
+<li>遇到左括号，将对应的右括号压入栈</li>
+<li>遇到右括号，检查栈是否为空或栈顶是否匹配</li>
+</ul>
+</li>
+<li><strong>匹配检查</strong>：<ul>
+<li>如果栈为空或栈顶不匹配当前右括号，返回false</li>
+<li>否则弹出栈顶</li>
+</ul>
+</li>
+<li><strong>最终检查</strong>：遍历结束后，栈必须为空</li>
+</ol>
+<p><strong>时间复杂度</strong>：O(n)，每个字符最多入栈和出栈一次<br><strong>空间复杂度</strong>：O(n)，最坏情况下栈存储所有字符</p>
+<p><strong>实现技巧：</strong></p>
+<ul>
+<li>可以使用哈希表存储括号映射关系（如 <code>&#123;&#39;(&#39;:&#39;)&#39;, &#39;[&#39;:&#39;]&#39;, &#39;&#123;&#39;:&#39;&#125;&#39;&#125;</code>）</li>
+<li>也可以直接在代码中判断，避免哈希表查找开销</li>
+</ul>
+<h1 id="LC-394-字符串解码-15次"><a href="#LC-394-字符串解码-15次" class="headerlink" title="LC 394 字符串解码 15次"></a>LC 394 字符串解码 15次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/description/?envType=study-plan-v2&envId=top-100-liked">LC 394 字符串解码</a></p>
+</blockquote>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
+<p>编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。</p>
+<p>你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。</p>
+<p>此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。</p>
+<p>测试用例保证输出的长度不会超过 105。</p>
+<h3 id="示例-1：-1"><a href="#示例-1：-1" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：s &#x3D; “3[a]2[bc]”<br>输出：”aaabcbc”</p>
+<h3 id="示例-2：-1"><a href="#示例-2：-1" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：s &#x3D; “3[a2[c]]”<br>输出：”accaccacc”</p>
+<h3 id="示例-3：-1"><a href="#示例-3：-1" class="headerlink" title="示例 3："></a>示例 3：</h3><p>输入：s &#x3D; “2[abc]3[cd]ef”<br>输出：”abcabccdcdcdef”</p>
+<h3 id="示例-4：-1"><a href="#示例-4：-1" class="headerlink" title="示例 4："></a>示例 4：</h3><p>输入：s &#x3D; “abc3[cd]xyz”<br>输出：”abccdcdcdxyz”</p>
+<h3 id="提示：-1"><a href="#提示：-1" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; s.length &lt;&#x3D; 30<br>s 由小写英文字母、数字和方括号 ‘[]’ 组成<br>s 保证是一个 有效 的输入。<br>s 中所有整数的取值范围为 [1, 300] </p>
+<h2 id="ACM完整代码-1"><a href="#ACM完整代码-1" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">decodeString</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    stack&lt;pair&lt;string, <span class="type">int</span>&gt;&gt; stk; <span class="comment">// 用于模拟计算机的递归</span></span><br><span class="line">    string res;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s) </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isalpha</span>(c))</span><br><span class="line">            res += c;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isdigit</span>(c)) </span><br><span class="line">            k = k * <span class="number">10</span> + (c - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) &#123; <span class="comment">// 递</span></span><br><span class="line">            <span class="comment">// 在递归之前，把当前递归函数中的局部变量 res 和 k 保存到栈中</span></span><br><span class="line">            stk.<span class="built_in">emplace</span>(<span class="built_in">move</span>(res), k);</span><br><span class="line">            <span class="comment">// 递归，初始化 res 和 k (由于 move 了，此时为空)</span></span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// 归</span></span><br><span class="line">            <span class="comment">// 从栈中恢复递归之前保存的局部变量</span></span><br><span class="line">            <span class="keyword">auto</span> [pre_res, pre_k] = stk.<span class="built_in">top</span>();</span><br><span class="line">            stk.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="comment">// 此时 res 是下层递归的返回值，将其重复 pre_k 次，拼接到递归前的 pre_res 之后</span></span><br><span class="line">            <span class="keyword">while</span> (pre_k--) </span><br><span class="line">                pre_res += res;</span><br><span class="line">            res = <span class="built_in">move</span>(pre_res);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">decodeString</span>(s) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-1"><a href="#思路及必要说明-1" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p>这是一道经典的栈应用题目，核心是利用栈来处理嵌套的字符串解码。</p>
+<p><strong>关键观察：</strong></p>
+<ul>
+<li>编码规则为 <code>k[encoded_string]</code>，表示方括号内的字符串重复k次</li>
+<li>嵌套结构适合用栈来处理，遇到 <code>[</code> 时保存当前状态，遇到 <code>]</code> 时恢复状态</li>
+<li>数字可能是多位数（如 “10[abc]”）</li>
+</ul>
+<p><strong>算法策略：</strong></p>
+<ol>
+<li><strong>遍历字符串</strong>：<ul>
+<li>遇到字母：直接添加到当前结果字符串</li>
+<li>遇到数字：累积计算完整的数字值</li>
+<li>遇到 <code>[</code>：将当前结果字符串和数字压入栈，然后重置</li>
+<li>遇到 <code>]</code>：弹出栈顶的字符串和数字，将当前结果重复指定次数后拼接到弹出的字符串后</li>
+</ul>
+</li>
+</ol>
+<p><strong>栈的作用：</strong></p>
+<ul>
+<li>存储进入 <code>[...]</code> 之前的状态（当前字符串和重复次数）</li>
+<li>遇到 <code>]</code> 时恢复之前的状态，实现类似递归的效果</li>
+</ul>
+<p><strong>时间复杂度</strong>：O(n)，每个字符最多被处理几次（取决于重复次数，但摊还分析为O(n)）<br><strong>空间复杂度</strong>：O(n)，栈存储的状态信息</p>
+<p><strong>实现技巧：</strong></p>
+<ul>
+<li>使用 <code>move</code> 语义优化字符串操作，避免不必要的拷贝</li>
+<li>注意数字可能是多位数，需要累积计算</li>
+</ul>
+<p><strong>关于 <code>std::move()</code> 的详细说明：</strong></p>
+<ul>
+<li><code>move</code> 是 C++11 引入的右值引用特性，用于实现移动语义</li>
+<li>在代码中 <code>stk.emplace(move(res), k)</code> 和 <code>res = move(pre_res)</code> 使用了 <code>move</code></li>
+<li><strong>作用</strong>：将 <code>res</code> 的所有权转移给栈中的 pair，而不是复制字符串</li>
+<li><strong>性能提升</strong>：对于长字符串，复制操作是 O(n)，而移动操作是 O(1)，只是转移指针</li>
+<li><strong>使用场景</strong>：当确定不再需要原变量时，使用 <code>move</code> 避免深拷贝</li>
+<li><strong>注意事项</strong>：<code>move</code> 后原变量处于有效但未定义状态，不应再使用</li>
+</ul>
+<h1 id="LC-739-每日温度-6次"><a href="#LC-739-每日温度-6次" class="headerlink" title="LC 739 每日温度 6次"></a>LC 739 每日温度 6次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked">LC 739 每日温度</a></p>
+</blockquote>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组 temperatures ，表示每天的温度，返回一个数组 answer ，其中 answer[i] 是指对于第 i 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 0 来代替。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入: temperatures &#x3D; [73,74,75,71,69,72,76,73]<br>输出: [1,1,4,2,1,1,0,0]</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><p>输入: temperatures &#x3D; [30,40,50,60]<br>输出: [1,1,1,0]</p>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h3><p>输入: temperatures &#x3D; [30,60,90]<br>输出: [1,1,0]</p>
+<h3 id="提示：-2"><a href="#提示：-2" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; temperatures.length &lt;&#x3D; 10^5<br>30 &lt;&#x3D; temperatures[i] &lt;&#x3D; 100</p>
+<h2 id="ACM模式完整代码"><a href="#ACM模式完整代码" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">strToVec</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">empty</span>() || s[<span class="number">0</span>] != <span class="string">&#x27;[&#x27;</span> || s[n - <span class="number">1</span>] != <span class="string">&#x27;]&#x27;</span>) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    string content = s.<span class="built_in">substr</span>(<span class="number">1</span>, n - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (content.<span class="built_in">empty</span>()) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function">stringstream <span class="title">ss</span><span class="params">(content)</span></span>;</span><br><span class="line">    string token;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, token, <span class="string">&#x27;,&#x27;</span>)) &#123;</span><br><span class="line">        <span class="type">size_t</span> start = token.<span class="built_in">find_first_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">size_t</span> end = token.<span class="built_in">find_last_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (start != string::npos &amp;&amp; end != string::npos) </span><br><span class="line">            token = token.<span class="built_in">substr</span>(start, end - start + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (!token.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = <span class="built_in">stoi</span>(token);</span><br><span class="line">            ans.<span class="built_in">push_back</span>(val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = temperatures.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> t = temperatures[i];</span><br><span class="line">        <span class="keyword">while</span> (!st.<span class="built_in">empty</span>() &amp;&amp; t &gt; temperatures[st.<span class="built_in">top</span>()]) &#123;</span><br><span class="line">            <span class="type">int</span> j = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">            ans[j] = i - j;</span><br><span class="line">        &#125;</span><br><span class="line">        st.<span class="built_in">push</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="keyword">auto</span> tem = <span class="built_in">strToVec</span>(s);</span><br><span class="line">    <span class="keyword">auto</span> res = <span class="built_in">dailyTemperatures</span>(tem);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;[&quot;</span> &lt;&lt; res[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; res.<span class="built_in">size</span>(); i++)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; res[i];</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;]\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-2"><a href="#思路及必要说明-2" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p>这是一道经典的单调栈题目，核心是利用单调栈来寻找每个元素右边第一个更大的元素。</p>
+<p><strong>关键观察：</strong></p>
+<ul>
+<li>需要找到每个位置之后第一个比它大的元素的位置</li>
+<li>单调栈可以在O(n)时间内解决这类”下一个更大元素”问题</li>
+<li>栈中存储的是数组下标，保持对应的值单调递减</li>
+</ul>
+<p><strong>算法策略：</strong></p>
+<ol>
+<li><strong>维护单调递减栈</strong>：栈中存储的是数组下标，对应的温度值从栈底到栈顶单调递减</li>
+<li><strong>遍历每个温度</strong>：<ul>
+<li>如果当前温度 &gt; 栈顶温度，说明找到了栈顶元素的下一个更高温度</li>
+<li>弹出栈顶元素，计算距离并记录结果</li>
+<li>重复上述过程直到栈为空或栈顶温度 &gt;&#x3D; 当前温度</li>
+<li>将当前下标压入栈</li>
+</ul>
+</li>
+<li><strong>未找到更高温度的元素</strong>：栈中剩余元素对应的结果保持为0</li>
+</ol>
+<p><strong>单调栈的作用：</strong></p>
+<ul>
+<li>维护一个递减序列，确保每次遇到更大的元素时能找到所有需要更新的位置</li>
+<li>每个元素最多入栈和出栈一次</li>
+</ul>
+<p><strong>时间复杂度</strong>：O(n)，每个元素最多入栈和出栈一次<br><strong>空间复杂度</strong>：O(n)，栈的最大深度</p>
+<p><strong>为什么这样做是正确的？</strong></p>
+<ul>
+<li>栈中始终保持递减顺序，所以当遇到更大的元素时，栈顶元素的下一个更大元素就是当前元素</li>
+<li>弹出栈顶后继续检查新的栈顶，直到栈为空或栈顶元素更大</li>
+</ul>
+<h1 id="LC-155-最小栈-6次"><a href="#LC-155-最小栈-6次" class="headerlink" title="LC 155 最小栈 6次"></a>LC 155 最小栈 6次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-stack/description/?envType=study-plan-v2&envId=top-100-liked">LC 155 最小栈</a></p>
+</blockquote>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。</p>
+<p>实现 MinStack 类:</p>
+<p>MinStack() 初始化堆栈对象。<br>void push(int val) 将元素val推入堆栈。<br>void pop() 删除堆栈顶部的元素。<br>int top() 获取堆栈顶部的元素。<br>int getMin() 获取堆栈中的最小元素。</p>
+<h3 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入：<br>[“MinStack”,”push”,”push”,”push”,”getMin”,”pop”,”top”,”getMin”]<br>[ [],[-2],[0],[-3],[],[],[],[]]</p>
+<p>输出：<br>[null,null,null,null,-3,null,0,-2]</p>
+<p>解释：<br>MinStack minStack &#x3D; new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; 返回 -3.<br>minStack.pop();<br>minStack.top();      –&gt; 返回 0.<br>minStack.getMin();   –&gt; 返回 -2.</p>
+<h3 id="提示：-3"><a href="#提示：-3" class="headerlink" title="提示："></a>提示：</h3><p>-2^31 &lt;&#x3D; val &lt;&#x3D; 2^31 - 1<br>pop、top 和 getMin 操作总是在 非空栈 上调用<br>push, pop, top, and getMin最多被调用 3 * 10^4 次</p>
+<h2 id="ACM模式完整代码-1"><a href="#ACM模式完整代码-1" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line">    stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; ms;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        <span class="comment">// 添加栈底哨兵INT_MAX</span></span><br><span class="line">        <span class="comment">// 这里的 0 写成任意数都可以，反正用不到</span></span><br><span class="line">        ms.<span class="built_in">emplace</span>(<span class="number">0</span>, INT_MAX);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        ms.<span class="built_in">emplace</span>(val, <span class="built_in">min</span>(<span class="built_in">getMin</span>(), val));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ms.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ms.<span class="built_in">top</span>().first;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ms.<span class="built_in">top</span>().second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack* obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj-&gt;getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-3"><a href="#思路及必要说明-3" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p>这是一道经典的栈设计题目，核心是在常数时间内获取栈中的最小元素。</p>
+<p><strong>关键观察：</strong></p>
+<ul>
+<li>普通栈只能在O(1)时间内获取栈顶元素，但无法快速获取最小值</li>
+<li>需要维护额外的信息来跟踪最小值</li>
+</ul>
+<p><strong>算法策略：</strong></p>
+<ol>
+<li><strong>使用栈存储成对元素</strong>：每个栈元素存储 <code>(当前值, 当前最小值)</code></li>
+<li><strong>push操作</strong>：<ul>
+<li>新元素的值与当前最小值比较</li>
+<li>存储 <code>(val, min(current_min, val))</code></li>
+</ul>
+</li>
+<li><strong>pop操作</strong>：直接弹出栈顶元素</li>
+<li><strong>top操作</strong>：返回栈顶元素的第一个值</li>
+<li><strong>getMin操作</strong>：返回栈顶元素的第二个值</li>
+</ol>
+<p><strong>哨兵节点优化：</strong></p>
+<ul>
+<li>在栈底添加一个哨兵节点 <code>(0, INT_MAX)</code>，避免空栈判断</li>
+<li>这样 <code>getMin()</code> 可以直接返回 <code>ms.top().second</code></li>
+</ul>
+<p><strong>时间复杂度</strong>：O(1)，所有操作都是常数时间<br><strong>空间复杂度</strong>：O(n)，需要存储额外的最小值信息</p>
+<p><strong>实现技巧：</strong></p>
+<ul>
+<li>使用 <code>emplace</code> 直接构造pair，避免拷贝</li>
+<li>哨兵节点简化了边界条件处理</li>
+</ul>
+<p><strong>关于 <code>emplace()</code> 的详细说明：</strong></p>
+<ul>
+<li><code>emplace</code> 是 C++11 引入的方法，用于在容器中直接构造对象</li>
+<li>与普通 <code>push</code> 的区别：<ul>
+<li><code>push</code>：先构造对象，再复制&#x2F;移动到容器中</li>
+<li><code>emplace</code>：直接在容器内存位置构造对象，避免额外的拷贝&#x2F;移动</li>
+</ul>
+</li>
+<li><strong>代码示例对比</strong>：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 push：先构造 pair，再移动到栈中</span></span><br><span class="line">ms.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(val, <span class="built_in">min</span>(<span class="built_in">getMin</span>(), val)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 emplace：直接在栈中构造 pair</span></span><br><span class="line">ms.<span class="built_in">emplace</span>(val, <span class="built_in">min</span>(<span class="built_in">getMin</span>(), val));</span><br></pre></td></tr></table></figure></li>
+<li><strong>性能优势</strong>：对于复杂对象，可以减少一次构造和一次拷贝&#x2F;移动</li>
+<li><strong>使用建议</strong>：C++11 后优先使用 <code>emplace</code> 系列方法</li>
+</ul>
+<h1 id="LC-23-合并K个升序链表-5次"><a href="#LC-23-合并K个升序链表-5次" class="headerlink" title="LC 23 合并K个升序链表 5次"></a>LC 23 合并K个升序链表 5次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-k-sorted-lists/description/">LC 23 合并K个升序链表</a></p>
+</blockquote>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个链表数组，每个链表都已经按升序排列。</p>
+<p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<h3 id="示例-1：-2"><a href="#示例-1：-2" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：lists &#x3D; [ [1,4,5],[1,3,4],[2,6]]<br>输出：[1,1,2,3,4,4,5,6]<br>解释：链表数组如下：<br>[<br>  1-&gt;4-&gt;5,<br>  1-&gt;3-&gt;4,<br>  2-&gt;6<br>]<br>将它们合并到一个有序链表中得到。<br>1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</p>
+<h3 id="示例-2：-2"><a href="#示例-2：-2" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：lists &#x3D; []<br>输出：[]</p>
+<h3 id="示例-3：-2"><a href="#示例-3：-2" class="headerlink" title="示例 3："></a>示例 3：</h3><p>输入：lists &#x3D; [[]]<br>输出：[]</p>
+<h3 id="提示：-4"><a href="#提示：-4" class="headerlink" title="提示："></a>提示：</h3><p>k &#x3D;&#x3D; lists.length<br>0 &lt;&#x3D; k &lt;&#x3D; 10^4<br>0 &lt;&#x3D; lists[i].length &lt;&#x3D; 500<br>-10^4 &lt;&#x3D; lists[i][j] &lt;&#x3D; 10^4<br>lists[i] 按 升序 排列<br>lists[i].length 的总和不超过 10^4</p>
+<h2 id="ACM模式完整代码-2"><a href="#ACM模式完整代码-2" class="headerlink" title="ACM模式完整代码"></a>ACM模式完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    ListNode *next;</span><br><span class="line">    <span class="built_in">ListNode</span>() : <span class="built_in">val</span>(<span class="number">0</span>), <span class="built_in">next</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">ListNode</span>(<span class="type">int</span> x) : <span class="built_in">val</span>(x), <span class="built_in">next</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">ListNode</span>(<span class="type">int</span> x, ListNode *next) : <span class="built_in">val</span>(x), <span class="built_in">next</span>(next) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解析输入字符串，将 &quot;[[1,4,5],[1,3,4],[2,6]]&quot; 转换为链表数组</span></span><br><span class="line"><span class="function">vector&lt;ListNode*&gt; <span class="title">parseInput</span><span class="params">(<span class="type">const</span> string&amp; s)</span> </span>&#123;</span><br><span class="line">    vector&lt;ListNode*&gt; lists;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span> || s[<span class="number">0</span>] != <span class="string">&#x27;[&#x27;</span> || s[n<span class="number">-1</span>] != <span class="string">&#x27;]&#x27;</span>) <span class="keyword">return</span> lists;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 跳过空格</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; s[i] == <span class="string">&#x27; &#x27;</span>) i++;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= n - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 找到子数组开始</span></span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            ListNode* dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">            ListNode* cur = dummy;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 解析子数组内的数字</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; n &amp;&amp; s[i] != <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">while</span> (i &lt; n &amp;&amp; (s[i] == <span class="string">&#x27; &#x27;</span> || s[i] == <span class="string">&#x27;,&#x27;</span>)) i++;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= n || s[i] == <span class="string">&#x27;]&#x27;</span>) <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 解析数字</span></span><br><span class="line">                <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">                <span class="type">bool</span> negative = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == <span class="string">&#x27;-&#x27;</span>) &#123;</span><br><span class="line">                    negative = <span class="literal">true</span>;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">while</span> (i &lt; n &amp;&amp; <span class="built_in">isdigit</span>(s[i])) &#123;</span><br><span class="line">                    num = num * <span class="number">10</span> + (s[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (negative) num = -num;</span><br><span class="line">                </span><br><span class="line">                cur-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(num);</span><br><span class="line">                cur = cur-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            lists.<span class="built_in">push_back</span>(dummy-&gt;next);</span><br><span class="line">            <span class="keyword">delete</span> dummy;</span><br><span class="line">            i++; <span class="comment">// 跳过 &#x27;]&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lists;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将链表转换为输出字符串 &quot;[1,1,2,3,4,4,5,6]&quot;</span></span><br><span class="line"><span class="function">string <span class="title">listToString</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!head) <span class="keyword">return</span> <span class="string">&quot;[]&quot;</span>;</span><br><span class="line">    string s = <span class="string">&quot;[&quot;</span>;</span><br><span class="line">    ListNode* cur = head;</span><br><span class="line">    <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">        s += <span class="built_in">to_string</span>(cur-&gt;val);</span><br><span class="line">        <span class="keyword">if</span> (cur-&gt;next) s += <span class="string">&quot;,&quot;</span>;</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    s += <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放链表内存</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">deleteList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (head) &#123;</span><br><span class="line">        ListNode* tmp = head;</span><br><span class="line">        head = head-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(vector&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> cmp = [](<span class="type">const</span> ListNode* a, ListNode* b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val; <span class="comment">// 最小堆（greater）</span></span><br><span class="line">    &#125;;</span><br><span class="line">    priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, <span class="keyword">decltype</span>(cmp)&gt; <span class="built_in">pq</span>(cmp);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 所有非空链表头节点入堆</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> head : lists) </span><br><span class="line">        <span class="keyword">if</span> (head) </span><br><span class="line">            pq.<span class="built_in">push</span>(head);</span><br><span class="line"></span><br><span class="line">    ListNode dummy&#123;&#125;; <span class="comment">// 哨兵节点，作为合并后链表头节点的前一个节点</span></span><br><span class="line">    <span class="keyword">auto</span> cur = &amp;dummy;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 循环直至堆空</span></span><br><span class="line">    <span class="keyword">while</span> (!pq.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="keyword">auto</span> node = pq.<span class="built_in">top</span>(); <span class="comment">// 剩余节点中最小节点</span></span><br><span class="line">        pq.<span class="built_in">pop</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 下一个节点不为空，可能是最小节点，入堆</span></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;next) </span><br><span class="line">            pq.<span class="built_in">push</span>(node-&gt;next);</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next = node; <span class="comment">// node 加到新链表末尾</span></span><br><span class="line">        cur = cur-&gt;next; <span class="comment">// 准备合并下一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.next; <span class="comment">// 哨兵节点的下一个节点就是新链表的头节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getline</span>(cin, s);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 解析输入</span></span><br><span class="line">    vector&lt;ListNode*&gt; lists = <span class="built_in">parseInput</span>(s);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 合并链表</span></span><br><span class="line">    ListNode* result = <span class="built_in">mergeKLists</span>(lists);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">listToString</span>(result) &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 释放内存</span></span><br><span class="line">    <span class="built_in">deleteList</span>(result);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-4"><a href="#思路及必要说明-4" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p>这是一道经典的堆（优先队列）应用题目，核心是利用最小堆来高效合并多个有序链表。</p>
+<h3 id="C-优先队列-priority-queue-超清晰讲解（刷题必用，一看就会）"><a href="#C-优先队列-priority-queue-超清晰讲解（刷题必用，一看就会）" class="headerlink" title="C++ 优先队列 priority_queue 超清晰讲解（刷题必用，一看就会）"></a>C++ 优先队列 <code>priority_queue</code> 超清晰讲解（刷题必用，一看就会）</h3><p>我给你讲<strong>最简单、最实用、刷题直接背</strong>的版本，不搞复杂理论！</p>
+<h4 id="1-它是什么？"><a href="#1-它是什么？" class="headerlink" title="1. 它是什么？"></a>1. 它是什么？</h4><p><strong>一个自动排序的队列</strong><br>你随便往里扔数字，它会自动帮你排好：<br><strong>默认：大的在前（大顶堆）</strong></p>
+<h4 id="2-头文件"><a href="#2-头文件" class="headerlink" title="2. 头文件"></a>2. 头文件</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-最常用-3-种定义"><a href="#3-最常用-3-种定义" class="headerlink" title="3. 最常用 3 种定义"></a>3. 最常用 3 种定义</h4><h5 id="①-默认：大顶堆（大的优先）"><a href="#①-默认：大顶堆（大的优先）" class="headerlink" title="① 默认：大顶堆（大的优先）"></a>① 默认：大顶堆（大的优先）</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>&gt; pq;</span><br></pre></td></tr></table></figure>
+<p>出队顺序：<strong>从大到小</strong></p>
+<h5 id="②-小顶堆（小的优先，刷题最常用！）"><a href="#②-小顶堆（小的优先，刷题最常用！）" class="headerlink" title="② 小顶堆（小的优先，刷题最常用！）"></a>② 小顶堆（小的优先，刷题最常用！）</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt; pq;</span><br></pre></td></tr></table></figure>
+<p>出队顺序：<strong>从小到大</strong></p>
+<h5 id="③-存储结构体-自定义排序（后面讲）"><a href="#③-存储结构体-自定义排序（后面讲）" class="headerlink" title="③ 存储结构体&#x2F;自定义排序（后面讲）"></a>③ 存储结构体&#x2F;自定义排序（后面讲）</h5><hr>
+<h4 id="4-核心操作（就-5-个，背下来）"><a href="#4-核心操作（就-5-个，背下来）" class="headerlink" title="4. 核心操作（就 5 个，背下来）"></a>4. 核心操作（就 5 个，背下来）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pq.<span class="built_in">push</span>(x);      <span class="comment">// 入队</span></span><br><span class="line">pq.<span class="built_in">top</span>();        <span class="comment">// 取队首（最大/最小元素）</span></span><br><span class="line">pq.<span class="built_in">pop</span>();        <span class="comment">// 删除队首</span></span><br><span class="line">pq.<span class="built_in">empty</span>();      <span class="comment">// 是否为空</span></span><br><span class="line">pq.<span class="built_in">size</span>();       <span class="comment">// 元素个数</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="注意！"><a href="#注意！" class="headerlink" title="注意！"></a>注意！</h5><ul>
+<li>看堆顶用 <strong><code>top()</code></strong></li>
+<li>删除用 <strong><code>pop()</code></strong></li>
+<li>没有 <code>front()</code>！</li>
+</ul>
+<hr>
+<h4 id="5-超简单例子"><a href="#5-超简单例子" class="headerlink" title="5. 超简单例子"></a>5. 超简单例子</h4><p><strong>大顶堆</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>&gt; pq;</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">3</span>);</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在堆里顺序：5,3,1</span></span><br><span class="line">cout &lt;&lt; pq.<span class="built_in">top</span>(); <span class="comment">// 5</span></span><br><span class="line">pq.<span class="built_in">pop</span>();</span><br><span class="line">cout &lt;&lt; pq.<span class="built_in">top</span>(); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>小顶堆</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt; pq;</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">3</span>);</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">pq.<span class="built_in">push</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; pq.<span class="built_in">top</span>(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="6-刷题必背总结"><a href="#6-刷题必背总结" class="headerlink" title="6. 刷题必背总结"></a>6. 刷题必背总结</h4><ul>
+<li><strong>大顶堆</strong>：<code>priority_queue&lt;int&gt;</code></li>
+<li><strong>小顶堆</strong>：<code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt;</code></li>
+<li>取队首：<code>top()</code></li>
+<li>删除队首：<code>pop()</code></li>
+<li>自动排序，不用你管</li>
+</ul>
+<hr>
+<h3 id="priority-queue-三个模板参数到底是什么"><a href="#priority-queue-三个模板参数到底是什么" class="headerlink" title="priority_queue 三个模板参数到底是什么"></a><code>priority_queue</code> 三个模板参数到底是什么</h3><p>完整原型：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">T</span>,</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Container</span> = vector&lt;T&gt;,</span><br><span class="line">    <span class="keyword">class</span> Compare = less&lt;T&gt;</span><br><span class="line">&gt;</span><br><span class="line"><span class="keyword">class</span> priority_queue;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三个参数依次是："><a href="#三个参数依次是：" class="headerlink" title="三个参数依次是："></a>三个参数依次是：</h4><ol>
+<li><strong>T</strong>：存什么类型（int、pair、结构体）</li>
+<li><strong>Container</strong>：底层用什么容器存（默认 <code>vector</code>）</li>
+<li><strong>Compare</strong>：比较规则，决定是<strong>大顶堆还是小顶堆</strong></li>
+</ol>
+<hr>
+<h4 id="为什么默认是大顶堆？"><a href="#为什么默认是大顶堆？" class="headerlink" title="为什么默认是大顶堆？"></a>为什么默认是大顶堆？</h4><p>默认第三个参数：<code>less&lt;int&gt;</code></p>
+<ul>
+<li><code>less&lt;int&gt;</code>：<strong>a &lt; b，把大的放前面</strong> → <strong>大顶堆</strong></li>
+</ul>
+<h5 id="你写小顶堆必须改成：greater"><a href="#你写小顶堆必须改成：greater" class="headerlink" title="你写小顶堆必须改成：greater&lt;int&gt;"></a>你写小顶堆必须改成：<code>greater&lt;int&gt;</code></h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt; pq;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="最关键：比较函数逻辑和你直觉相反！"><a href="#最关键：比较函数逻辑和你直觉相反！" class="headerlink" title="最关键：比较函数逻辑和你直觉相反！"></a>最关键：比较函数逻辑和你直觉相反！</h4><p><code>priority_queue</code> 内部规则：</p>
+<blockquote>
+<p><strong>返回 true：第一个元素放下面，第二个放上面</strong></p>
+</blockquote>
+<p><strong>1. 默认 less<T>（大顶堆）</strong><br><code>less&lt;int&gt;()</code> 是 <code>a &lt; b</code></p>
+<ul>
+<li>如果 <code>a &lt; b</code> → 返回 true → <strong>b 放上面</strong><br>→ 大的在上 → <strong>大顶堆</strong></li>
+</ul>
+<p><strong>2. greater<T>（小顶堆）</strong><br><code>greater&lt;int&gt;()</code> 是 <code>a &gt; b</code></p>
+<ul>
+<li>如果 <code>a &gt; b</code> → 返回 true → <strong>b 放上面</strong><br>→ 小的在上 → <strong>小顶堆</strong></li>
+</ul>
+<hr>
+<h4 id="通俗大白话"><a href="#通俗大白话" class="headerlink" title="通俗大白话"></a>通俗大白话</h4><ul>
+<li><code>less</code>：<strong>谁大谁在上</strong>（大顶堆）</li>
+<li><code>greater</code>：<strong>谁小谁在上</strong>（小顶堆）</li>
+</ul>
+<p>所以小顶堆必须完整写三个参数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型, 底层容器, 比较规则</span></span><br><span class="line">priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>不能省略，因为要改第三个参数，前面两个必须带上。</p>
+<hr>
+<ul>
+<li>大顶堆：<code>priority_queue&lt;int&gt;</code></li>
+<li>小顶堆：<code>priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;</code></li>
+<li>less→大顶，greater→小顶，<strong>逻辑反着来</strong></li>
+</ul>
+<p><strong>优先队列（Priority Queue）介绍：</strong></p>
+<ul>
+<li>优先队列是一种特殊的队列，元素按照优先级排序，而不是先进先出</li>
+<li>C++ 中的 <code>priority_queue</code> 默认是大顶堆（最大元素在队首）</li>
+<li>通过自定义比较函数，可以实现小顶堆（最小元素在队首）</li>
+<li><strong>核心操作</strong>：<ul>
+<li><code>push(x)</code>：将元素 x 加入堆，时间复杂度 O(log n)</li>
+<li><code>pop()</code>：移除堆顶元素，时间复杂度 O(log n)</li>
+<li><code>top()</code>：获取堆顶元素，时间复杂度 O(1)</li>
+<li><code>empty()</code>：判断堆是否为空，时间复杂度 O(1)</li>
+</ul>
+</li>
+</ul>
+<p><strong>本题中优先队列的使用：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义比较函数，实现小顶堆（按节点值从小到大排序）</span></span><br><span class="line"><span class="keyword">auto</span> cmp = [](<span class="type">const</span> ListNode* a, ListNode* b) &#123;</span><br><span class="line">    <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val; <span class="comment">// 注意：返回 true 表示 a 的优先级低于 b</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明优先队列，传入比较函数</span></span><br><span class="line">priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, <span class="keyword">decltype</span>(cmp)&gt; <span class="built_in">pq</span>(cmp);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>比较函数逻辑</strong>：<code>return a-&gt;val &gt; b-&gt;val</code> 表示当 a 的值大于 b 的值时，a 的优先级更低，应该排在 b 后面</li>
+<li>这样堆顶始终是值最小的节点</li>
+</ul>
+<p><strong>算法策略：</strong></p>
+<ol>
+<li><strong>构建最小堆</strong>：使用优先队列存储所有非空链表的头节点</li>
+<li><strong>初始化堆</strong>：将每个链表的头节点（非空）加入堆</li>
+<li><strong>合并过程</strong>：<ul>
+<li>取出堆顶元素（最小节点），加入结果链表</li>
+<li>如果该节点还有下一个节点，将其加入堆</li>
+<li>重复直到堆为空</li>
+</ul>
+</li>
+<li><strong>哨兵节点</strong>：使用哨兵节点简化链表操作</li>
+</ol>
+<p><strong>堆的作用：</strong></p>
+<ul>
+<li>高效维护k个链表的当前最小节点</li>
+<li>每次操作的时间复杂度为O(log k)</li>
+</ul>
+<p><strong>时间复杂度</strong>：O(N log k)，N是所有节点总数，每次堆操作O(log k)<br><strong>空间复杂度</strong>：O(k)，堆最多存储k个节点</p>
+<p><strong>输入输出处理：</strong></p>
+<ul>
+<li>输入格式：<code>[[1,4,5],[1,3,4],[2,6]]</code></li>
+<li>输出格式：<code>[1,1,2,3,4,4,5,6]</code></li>
+<li>需要解析嵌套的方括号结构，转换为链表数组</li>
+<li>需要将结果链表转换为字符串输出</li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/";
+            const title         = "「华为手撕高频题练习--栈」";
+            const excerpt       = `频次数据
+
+
+排名
+题目
+频次
+
+
+
+①
+LC 20 有效的括号
+22次
+
+
+②
+LC 394 字符串解码
+15次
+
+
+③
+LC 739 每日温度
+6次
+
+
+③
+LC 155 最小栈
+6次
+
+
+④
+LC 23 合并K个升序链表
+5次
+...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a>, <a class="tag-none-link" href="/tags/%E6%A0%88/" rel="tag">栈</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-05-11T10:32:18.834Z" itemprop="dateModified">最后编辑：2026-05-11</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 华为手撕高频题练习--图论" href="/2026/05/11/华为手撕高频题练习-图论/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 华为手撕高频题练习--链表" href="/2026/05/11/华为手撕高频题练习-链表/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                51
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                9
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                141
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%91%E6%AC%A1%E6%95%B0%E6%8D%AE"><span class="toc-text">频次数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7-22%E6%AC%A1"><span class="toc-text">LC 20 有效的括号 22次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A"><span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-4%EF%BC%9A"><span class="toc-text">示例 4：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-5%EF%BC%9A"><span class="toc-text">示例 5：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isValid-%E7%9A%84%E5%85%B6%E4%BB%96%E5%86%99%E6%B3%952%E7%A7%8D"><span class="toc-text">isValid 的其他写法2种</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81-15%E6%AC%A1"><span class="toc-text">LC 394 字符串解码 15次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-1"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-1"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-1"><span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-4%EF%BC%9A-1"><span class="toc-text">示例 4：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-1"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-6%E6%AC%A1"><span class="toc-text">LC 739 每日温度 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-text">示例 2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-text">示例 3:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-2"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-155-%E6%9C%80%E5%B0%8F%E6%A0%88-6%E6%AC%A1"><span class="toc-text">LC 155 最小栈 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1-1"><span class="toc-text">示例 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-3"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-3"><span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-23-%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8-5%E6%AC%A1"><span class="toc-text">LC 23 合并K个升序链表 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-2"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-2"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-2"><span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-4"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-text">ACM模式完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-4"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97-priority-queue-%E8%B6%85%E6%B8%85%E6%99%B0%E8%AE%B2%E8%A7%A3%EF%BC%88%E5%88%B7%E9%A2%98%E5%BF%85%E7%94%A8%EF%BC%8C%E4%B8%80%E7%9C%8B%E5%B0%B1%E4%BC%9A%EF%BC%89"><span class="toc-text">C++ 优先队列 priority_queue 超清晰讲解（刷题必用，一看就会）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%83%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">1. 它是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">2. 头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%80%E5%B8%B8%E7%94%A8-3-%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="toc-text">3. 最常用 3 种定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0-%E9%BB%98%E8%AE%A4%EF%BC%9A%E5%A4%A7%E9%A1%B6%E5%A0%86%EF%BC%88%E5%A4%A7%E7%9A%84%E4%BC%98%E5%85%88%EF%BC%89"><span class="toc-text">① 默认：大顶堆（大的优先）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-%E5%B0%8F%E9%A1%B6%E5%A0%86%EF%BC%88%E5%B0%8F%E7%9A%84%E4%BC%98%E5%85%88%EF%BC%8C%E5%88%B7%E9%A2%98%E6%9C%80%E5%B8%B8%E7%94%A8%EF%BC%81%EF%BC%89"><span class="toc-text">② 小顶堆（小的优先，刷题最常用！）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BD%93-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%88%E5%90%8E%E9%9D%A2%E8%AE%B2%EF%BC%89"><span class="toc-text">③ 存储结构体&#x2F;自定义排序（后面讲）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%EF%BC%88%E5%B0%B1-5-%E4%B8%AA%EF%BC%8C%E8%83%8C%E4%B8%8B%E6%9D%A5%EF%BC%89"><span class="toc-text">4. 核心操作（就 5 个，背下来）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%81"><span class="toc-text">注意！</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%B6%85%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90"><span class="toc-text">5. 超简单例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%B7%E9%A2%98%E5%BF%85%E8%83%8C%E6%80%BB%E7%BB%93"><span class="toc-text">6. 刷题必背总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue-%E4%B8%89%E4%B8%AA%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">priority_queue 三个模板参数到底是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%E4%BE%9D%E6%AC%A1%E6%98%AF%EF%BC%9A"><span class="toc-text">三个参数依次是：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BB%98%E8%AE%A4%E6%98%AF%E5%A4%A7%E9%A1%B6%E5%A0%86%EF%BC%9F"><span class="toc-text">为什么默认是大顶堆？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%A0%E5%86%99%E5%B0%8F%E9%A1%B6%E5%A0%86%E5%BF%85%E9%A1%BB%E6%94%B9%E6%88%90%EF%BC%9Agreater"><span class="toc-text">你写小顶堆必须改成：greater&lt;int&gt;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%85%B3%E9%94%AE%EF%BC%9A%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E9%80%BB%E8%BE%91%E5%92%8C%E4%BD%A0%E7%9B%B4%E8%A7%89%E7%9B%B8%E5%8F%8D%EF%BC%81"><span class="toc-text">最关键：比较函数逻辑和你直觉相反！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%97%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="toc-text">通俗大白话</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/01%E8%83%8C%E5%8C%85/" style="font-size: 0.7em;">01背包</a> <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/BFS/" style="font-size: 0.6em;">BFS</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DFS/" style="font-size: 0.6em;">DFS</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E9%93%BE%E8%A1%A8/"><i class="fa  fa-book"></i> 华为手撕高频题练习--链表</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/"><i class="fa  fa-book"></i> 华为手撕高频题练习--栈</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%9B%BE%E8%AE%BA/"><i class="fa  fa-book"></i> 华为手撕高频题练习--图论</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/10/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8F%8C%E6%8C%87%E9%92%88-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"><i class="fa  fa-book"></i> 华为手撕高频题练习--双指针/滑动窗口</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/04/29/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0-26-4-15%E5%BC%80%E5%8F%91%E5%B2%97/"><i class="fa  fa-book"></i> 华为机试练习--26.4.15开发岗</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
