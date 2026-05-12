@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>华为手撕高频题练习--动态规划/贪心 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, Java, 动态规划, 算法, 贪心算法" />
+  
+  <meta name="description" content="频次数据   题目 频次    LC 300 最长递增子序列 8次   LC 53 最大子数组和 7次   LC 55 跳跃游戏 7次   LC 64 最小路径和 6次   LC 70 爬楼梯 6次   LC 406 根据身高重建队列 5次   LC 72 编辑距离 5次   LC 300 最长递增子序列8次 题目链接：LC 300 最长递增子序列  题目描述给你一个整数数组 nums ，找到其中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为手撕高频题练习--动态规划&#x2F;贪心">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/05/12/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="频次数据   题目 频次    LC 300 最长递增子序列 8次   LC 53 最大子数组和 7次   LC 55 跳跃游戏 7次   LC 64 最小路径和 6次   LC 70 爬楼梯 6次   LC 406 根据身高重建队列 5次   LC 72 编辑距离 5次   LC 300 最长递增子序列8次 题目链接：LC 300 最长递增子序列  题目描述给你一个整数数组 nums ，找到其中">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-12T12:35:30.000Z">
+<meta property="article:modified_time" content="2026-05-12T13:45:47.771Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="贪心算法">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/05/12/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">华为手撕高频题练习--动态规划/贪心</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-05-12T12:35:30.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-05-12</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~24.14K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1778593547771"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%91%E6%AC%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">频次数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%978%E6%AC%A1"><span class="toc-number">2.</span> <span class="toc-text">LC 300 最长递增子序列8次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A"><span class="toc-number">2.1.3.</span> <span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-number">2.1.4.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-number">2.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F"><span class="toc-number">2.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-10-9-2-5-3-7-101-18-%EF%BC%89"><span class="toc-number">2.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [10,9,2,5,3,7,101,18]）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-53-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C-7%E6%AC%A1"><span class="toc-number">3.</span> <span class="toc-text">LC 53 最大子数组和 7次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-1"><span class="toc-number">3.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-1"><span class="toc-number">3.1.3.</span> <span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-1"><span class="toc-number">3.1.4.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-number">3.2.</span> <span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DP"><span class="toc-number">3.2.1.</span> <span class="toc-text">DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83-%E4%BB%85%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.2.</span> <span class="toc-text">贪心(仅核心代码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-number">3.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-1"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-1"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-number">3.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-1"><span class="toc-number">3.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-2-1-3-4-1-2-1-5-4-%EF%BC%89"><span class="toc-number">3.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="toc-number">3.3.2.</span> <span class="toc-text">贪心算法思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F7%E6%AC%A1"><span class="toc-number">4.</span> <span class="toc-text">LC 55 跳跃游戏7次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">4.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-2"><span class="toc-number">4.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-2"><span class="toc-number">4.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-2"><span class="toc-number">4.1.3.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-number">4.2.</span> <span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DP-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83-%E4%BB%85%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">贪心(仅核心代码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-number">4.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-2"><span class="toc-number">4.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-2"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-2"><span class="toc-number">4.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-2"><span class="toc-number">4.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-2"><span class="toc-number">4.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-2-3-1-1-4-%EF%BC%89"><span class="toc-number">4.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [2,3,1,1,4]）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF-1"><span class="toc-number">4.3.2.</span> <span class="toc-text">贪心算法思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C-6%E6%AC%A1"><span class="toc-number">5.</span> <span class="toc-text">LC 64 最小路径和 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-3"><span class="toc-number">5.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-3"><span class="toc-number">5.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-3"><span class="toc-number">5.1.3.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-3"><span class="toc-number">5.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-3"><span class="toc-number">5.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-3"><span class="toc-number">5.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-3"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-3"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-3"><span class="toc-number">5.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-3"><span class="toc-number">5.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88grid-1-3-1-1-5-1-4-2-1-%EF%BC%89"><span class="toc-number">5.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（grid &#x3D; [[1,3,1],[1,5,1],[4,2,1]]）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-70-%E7%88%AC%E6%A5%BC%E6%A2%AF-6%E6%AC%A1"><span class="toc-number">6.</span> <span class="toc-text">LC 70 爬楼梯 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="toc-number">6.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-4"><span class="toc-number">6.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-4"><span class="toc-number">6.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-4"><span class="toc-number">6.1.3.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-4"><span class="toc-number">6.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-4"><span class="toc-number">6.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-4"><span class="toc-number">6.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-4"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-4"><span class="toc-number">6.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-4"><span class="toc-number">6.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-4"><span class="toc-number">6.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88n-5%EF%BC%89"><span class="toc-number">6.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（n &#x3D; 5）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-406-%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97-5%E6%AC%A1"><span class="toc-number">7.</span> <span class="toc-text">LC 406 根据身高重建队列 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-5"><span class="toc-number">7.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-5"><span class="toc-number">7.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-5"><span class="toc-number">7.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-5"><span class="toc-number">7.1.3.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-5"><span class="toc-number">7.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-5"><span class="toc-number">7.3.</span> <span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-72-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB-5%E6%AC%A1"><span class="toc-number">8.</span> <span class="toc-text">LC 72 编辑距离 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-6"><span class="toc-number">8.1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-6"><span class="toc-number">8.1.1.</span> <span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-6"><span class="toc-number">8.1.2.</span> <span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-6"><span class="toc-number">8.1.3.</span> <span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-6"><span class="toc-number">8.2.</span> <span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-6"><span class="toc-number">8.3.</span> <span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-5"><span class="toc-number">8.3.1.</span> <span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-5"><span class="toc-number">8.3.1.1.</span> <span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-5"><span class="toc-number">8.3.1.2.</span> <span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-5"><span class="toc-number">8.3.1.3.</span> <span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-5"><span class="toc-number">8.3.1.4.</span> <span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88word1-%E2%80%9Chorse%E2%80%9D-word2-%E2%80%9Cros%E2%80%9D%EF%BC%89"><span class="toc-number">8.3.1.5.</span> <span class="toc-text">5. 举例推导 dp 数组（word1 &#x3D; “horse”, word2 &#x3D; “ros”）</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="频次数据"><a href="#频次数据" class="headerlink" title="频次数据"></a>频次数据</h1><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>频次</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LC 300 最长递增子序列</td>
+<td>8次</td>
+</tr>
+<tr>
+<td>LC 53 最大子数组和</td>
+<td>7次</td>
+</tr>
+<tr>
+<td>LC 55 跳跃游戏</td>
+<td>7次</td>
+</tr>
+<tr>
+<td>LC 64 最小路径和</td>
+<td>6次</td>
+</tr>
+<tr>
+<td>LC 70 爬楼梯</td>
+<td>6次</td>
+</tr>
+<tr>
+<td>LC 406 根据身高重建队列</td>
+<td>5次</td>
+</tr>
+<tr>
+<td>LC 72 编辑距离</td>
+<td>5次</td>
+</tr>
+</tbody></table>
+<h1 id="LC-300-最长递增子序列8次"><a href="#LC-300-最长递增子序列8次" class="headerlink" title="LC 300 最长递增子序列8次"></a>LC 300 最长递增子序列8次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-increasing-subsequence/?envType=study-plan-v2&envId=top-100-liked">LC 300 最长递增子序列</a></p>
+</blockquote>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。</p>
+<p>子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。</p>
+<h3 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：nums &#x3D; [10,9,2,5,3,7,101,18]<br>输出：4<br>解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。</p>
+<h3 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：nums &#x3D; [0,1,0,3,2,3]<br>输出：4</p>
+<h3 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h3><p>输入：nums &#x3D; [7,7,7,7,7,7,7]<br>输出：1</p>
+<h3 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; nums.length &lt;&#x3D; 2500<br>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</p>
+<p>进阶：</p>
+<p>你能将算法的时间复杂度降低到 O(n log(n)) 吗?</p>
+<h2 id="ACM完整代码"><a href="#ACM完整代码" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">strToVec</span><span class="params">(<span class="type">const</span> string&amp; s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span> || s[<span class="number">0</span>] != <span class="string">&#x27;[&#x27;</span> || s[n - <span class="number">1</span>] != <span class="string">&#x27;]&#x27;</span>) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    string content = s.<span class="built_in">substr</span>(<span class="number">1</span>, n - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (content.<span class="built_in">empty</span>()) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function">stringstream <span class="title">ss</span><span class="params">(content)</span></span>;</span><br><span class="line">    string token;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, token, <span class="string">&#x27;,&#x27;</span>)) &#123;</span><br><span class="line">        <span class="type">size_t</span> start = token.<span class="built_in">find_first_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">size_t</span> end = token.<span class="built_in">find_last_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (start != string::npos &amp;&amp; end != string::npos)</span><br><span class="line">            token = token.<span class="built_in">substr</span>(start, end - start + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (!token.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = <span class="built_in">stoi</span>(token);</span><br><span class="line">            ans.<span class="built_in">push_back</span>(val); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lengthOfLIS</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> len = nums.<span class="built_in">size</span>(), ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(len, <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j]) dp[i] = <span class="built_in">max</span>(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[i] &gt; ans) ans = dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getline</span>(cin, s);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums = <span class="built_in">strToVec</span>(s);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">lengthOfLIS</span>(nums) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明"><a href="#思路及必要说明" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲"><a href="#动态规划五部曲" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义"><a href="#1-确定-dp-数组的下标及含义" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i]</code> 表示以 <code>nums[i]</code> 结尾的最长严格递增子序列的长度</li>
+<li>注意：必须以 <code>nums[i]</code> 结尾，这样才能保证递推的正确性</li>
+</ul>
+<h4 id="2-确定递推公式"><a href="#2-确定递推公式" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><ul>
+<li>对于每个 <code>i</code>，遍历所有 <code>j &lt; i</code></li>
+<li>如果 <code>nums[i] &gt; nums[j]</code>，说明可以将 <code>nums[i]</code> 接在以 <code>nums[j]</code> 结尾的子序列后面</li>
+<li>递推公式：<code>dp[i] = max(dp[i], dp[j] + 1)</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化"><a href="#3-dp-数组的初始化" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li>每个元素本身就是一个长度为 1 的子序列</li>
+<li>初始化：<code>dp[i] = 1</code> for all i</li>
+</ul>
+<h4 id="4-确定遍历顺序"><a href="#4-确定遍历顺序" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li><strong>外层</strong>：从左到右遍历 <code>i</code>（0 → n-1）</li>
+<li><strong>内层</strong>：从左到右遍历 <code>j</code>（0 → i-1）</li>
+<li>原因：计算 <code>dp[i]</code> 需要用到前面所有 <code>dp[j]</code> 的值</li>
+</ul>
+<h4 id="5-举例推导-dp-数组（nums-10-9-2-5-3-7-101-18-）"><a href="#5-举例推导-dp-数组（nums-10-9-2-5-3-7-101-18-）" class="headerlink" title="5. 举例推导 dp 数组（nums &#x3D; [10,9,2,5,3,7,101,18]）"></a>5. 举例推导 dp 数组（nums &#x3D; [10,9,2,5,3,7,101,18]）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">索引:  0   1   2   3   4   5    6   7</span><br><span class="line">nums: 10   9   2   5   3   7  101  18</span><br><span class="line">dp:   1   1   1   2   2   3    4   4</span><br><span class="line"></span><br><span class="line">推导过程：</span><br><span class="line">i=0: dp[0] = 1</span><br><span class="line">i=1: 9 &lt; 10 → dp[1] = 1</span><br><span class="line">i=2: 2 &lt; 10, 2 &lt; 9 → dp[2] = 1</span><br><span class="line">i=3: nums[3]=5 &gt; nums[2]=2 → dp[3] = max(1, dp[2]+1) = 2</span><br><span class="line">i=4: nums[4]=3 &gt; nums[2]=2 → dp[4] = max(1, dp[2]+1) = 2</span><br><span class="line">i=5: nums[5]=7 &gt; nums[2]=2 → dp[5] = 2</span><br><span class="line">     nums[5]=7 &gt; nums[3]=5 → dp[5] = max(2, dp[3]+1) = 3</span><br><span class="line">     nums[5]=7 &gt; nums[4]=3 → dp[5] = max(3, dp[4]+1) = 3</span><br><span class="line">i=6: nums[6]=101 &gt; nums[0..5] → dp[6] = max(dp[0..5]+1) = 4</span><br><span class="line">i=7: nums[7]=18 &gt; nums[0..5], 18 &lt; 101 → dp[7] = max(dp[0..5]+1) = 4</span><br><span class="line"></span><br><span class="line">最终答案：max(dp) = 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 dp = [1,1,...,1], ans=1  │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 1 to n-1:           │</span><br><span class="line">│   for j from 0 to i-1:         │</span><br><span class="line">│     if nums[i] &gt; nums[j]:      │</span><br><span class="line">│       dp[i] = max(dp[i], dp[j]+1)│</span><br><span class="line">│   ans = max(ans, dp[i])        │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 ans                        │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(n²)，双重循环</li>
+<li>空间复杂度：O(n)，dp数组</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li><code>dp[i]</code> 定义为以 <code>nums[i]</code> 结尾的最长递增子序列，保证了递推的正确性</li>
+<li>使用 <code>ans</code> 变量实时更新最大值，避免最后再遍历dp数组</li>
+</ul>
+<h1 id="LC-53-最大子数组和-7次"><a href="#LC-53-最大子数组和-7次" class="headerlink" title="LC 53 最大子数组和 7次"></a>LC 53 最大子数组和 7次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/?envType=study-plan-v2&envId=top-100-liked">LC 53 最大子数组和</a></p>
+</blockquote>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>子数组是数组中的一个连续部分。</p>
+<h3 id="示例-1：-1"><a href="#示例-1：-1" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]<br>输出：6<br>解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。</p>
+<h3 id="示例-2：-1"><a href="#示例-2：-1" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：nums &#x3D; [1]<br>输出：1</p>
+<h3 id="示例-3：-1"><a href="#示例-3：-1" class="headerlink" title="示例 3："></a>示例 3：</h3><p>输入：nums &#x3D; [5,4,-1,7,8]<br>输出：23</p>
+<h3 id="提示：-1"><a href="#提示：-1" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5<br>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</p>
+<p>进阶：如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的 分治法 求解。</p>
+<h2 id="ACM完整代码-1"><a href="#ACM完整代码-1" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><h3 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">strToVec</span><span class="params">(<span class="type">const</span> string&amp; s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span> || s[<span class="number">0</span>] != <span class="string">&#x27;[&#x27;</span> || s[n - <span class="number">1</span>] != <span class="string">&#x27;]&#x27;</span>) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    string content = s.<span class="built_in">substr</span>(<span class="number">1</span>, n - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (content.<span class="built_in">empty</span>()) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function">stringstream <span class="title">ss</span><span class="params">(content)</span></span>;</span><br><span class="line">    string token;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, token, <span class="string">&#x27;,&#x27;</span>)) &#123;</span><br><span class="line">        <span class="type">size_t</span> start = token.<span class="built_in">find_first_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">size_t</span> end = token.<span class="built_in">find_last_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (start != string::npos &amp;&amp; end != string::npos)</span><br><span class="line">            token = token.<span class="built_in">substr</span>(start, end - start + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (!token.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = <span class="built_in">stoi</span>(token);</span><br><span class="line">            ans.<span class="built_in">push_back</span>(val); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> len = nums.<span class="built_in">size</span>(), ans = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(len)</span></span>;</span><br><span class="line">    dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>] + nums[i], nums[i]);</span><br><span class="line">        <span class="keyword">if</span> (dp[i] &gt; ans) ans = dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getline</span>(cin, s);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums = <span class="built_in">strToVec</span>(s);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">maxSubArray</span>(nums) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="贪心-仅核心代码"><a href="#贪心-仅核心代码" class="headerlink" title="贪心(仅核心代码)"></a>贪心(仅核心代码)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> ans = INT_MIN;</span><br><span class="line">    <span class="type">int</span> min_pre_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> pre_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : nums) &#123;</span><br><span class="line">        pre_sum += x; <span class="comment">// 当前的前缀和</span></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, pre_sum - min_pre_sum); <span class="comment">// 减去前缀和的最小值</span></span><br><span class="line">        min_pre_sum = <span class="built_in">min</span>(min_pre_sum, pre_sum); <span class="comment">// 维护前缀和的最小值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路及必要说明-1"><a href="#思路及必要说明-1" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲-1"><a href="#动态规划五部曲-1" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义-1"><a href="#1-确定-dp-数组的下标及含义-1" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i]</code> 表示以 <code>nums[i]</code> 结尾的连续子数组的最大和</li>
+<li>注意：必须以 <code>nums[i]</code> 结尾，保证连续性</li>
+</ul>
+<h4 id="2-确定递推公式-1"><a href="#2-确定递推公式-1" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><ul>
+<li>对于每个位置 <code>i</code>，有两种选择：<ol>
+<li>将 <code>nums[i]</code> 加入前面的子数组：<code>dp[i-1] + nums[i]</code></li>
+<li>以 <code>nums[i]</code> 重新开始一个新的子数组：<code>nums[i]</code></li>
+</ol>
+</li>
+<li>递推公式：<code>dp[i] = max(dp[i-1] + nums[i], nums[i])</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化-1"><a href="#3-dp-数组的初始化-1" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li><code>dp[0] = nums[0]</code>，第一个元素本身就是一个子数组</li>
+</ul>
+<h4 id="4-确定遍历顺序-1"><a href="#4-确定遍历顺序-1" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li>从左到右遍历 <code>i</code>（1 → n-1）</li>
+<li>原因：计算 <code>dp[i]</code> 只需要 <code>dp[i-1]</code> 的值</li>
+</ul>
+<h4 id="5-举例推导-dp-数组（nums-2-1-3-4-1-2-1-5-4-）"><a href="#5-举例推导-dp-数组（nums-2-1-3-4-1-2-1-5-4-）" class="headerlink" title="5. 举例推导 dp 数组（nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]）"></a>5. 举例推导 dp 数组（nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">索引:  0   1    2   3    4   5   6    7   8</span><br><span class="line">nums: -2   1   -3   4   -1   2   1   -5   4</span><br><span class="line">dp:   -2   1   -2   4    3   5   6    1   5</span><br><span class="line"></span><br><span class="line">推导过程：</span><br><span class="line">dp[0] = -2</span><br><span class="line">dp[1] = max(-2+1, 1) = max(-1, 1) = 1</span><br><span class="line">dp[2] = max(1+(-3), -3) = max(-2, -3) = -2</span><br><span class="line">dp[3] = max(-2+4, 4) = max(2, 4) = 4</span><br><span class="line">dp[4] = max(4+(-1), -1) = max(3, -1) = 3</span><br><span class="line">dp[5] = max(3+2, 2) = max(5, 2) = 5</span><br><span class="line">dp[6] = max(5+1, 1) = max(6, 1) = 6</span><br><span class="line">dp[7] = max(6+(-5), -5) = max(1, -5) = 1</span><br><span class="line">dp[8] = max(1+4, 4) = max(5, 4) = 5</span><br><span class="line"></span><br><span class="line">最终答案：max(dp) = 6</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态规划流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 dp[0] = nums[0], ans = nums[0]│</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 1 to n-1:           │</span><br><span class="line">│   dp[i] = max(dp[i-1]+nums[i], nums[i])│</span><br><span class="line">│   ans = max(ans, dp[i])        │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 ans                        │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="贪心算法思路"><a href="#贪心算法思路" class="headerlink" title="贪心算法思路"></a>贪心算法思路</h3><p><strong>核心思想</strong>：利用前缀和与前缀最小值的差值来找到最大子数组和</p>
+<p><strong>关键公式</strong>：</p>
+<ul>
+<li>前缀和：<code>pre_sum[i] = nums[0] + nums[1] + ... + nums[i]</code></li>
+<li>子数组 <code>[j+1, i]</code> 的和 &#x3D; <code>pre_sum[i] - pre_sum[j]</code></li>
+<li>要最大化这个差值，需要最小化 <code>pre_sum[j]</code>（j &lt; i）</li>
+</ul>
+<p><strong>算法流程</strong>（nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pre_sum:    0   -2   -1   -4    0   -1    1    2   -3    1</span><br><span class="line">min_pre:    0   -2   -2   -4   -4   -4   -4   -4   -4   -4</span><br><span class="line">当前ans:    -2   1    0    4    4    5    6    6    6    6</span><br></pre></td></tr></table></figure>
+
+<p><strong>贪心流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 ans = INT_MIN,           │</span><br><span class="line">│ pre_sum = 0, min_pre_sum = 0   │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for x in nums:                 │</span><br><span class="line">│   pre_sum += x                 │</span><br><span class="line">│   ans = max(ans, pre_sum - min_pre_sum)│</span><br><span class="line">│   min_pre_sum = min(min_pre_sum, pre_sum)│</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 ans                        │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(n)，两种方法都是线性遍历</li>
+<li>空间复杂度：DP方法 O(n)，贪心方法 O(1)</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>DP方法：<code>max(dp[i-1]+nums[i], nums[i])</code> 巧妙地决定是否开始新子数组</li>
+<li>贪心方法：将问题转化为寻找前缀和的最大差值，空间复杂度优化到O(1)</li>
+</ul>
+<h1 id="LC-55-跳跃游戏7次"><a href="#LC-55-跳跃游戏7次" class="headerlink" title="LC 55 跳跃游戏7次"></a>LC 55 跳跃游戏7次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jump-game/description/?envType=study-plan-v2&envId=top-100-liked">LC 55 跳跃游戏</a></p>
+</blockquote>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。</p>
+<h3 id="示例-1：-2"><a href="#示例-1：-2" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：nums &#x3D; [2,3,1,1,4]<br>输出：true<br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。</p>
+<h3 id="示例-2：-2"><a href="#示例-2：-2" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：nums &#x3D; [3,2,1,0,4]<br>输出：false<br>解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。</p>
+<h3 id="提示：-2"><a href="#提示：-2" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^4<br>0 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</p>
+<h2 id="ACM完整代码-2"><a href="#ACM完整代码-2" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><h3 id="DP-1"><a href="#DP-1" class="headerlink" title="DP"></a>DP</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">strToVec</span><span class="params">(<span class="type">const</span> string&amp; s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span> || s[<span class="number">0</span>] != <span class="string">&#x27;[&#x27;</span> || s[n - <span class="number">1</span>] != <span class="string">&#x27;]&#x27;</span>) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    string content = s.<span class="built_in">substr</span>(<span class="number">1</span>, n - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (content.<span class="built_in">empty</span>()) <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function">stringstream <span class="title">ss</span><span class="params">(content)</span></span>;</span><br><span class="line">    string token;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ss, token, <span class="string">&#x27;,&#x27;</span>)) &#123;</span><br><span class="line">        <span class="type">size_t</span> start = token.<span class="built_in">find_first_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">size_t</span> end = token.<span class="built_in">find_last_not_of</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (start != string::npos &amp;&amp; end != string::npos)</span><br><span class="line">            token = token.<span class="built_in">substr</span>(start, end - start + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (!token.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = <span class="built_in">stoi</span>(token);</span><br><span class="line">            ans.<span class="built_in">push_back</span>(val); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">canJump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">dp</span><span class="params">(len, <span class="literal">false</span>)</span></span>;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; i++) </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) </span><br><span class="line">            <span class="keyword">if</span> (nums[j] &gt;= i - j &amp;&amp; dp[j]) &#123;</span><br><span class="line">                dp[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[len - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getline</span>(cin, s);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums = <span class="built_in">strToVec</span>(s);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">canJump</span>(nums))</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;true&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;false&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="贪心-仅核心代码-1"><a href="#贪心-仅核心代码-1" class="headerlink" title="贪心(仅核心代码)"></a>贪心(仅核心代码)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">canJump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> mx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; mx) &#123; <span class="comment">// 无法到达 i</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mx = <span class="built_in">max</span>(mx, i + nums[i]); <span class="comment">// 从 i 最右可以跳到 i + nums[i]</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-2"><a href="#思路及必要说明-2" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲-2"><a href="#动态规划五部曲-2" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义-2"><a href="#1-确定-dp-数组的下标及含义-2" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i]</code> 表示能否到达第 <code>i</code> 个位置（true&#x2F;false）</li>
+</ul>
+<h4 id="2-确定递推公式-2"><a href="#2-确定递推公式-2" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><ul>
+<li>如果存在 <code>j &lt; i</code>，使得 <code>dp[j] == true</code> 且 <code>nums[j] &gt;= i - j</code></li>
+<li>则 <code>dp[i] = true</code>，否则 <code>dp[i] = false</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化-2"><a href="#3-dp-数组的初始化-2" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li><code>dp[0] = true</code>，起点一定可以到达</li>
+</ul>
+<h4 id="4-确定遍历顺序-2"><a href="#4-确定遍历顺序-2" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li><strong>外层</strong>：从左到右遍历 <code>i</code>（1 → n-1）</li>
+<li><strong>内层</strong>：从左到右遍历 <code>j</code>（0 → i-1）</li>
+<li>原因：计算 <code>dp[i]</code> 需要检查前面所有位置是否能到达 <code>i</code></li>
+</ul>
+<h4 id="5-举例推导-dp-数组（nums-2-3-1-1-4-）"><a href="#5-举例推导-dp-数组（nums-2-3-1-1-4-）" class="headerlink" title="5. 举例推导 dp 数组（nums &#x3D; [2,3,1,1,4]）"></a>5. 举例推导 dp 数组（nums &#x3D; [2,3,1,1,4]）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">索引:  0   1   2   3   4</span><br><span class="line">nums:  2   3   1   1   4</span><br><span class="line">dp:   T   T   T   T   T</span><br><span class="line"></span><br><span class="line">推导过程：</span><br><span class="line">dp[0] = true</span><br><span class="line">i=1: 检查j=0 → nums[0]=2 &gt;= 1-0=1 → dp[1] = true</span><br><span class="line">i=2: 检查j=0 → nums[0]=2 &gt;= 2-0=2 → dp[2] = true</span><br><span class="line">i=3: 检查j=0 → nums[0]=2 &lt; 3-0=3 → 不满足</span><br><span class="line">     检查j=1 → nums[1]=3 &gt;= 3-1=2 → dp[3] = true</span><br><span class="line">i=4: 检查j=0 → nums[0]=2 &lt; 4-0=4 → 不满足</span><br><span class="line">     检查j=1 → nums[1]=3 &gt;= 4-1=3 → dp[4] = true</span><br><span class="line"></span><br><span class="line">最终答案：dp[4] = true</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态规划流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 dp[0] = true             │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 1 to n-1:           │</span><br><span class="line">│   dp[i] = false                 │</span><br><span class="line">│   for j from 0 to i-1:         │</span><br><span class="line">│     if dp[j] and nums[j] &gt;= i-j:│</span><br><span class="line">│       dp[i] = true              │</span><br><span class="line">│       break                     │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 dp[n-1]                    │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="贪心算法思路-1"><a href="#贪心算法思路-1" class="headerlink" title="贪心算法思路"></a>贪心算法思路</h3><p><strong>核心思想</strong>：维护一个变量 <code>mx</code> 表示当前能到达的最远位置</p>
+<p><strong>关键观察</strong>：</p>
+<ul>
+<li>如果当前位置 <code>i</code> 在 <code>mx</code> 范围内，则可以从 <code>i</code> 跳到 <code>i + nums[i]</code></li>
+<li>如果 <code>i &gt; mx</code>，说明无法到达 <code>i</code>，直接返回 false</li>
+</ul>
+<p><strong>算法流程</strong>（nums &#x3D; [3,2,1,0,4]）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=0: mx = max(0, 0+3) = 3</span><br><span class="line">i=1: mx = max(3, 1+2) = 3</span><br><span class="line">i=2: mx = max(3, 2+1) = 3</span><br><span class="line">i=3: mx = max(3, 3+0) = 3</span><br><span class="line">i=4: i=4 &gt; mx=3 → 返回 false</span><br></pre></td></tr></table></figure>
+
+<p><strong>贪心流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 mx = 0                   │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 0 to n-1:           │</span><br><span class="line">│   if i &gt; mx: return false       │</span><br><span class="line">│   mx = max(mx, i + nums[i])    │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 true                       │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：DP方法 O(n²)，贪心方法 O(n)</li>
+<li>空间复杂度：DP方法 O(n)，贪心方法 O(1)</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>DP方法：状态定义清晰，直接表达能否到达</li>
+<li>贪心方法：只关注最远可达位置，无需记录每个位置的状态，最优解法</li>
+</ul>
+<h1 id="LC-64-最小路径和-6次"><a href="#LC-64-最小路径和-6次" class="headerlink" title="LC 64 最小路径和 6次"></a>LC 64 最小路径和 6次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-path-sum/description/?envType=study-plan-v2&envId=top-100-liked">LC 64 最小路径和</a></p>
+</blockquote>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
+<p>说明：每次只能向下或者向右移动一步。</p>
+<h3 id="示例-1：-3"><a href="#示例-1：-3" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：grid &#x3D; [[1,3,1],[1,5,1],[4,2,1]]<br>输出：7<br>解释：因为路径 1→3→1→1→1 的总和最小。</p>
+<h3 id="示例-2：-3"><a href="#示例-2：-3" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：grid &#x3D; [[1,2,3],[4,5,6]]<br>输出：12</p>
+<h3 id="提示：-3"><a href="#提示：-3" class="headerlink" title="提示："></a>提示：</h3><p>m &#x3D;&#x3D; grid.length<br>n &#x3D;&#x3D; grid[i].length<br>1 &lt;&#x3D; m, n &lt;&#x3D; 200<br>0 &lt;&#x3D; grid[i][j] &lt;&#x3D; 200</p>
+<h2 id="ACM完整代码-3"><a href="#ACM完整代码-3" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">minPathSum</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(m, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n));</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; m; i++) dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + grid[i][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; n; j++) dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">1</span>] + grid[<span class="number">0</span>][j];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; m; i++) </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; n; j++) </span><br><span class="line">            dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) +grid[i][j];</span><br><span class="line">    <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> m, n;</span><br><span class="line">    cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">grid</span>(m, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">            cin &gt;&gt; grid[i][j];</span><br><span class="line">    cout &lt;&lt; <span class="built_in">minPathSum</span>(grid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-3"><a href="#思路及必要说明-3" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲-3"><a href="#动态规划五部曲-3" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义-3"><a href="#1-确定-dp-数组的下标及含义-3" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i][j]</code> 表示从左上角 <code>(0,0)</code> 走到 <code>(i,j)</code> 的最小路径和</li>
+</ul>
+<h4 id="2-确定递推公式-3"><a href="#2-确定递推公式-3" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><ul>
+<li>只能从上方 <code>(i-1,j)</code> 或左方 <code>(i,j-1)</code> 到达 <code>(i,j)</code></li>
+<li>递推公式：<code>dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化-3"><a href="#3-dp-数组的初始化-3" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li>第一行：只能从左边来，<code>dp[0][j] = dp[0][j-1] + grid[0][j]</code></li>
+<li>第一列：只能从上面来，<code>dp[i][0] = dp[i-1][0] + grid[i][0]</code></li>
+<li><code>dp[0][0] = grid[0][0]</code></li>
+</ul>
+<h4 id="4-确定遍历顺序-3"><a href="#4-确定遍历顺序-3" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li>先初始化第一行和第一列</li>
+<li>然后按行优先遍历，从 <code>(1,1)</code> 开始</li>
+<li>原因：计算 <code>dp[i][j]</code> 需要 <code>dp[i-1][j]</code> 和 <code>dp[i][j-1]</code></li>
+</ul>
+<h4 id="5-举例推导-dp-数组（grid-1-3-1-1-5-1-4-2-1-）"><a href="#5-举例推导-dp-数组（grid-1-3-1-1-5-1-4-2-1-）" class="headerlink" title="5. 举例推导 dp 数组（grid &#x3D; [[1,3,1],[1,5,1],[4,2,1]]）"></a>5. 举例推导 dp 数组（grid &#x3D; [[1,3,1],[1,5,1],[4,2,1]]）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">grid:</span><br><span class="line">1 3 1</span><br><span class="line">1 5 1</span><br><span class="line">4 2 1</span><br><span class="line"></span><br><span class="line">dp 数组：</span><br><span class="line">1  4  5</span><br><span class="line">2  7  6</span><br><span class="line">6  8  7</span><br><span class="line"></span><br><span class="line">推导过程：</span><br><span class="line">dp[0][0] = 1</span><br><span class="line">第一行：</span><br><span class="line">dp[0][1] = dp[0][0] + 3 = 1+3 = 4</span><br><span class="line">dp[0][2] = dp[0][1] + 1 = 4+1 = 5</span><br><span class="line"></span><br><span class="line">第一列：</span><br><span class="line">dp[1][0] = dp[0][0] + 1 = 1+1 = 2</span><br><span class="line">dp[2][0] = dp[1][0] + 4 = 2+4 = 6</span><br><span class="line"></span><br><span class="line">其他位置：</span><br><span class="line">dp[1][1] = min(dp[0][1], dp[1][0]) + 5 = min(4, 2) + 5 = 2+5 = 7</span><br><span class="line">dp[1][2] = min(dp[0][2], dp[1][1]) + 1 = min(5, 7) + 1 = 5+1 = 6</span><br><span class="line">dp[2][1] = min(dp[1][1], dp[2][0]) + 2 = min(7, 6) + 2 = 6+2 = 8</span><br><span class="line">dp[2][2] = min(dp[1][2], dp[2][1]) + 1 = min(6, 8) + 1 = 6+1 = 7</span><br><span class="line"></span><br><span class="line">最终答案：dp[2][2] = 7</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 dp[0][0] = grid[0][0]    │</span><br><span class="line">│ 填充第一行和第一列             │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 1 to m-1:           │</span><br><span class="line">│   for j from 1 to n-1:         │</span><br><span class="line">│     dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]│</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 dp[m-1][n-1]              │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(m×n)，遍历整个网格</li>
+<li>空间复杂度：O(m×n)，dp数组</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>直接在原grid上修改可以将空间复杂度优化到O(1)（如果允许修改输入）</li>
+<li>递推公式清晰，每个位置只依赖上方和左方的值</li>
+</ul>
+<h1 id="LC-70-爬楼梯-6次"><a href="#LC-70-爬楼梯-6次" class="headerlink" title="LC 70 爬楼梯 6次"></a>LC 70 爬楼梯 6次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/?envType=study-plan-v2&envId=top-100-liked">LC 70 爬楼梯</a></p>
+</blockquote>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<h3 id="示例-1：-4"><a href="#示例-1：-4" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：n &#x3D; 2<br>输出：2<br>解释：有两种方法可以爬到楼顶。</p>
+<ol>
+<li>1 阶 + 1 阶</li>
+<li>2 阶</li>
+</ol>
+<h3 id="示例-2：-4"><a href="#示例-2：-4" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：n &#x3D; 3<br>输出：3<br>解释：有三种方法可以爬到楼顶。</p>
+<ol>
+<li>1 阶 + 1 阶 + 1 阶</li>
+<li>1 阶 + 2 阶</li>
+<li>2 阶 + 1 阶</li>
+</ol>
+<h3 id="提示：-4"><a href="#提示：-4" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; n &lt;&#x3D; 45</p>
+<h2 id="ACM完整代码-4"><a href="#ACM完整代码-4" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">climbStairs</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin  &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">climbStairs</span>(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-4"><a href="#思路及必要说明-4" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲-4"><a href="#动态规划五部曲-4" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义-4"><a href="#1-确定-dp-数组的下标及含义-4" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i]</code> 表示爬到第 <code>i+1</code> 阶楼梯的方法数（注意：代码中dp[0]对应1阶）</li>
+<li>或者理解为：<code>dp[i]</code> 表示爬到第 <code>i</code> 阶的方法数（需要调整索引）</li>
+</ul>
+<h4 id="2-确定递推公式-4"><a href="#2-确定递推公式-4" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><ul>
+<li>最后一步可以是1阶或2阶</li>
+<li>如果最后一步是1阶，前面需要爬 <code>n-1</code> 阶</li>
+<li>如果最后一步是2阶，前面需要爬 <code>n-2</code> 阶</li>
+<li>递推公式：<code>dp[i] = dp[i-1] + dp[i-2]</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化-4"><a href="#3-dp-数组的初始化-4" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li><code>dp[0] = 1</code>（1阶楼梯：只有1种方法）</li>
+<li><code>dp[1] = 2</code>（2阶楼梯：1+1 或 2）</li>
+</ul>
+<h4 id="4-确定遍历顺序-4"><a href="#4-确定遍历顺序-4" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li>从左到右遍历 <code>i</code>（2 → n-1）</li>
+<li>原因：计算 <code>dp[i]</code> 需要 <code>dp[i-1]</code> 和 <code>dp[i-2]</code></li>
+</ul>
+<h4 id="5-举例推导-dp-数组（n-5）"><a href="#5-举例推导-dp-数组（n-5）" class="headerlink" title="5. 举例推导 dp 数组（n &#x3D; 5）"></a>5. 举例推导 dp 数组（n &#x3D; 5）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">索引:  0   1   2   3   4</span><br><span class="line">含义: 1阶 2阶 3阶 4阶 5阶</span><br><span class="line">dp:   1   2   3   5   8</span><br><span class="line"></span><br><span class="line">推导过程：</span><br><span class="line">dp[0] = 1</span><br><span class="line">dp[1] = 2</span><br><span class="line">dp[2] = dp[1] + dp[0] = 2 + 1 = 3</span><br><span class="line">dp[3] = dp[2] + dp[1] = 3 + 2 = 5</span><br><span class="line">dp[4] = dp[3] + dp[2] = 5 + 3 = 8</span><br><span class="line"></span><br><span class="line">最终答案：dp[4] = 8</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ if n == 1: return 1            │</span><br><span class="line">│ if n == 2: return 2            │</span><br><span class="line">│ dp[0] = 1, dp[1] = 2          │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 2 to n-1:          │</span><br><span class="line">│   dp[i] = dp[i-1] + dp[i-2]   │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 dp[n-1]                   │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(n)，线性遍历</li>
+<li>空间复杂度：O(n)，dp数组</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>这是斐波那契数列的变形</li>
+<li>可以优化空间复杂度到O(1)，只保存前两个值</li>
+</ul>
+<h1 id="LC-406-根据身高重建队列-5次"><a href="#LC-406-根据身高重建队列-5次" class="headerlink" title="LC 406 根据身高重建队列 5次"></a>LC 406 根据身高重建队列 5次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">LC 406 根据身高重建队列</a></p>
+</blockquote>
+<h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设有打乱顺序的一群人站成一个队列，数组 people 表示队列中一些人的属性（不一定按顺序）。每个 people[i] &#x3D; [hi, ki] 表示第 i 个人的身高为 hi ，前面 正好 有 ki 个身高大于或等于 hi 的人。</p>
+<p>请你重新构造并返回输入数组 people 所表示的队列。返回的队列应该格式化为数组 queue ，其中 queue[j] &#x3D; [hj, kj] 是队列中第 j 个人的属性（queue[0] 是排在队列前面的人）。</p>
+<h3 id="示例-1：-5"><a href="#示例-1：-5" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]<br>输出：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]<br>解释：<br>编号为 0 的人身高为 5 ，没有身高更高或者相同的人排在他前面。<br>编号为 1 的人身高为 7 ，没有身高更高或者相同的人排在他前面。<br>编号为 2 的人身高为 5 ，有 2 个身高更高或者相同的人排在他前面，即编号为 0 和 1 的人。<br>编号为 3 的人身高为 6 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。<br>编号为 4 的人身高为 4 ，有 4 个身高更高或者相同的人排在他前面，即编号为 0、1、2、3 的人。<br>编号为 5 的人身高为 7 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。<br>因此 [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]] 是重新构造后的队列。</p>
+<h3 id="示例-2：-5"><a href="#示例-2：-5" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：people &#x3D; [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]<br>输出：[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]</p>
+<h3 id="提示：-5"><a href="#提示：-5" class="headerlink" title="提示："></a>提示：</h3><p>1 &lt;&#x3D; people.length &lt;&#x3D; 2000<br>0 &lt;&#x3D; hi &lt;&#x3D; 10^6<br>0 &lt;&#x3D; ki &lt; people.length<br>题目数据确保队列可以被重建</p>
+<h2 id="ACM完整代码-5"><a href="#ACM完整代码-5" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">reconstructQueue</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; people) &#123;</span><br><span class="line">    <span class="built_in">sort</span>(people.<span class="built_in">begin</span>(), people.<span class="built_in">end</span>(),[](<span class="type">const</span> vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; b)&#123;</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] == b[<span class="number">0</span>]) <span class="keyword">return</span> a[<span class="number">1</span>] &lt; b[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> a[<span class="number">0</span>] &gt; b[<span class="number">0</span>];</span><br><span class="line">    &#125;);</span><br><span class="line">    list&lt;vector&lt;<span class="type">int</span>&gt;&gt; que; <span class="comment">// list 底层是链表实现，插入效率比vector高的多</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; people.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="type">int</span> pos = people[i][<span class="number">1</span>]; <span class="comment">// 插入到下标为pos的位置</span></span><br><span class="line">        <span class="keyword">auto</span> it = que.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="keyword">while</span> (pos--) <span class="comment">// 寻找在插入位置</span></span><br><span class="line">            it++;</span><br><span class="line">        que.<span class="built_in">insert</span>(it, people[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;(que.<span class="built_in">begin</span>(), que.<span class="built_in">end</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">p</span>(n, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">2</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; p[i][<span class="number">0</span>] &gt;&gt; p[i][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">auto</span> ans = <span class="built_in">reconstructQueue</span>(p);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> an : ans)</span><br><span class="line">        cout &lt;&lt; an[<span class="number">0</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; an[<span class="number">1</span>] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-5"><a href="#思路及必要说明-5" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><p><strong>核心思想</strong>：贪心算法，先处理身高高的人，因为高个子的位置不会被矮个子影响。</p>
+<p><strong>关键观察</strong>：</p>
+<ul>
+<li>每个人的 <code>ki</code> 表示前面有 <code>ki</code> 个身高 &gt;&#x3D; hi 的人</li>
+<li>如果先安排高个子，矮个子的插入不会影响高个子的 <code>ki</code> 计数</li>
+<li>按身高降序排序，身高相同时按 <code>ki</code> 升序排序</li>
+</ul>
+<p><strong>算法流程</strong>（people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]）：</p>
+<p><strong>步骤1：排序</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">排序前：[[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]</span><br><span class="line">排序后（身高降序，ki升序）：</span><br><span class="line">[[7,0], [7,1], [6,1], [5,0], [5,2], [4,4]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>步骤2：依次插入到指定位置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">插入 [7,0] → 队列：[[7,0]]</span><br><span class="line">插入 [7,1] → 队列：[[7,0], [7,1]]</span><br><span class="line">插入 [6,1] → 插入到位置1 → 队列：[[7,0], [6,1], [7,1]]</span><br><span class="line">插入 [5,0] → 插入到位置0 → 队列：[[5,0], [7,0], [6,1], [7,1]]</span><br><span class="line">插入 [5,2] → 插入到位置2 → 队列：[[5,0], [7,0], [5,2], [6,1], [7,1]]</span><br><span class="line">插入 [4,4] → 插入到位置4 → 队列：[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终结果</strong>：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]</p>
+<p><strong>算法流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 按身高降序排序，ki升序排序      │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 创建空队列 que                  │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for each person in people:     │</span><br><span class="line">│   pos = person[1]              │</span><br><span class="line">│   在que的第pos个位置插入person │</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 que                        │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(n²)，排序O(nlogn) + n次插入（每次O(n)）</li>
+<li>空间复杂度：O(n)，队列空间</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>使用list而不是vector，因为list的插入效率更高（O(1)定位+O(1)插入）</li>
+<li>排序策略巧妙：先处理高个子，避免后续插入影响已排好的位置</li>
+<li>ki值直接作为插入位置，无需额外计算</li>
+</ul>
+<h1 id="LC-72-编辑距离-5次"><a href="#LC-72-编辑距离-5次" class="headerlink" title="LC 72 编辑距离 5次"></a>LC 72 编辑距离 5次</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/edit-distance/description/?envType=study-plan-v2&envId=top-100-liked">LC 72 编辑距离</a></p>
+</blockquote>
+<h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你两个单词 word1 和 word2， 请返回将 word1 转换成 word2 所使用的最少操作数  。</p>
+<p>你可以对一个单词进行如下三种操作：</p>
+<p>插入一个字符<br>删除一个字符<br>替换一个字符</p>
+<h3 id="示例-1：-6"><a href="#示例-1：-6" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：word1 &#x3D; “horse”, word2 &#x3D; “ros”<br>输出：3<br>解释：<br>horse -&gt; rorse (将 ‘h’ 替换为 ‘r’)<br>rorse -&gt; rose (删除 ‘r’)<br>rose -&gt; ros (删除 ‘e’)</p>
+<h3 id="示例-2：-6"><a href="#示例-2：-6" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：word1 &#x3D; “intention”, word2 &#x3D; “execution”<br>输出：5<br>解释：<br>intention -&gt; inention (删除 ‘t’)<br>inention -&gt; enention (将 ‘i’ 替换为 ‘e’)<br>enention -&gt; exention (将 ‘n’ 替换为 ‘x’)<br>exention -&gt; exection (将 ‘n’ 替换为 ‘c’)<br>exection -&gt; execution (插入 ‘u’)</p>
+<h3 id="提示：-6"><a href="#提示：-6" class="headerlink" title="提示："></a>提示：</h3><p>0 &lt;&#x3D; word1.length, word2.length &lt;&#x3D; 500<br>word1 和 word2 由小写英文字母组成</p>
+<h2 id="ACM完整代码-6"><a href="#ACM完整代码-6" class="headerlink" title="ACM完整代码"></a>ACM完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">minDistance</span><span class="params">(string word1, string word2)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> len1 = word<span class="number">1.</span><span class="built_in">size</span>(), len2 = word<span class="number">2.</span><span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(len1 + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(len2 + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= len1; i++) dp[i][<span class="number">0</span>] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= len2; j++) dp[<span class="number">0</span>][j] = j;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= len1; i++) </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= len2; j++) </span><br><span class="line">            <span class="keyword">if</span> (word1[i - <span class="number">1</span>] == word2[j - <span class="number">1</span>])</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j - <span class="number">1</span>], <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>])) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> dp[len1][len2];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string a, b;</span><br><span class="line">    <span class="built_in">getline</span>(cin, a);</span><br><span class="line">    <span class="built_in">getline</span>(cin, b);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">minDistance</span>(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路及必要说明-6"><a href="#思路及必要说明-6" class="headerlink" title="思路及必要说明"></a>思路及必要说明</h2><h3 id="动态规划五部曲-5"><a href="#动态规划五部曲-5" class="headerlink" title="动态规划五部曲"></a>动态规划五部曲</h3><h4 id="1-确定-dp-数组的下标及含义-5"><a href="#1-确定-dp-数组的下标及含义-5" class="headerlink" title="1. 确定 dp 数组的下标及含义"></a>1. 确定 dp 数组的下标及含义</h4><ul>
+<li><code>dp[i][j]</code> 表示将 <code>word1[0..i-1]</code> 转换成 <code>word2[0..j-1]</code> 的最少操作数</li>
+<li>注意：dp数组比实际字符串长度多1，方便处理空字符串情况</li>
+</ul>
+<h4 id="2-确定递推公式-5"><a href="#2-确定递推公式-5" class="headerlink" title="2. 确定递推公式"></a>2. 确定递推公式</h4><p>三种操作：</p>
+<ol>
+<li><strong>插入</strong>：在 <code>word1</code> 中插入一个字符 → <code>dp[i][j] = dp[i][j-1] + 1</code></li>
+<li><strong>删除</strong>：在 <code>word1</code> 中删除一个字符 → <code>dp[i][j] = dp[i-1][j] + 1</code></li>
+<li><strong>替换</strong>：将 <code>word1[i-1]</code> 替换为 <code>word2[j-1]</code> → <code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
+</ol>
+<ul>
+<li>如果 <code>word1[i-1] == word2[j-1]</code>，无需替换：<code>dp[i][j] = dp[i-1][j-1]</code></li>
+<li>否则取三种操作的最小值：<code>dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1</code></li>
+</ul>
+<h4 id="3-dp-数组的初始化-5"><a href="#3-dp-数组的初始化-5" class="headerlink" title="3. dp 数组的初始化"></a>3. dp 数组的初始化</h4><ul>
+<li><code>dp[i][0] = i</code>：将 <code>word1[0..i-1]</code> 转换成空串需要删除i次</li>
+<li><code>dp[0][j] = j</code>：将空串转换成 <code>word2[0..j-1]</code> 需要插入j次</li>
+</ul>
+<h4 id="4-确定遍历顺序-5"><a href="#4-确定遍历顺序-5" class="headerlink" title="4. 确定遍历顺序"></a>4. 确定遍历顺序</h4><ul>
+<li>按行优先遍历，从 <code>(1,1)</code> 开始</li>
+<li>原因：计算 <code>dp[i][j]</code> 需要 <code>dp[i-1][j]</code>、<code>dp[i][j-1]</code> 和 <code>dp[i-1][j-1]</code></li>
+</ul>
+<h4 id="5-举例推导-dp-数组（word1-“horse”-word2-“ros”）"><a href="#5-举例推导-dp-数组（word1-“horse”-word2-“ros”）" class="headerlink" title="5. 举例推导 dp 数组（word1 &#x3D; “horse”, word2 &#x3D; “ros”）"></a>5. 举例推导 dp 数组（word1 &#x3D; “horse”, word2 &#x3D; “ros”）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">     &quot;&quot;  r   o   s</span><br><span class="line">&quot;&quot;   0   1   2   3</span><br><span class="line">h    1   1   2   3</span><br><span class="line">o    2   2   1   2</span><br><span class="line">r    3   2   2   2</span><br><span class="line">s    4   3   3   2</span><br><span class="line">e    5   4   4   3</span><br><span class="line"></span><br><span class="line">推导过程（关键步骤）：</span><br><span class="line">dp[1][1] = min(1,1,0)+1 = 1  (h→r，替换)</span><br><span class="line">dp[2][2] = dp[1][1] = 1      (o==o，无需操作)</span><br><span class="line">dp[3][1] = min(2,2,1)+1 = 2  (hr→r，删除h)</span><br><span class="line">dp[5][3] = min(4,4,3)+1 = 4? No!</span><br><span class="line">           实际上 e != s，所以 dp[5][3] = min(dp[4][3], dp[5][2], dp[4][2]) + 1</span><br><span class="line">           = min(2, 4, 3) + 1 = 2 + 1 = 3</span><br><span class="line"></span><br><span class="line">最终答案：dp[5][3] = 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法流程图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 初始化 dp[i][0] = i, dp[0][j] = j│</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ for i from 1 to len1:          │</span><br><span class="line">│   for j from 1 to len2:        │</span><br><span class="line">│     if word1[i-1] == word2[j-1]:│</span><br><span class="line">│       dp[i][j] = dp[i-1][j-1]  │</span><br><span class="line">│     else:                      │</span><br><span class="line">│       dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1│</span><br><span class="line">└───────────────┬─────────────────┘</span><br><span class="line">                ▼</span><br><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│ 返回 dp[len1][len2]            │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>时间复杂度：O(m×n)，m和n分别是两个字符串的长度</li>
+<li>空间复杂度：O(m×n)，dp数组</li>
+</ul>
+<p><strong>设计亮点</strong>：</p>
+<ul>
+<li>dp数组比字符串长度多1，巧妙处理空字符串边界情况</li>
+<li>三种操作对应三种状态转移，逻辑清晰</li>
+<li>可以优化空间复杂度到O(min(m,n))，只保留当前行和上一行</li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/05/12/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/05/12/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83/";
+            const title         = "「华为手撕高频题练习--动态规划/贪心」";
+            const excerpt       = `频次数据
+
+
+题目
+频次
+
+
+
+LC 300 最长递增子序列
+8次
+
+
+LC 53 最大子数组和
+7次
+
+
+LC 55 跳跃游戏
+7次
+
+
+LC 64 最小路径和
+6次
+
+
+LC 70 爬楼梯
+6次
+
+
+LC 406 根据身高重建队列...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-none-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-05-12T13:45:47.771Z" itemprop="dateModified">最后编辑：2026-05-12</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 华为手撕高频题练习--二叉树/回溯" href="/2026/05/11/华为手撕高频题练习-二叉树-回溯/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                53
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                9
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                142
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%91%E6%AC%A1%E6%95%B0%E6%8D%AE"><span class="toc-text">频次数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%978%E6%AC%A1"><span class="toc-text">LC 300 最长递增子序列8次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A"><span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-10-9-2-5-3-7-101-18-%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [10,9,2,5,3,7,101,18]）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-53-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C-7%E6%AC%A1"><span class="toc-text">LC 53 最大子数组和 7次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-1"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-1"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%EF%BC%9A-1"><span class="toc-text">示例 3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-1"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DP"><span class="toc-text">DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83-%E4%BB%85%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81"><span class="toc-text">贪心(仅核心代码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-1"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-1"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-1"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-1"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-1"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-2-1-3-4-1-2-1-5-4-%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="toc-text">贪心算法思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F7%E6%AC%A1"><span class="toc-text">LC 55 跳跃游戏7次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-2"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-2"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-2"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="toc-text">ACM完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DP-1"><span class="toc-text">DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83-%E4%BB%85%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81-1"><span class="toc-text">贪心(仅核心代码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-2"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-2"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-2"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-2"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-2"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-2"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88nums-2-3-1-1-4-%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（nums &#x3D; [2,3,1,1,4]）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF-1"><span class="toc-text">贪心算法思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C-6%E6%AC%A1"><span class="toc-text">LC 64 最小路径和 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-3"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-3"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-3"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-3"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-3"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-3"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-3"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-3"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-3"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-3"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88grid-1-3-1-1-5-1-4-2-1-%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（grid &#x3D; [[1,3,1],[1,5,1],[4,2,1]]）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-70-%E7%88%AC%E6%A5%BC%E6%A2%AF-6%E6%AC%A1"><span class="toc-text">LC 70 爬楼梯 6次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-4"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-4"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-4"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-4"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-4"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-4"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-4"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-4"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-4"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-4"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88n-5%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（n &#x3D; 5）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-406-%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97-5%E6%AC%A1"><span class="toc-text">LC 406 根据身高重建队列 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-5"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-5"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-5"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-5"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-5"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-5"><span class="toc-text">思路及必要说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LC-72-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB-5%E6%AC%A1"><span class="toc-text">LC 72 编辑距离 5次</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-6"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%EF%BC%9A-6"><span class="toc-text">示例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%EF%BC%9A-6"><span class="toc-text">示例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%EF%BC%9A-6"><span class="toc-text">提示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACM%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-6"><span class="toc-text">ACM完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%BF%85%E8%A6%81%E8%AF%B4%E6%98%8E-6"><span class="toc-text">思路及必要说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%94%E9%83%A8%E6%9B%B2-5"><span class="toc-text">动态规划五部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%90%AB%E4%B9%89-5"><span class="toc-text">1. 确定 dp 数组的下标及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A1%AE%E5%AE%9A%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F-5"><span class="toc-text">2. 确定递推公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dp-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-5"><span class="toc-text">3. dp 数组的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F-5"><span class="toc-text">4. 确定遍历顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BE%E4%BE%8B%E6%8E%A8%E5%AF%BC-dp-%E6%95%B0%E7%BB%84%EF%BC%88word1-%E2%80%9Chorse%E2%80%9D-word2-%E2%80%9Cros%E2%80%9D%EF%BC%89"><span class="toc-text">5. 举例推导 dp 数组（word1 &#x3D; “horse”, word2 &#x3D; “ros”）</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/01%E8%83%8C%E5%8C%85/" style="font-size: 0.7em;">01背包</a> <a href="/tags/ACID/" style="font-size: 0.6em;">ACID</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/BFS/" style="font-size: 0.6em;">BFS</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a> <a href="/tags/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" style="font-size: 0.6em;">C++智能指针</a> <a href="/tags/CAS-Compare-And-Swap/" style="font-size: 0.6em;">CAS(Compare And Swap)</a> <a href="/tags/CMS-Concurrent-Mark-Sweep/" style="font-size: 0.6em;">CMS(Concurrent Mark Sweep)</a> <a href="/tags/CMake/" style="font-size: 0.6em;">CMake</a> <a href="/tags/ConcurrentHashMap/" style="font-size: 0.6em;">ConcurrentHashMap</a> <a href="/tags/DFS/" style="font-size: 0.6em;">DFS</a> <a href="/tags/DNS/" style="font-size: 0.6em;">DNS</a> <a href="/tags/Full-GC/" style="font-size: 0.6em;">Full GC</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/12/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83/"><i class="fa  fa-book"></i> 华为手撕高频题练习--动态规划/贪心</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E4%BA%8C%E5%8F%89%E6%A0%91-%E5%9B%9E%E6%BA%AF/"><i class="fa  fa-book"></i> 华为手撕高频题练习--二叉树/回溯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E9%93%BE%E8%A1%A8-%E5%93%88%E5%B8%8C/"><i class="fa  fa-book"></i> 华为手撕高频题练习--链表/哈希</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E6%A0%88/"><i class="fa  fa-book"></i> 华为手撕高频题练习--栈</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/05/11/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0-%E5%9B%BE%E8%AE%BA/"><i class="fa  fa-book"></i> 华为手撕高频题练习--图论</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
