@@ -24,16 +24,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 什么是数据库事务？一句话总结数据库事务是由一组不可分割的数据库操作序列组成的逻辑单元，确保操作要么全部成功（提交），要么全部失败（回滚），以维护数据的完整性和一致性。 详细解析⚙️ 1. 事务的本质与作用核心定义：事务是数据库管理系统（DBMS）中的最小工作单元，包含一个或多个SQL操作（如INSERT&#x2F;UPDATE&#x2F;DELETE）。 关键特性： 满足ACID原则（原子性">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/image.png">
-<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/image-1.png">
-<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/image-2.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image-1.png">
+<meta property="og:image" content="https://linnnnnnnnnnnnn17.github.io/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image-2.png">
 <meta property="article:published_time" content="2026-05-23T02:33:12.000Z">
 <meta property="article:modified_time" content="2026-05-23T07:22:13.412Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="死锁">
 <meta property="article:tag" content="事务">
 <meta property="article:tag" content="隔离级别">
 <meta property="article:tag" content="MVCC(Multi-Version Concurrency Control)">
@@ -42,6 +41,7 @@
 <meta property="article:tag" content="分库分表">
 <meta property="article:tag" content="深分页优化">
 <meta property="article:tag" content="redo log&#x2F;binlog&#x2F;undo log">
+<meta property="article:tag" content="死锁">
 <meta property="article:tag" content="2PC">
 <meta property="article:tag" content="锁">
 <meta property="article:tag" content="表级锁">
@@ -55,7 +55,7 @@
 <meta property="article:tag" content="读写分离">
 <meta property="article:tag" content="冷热分离">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linnnnnnnnnnnnn17.github.io/image.png">
+<meta name="twitter:image" content="https://linnnnnnnnnnnnn17.github.io/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image.png">
   
   <!-- 站点验证相关 -->
   
@@ -316,7 +316,7 @@
 </ul>
 <p>如果物流显示发货但客户未签收（Binlog 未写入），或客户签收但物流未记录（Redo Log 未提交），都会导致数据混乱。</p>
 <h3 id="🔄-2-2PC-流程：准备阶段-提交阶段"><a href="#🔄-2-2PC-流程：准备阶段-提交阶段" class="headerlink" title="🔄 2. 2PC 流程：准备阶段 + 提交阶段"></a>🔄 2. 2PC 流程：准备阶段 + 提交阶段</h3><p><strong>阶段拆分与核心操作:</strong></p>
-<p><img src="/image.png"></p>
+<p><img src="/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image.png"></p>
 <p><strong>准备阶段（Prepare Phase）：</strong></p>
 <ul>
 <li>InnoDB 将事务修改写入 Redo Log，状态设为 PREPARED（未提交）。</li>
@@ -490,7 +490,7 @@
 <li><strong>读操作</strong>： 读取历史版本（快照读），不阻塞写操作</li>
 <li><strong>写操作</strong>： 生成新版本，通过 undo log 链式存储旧数据</li>
 </ul>
-<p><strong>实现原理</strong>：<br><img src="/image-1.png"><br><strong>生动比喻：</strong><br>想象一个智能快递柜：</p>
+<p><strong>实现原理</strong>：<br><img src="/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image-1.png"><br><strong>生动比喻：</strong><br>想象一个智能快递柜：</p>
 <ul>
 <li>每个快递格存放同一包裹的不同版本（V1、V2、V3）</li>
 <li>取件人（读事务）根据取件码（Read View）拿到特定版本</li>
@@ -521,7 +521,7 @@
 <td>创建该 Read View 的事务ID</td>
 </tr>
 </tbody></table>
-<p><strong>可见性规则（判断数据版本是否可见）</strong>：<br><img src="/image-2.png"></p>
+<p><strong>可见性规则（判断数据版本是否可见）</strong>：<br><img src="/2026/05/23/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81-%E6%97%A5%E5%BF%97/image-2.png"></p>
 <p><strong>隔离级别差异</strong>：</p>
 <table>
 <thead>
