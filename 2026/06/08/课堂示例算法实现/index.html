@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="Bellman-Ford（单源点，有负权值边，无负权值环）, C++, Dijkstra（单源点，无负权值边）, Floyd-Warshall（多源点，有负权值边，无负权值环）, HuffmanCoding, InsertionSort, MergeSort, QuickSort, 分治DC, 动态规划, 回溯, 堆, 排序算法, 最大子数组和, 最短路径算法, 皇后问题, 算法, 背包问题, 贪心算法" />
+    <meta name="keywords" content="Bellman-Ford（单源点，有负权值边，无负权值环）, C++, Dijkstra（单源点，无负权值边）, Floyd-Warshall（多源点，有负权值边，无负权值环）, HuffmanCoding, InsertionSort, MergeSort, QuickSort, 分治DC, 动态规划, 回溯, 堆, 排序算法, 最大子数组和, 最短路径算法, 最长公共子序列问题LCS, 皇后问题, 算法, 背包问题, 贪心算法" />
   
   <meta name="description" content="1.1 暴力法最大子数组和 MaxSubarray Sum问题描述：给出一个整数序列 A1, A2, ..., AN，求该序列中连续子数组的最大和。 示例 ：输入：94 -1 2 1 -3 2 1 -5 4输出：6说明：连续子数组 4 -1 2 1 的和最大，为 6。 输入格式:第一行为一个正整数 n( 1&lt;&#x3D;n&lt;&#x3D;2000)，代表序列的长度。后续一行为空格隔开的 n 个正整数，整数范">
 <meta property="og:type" content="article">
@@ -25,19 +25,20 @@
 <meta property="og:description" content="1.1 暴力法最大子数组和 MaxSubarray Sum问题描述：给出一个整数序列 A1, A2, ..., AN，求该序列中连续子数组的最大和。 示例 ：输入：94 -1 2 1 -3 2 1 -5 4输出：6说明：连续子数组 4 -1 2 1 的和最大，为 6。 输入格式:第一行为一个正整数 n( 1&lt;&#x3D;n&lt;&#x3D;2000)，代表序列的长度。后续一行为空格隔开的 n 个正整数，整数范">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-06-08T09:11:08.000Z">
-<meta property="article:modified_time" content="2026-06-08T09:24:12.668Z">
+<meta property="article:modified_time" content="2026-06-11T12:41:38.190Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="算法">
-<meta property="article:tag" content="回溯">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="贪心算法">
+<meta property="article:tag" content="回溯">
 <meta property="article:tag" content="最大子数组和">
 <meta property="article:tag" content="分治DC">
 <meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="QuickSort">
+<meta property="article:tag" content="最长公共子序列问题LCS">
 <meta property="article:tag" content="InsertionSort">
 <meta property="article:tag" content="MergeSort">
-<meta property="article:tag" content="QuickSort">
 <meta property="article:tag" content="堆">
 <meta property="article:tag" content="背包问题">
 <meta property="article:tag" content="HuffmanCoding">
@@ -169,7 +170,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1780910652668"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1781181698190"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -708,10 +709,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/tags/Bellman-Ford%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" rel="tag">Bellman-Ford（单源点，有负权值边，无负权值环）</a>, <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Dijkstra%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%89/" rel="tag">Dijkstra（单源点，无负权值边）</a>, <a class="tag-none-link" href="/tags/Floyd-Warshall%EF%BC%88%E5%A4%9A%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" rel="tag">Floyd-Warshall（多源点，有负权值边，无负权值环）</a>, <a class="tag-none-link" href="/tags/HuffmanCoding/" rel="tag">HuffmanCoding</a>, <a class="tag-none-link" href="/tags/InsertionSort/" rel="tag">InsertionSort</a>, <a class="tag-none-link" href="/tags/MergeSort/" rel="tag">MergeSort</a>, <a class="tag-none-link" href="/tags/QuickSort/" rel="tag">QuickSort</a>, <a class="tag-none-link" href="/tags/%E5%88%86%E6%B2%BBDC/" rel="tag">分治DC</a>, <a class="tag-none-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>, <a class="tag-none-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a>, <a class="tag-none-link" href="/tags/%E5%A0%86/" rel="tag">堆</a>, <a class="tag-none-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a>, <a class="tag-none-link" href="/tags/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" rel="tag">最大子数组和</a>, <a class="tag-none-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95/" rel="tag">最短路径算法</a>, <a class="tag-none-link" href="/tags/%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">皇后问题</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-none-link" href="/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" rel="tag">背包问题</a>, <a class="tag-none-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a>
+                    <a class="tag-none-link" href="/tags/Bellman-Ford%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" rel="tag">Bellman-Ford（单源点，有负权值边，无负权值环）</a>, <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Dijkstra%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%89/" rel="tag">Dijkstra（单源点，无负权值边）</a>, <a class="tag-none-link" href="/tags/Floyd-Warshall%EF%BC%88%E5%A4%9A%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" rel="tag">Floyd-Warshall（多源点，有负权值边，无负权值环）</a>, <a class="tag-none-link" href="/tags/HuffmanCoding/" rel="tag">HuffmanCoding</a>, <a class="tag-none-link" href="/tags/InsertionSort/" rel="tag">InsertionSort</a>, <a class="tag-none-link" href="/tags/MergeSort/" rel="tag">MergeSort</a>, <a class="tag-none-link" href="/tags/QuickSort/" rel="tag">QuickSort</a>, <a class="tag-none-link" href="/tags/%E5%88%86%E6%B2%BBDC/" rel="tag">分治DC</a>, <a class="tag-none-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>, <a class="tag-none-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a>, <a class="tag-none-link" href="/tags/%E5%A0%86/" rel="tag">堆</a>, <a class="tag-none-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a>, <a class="tag-none-link" href="/tags/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" rel="tag">最大子数组和</a>, <a class="tag-none-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95/" rel="tag">最短路径算法</a>, <a class="tag-none-link" href="/tags/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98LCS/" rel="tag">最长公共子序列问题LCS</a>, <a class="tag-none-link" href="/tags/%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">皇后问题</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-none-link" href="/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" rel="tag">背包问题</a>, <a class="tag-none-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2026-06-08T09:24:12.668Z" itemprop="dateModified">最后编辑：2026-06-08</time>
+                    <time datetime="2026-06-11T12:41:38.190Z" itemprop="dateModified">最后编辑：2026-06-11</time>
                 </div>
             </div>
         </footer>
@@ -723,6 +724,10 @@
                 <a title=" java高频八股--redis详细版" href="/2026/06/02/java高频八股-redis详细版/">&lt; 上一篇</a>
             </div>
             
+            
+            <div class="nav-next clearfix">
+                <a title=" 算法机考复盘" href="/2026/06/11/算法机考复盘/">下一篇 &gt;</a>
+            </div>
             
         </nav>
     
@@ -758,7 +763,7 @@
                 文章
             </span>
             <span class="count">
-                61
+                62
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -774,7 +779,7 @@
                 标签
             </span>
             <span class="count">
-                223
+                224
             </span>
         </a>
     </div>
@@ -797,7 +802,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
   </aside>
 
 
@@ -817,6 +822,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/11/%E7%AE%97%E6%B3%95%E6%9C%BA%E8%80%83%E5%A4%8D%E7%9B%98/"><i class="fa  fa-book"></i> 算法机考复盘</a>
+            
+          
         
           
           
@@ -843,11 +854,7 @@
           
         
           
-          
-            <a class="list-group-item" href="/2026/05/26/java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1-java%E5%9F%BA%E7%A1%80%E8%AF%A6%E7%BB%86%E7%89%88/"><i class="fa  fa-book"></i> java高频八股--java基础详细版</a>
             
-          
-        
           
             
           
