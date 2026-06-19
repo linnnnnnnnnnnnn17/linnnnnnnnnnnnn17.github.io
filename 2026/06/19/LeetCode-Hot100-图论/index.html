@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>LeetCode-Hot100-图论 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="BFS, C++, DFS, Java, 图论, 拓扑排序" />
+  
+  <meta name="description" content="200. 岛屿数量 题目链接：200. 岛屿数量  解题思路核心思想：遍历二维网格，遇到岛屿（’1’）就进行DFS&#x2F;BFS，将整个岛屿标记为已访问，计数+1。 算法流程：  遍历整个网格，找到未访问的岛屿格子（grid[i][j] &#x3D;&#x3D; ‘1’） 岛屿计数+1，从该位置开始DFS&#x2F;BFS DFS&#x2F;BFS将所有相邻的’1’格子标记为已访问 继续遍历，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Hot100-图论">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="200. 岛屿数量 题目链接：200. 岛屿数量  解题思路核心思想：遍历二维网格，遇到岛屿（’1’）就进行DFS&#x2F;BFS，将整个岛屿标记为已访问，计数+1。 算法流程：  遍历整个网格，找到未访问的岛屿格子（grid[i][j] &#x3D;&#x3D; ‘1’） 岛屿计数+1，从该位置开始DFS&#x2F;BFS DFS&#x2F;BFS将所有相邻的’1’格子标记为已访问 继续遍历，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-19T02:28:26.000Z">
+<meta property="article:modified_time" content="2026-06-19T08:24:34.742Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="拓扑排序">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">LeetCode-Hot100-图论</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-06-19T02:28:26.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-06-19</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~28.56K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1781857474742"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#200-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">200. 岛屿数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">1.2.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS"><span class="toc-number">1.2.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS"><span class="toc-number">1.2.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.3.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#695-%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF"><span class="toc-number">2.</span> <span class="toc-text">695. 岛屿的最大面积</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-number">2.2.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-2"><span class="toc-number">2.2.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-2"><span class="toc-number">2.2.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">2.3.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-3"><span class="toc-number">2.3.1.</span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-3"><span class="toc-number">2.3.2.</span> <span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-1"><span class="toc-number">2.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#994-%E8%85%90%E7%83%82%E7%9A%84%E6%A9%98%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text">994. 腐烂的橘子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-number">3.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-number">3.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-number">3.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-2"><span class="toc-number">3.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#207-%E8%AF%BE%E7%A8%8B%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">207. 课程表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-number">4.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-number">4.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-number">4.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-3"><span class="toc-number">4.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#210-%E8%AF%BE%E7%A8%8B%E8%A1%A8-II"><span class="toc-number">5.</span> <span class="toc-text">210. 课程表 II</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="toc-number">5.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-4"><span class="toc-number">5.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4"><span class="toc-number">5.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-4"><span class="toc-number">5.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a>200. 岛屿数量</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-islands/description/?envType=study-plan-v2&envId=top-100-liked">200. 岛屿数量</a></p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：遍历二维网格，遇到岛屿（’1’）就进行DFS&#x2F;BFS，将整个岛屿标记为已访问，计数+1。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>遍历整个网格，找到未访问的岛屿格子（grid[i][j] &#x3D;&#x3D; ‘1’）</li>
+<li>岛屿计数+1，从该位置开始DFS&#x2F;BFS</li>
+<li>DFS&#x2F;BFS将所有相邻的’1’格子标记为已访问</li>
+<li>继续遍历，最终计数即为岛屿数量</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>使用visited数组或原地修改标记已访问</li>
+<li>四个方向遍历：上、下、左、右</li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[][] dir = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">char</span>[][] grid, <span class="type">boolean</span>[][] visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">nextx</span> <span class="operator">=</span> x + dir[i][<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">nexty</span> <span class="operator">=</span> y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.length || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].length)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                dfs(grid, visited, nextx, nexty);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numIslands</span><span class="params">(<span class="type">char</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">boolean</span>[][] visited = <span class="keyword">new</span> <span class="title class_">boolean</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    dfs(grid, visited, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[][] dir = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">bfs</span><span class="params">(<span class="type">char</span>[][] grid, <span class="type">boolean</span>[][] visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        Queue&lt;<span class="type">int</span>[]&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        q.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;x, y&#125;);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span>[] cur = q.poll();</span><br><span class="line">            <span class="type">int</span> <span class="variable">curx</span> <span class="operator">=</span> cur[<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">cury</span> <span class="operator">=</span> cur[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">nextx</span> <span class="operator">=</span> curx + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> <span class="variable">nexty</span> <span class="operator">=</span> cury + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.length || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].length)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                    q.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;nextx, nexty&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numIslands</span><span class="params">(<span class="type">char</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">boolean</span>[][] visited = <span class="keyword">new</span> <span class="title class_">boolean</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    bfs(grid, visited, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="DFS-1"><a href="#DFS-1" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid, vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt;&amp; visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> nextx = x + dir[i][<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> nexty = y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.<span class="built_in">size</span>() || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>())</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                <span class="built_in">dfs</span>(grid, visited, nextx, nexty);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numIslands</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt; <span class="built_in">visited</span>(m, <span class="built_in">vector</span>&lt;<span class="type">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="built_in">dfs</span>(grid, visited, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid, vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt;&amp; visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(&#123;x, y&#125;);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="type">int</span> curx = cur.first;</span><br><span class="line">            <span class="type">int</span> cury = cur.second;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> nextx = curx + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> nexty = cury + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.<span class="built_in">size</span>() || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>())</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                    q.<span class="built_in">push</span>(&#123;nextx, nexty&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numIslands</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt; <span class="built_in">visited</span>(m, <span class="built_in">vector</span>&lt;<span class="type">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="built_in">bfs</span>(grid, visited, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别"><a href="#Java与C-区别" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>二维数组</strong></td>
+<td><code>char[][] grid</code></td>
+<td><code>vector&lt;vector&lt;char&gt;&gt;&amp; grid</code></td>
+</tr>
+<tr>
+<td><strong>二维数组初始化</strong></td>
+<td><code>boolean[][] visited = new boolean[m][n]</code></td>
+<td><code>vector&lt;vector&lt;bool&gt;&gt; visited(m, vector&lt;bool&gt;(n, false))</code></td>
+</tr>
+<tr>
+<td><strong>数组长度</strong></td>
+<td><code>grid.length</code>, <code>grid[0].length</code></td>
+<td><code>grid.size()</code>, <code>grid[0].size()</code></td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;int[]&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;pair&lt;int, int&gt;&gt; q</code></td>
+</tr>
+<tr>
+<td><strong>入队</strong></td>
+<td><code>q.offer(new int[]&#123;x, y&#125;)</code></td>
+<td><code>q.push(&#123;x, y&#125;)</code></td>
+</tr>
+<tr>
+<td><strong>获取队首并出队</strong></td>
+<td><code>q.poll()</code></td>
+<td><code>q.front(); q.pop()</code></td>
+</tr>
+</tbody></table>
+<h1 id="695-岛屿的最大面积"><a href="#695-岛屿的最大面积" class="headerlink" title="695. 岛屿的最大面积"></a>695. 岛屿的最大面积</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-area-of-island/description/?envType=study-plan-v2&envId=top-100-liked">695. 岛屿的最大面积</a></p>
+</blockquote>
+<h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：与岛屿数量类似，但需要计算每个岛屿的面积，返回最大面积。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>遍历网格，找到未访问的陆地格子（grid[i][j] &#x3D;&#x3D; 1）</li>
+<li>从该位置开始DFS&#x2F;BFS，统计岛屿面积（计数器count）</li>
+<li>每次访问陆地格子count+1</li>
+<li>更新最大面积 <code>res = Math.max(res, count)</code></li>
+<li>返回最大面积</li>
+</ol>
+<p><strong>关键区别</strong>：</p>
+<ul>
+<li>需要维护岛屿面积计数器</li>
+<li>DFS&#x2F;BFS中每次访问有效格子就count++</li>
+<li>最终返回最大岛屿面积</li>
+</ul>
+<h2 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h2><h3 id="DFS-2"><a href="#DFS-2" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[][] dir = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span>[][] grid, <span class="type">boolean</span>[][] visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">nextx</span> <span class="operator">=</span> x + dir[i][<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">nexty</span> <span class="operator">=</span> y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.length || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].length)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="number">1</span>) &#123;</span><br><span class="line">                visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                count++;</span><br><span class="line">                dfs(grid, visited, nextx, nexty);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxAreaOfIsland</span><span class="params">(<span class="type">int</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">boolean</span>[][] visited = <span class="keyword">new</span> <span class="title class_">boolean</span>[m][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                    dfs(grid, visited, i, j);</span><br><span class="line">                    res = Math.max(res, count);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFS-2"><a href="#BFS-2" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[][] dir = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span>[][] grid, <span class="type">boolean</span>[][] visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        Queue&lt;<span class="type">int</span>[]&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        q.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;x, y&#125;);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span>[] cur = q.poll();</span><br><span class="line">            <span class="type">int</span> <span class="variable">curx</span> <span class="operator">=</span> cur[<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">cury</span> <span class="operator">=</span> cur[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">nextx</span> <span class="operator">=</span> curx + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> <span class="variable">nexty</span> <span class="operator">=</span> cury + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.length || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].length)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                    count++;</span><br><span class="line">                    q.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;nextx, nexty&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxAreaOfIsland</span><span class="params">(<span class="type">int</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">boolean</span>[][] visited = <span class="keyword">new</span> <span class="title class_">boolean</span>[m][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                    dfs(grid, visited, i, j);</span><br><span class="line">                    res = Math.max(res, count);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><h3 id="DFS-3"><a href="#DFS-3" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> count;</span><br><span class="line">    <span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid, vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt;&amp; visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> nextx = x + dir[i][<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> nexty = y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.<span class="built_in">size</span>() || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>())</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="number">1</span>) &#123;</span><br><span class="line">                visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                count++;</span><br><span class="line">                <span class="built_in">dfs</span>(grid, visited, nextx, nexty);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt; <span class="built_in">visited</span>(m, <span class="built_in">vector</span>&lt;<span class="type">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                    <span class="built_in">dfs</span>(grid, visited, i, j);</span><br><span class="line">                    res = <span class="built_in">max</span>(res, count);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFS-3"><a href="#BFS-3" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> count;</span><br><span class="line">    <span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid, vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt;&amp; visited, <span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; que;</span><br><span class="line">        que.<span class="built_in">push</span>(&#123;x, y&#125;);</span><br><span class="line">        <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> cur = que.<span class="built_in">front</span>();</span><br><span class="line">            que.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="type">int</span> curx = cur.first;</span><br><span class="line">            <span class="type">int</span> cury = cur.second;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> nextx = curx + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> nexty = cury + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.<span class="built_in">size</span>() || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>())</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (!visited[nextx][nexty] &amp;&amp; grid[nextx][nexty] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[nextx][nexty] = <span class="literal">true</span>;</span><br><span class="line">                    count++;</span><br><span class="line">                    que.<span class="built_in">push</span>(&#123;nextx, nexty&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">bool</span>&gt;&gt; <span class="built_in">visited</span>(m, <span class="built_in">vector</span>&lt;<span class="type">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (!visited[i][j] &amp;&amp; grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    visited[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                    <span class="built_in">bfs</span>(grid, visited, i, j);</span><br><span class="line">                    res = <span class="built_in">max</span>(res, count);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-1"><a href="#Java与C-区别-1" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>二维数组</strong></td>
+<td><code>int[][] grid</code></td>
+<td><code>vector&lt;vector&lt;int&gt;&gt;&amp; grid</code></td>
+</tr>
+<tr>
+<td><strong>二维数组初始化</strong></td>
+<td><code>boolean[][] visited = new boolean[m][n]</code></td>
+<td><code>vector&lt;vector&lt;bool&gt;&gt; visited(m, vector&lt;bool&gt;(n, false))</code></td>
+</tr>
+<tr>
+<td><strong>最大值函数</strong></td>
+<td><code>Math.max(res, count)</code></td>
+<td><code>max(res, count)</code></td>
+</tr>
+<tr>
+<td><strong>数组长度</strong></td>
+<td><code>grid.length</code>, <code>grid[0].length</code></td>
+<td><code>grid.size()</code>, <code>grid[0].size()</code></td>
+</tr>
+</tbody></table>
+<h1 id="994-腐烂的橘子"><a href="#994-腐烂的橘子" class="headerlink" title="994. 腐烂的橘子"></a>994. 腐烂的橘子</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotting-oranges/?envType=study-plan-v2&envId=top-100-liked">994. 腐烂的橘子</a></p>
+</blockquote>
+<h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：多源BFS，从所有腐烂橘子同时开始向四周扩散，感染新鲜橘子，记录感染时间。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>初始统计：将所有腐烂橘子（值为2）加入队列，时间记为0</li>
+<li>统计新鲜橘子数量</li>
+<li>BFS多源扩散：<ul>
+<li>取出当前腐烂橘子，向四个方向扩散</li>
+<li>如果相邻格子是新鲜橘子，则腐烂（值变为2），加入队列</li>
+<li>记录腐烂时间 &#x3D; 当前时间 + 1</li>
+</ul>
+</li>
+<li>BFS结束后：<ul>
+<li>如果还有新鲜橘子未腐烂，返回-1</li>
+<li>否则返回最大感染时间</li>
+</ul>
+</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>多源BFS：从多个起始点同时开始</li>
+<li>需要记录每个橘子腐烂的时间</li>
+<li>使用minute数组或队列层级记录时间</li>
+</ul>
+<h2 id="Java-2"><a href="#Java-2" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">orangesRotting</span><span class="params">(<span class="type">int</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] dir = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</span><br><span class="line">        <span class="comment">// BFS用的队列，放腐烂的橘子</span></span><br><span class="line">        Queue&lt;<span class="type">int</span>[]&gt; rotted = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span>[][] minute = <span class="keyword">new</span> <span class="title class_">int</span>[m][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">fresh</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始统计，将本就腐烂的橘子min记为0，并记录初始状态新鲜的橘子有多少</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m ;i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="number">2</span>) &#123;</span><br><span class="line">                    rotted.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;i, j&#125;);</span><br><span class="line">                    minute[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) fresh++;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!rotted.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span>[] r = rotted.poll();</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> r[<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> r[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">nextx</span> <span class="operator">=</span> x + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> <span class="variable">nexty</span> <span class="operator">=</span> y + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="comment">// 出界或不是新鲜橘子就直接跳过</span></span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= grid.length || nexty &lt; <span class="number">0</span> || nexty &gt;= grid[<span class="number">0</span>].length || grid[nextx][nexty] != <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="comment">// 新鲜橘子腐烂</span></span><br><span class="line">                rotted.offer(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;nextx, nexty&#125;);</span><br><span class="line">                grid[nextx][nexty] = <span class="number">2</span>;</span><br><span class="line">                <span class="comment">// 时间记录下来</span></span><br><span class="line">                minute[nextx][nexty] = minute[x][y] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 新鲜橘子数量-1</span></span><br><span class="line">                fresh--;</span><br><span class="line">                <span class="comment">// 更新所需时间</span></span><br><span class="line">                res = minute[nextx][nexty];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 还有没腐烂的返回-1否则返回全部腐烂所需时间</span></span><br><span class="line">        <span class="keyword">return</span> fresh &gt; <span class="number">0</span> ? -<span class="number">1</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">orangesRotting</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="comment">// BFS用的队列，放腐烂的橘子</span></span><br><span class="line">        queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; rotted;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> minute[m][n];</span><br><span class="line">        <span class="type">int</span> fresh = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始统计，将本就腐烂的橘子min记为0，并记录初始状态新鲜的橘子有多少</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) </span><br><span class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="number">2</span>) &#123;</span><br><span class="line">                    rotted.<span class="built_in">push</span>(&#123;i, j&#125;);</span><br><span class="line">                    minute[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) fresh++;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!rotted.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> r = rotted.<span class="built_in">front</span>();</span><br><span class="line">            rotted.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="type">int</span> x = r.first;</span><br><span class="line">            <span class="type">int</span> y = r.second;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> nextx = x + dir[i][<span class="number">0</span>];</span><br><span class="line">                <span class="type">int</span> nexty = y + dir[i][<span class="number">1</span>];</span><br><span class="line">                <span class="comment">// 出界或不是新鲜橘子就直接跳过</span></span><br><span class="line">                <span class="keyword">if</span> (nextx &lt; <span class="number">0</span> || nextx &gt;= m || nexty &lt; <span class="number">0</span> || nexty &gt;= n ||grid[nextx][nexty] != <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="comment">// 新鲜橘子腐烂</span></span><br><span class="line">                rotted.<span class="built_in">push</span>(&#123;nextx, nexty&#125;);</span><br><span class="line">                grid[nextx][nexty] = <span class="number">2</span>;</span><br><span class="line">                <span class="comment">// 时间记录下来</span></span><br><span class="line">                minute[nextx][nexty] = minute[x][y] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 新鲜橘子数量-1</span></span><br><span class="line">                fresh--;</span><br><span class="line">                <span class="comment">// 更新所需时间</span></span><br><span class="line">                res = minute[nextx][nexty];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 还有没腐烂的返回-1否则返回全部腐烂所需时间</span></span><br><span class="line">        <span class="keyword">return</span> fresh ? <span class="number">-1</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-2"><a href="#Java与C-区别-2" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>二维数组</strong></td>
+<td><code>int[][] grid</code></td>
+<td><code>vector&lt;vector&lt;int&gt;&gt;&amp; grid</code></td>
+</tr>
+<tr>
+<td><strong>二维时间数组</strong></td>
+<td><code>int[][] minute = new int[m][n]</code></td>
+<td><code>int minute[m][n]</code>（C99变长数组）</td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;int[]&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;pair&lt;int, int&gt;&gt; q</code></td>
+</tr>
+<tr>
+<td><strong>入队</strong></td>
+<td><code>q.offer(new int[]&#123;i, j&#125;)</code></td>
+<td><code>q.push(&#123;i, j&#125;)</code></td>
+</tr>
+<tr>
+<td><strong>获取队首并出队</strong></td>
+<td><code>q.poll()</code></td>
+<td><code>q.front(); q.pop()</code></td>
+</tr>
+<tr>
+<td><strong>三元运算符</strong></td>
+<td><code>fresh &gt; 0 ? -1 : res</code></td>
+<td><code>fresh ? -1 : res</code></td>
+</tr>
+</tbody></table>
+<h1 id="207-课程表"><a href="#207-课程表" class="headerlink" title="207. 课程表"></a>207. 课程表</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/course-schedule/?envType=study-plan-v2&envId=top-100-liked">207. 课程表</a></p>
+</blockquote>
+<h2 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：拓扑排序（Kahn算法），检测有向图是否有环。</p>
+<p><strong>前置概念</strong>：</p>
+<ul>
+<li><strong>入度</strong>：指向该节点的边的数量</li>
+<li><strong>邻接表</strong>：记录每个节点的出边指向哪些节点</li>
+</ul>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>构建邻接表和入度表</li>
+<li>将所有入度为0的节点加入队列（没有先修课程的课程）</li>
+<li>BFS：取出队首节点，计数+1</li>
+<li>遍历该节点的所有后继节点，将其入度-1</li>
+<li>如果后继节点入度变为0，加入队列</li>
+<li>判断：如果遍历到的节点数等于总课程数，则无环；否则有环</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>拓扑排序前提是有向无环图（DAG）</li>
+<li>检测自环：课程a依赖课程a本身</li>
+</ul>
+<h2 id="Java-3"><a href="#Java-3" class="headerlink" title="Java"></a>Java</h2><p>哈希表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canFinish</span><span class="params">(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites)</span> &#123;</span><br><span class="line">        <span class="comment">// 邻接表 adj: key=课程, value=该课程指向的后继课程列表</span></span><br><span class="line">        Map&lt;Integer, ArrayList&lt;Integer&gt;&gt; adj = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 入度表</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; inDegree = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> p[<span class="number">0</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> p[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">// 自环，直接无法完成</span></span><br><span class="line">            <span class="keyword">if</span> (a == b) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 初始化邻接表</span></span><br><span class="line">            adj.computeIfAbsent(b, k -&gt; <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;()).add(a);</span><br><span class="line">            <span class="comment">// a入度+1</span></span><br><span class="line">            inDegree.put(a, inDegree.getOrDefault(a, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// b入度初始化为0（不存在时）</span></span><br><span class="line">            inDegree.putIfAbsent(b, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 入度为0的节点入队</span></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : inDegree.entrySet())</span><br><span class="line">            <span class="keyword">if</span> (entry.getValue() == <span class="number">0</span>)</span><br><span class="line">                q.offer(entry.getKey());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">node</span> <span class="operator">=</span> q.poll();</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="comment">// 遍历当前节点所有后继</span></span><br><span class="line">            <span class="keyword">if</span> (adj.containsKey(node)) </span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> next : adj.get(node)) &#123;</span><br><span class="line">                    inDegree.put(next, inDegree.get(next) - <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (inDegree.get(next) == <span class="number">0</span>) </span><br><span class="line">                        q.offer(next);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历到的节点数不等于总出现节点数，存在环</span></span><br><span class="line">        <span class="keyword">return</span> cnt == inDegree.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>课程编号范围 0~numCourses-1，可用数组代替哈希表效率更高：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canFinish</span><span class="params">(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites)</span> &#123;</span><br><span class="line">        <span class="comment">// 邻接表</span></span><br><span class="line">        ArrayList&lt;Integer&gt;[] adj = <span class="keyword">new</span> <span class="title class_">ArrayList</span>[numCourses];</span><br><span class="line">        <span class="comment">// 入度表</span></span><br><span class="line">        <span class="type">int</span>[] inDegree = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="comment">// 初始化邻接表</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++) </span><br><span class="line">            adj[i] = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> p[<span class="number">0</span>], b = p[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">// 自依赖直接判断为有环</span></span><br><span class="line">            <span class="keyword">if</span> (a == b) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 更新邻接表，入度表</span></span><br><span class="line">            adj[b].add(a);</span><br><span class="line">            inDegree[a]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 入队所有入度 = 0 的节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>) q.offer(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 统计拓扑排序节点数</span></span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> q.poll();</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[cur]) &#123;</span><br><span class="line">                inDegree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (inDegree[next] == <span class="number">0</span>) q.offer(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果拓扑节点数 &lt; 总节点数，说明有环</span></span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-3"><a href="#C-3" class="headerlink" title="C++"></a>C++</h2><p>哈希表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canFinish</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;&gt; adj;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; in_degree;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> p : prerequisites) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[<span class="number">0</span>] == p[<span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            adj[p[<span class="number">1</span>]].<span class="built_in">push_back</span>(p[<span class="number">0</span>]);</span><br><span class="line">            in_degree[p[<span class="number">0</span>]]++;</span><br><span class="line">            <span class="keyword">if</span> (!in_degree.<span class="built_in">count</span>(p[<span class="number">1</span>]))</span><br><span class="line">                in_degree[p[<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; d : in_degree) </span><br><span class="line">            <span class="keyword">if</span> (d.second == <span class="number">0</span>)</span><br><span class="line">                q.<span class="built_in">push</span>(d.first);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> node = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[node]) &#123;</span><br><span class="line">                in_degree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (in_degree[next] == <span class="number">0</span>)</span><br><span class="line">                    q.<span class="built_in">push</span>(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt != in_degree.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>课程编号范围 0~numCourses-1，可用数组代替哈希表效率更高：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canFinish</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">adj</span>(numCourses);</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in_degree</span><span class="params">(numCourses)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; p : prerequisites) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[<span class="number">0</span>] == p[<span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            adj[p[<span class="number">1</span>]].<span class="built_in">push_back</span>(p[<span class="number">0</span>]);</span><br><span class="line">            in_degree[p[<span class="number">0</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            <span class="keyword">if</span> (in_degree[i] == <span class="number">0</span>) q.<span class="built_in">push</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[cur]) &#123;</span><br><span class="line">                in_degree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (in_degree[next] == <span class="number">0</span>) q.<span class="built_in">push</span>(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-3"><a href="#Java与C-区别-3" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>哈希表</strong></td>
+<td><code>Map&lt;K, V&gt;</code> &#x2F; <code>HashMap&lt;K, V&gt;</code></td>
+<td><code>unordered_map&lt;K, V&gt;</code></td>
+</tr>
+<tr>
+<td><strong>列表数组</strong></td>
+<td><code>ArrayList&lt;Integer&gt;[] adj</code></td>
+<td><code>vector&lt;vector&lt;int&gt;&gt; adj</code></td>
+</tr>
+<tr>
+<td><strong>数组列表</strong></td>
+<td><code>new ArrayList&lt;Integer&gt;()</code></td>
+<td><code>vector&lt;int&gt;()</code></td>
+</tr>
+<tr>
+<td><strong>入度数组</strong></td>
+<td><code>int[] inDegree = new int[numCourses]</code></td>
+<td><code>vector&lt;int&gt; in_degree(numCourses)</code></td>
+</tr>
+<tr>
+<td><strong>获取默认值</strong></td>
+<td><code>inDegree.getOrDefault(a, 0)</code></td>
+<td><code>in_degree.count(a) ? in_degree[a] : 0</code></td>
+</tr>
+<tr>
+<td><strong>获取或创建</strong></td>
+<td><code>adj.computeIfAbsent(b, k -&gt; new ArrayList&lt;&gt;())</code></td>
+<td><code>adj[b]</code> 自动创建</td>
+</tr>
+<tr>
+<td><strong>设置默认值</strong></td>
+<td><code>inDegree.putIfAbsent(b, 0)</code></td>
+<td><code>if (!in_degree.count(b)) in_degree[b] = 0</code></td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;int&gt; q</code></td>
+</tr>
+<tr>
+<td><strong>遍历Map</strong></td>
+<td><code>for (Map.Entry&lt;K,V&gt; entry : map.entrySet())</code></td>
+<td><code>for (auto&amp; d : map)</code></td>
+</tr>
+</tbody></table>
+<h1 id="210-课程表-II"><a href="#210-课程表-II" class="headerlink" title="210. 课程表 II"></a>210. 课程表 II</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/course-schedule-ii/?envType=study-plan-v2&envId=top-100-liked">210. 课程表 II</a></p>
+</blockquote>
+<h2 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：拓扑排序的变体，在检测是否有环的同时，记录拓扑排序的顺序（即课程学习顺序）。</p>
+<p><strong>与207题的区别</strong>：</p>
+<ul>
+<li>207题只需返回是否可行（boolean）</li>
+<li>210题需要返回具体的课程学习顺序（数组）</li>
+</ul>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>构建邻接表和入度表</li>
+<li>将所有入度为0的节点加入队列</li>
+<li>BFS：取出队首节点，加入结果数组</li>
+<li>遍历该节点的所有后继节点，将其入度-1</li>
+<li>如果后继节点入度变为0，加入队列</li>
+<li>返回结果数组（如果节点数等于总课程数，否则返回空数组）</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>结果数组记录的是拓扑排序的顺序</li>
+<li>每弹出一个节点就将其加入结果数组</li>
+</ul>
+<h2 id="Java-4"><a href="#Java-4" class="headerlink" title="Java"></a>Java</h2><p>哈希表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] findOrder(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites) &#123;</span><br><span class="line">        Map&lt;Integer, ArrayList&lt;Integer&gt;&gt; adj = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; inDegree = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> p[<span class="number">0</span>], b = p[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (a == b) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">            adj.computeIfAbsent(b, k -&gt; <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;()).add(a);</span><br><span class="line">            inDegree.put(a, inDegree.getOrDefault(a, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            inDegree.putIfAbsent(b, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 补齐所有0~numCourses-1课程，无依赖的入度设为0</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            inDegree.putIfAbsent(i, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : inDegree.entrySet())</span><br><span class="line">            <span class="keyword">if</span> (entry.getValue() == <span class="number">0</span>) q.offer(entry.getKey());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span>  q.poll();</span><br><span class="line">            result[cnt] = cur;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">if</span> (adj.containsKey(cur))</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> next : adj.get(cur)) &#123;</span><br><span class="line">                    inDegree.put(next, inDegree.get(next) - <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (inDegree.get(next) == <span class="number">0</span>) q.offer(next);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 对比总课程数，不是map大小</span></span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses ? result : <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] findOrder(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt;[] adj = <span class="keyword">new</span> <span class="title class_">ArrayList</span>[numCourses];</span><br><span class="line">        <span class="type">int</span>[] inDegree = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            adj[i] = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[<span class="number">0</span>] == p[<span class="number">1</span>]) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">            adj[p[<span class="number">1</span>]].add(p[<span class="number">0</span>]);</span><br><span class="line">            inDegree[p[<span class="number">0</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>) q.offer(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span>  q.poll();</span><br><span class="line">            result[cnt] = cur;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[cur]) &#123;</span><br><span class="line">                inDegree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (inDegree[next] == <span class="number">0</span>) q.offer(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses ? result : <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-4"><a href="#C-4" class="headerlink" title="C++"></a>C++</h2><p>哈希表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findOrder</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;&gt; adj;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; in_degree;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; can_not_finish;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; p : prerequisites) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[<span class="number">0</span>] == p[<span class="number">1</span>]) <span class="keyword">return</span> can_not_finish;</span><br><span class="line">            adj[p[<span class="number">1</span>]].<span class="built_in">push_back</span>(p[<span class="number">0</span>]);</span><br><span class="line">            in_degree[p[<span class="number">0</span>]]++;</span><br><span class="line">            <span class="keyword">if</span> (!in_degree.<span class="built_in">count</span>(p[<span class="number">1</span>]))</span><br><span class="line">                in_degree[p[<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            <span class="keyword">if</span> (in_degree[i] == <span class="number">0</span>) q.<span class="built_in">push</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            result.<span class="built_in">push_back</span>(cur);</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[cur]) &#123;</span><br><span class="line">                in_degree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (in_degree[next] == <span class="number">0</span>) q.<span class="built_in">push</span>(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses ? result : can_not_finish;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findOrder</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">adj</span>(numCourses);</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in_degree</span><span class="params">(numCourses)</span></span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; can_not_finish;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; p : prerequisites) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[<span class="number">0</span>] == p[<span class="number">1</span>]) <span class="keyword">return</span> can_not_finish;</span><br><span class="line">            adj[p[<span class="number">1</span>]].<span class="built_in">push_back</span>(p[<span class="number">0</span>]);</span><br><span class="line">            in_degree[p[<span class="number">0</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)</span><br><span class="line">            <span class="keyword">if</span> (in_degree[i] == <span class="number">0</span>) q.<span class="built_in">push</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            result.<span class="built_in">push_back</span>(cur);</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> next : adj[cur]) &#123;</span><br><span class="line">                in_degree[next]--;</span><br><span class="line">                <span class="keyword">if</span> (in_degree[next] == <span class="number">0</span>) q.<span class="built_in">push</span>(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cnt == numCourses ? result : can_not_finish;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-4"><a href="#Java与C-区别-4" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>哈希表</strong></td>
+<td><code>Map&lt;K, V&gt;</code> &#x2F; <code>HashMap&lt;K, V&gt;</code></td>
+<td><code>unordered_map&lt;K, V&gt;</code></td>
+</tr>
+<tr>
+<td><strong>列表数组</strong></td>
+<td><code>ArrayList&lt;Integer&gt;[] adj</code></td>
+<td><code>vector&lt;vector&lt;int&gt;&gt; adj</code></td>
+</tr>
+<tr>
+<td><strong>入度数组</strong></td>
+<td><code>int[] inDegree = new int[numCourses]</code></td>
+<td><code>vector&lt;int&gt; in_degree(numCourses)</code></td>
+</tr>
+<tr>
+<td><strong>获取默认值</strong></td>
+<td><code>inDegree.getOrDefault(a, 0)</code></td>
+<td><code>in_degree.count(a) ? in_degree[a] : 0</code></td>
+</tr>
+<tr>
+<td><strong>获取或创建</strong></td>
+<td><code>adj.computeIfAbsent(b, k -&gt; new ArrayList&lt;&gt;())</code></td>
+<td><code>adj[b]</code> 自动创建</td>
+</tr>
+<tr>
+<td><strong>设置默认值</strong></td>
+<td><code>inDegree.putIfAbsent(b, 0)</code></td>
+<td><code>if (!in_degree.count(b)) in_degree[b] = 0</code></td>
+</tr>
+<tr>
+<td><strong>数组创建</strong></td>
+<td><code>new int[0]</code></td>
+<td><code>can_not_finish</code> 空vector</td>
+</tr>
+<tr>
+<td><strong>结果添加</strong></td>
+<td><code>result[cnt] = cur</code></td>
+<td><code>result.push_back(cur)</code></td>
+</tr>
+<tr>
+<td><strong>返回数组</strong></td>
+<td><code>return result</code></td>
+<td><code>return result</code></td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;int&gt; q</code></td>
+</tr>
+</tbody></table>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/";
+            const title         = "「LeetCode-Hot100-图论」";
+            const excerpt       = `200. 岛屿数量
+题目链接：200. 岛屿数量
+
+解题思路核心思想：遍历二维网格，遇到岛屿（’1’）就进行DFS&#x2F;BFS，将整个岛屿标记为已访问，计数+1。
+算法流程：
+
+遍历整个网格，找到未访问的岛屿格子（grid[i]...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/BFS/" rel="tag">BFS</a>, <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/DFS/" rel="tag">DFS</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a>, <a class="tag-none-link" href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="tag">拓扑排序</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-06-19T08:24:34.742Z" itemprop="dateModified">最后编辑：2026-06-19</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" LeetCode-Hot100-回溯" href="/2026/06/18/LeetCode-Hot100-回溯/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                67
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                9
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                233
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#200-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F"><span class="toc-text">200. 岛屿数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS"><span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-1"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-1"><span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#695-%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF"><span class="toc-text">695. 岛屿的最大面积</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-2"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-2"><span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS-3"><span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS-3"><span class="toc-text">BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-1"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#994-%E8%85%90%E7%83%82%E7%9A%84%E6%A9%98%E5%AD%90"><span class="toc-text">994. 腐烂的橘子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-2"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#207-%E8%AF%BE%E7%A8%8B%E8%A1%A8"><span class="toc-text">207. 课程表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-3"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#210-%E8%AF%BE%E7%A8%8B%E8%A1%A8-II"><span class="toc-text">210. 课程表 II</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-4"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-4"><span class="toc-text">Java与C++区别</span></a></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/01%E8%83%8C%E5%8C%85/" style="font-size: 0.73em;">01背包</a> <a href="/tags/2PC/" style="font-size: 0.6em;">2PC</a> <a href="/tags/%E4%B8%8Eequals/" style="font-size: 0.6em;">==与equals()</a> <a href="/tags/ACID/" style="font-size: 0.67em;">ACID</a> <a href="/tags/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/" style="font-size: 0.6em;">AOP（面向切面编程）</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/ArrayList%E5%92%8CLinkedList/" style="font-size: 0.6em;">ArrayList和LinkedList</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Autowired%EF%BC%88%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%EF%BC%89%E5%92%8CSource%EF%BC%88%E8%B5%84%E6%BA%90%E6%B3%A8%E5%85%A5%EF%BC%89%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Autowired（自动注入）和Source（资源注入）注解</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/BFS/" style="font-size: 0.67em;">BFS</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/Bean%EF%BC%88%E7%BB%84%E4%BB%B6%EF%BC%89%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" style="font-size: 0.6em;">Bean（组件）的生命周期</a> <a href="/tags/Bellman-Ford%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" style="font-size: 0.6em;">Bellman-Ford（单源点，有负权值边，无负权值环）</a> <a href="/tags/BlockingQueue/" style="font-size: 0.6em;">BlockingQueue</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/"><i class="fa  fa-book"></i> LeetCode-Hot100-图论</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/18/LeetCode-Hot100-%E5%9B%9E%E6%BA%AF/"><i class="fa  fa-book"></i> LeetCode-Hot100-回溯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/17/LeetCode-Hot100-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"><i class="fa  fa-book"></i> LeetCode-Hot100-贪心算法</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/16/LeetCode-Hot100-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fa  fa-book"></i> LeetCode-Hot100-动态规划</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/12/LeetCode-Hot100-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"><i class="fa  fa-book"></i> LeetCode-Hot100-滑动窗口</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
