@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>LeetCode-Hot100-二叉树 | Hexo</title>
+  
+  <meta name="author" content="John Doe" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="C++, Java, 二叉树, 递归" />
+  
+  <meta name="description" content="写在前面二叉树的定义：java版12345678910111213&#x2F;&#x2F;Definition for a binary tree node.public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode() &#123;&#125;    TreeNode(int val) &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Hot100-二叉树">
+<meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面二叉树的定义：java版12345678910111213&#x2F;&#x2F;Definition for a binary tree node.public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode() &#123;&#125;    TreeNode(int val) &amp;#123">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-19T08:40:04.000Z">
+<meta property="article:modified_time" content="2026-06-20T10:39:34.298Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="递归">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+    
+  </style>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Hexo</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Hexo</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E4%BA%8C%E5%8F%89%E6%A0%91/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">LeetCode-Hot100-二叉树</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2026-06-19T08:40:04.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-06-19</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">lin</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~27.13K
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1781951974298"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">二叉树的定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E7%89%88"><span class="toc-number">1.1.1.</span> <span class="toc-text">java版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%89%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">C++版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#94-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">2.</span> <span class="toc-text">94. 二叉树的中序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">2.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">2.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB"><span class="toc-number">2.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#144-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">3.</span> <span class="toc-text">144. 二叉树的前序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-number">3.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-number">3.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">3.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-1"><span class="toc-number">3.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#145-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">4.</span> <span class="toc-text">145. 二叉树的后序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-number">4.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-number">4.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-number">4.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-2"><span class="toc-number">4.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-number">5.</span> <span class="toc-text">104. 二叉树的最大深度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-number">5.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-number">5.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-number">5.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-3"><span class="toc-number">5.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">6.</span> <span class="toc-text">226. 翻转二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="toc-number">6.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-4"><span class="toc-number">6.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4"><span class="toc-number">6.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-4"><span class="toc-number">6.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">7.</span> <span class="toc-text">101. 对称二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-5"><span class="toc-number">7.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-5"><span class="toc-number">7.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-5"><span class="toc-number">7.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-5"><span class="toc-number">7.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84"><span class="toc-number">8.</span> <span class="toc-text">543. 二叉树的直径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-6"><span class="toc-number">8.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-6"><span class="toc-number">8.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-6"><span class="toc-number">8.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-6"><span class="toc-number">8.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">9.</span> <span class="toc-text">102. 二叉树的层序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-7"><span class="toc-number">9.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-7"><span class="toc-number">9.2.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95"><span class="toc-number">9.2.1.</span> <span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95"><span class="toc-number">9.2.2.</span> <span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-7"><span class="toc-number">9.3.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-1"><span class="toc-number">9.3.1.</span> <span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-1"><span class="toc-number">9.3.2.</span> <span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-7"><span class="toc-number">9.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#108-%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">10.</span> <span class="toc-text">108. 将有序数组转换为二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-8"><span class="toc-number">10.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-8"><span class="toc-number">10.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-8"><span class="toc-number">10.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-8"><span class="toc-number">10.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">11.</span> <span class="toc-text">98. 验证二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-9"><span class="toc-number">11.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-9"><span class="toc-number">11.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-9"><span class="toc-number">11.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-9"><span class="toc-number">11.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%AC-K-%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">12.</span> <span class="toc-text">230. 二叉搜索树中第 K 小的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-10"><span class="toc-number">12.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-10"><span class="toc-number">12.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-10"><span class="toc-number">12.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-10"><span class="toc-number">12.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#199-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8F%B3%E8%A7%86%E5%9B%BE"><span class="toc-number">13.</span> <span class="toc-text">199. 二叉树的右视图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-11"><span class="toc-number">13.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-11"><span class="toc-number">13.2.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-2"><span class="toc-number">13.2.1.</span> <span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-2"><span class="toc-number">13.2.2.</span> <span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-11"><span class="toc-number">13.3.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-3"><span class="toc-number">13.3.1.</span> <span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-3"><span class="toc-number">13.3.2.</span> <span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-11"><span class="toc-number">13.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#114-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">14.</span> <span class="toc-text">114. 二叉树展开为链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-12"><span class="toc-number">14.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-12"><span class="toc-number">14.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-12"><span class="toc-number">14.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-12"><span class="toc-number">14.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">15.</span> <span class="toc-text">105. 从前序与中序遍历序列构造二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-13"><span class="toc-number">15.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-13"><span class="toc-number">15.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-13"><span class="toc-number">15.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-13"><span class="toc-number">15.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#106-%E4%BB%8E%E5%90%8E%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">16.</span> <span class="toc-text">106. 从后序与中序遍历序列构造二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-14"><span class="toc-number">16.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-14"><span class="toc-number">16.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-14"><span class="toc-number">16.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-14"><span class="toc-number">16.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#236-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-number">17.</span> <span class="toc-text">236. 二叉树的最近公共祖先</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-15"><span class="toc-number">17.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-15"><span class="toc-number">17.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-15"><span class="toc-number">17.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-15"><span class="toc-number">17.4.</span> <span class="toc-text">Java与C++区别</span></a></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><h2 id="二叉树的定义："><a href="#二叉树的定义：" class="headerlink" title="二叉树的定义："></a>二叉树的定义：</h2><h3 id="java版"><a href="#java版" class="headerlink" title="java版"></a>java版</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode() &#123;&#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val) &#123; <span class="built_in">this</span>.val = val; &#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val, TreeNode left, TreeNode right) &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.left = left;</span><br><span class="line">        <span class="built_in">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-版"><a href="#C-版" class="headerlink" title="C++版"></a>C++版</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    <span class="built_in">TreeNode</span>() : <span class="built_in">val</span>(<span class="number">0</span>), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="type">int</span> x) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="type">int</span> x, TreeNode *left, TreeNode *right) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(left), <span class="built_in">right</span>(right) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a>94. 二叉树的中序遍历</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-inorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked">94. 二叉树的中序遍历</a></p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归实现中序遍历，按照”左-根-右”的顺序访问节点。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回</li>
+<li>递归遍历左子树</li>
+<li>访问当前节点（将值加入结果列表）</li>
+<li>递归遍历右子树</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>中序遍历顺序：左子树 → 根节点 → 右子树</li>
+<li>使用成员变量存储结果，避免每次递归传参</li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode cur)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        traversal(cur.left); <span class="comment">// 左</span></span><br><span class="line">        res.add(cur.val);    <span class="comment">// 根</span></span><br><span class="line">        traversal(cur.right);<span class="comment">// 右</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        traversal(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">traversal</span><span class="params">(TreeNode* cur)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;left);</span><br><span class="line">        res.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">traversal</span>(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别"><a href="#Java与C-区别" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>cur == null</code></td>
+<td><code>cur == nullptr</code></td>
+</tr>
+<tr>
+<td><strong>成员变量</strong></td>
+<td><code>private List&lt;Integer&gt; res</code></td>
+<td><code>private vector&lt;int&gt; res</code></td>
+</tr>
+<tr>
+<td><strong>列表添加</strong></td>
+<td><code>res.add(cur.val)</code></td>
+<td><code>res.push_back(cur-&gt;val)</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>cur.val</code>, <code>cur.left</code></td>
+<td><code>cur-&gt;val</code>, <code>cur-&gt;left</code></td>
+</tr>
+</tbody></table>
+<h1 id="144-二叉树的前序遍历"><a href="#144-二叉树的前序遍历" class="headerlink" title="144. 二叉树的前序遍历"></a>144. 二叉树的前序遍历</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked">144. 二叉树的前序遍历</a></p>
+</blockquote>
+<h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归实现前序遍历，按照”根-左-右”的顺序访问节点。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回</li>
+<li>访问当前节点（将值加入结果列表）</li>
+<li>递归遍历左子树</li>
+<li>递归遍历右子树</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>前序遍历顺序：根节点 → 左子树 → 右子树</li>
+<li>适用于复制二叉树、序列化等场景</li>
+</ul>
+<h2 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode cur)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        res.add(cur.val);    <span class="comment">// 根</span></span><br><span class="line">        traversal(cur.left); <span class="comment">// 左</span></span><br><span class="line">        traversal(cur.right);<span class="comment">// 右</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        traversal(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">traversal</span><span class="params">(TreeNode* cur)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        res.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;left);</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">traversal</span>(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-1"><a href="#Java与C-区别-1" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>cur == null</code></td>
+<td><code>cur == nullptr</code></td>
+</tr>
+<tr>
+<td><strong>成员变量</strong></td>
+<td><code>private List&lt;Integer&gt; res</code></td>
+<td><code>private vector&lt;int&gt; res</code></td>
+</tr>
+<tr>
+<td><strong>列表添加</strong></td>
+<td><code>res.add(cur.val)</code></td>
+<td><code>res.push_back(cur-&gt;val)</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>cur.val</code>, <code>cur.left</code></td>
+<td><code>cur-&gt;val</code>, <code>cur-&gt;left</code></td>
+</tr>
+</tbody></table>
+<h1 id="145-二叉树的后序遍历"><a href="#145-二叉树的后序遍历" class="headerlink" title="145. 二叉树的后序遍历"></a>145. 二叉树的后序遍历</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-postorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked">145. 二叉树的后序遍历</a></p>
+</blockquote>
+<h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归实现后序遍历，按照”左-右-根”的顺序访问节点。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回</li>
+<li>递归遍历左子树</li>
+<li>递归遍历右子树</li>
+<li>访问当前节点（将值加入结果列表）</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>后序遍历顺序：左子树 → 右子树 → 根节点</li>
+<li>适用于释放二叉树内存、计算子树和等场景</li>
+</ul>
+<h2 id="Java-2"><a href="#Java-2" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode cur)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        traversal(cur.left); <span class="comment">// 左</span></span><br><span class="line">        traversal(cur.right);<span class="comment">// 右</span></span><br><span class="line">        res.add(cur.val);    <span class="comment">// 根</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        traversal(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">traversal</span><span class="params">(TreeNode* cur)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;left);</span><br><span class="line">        <span class="built_in">traversal</span>(cur-&gt;right);</span><br><span class="line">        res.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">traversal</span>(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-2"><a href="#Java与C-区别-2" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>cur == null</code></td>
+<td><code>cur == nullptr</code></td>
+</tr>
+<tr>
+<td><strong>成员变量</strong></td>
+<td><code>private List&lt;Integer&gt; res</code></td>
+<td><code>private vector&lt;int&gt; res</code></td>
+</tr>
+<tr>
+<td><strong>列表添加</strong></td>
+<td><code>res.add(cur.val)</code></td>
+<td><code>res.push_back(cur-&gt;val)</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>cur.val</code>, <code>cur.left</code></td>
+<td><code>cur-&gt;val</code>, <code>cur-&gt;left</code></td>
+</tr>
+</tbody></table>
+<h1 id="104-二叉树的最大深度"><a href="#104-二叉树的最大深度" class="headerlink" title="104. 二叉树的最大深度"></a>104. 二叉树的最大深度</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked">104. 二叉树的最大深度</a></p>
+</blockquote>
+<h2 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归计算二叉树深度，当前节点深度 &#x3D; max(左子树深度, 右子树深度) + 1。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回0</li>
+<li>递归计算左子树深度</li>
+<li>递归计算右子树深度</li>
+<li>返回两者最大值 + 1（当前节点）</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>叶子节点深度为1</li>
+<li>空树深度为0</li>
+</ul>
+<h2 id="Java-3"><a href="#Java-3" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-3"><a href="#C-3" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">maxDepth</span>(root-&gt;left), <span class="built_in">maxDepth</span>(root-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-3"><a href="#Java与C-区别-3" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>root == null</code></td>
+<td><code>!root</code></td>
+</tr>
+<tr>
+<td><strong>最大值函数</strong></td>
+<td><code>Math.max(a, b)</code></td>
+<td><code>max(a, b)</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>root.left</code>, <code>root.right</code></td>
+<td><code>root-&gt;left</code>, <code>root-&gt;right</code></td>
+</tr>
+</tbody></table>
+<h1 id="226-翻转二叉树"><a href="#226-翻转二叉树" class="headerlink" title="226. 翻转二叉树"></a>226. 翻转二叉树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/invert-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked">226. 翻转二叉树</a></p>
+</blockquote>
+<h2 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归翻转二叉树，交换每个节点的左右子树。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回null</li>
+<li>递归翻转左子树</li>
+<li>递归翻转右子树</li>
+<li>交换当前节点的左右子树</li>
+<li>返回当前节点</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>后序遍历思想：先翻转子树再交换</li>
+<li>原地修改，不需要额外空间</li>
+</ul>
+<h2 id="Java-4"><a href="#Java-4" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">invertTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> invertTree(root.left);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> invertTree(root.right);</span><br><span class="line">        root.left = right;</span><br><span class="line">        root.right = left;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-4"><a href="#C-4" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        TreeNode* left = <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        TreeNode* right = <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        root-&gt;left = right;</span><br><span class="line">        root-&gt;right = left;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-4"><a href="#Java与C-区别-4" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>root == null</code></td>
+<td><code>!root</code></td>
+</tr>
+<tr>
+<td><strong>返回空</strong></td>
+<td><code>return null</code></td>
+<td><code>return nullptr</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>root.left</code>, <code>root.right</code></td>
+<td><code>root-&gt;left</code>, <code>root-&gt;right</code></td>
+</tr>
+</tbody></table>
+<h1 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101. 对称二叉树"></a>101. 对称二叉树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/description/?envType=study-plan-v2&envId=top-100-liked">101. 对称二叉树</a></p>
+</blockquote>
+<h2 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归比较左右子树是否对称，需要比较外侧和内侧节点。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>终止条件：<ul>
+<li>左右都为空 → true</li>
+<li>一个为空一个不为空 → false</li>
+<li>值不相等 → false</li>
+</ul>
+</li>
+<li>递归比较外侧（左左 vs 右右）</li>
+<li>递归比较内侧（左右 vs 右左）</li>
+<li>返回两者都为true</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>对称条件：左子树的左 &#x3D; 右子树的右，左子树的右 &#x3D; 右子树的左</li>
+<li>需要同时比较外侧和内侧</li>
+</ul>
+<h2 id="Java-5"><a href="#Java-5" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">compare</span><span class="params">(TreeNode left, TreeNode right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left == <span class="literal">null</span> &amp;&amp; right != <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (left != <span class="literal">null</span> &amp;&amp; right == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (left == <span class="literal">null</span> &amp;&amp; right == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (left.val != right.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">outside</span> <span class="operator">=</span> compare(left.left, right.right);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">inside</span> <span class="operator">=</span> compare(left.right, right.left);</span><br><span class="line">        <span class="keyword">return</span> outside &amp;&amp; inside;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> compare(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-5"><a href="#C-5" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">compare</span><span class="params">(TreeNode* left, TreeNode* right)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 首先排除空节点的情况</span></span><br><span class="line">        <span class="keyword">if</span> (left &amp;&amp; !right) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (!left &amp;&amp; right) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (!left &amp;&amp; !right) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 排除了空节点，再排除数值不相同的情况</span></span><br><span class="line">        <span class="keyword">if</span> (left -&gt; val != right -&gt; val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 此时就是：左右节点都不为空，且数值相同的情况</span></span><br><span class="line">        <span class="comment">// 此时才做递归，做下一层的判断</span></span><br><span class="line">        <span class="type">bool</span> outside = <span class="built_in">compare</span>(left -&gt; left, right -&gt; right);   <span class="comment">// 左子树：左，右子树：右</span></span><br><span class="line">        <span class="type">bool</span> inside = <span class="built_in">compare</span>(left -&gt; right, right -&gt; left);    <span class="comment">// 左子树：右，右子树：左</span></span><br><span class="line">        <span class="keyword">return</span> outside &amp;&amp; inside;                               <span class="comment">// 左子树：中、 右子树：中 （逻辑处理）</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">compare</span>(root -&gt; left, root -&gt; right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-5"><a href="#Java与C-区别-5" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>left == null</code></td>
+<td><code>!left</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>left.val</code>, <code>left.left</code></td>
+<td><code>left-&gt;val</code>, <code>left-&gt;left</code></td>
+</tr>
+<tr>
+<td><strong>布尔运算符</strong></td>
+<td><code>&amp;&amp;</code></td>
+<td><code>&amp;&amp;</code>（相同）</td>
+</tr>
+</tbody></table>
+<h1 id="543-二叉树的直径"><a href="#543-二叉树的直径" class="headerlink" title="543. 二叉树的直径"></a>543. 二叉树的直径</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/diameter-of-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked">543. 二叉树的直径</a></p>
+</blockquote>
+<h2 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：后序遍历计算每个节点的左右子树深度，直径 &#x3D; 左深度 + 右深度。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回-1（边数）</li>
+<li>递归计算左子树深度</li>
+<li>递归计算右子树深度</li>
+<li>更新全局最大直径（左深度 + 右深度）</li>
+<li>返回当前节点深度（max(左深度, 右深度) + 1）</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>直径是边数，不是节点数</li>
+<li>需要用全局变量记录最大直径</li>
+<li>后序遍历：先计算子树深度再更新答案</li>
+</ul>
+<h2 id="Java-6"><a href="#Java-6" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(TreeNode node)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">l_len</span> <span class="operator">=</span> dfs(node.left) + <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">r_len</span> <span class="operator">=</span> dfs(node.right) + <span class="number">1</span>;</span><br><span class="line">        ans = Math.max(ans, l_len + r_len);</span><br><span class="line">        <span class="keyword">return</span> Math.max(l_len, r_len);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-6"><a href="#C-6" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(TreeNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> l_len = <span class="built_in">dfs</span>(node-&gt;left) + <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> r_len = <span class="built_in">dfs</span>(node-&gt;right) + <span class="number">1</span>;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, l_len + r_len);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(l_len, r_len);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">dfs</span>(root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-6"><a href="#Java与C-区别-6" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>node == null</code></td>
+<td><code>!node</code></td>
+</tr>
+<tr>
+<td><strong>最大值函数</strong></td>
+<td><code>Math.max(a, b)</code></td>
+<td><code>max(a, b)</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>node.left</code>, <code>node.right</code></td>
+<td><code>node-&gt;left</code>, <code>node-&gt;right</code></td>
+</tr>
+<tr>
+<td><strong>成员变量</strong></td>
+<td><code>private int ans</code></td>
+<td><code>private int ans</code>（相同）</td>
+</tr>
+</tbody></table>
+<h1 id="102-二叉树的层序遍历"><a href="#102-二叉树的层序遍历" class="headerlink" title="102. 二叉树的层序遍历"></a>102. 二叉树的层序遍历</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/?envType=study-plan-v2&envId=top-100-liked">102. 二叉树的层序遍历</a></p>
+</blockquote>
+<h2 id="解题思路-7"><a href="#解题思路-7" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：层序遍历（BFS）按层访问二叉树节点，使用队列实现。</p>
+<p><strong>递归解法思路</strong>：</p>
+<ol>
+<li>递归遍历，记录当前深度</li>
+<li>如果结果列表大小等于当前深度，添加新的层列表</li>
+<li>将当前节点值加入对应层</li>
+<li>递归遍历左右子树，深度+1</li>
+</ol>
+<p><strong>迭代解法思路</strong>：</p>
+<ol>
+<li>初始化队列，根节点入队</li>
+<li>循环处理队列：<ul>
+<li>记录当前层节点数（队列大小）</li>
+<li>遍历当前层所有节点</li>
+<li>节点出队，值加入结果</li>
+<li>左右子节点入队</li>
+</ul>
+</li>
+<li>返回结果</li>
+</ol>
+<h2 id="Java-7"><a href="#Java-7" class="headerlink" title="Java"></a>Java</h2><h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">order</span><span class="params">(TreeNode cur, <span class="type">int</span> depth)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (result.size() == depth) result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">        result.get(depth).add(cur.val);</span><br><span class="line">        order(cur.left, depth + <span class="number">1</span>);</span><br><span class="line">        order(cur.right, depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        order(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> q.size();</span><br><span class="line">            List&lt;Integer&gt; level = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> q.poll();</span><br><span class="line">                level.add(cur.val);</span><br><span class="line">                <span class="keyword">if</span> (cur.left != <span class="literal">null</span>) q.offer(cur.left);</span><br><span class="line">                <span class="keyword">if</span> (cur.right != <span class="literal">null</span>) q.offer(cur.right);</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-7"><a href="#C-7" class="headerlink" title="C++"></a>C++</h2><h3 id="递归解法-1"><a href="#递归解法-1" class="headerlink" title="递归解法"></a>递归解法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">order</span><span class="params">(TreeNode* node, <span class="type">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (result.<span class="built_in">size</span>() == depth) result.<span class="built_in">push_back</span>(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">        result[depth].<span class="built_in">push_back</span>(node-&gt;val);</span><br><span class="line">        <span class="built_in">order</span>(node-&gt;left, depth + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">order</span>(node-&gt;right, depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">order</span>(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代解法-1"><a href="#迭代解法-1" class="headerlink" title="迭代解法"></a>迭代解法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; level;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">                TreeNode* cur = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                level.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;left) q.<span class="built_in">push</span>(cur-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;right) q.<span class="built_in">push</span>(cur-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            result.<span class="built_in">push_back</span>(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-7"><a href="#Java与C-区别-7" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>cur == null</code></td>
+<td><code>!cur</code></td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;TreeNode&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;TreeNode*&gt; q</code></td>
+</tr>
+<tr>
+<td><strong>入队</strong></td>
+<td><code>q.offer(root)</code></td>
+<td><code>q.push(root)</code></td>
+</tr>
+<tr>
+<td><strong>出队</strong></td>
+<td><code>q.poll()</code></td>
+<td><code>q.front(); q.pop()</code></td>
+</tr>
+<tr>
+<td><strong>列表创建</strong></td>
+<td><code>new ArrayList&lt;&gt;()</code></td>
+<td><code>&#123;&#125;</code> 或 <code>vector&lt;vector&lt;int&gt;&gt;()</code></td>
+</tr>
+<tr>
+<td><strong>添加元素</strong></td>
+<td><code>result.add(level)</code></td>
+<td><code>result.push_back(level)</code></td>
+</tr>
+</tbody></table>
+<h1 id="108-将有序数组转换为二叉搜索树"><a href="#108-将有序数组转换为二叉搜索树" class="headerlink" title="108. 将有序数组转换为二叉搜索树"></a>108. 将有序数组转换为二叉搜索树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked">108. 将有序数组转换为二叉搜索树</a></p>
+</blockquote>
+<h2 id="解题思路-8"><a href="#解题思路-8" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：分治法构建平衡二叉搜索树，每次选择中间元素作为根节点。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：左边界 &gt;&#x3D; 右边界时返回null</li>
+<li>找到中间位置 mid &#x3D; (left + right) &#x2F; 2</li>
+<li>以nums[mid]为根节点创建新节点</li>
+<li>递归构建左子树（区间 [left, mid)）</li>
+<li>递归构建右子树（区间 [mid+1, right)）</li>
+<li>返回根节点</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>有序数组的中间元素作为根节点保证平衡</li>
+<li>左闭右开区间处理边界</li>
+</ul>
+<h2 id="Java-8"><a href="#Java-8" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> TreeNode <span class="title function_">dfs</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left == right) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[m], dfs(nums, left, m), dfs(nums, m + <span class="number">1</span>, right));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">sortedArrayToBST</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dfs(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-8"><a href="#C-8" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left == right) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="type">int</span> m = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TreeNode</span>(nums[m], <span class="built_in">dfs</span>(nums, left, m), <span class="built_in">dfs</span>(nums, m + <span class="number">1</span>, right));</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-8"><a href="#Java与C-区别-8" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数组长度</strong></td>
+<td><code>nums.length</code></td>
+<td><code>nums.size()</code></td>
+</tr>
+<tr>
+<td><strong>返回空</strong></td>
+<td><code>return null</code></td>
+<td><code>return nullptr</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>nums[m]</code>（数组）</td>
+<td><code>nums[m]</code>（vector）</td>
+</tr>
+<tr>
+<td><strong>递归参数</strong></td>
+<td><code>int[] nums</code></td>
+<td><code>vector&lt;int&gt;&amp; nums</code></td>
+</tr>
+</tbody></table>
+<h1 id="98-验证二叉搜索树"><a href="#98-验证二叉搜索树" class="headerlink" title="98. 验证二叉搜索树"></a>98. 验证二叉搜索树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked">98. 验证二叉搜索树</a></p>
+</blockquote>
+<h2 id="解题思路-9"><a href="#解题思路-9" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：递归验证每个节点的值是否在合法范围内。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回true</li>
+<li>检查当前节点值是否在范围内（left &lt; root.val &lt; right）</li>
+<li>递归验证左子树，范围更新为（left, root.val）</li>
+<li>递归验证右子树，范围更新为（root.val, right）</li>
+<li>返回所有验证结果的与</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>使用long类型避免int溢出问题</li>
+<li>根节点范围是(Long.MIN_VALUE, Long.MAX_VALUE)</li>
+</ul>
+<h2 id="Java-9"><a href="#Java-9" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValidBST</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> check(root, Long.MIN_VALUE, Long.MAX_VALUE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">check</span><span class="params">(TreeNode root, <span class="type">long</span> left, <span class="type">long</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> root.val;</span><br><span class="line">        <span class="keyword">return</span> left &lt; x &amp;&amp; x &lt; right</span><br><span class="line">            &amp;&amp; check(root.left, left, x) </span><br><span class="line">            &amp;&amp; check(root.right, x, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-9"><a href="#C-9" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root, <span class="type">long</span> <span class="type">long</span> left = LLONG_MIN, <span class="type">long</span> right = LLONG_MAX)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> x = root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> left &lt; x &amp;&amp; x &lt; right </span><br><span class="line">            &amp;&amp; <span class="built_in">isValidBST</span>(root-&gt;left, left, x) </span><br><span class="line">            &amp;&amp; <span class="built_in">isValidBST</span>(root-&gt;right, x, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-9"><a href="#Java与C-区别-9" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>长整型常量</strong></td>
+<td><code>Long.MIN_VALUE</code>, <code>Long.MAX_VALUE</code></td>
+<td><code>LLONG_MIN</code>, <code>LLONG_MAX</code></td>
+</tr>
+<tr>
+<td><strong>空指针检查</strong></td>
+<td><code>root == null</code></td>
+<td><code>root == nullptr</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>root.val</code>, <code>root.left</code></td>
+<td><code>root-&gt;val</code>, <code>root-&gt;left</code></td>
+</tr>
+<tr>
+<td><strong>默认参数</strong></td>
+<td>不支持默认参数，需重载</td>
+<td>支持默认参数</td>
+</tr>
+</tbody></table>
+<h1 id="230-二叉搜索树中第-K-小的元素"><a href="#230-二叉搜索树中第-K-小的元素" class="headerlink" title="230. 二叉搜索树中第 K 小的元素"></a>230. 二叉搜索树中第 K 小的元素</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/?envType=study-plan-v2&envId=top-100-liked">230. 二叉搜索树中第 K 小的元素</a></p>
+</blockquote>
+<h2 id="解题思路-10"><a href="#解题思路-10" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：利用二叉搜索树中序遍历有序的特性，找到第k小的元素。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>中序遍历左子树</li>
+<li>访问当前节点时k减1，当k&#x3D;&#x3D;0时记录结果</li>
+<li>如果k&#x3D;&#x3D;0提前返回，不继续遍历</li>
+<li>中序遍历右子树</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>BST中序遍历结果是升序排列</li>
+<li>提前终止优化：找到答案后立即返回</li>
+</ul>
+<h2 id="Java-10"><a href="#Java-10" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> ans;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(TreeNode node)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span> || k == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        dfs(node.left); <span class="comment">// 左</span></span><br><span class="line">        <span class="keyword">if</span> (--k == <span class="number">0</span>) ans = node.val; <span class="comment">// 根</span></span><br><span class="line">        dfs(node.right); <span class="comment">// 右</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">kthSmallest</span><span class="params">(TreeNode root, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.k = k;</span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-10"><a href="#C-10" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ans;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node || k == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(node-&gt;left); <span class="comment">// 左</span></span><br><span class="line">        <span class="keyword">if</span> (--k == <span class="number">0</span>) ans = node-&gt;val; <span class="comment">// 根</span></span><br><span class="line">        <span class="built_in">dfs</span>(node-&gt;right); <span class="comment">// 右</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;k = k;</span><br><span class="line">        <span class="built_in">dfs</span>(root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-10"><a href="#Java与C-区别-10" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>node == null</code></td>
+<td><code>!node</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>node.val</code>, <code>node.left</code></td>
+<td><code>node-&gt;val</code>, <code>node-&gt;left</code></td>
+</tr>
+<tr>
+<td><strong>成员变量赋值</strong></td>
+<td><code>this.k = k</code></td>
+<td><code>this-&gt;k = k</code></td>
+</tr>
+</tbody></table>
+<h1 id="199-二叉树的右视图"><a href="#199-二叉树的右视图" class="headerlink" title="199. 二叉树的右视图"></a>199. 二叉树的右视图</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=top-100-liked">199. 二叉树的右视图</a></p>
+</blockquote>
+<h2 id="解题思路-11"><a href="#解题思路-11" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：层序遍历或优先右子树的DFS，记录每层最右侧节点。</p>
+<p><strong>递归解法思路</strong>：</p>
+<ol>
+<li>优先遍历右子树，再遍历左子树</li>
+<li>如果结果列表大小等于当前深度，添加当前节点值（说明是该层第一个访问的节点，即最右侧）</li>
+<li>递归遍历右子树，深度+1</li>
+<li>递归遍历左子树，深度+1</li>
+</ol>
+<p><strong>迭代解法思路</strong>：</p>
+<ol>
+<li>BFS层序遍历</li>
+<li>每层从右到左入队</li>
+<li>记录每层第一个节点（最右侧）</li>
+</ol>
+<h2 id="Java-11"><a href="#Java-11" class="headerlink" title="Java"></a>Java</h2><h3 id="递归解法-2"><a href="#递归解法-2" class="headerlink" title="递归解法"></a>递归解法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">order</span><span class="params">(TreeNode cur, <span class="type">int</span> depth)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (result.size() == depth) result.add(cur.val);</span><br><span class="line">        order(cur.right, depth + <span class="number">1</span>);</span><br><span class="line">        order(cur.left, depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">rightSideView</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        order(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代解法-2"><a href="#迭代解法-2" class="headerlink" title="迭代解法"></a>迭代解法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">rightSideView</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> q.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> q.poll();</span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">0</span>) result.add(cur.val);</span><br><span class="line">                <span class="keyword">if</span> (cur.right != <span class="literal">null</span>) q.offer(cur.right);</span><br><span class="line">                <span class="keyword">if</span> (cur.left != <span class="literal">null</span>) q.offer(cur.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-11"><a href="#C-11" class="headerlink" title="C++"></a>C++</h2><h3 id="递归解法-3"><a href="#递归解法-3" class="headerlink" title="递归解法"></a>递归解法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">order</span><span class="params">(TreeNode* cur, <span class="type">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!cur) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (result.<span class="built_in">size</span>() == depth) result.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">        <span class="built_in">order</span>(cur-&gt;right, depth + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">order</span>(cur-&gt;left, depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">order</span>(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代解法-3"><a href="#迭代解法-3" class="headerlink" title="迭代解法"></a>迭代解法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">                TreeNode* cur = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">0</span>) result.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;right) q.<span class="built_in">push</span>(cur-&gt;right);</span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;left) q.<span class="built_in">push</span>(cur-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-11"><a href="#Java与C-区别-11" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>cur == null</code></td>
+<td><code>!cur</code></td>
+</tr>
+<tr>
+<td><strong>队列</strong></td>
+<td><code>Queue&lt;TreeNode&gt; q = new LinkedList&lt;&gt;()</code></td>
+<td><code>queue&lt;TreeNode*&gt; q</code></td>
+</tr>
+<tr>
+<td><strong>入队</strong></td>
+<td><code>q.offer(root)</code></td>
+<td><code>q.push(root)</code></td>
+</tr>
+<tr>
+<td><strong>出队</strong></td>
+<td><code>q.poll()</code></td>
+<td><code>q.front(); q.pop()</code></td>
+</tr>
+<tr>
+<td><strong>列表创建</strong></td>
+<td><code>new ArrayList&lt;&gt;()</code></td>
+<td><code>&#123;&#125;</code></td>
+</tr>
+<tr>
+<td><strong>添加元素</strong></td>
+<td><code>result.add(cur.val)</code></td>
+<td><code>result.push_back(cur-&gt;val)</code></td>
+</tr>
+</tbody></table>
+<h1 id="114-二叉树展开为链表"><a href="#114-二叉树展开为链表" class="headerlink" title="114. 二叉树展开为链表"></a>114. 二叉树展开为链表</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description/?envType=study-plan-v2&envId=top-100-liked">114. 二叉树展开为链表</a></p>
+</blockquote>
+<h2 id="解题思路-12"><a href="#解题思路-12" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：后序遍历 + 头插法，将二叉树展开为单链表。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空时返回</li>
+<li>递归处理右子树</li>
+<li>递归处理左子树</li>
+<li>将当前节点左子树置空</li>
+<li>当前节点右指针指向链表头（头插法）</li>
+<li>更新链表头为当前节点</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>采用右-左-根的后序遍历顺序</li>
+<li>头插法构建链表，保证正确顺序</li>
+<li>原地修改，不使用额外空间</li>
+</ul>
+<h2 id="Java-12"><a href="#Java-12" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">TreeNode</span> <span class="variable">head</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">flatten</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// 右-左-根，头插法</span></span><br><span class="line">        flatten(root.right); <span class="comment">// 右</span></span><br><span class="line">        flatten(root.left);  <span class="comment">// 左</span></span><br><span class="line">        root.left = <span class="literal">null</span>;</span><br><span class="line">        root.right = head; <span class="comment">// 头插法，相当于链表的 root.next = head</span></span><br><span class="line">        head = root; <span class="comment">// 现在链表头节点是 root</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-12"><a href="#C-12" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    TreeNode* head = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// 右-左-根，头插法</span></span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;right); <span class="comment">// 右</span></span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;left);  <span class="comment">// 左</span></span><br><span class="line">        root-&gt;left = <span class="literal">nullptr</span>;</span><br><span class="line">        root-&gt;right = head; <span class="comment">// 头插法，相当于链表的 root.next = head</span></span><br><span class="line">        head = root; <span class="comment">// 现在链表头节点是 root</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-区别-12"><a href="#Java与C-区别-12" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>root == null</code></td>
+<td><code>!root</code></td>
+</tr>
+<tr>
+<td><strong>空指针赋值</strong></td>
+<td><code>root.left = null</code></td>
+<td><code>root-&gt;left = nullptr</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>root.right</code>, <code>root.left</code></td>
+<td><code>root-&gt;right</code>, <code>root-&gt;left</code></td>
+</tr>
+</tbody></table>
+<h1 id="105-从前序与中序遍历序列构造二叉树"><a href="#105-从前序与中序遍历序列构造二叉树" class="headerlink" title="105. 从前序与中序遍历序列构造二叉树"></a>105. 从前序与中序遍历序列构造二叉树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked">105. 从前序与中序遍历序列构造二叉树</a></p>
+</blockquote>
+<h2 id="解题思路-13"><a href="#解题思路-13" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：前序遍历首元素是根节点，中序遍历中根节点左边是左子树，右边是右子树。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：数组为空时返回null</li>
+<li>前序遍历首元素为根节点值</li>
+<li>在中序遍历中找到根节点位置，确定左子树大小</li>
+<li>递归构建左子树（前序[1, 1+leftSize]，中序[0, leftSize]）</li>
+<li>递归构建右子树（前序[1+leftSize, n]，中序[leftSize+1, n]）</li>
+<li>返回根节点</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>前序：根-左-右，中序：左-根-右</li>
+<li>需要查找根节点在中序数组中的位置</li>
+</ul>
+<h2 id="Java-13"><a href="#Java-13" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(<span class="type">int</span>[] preorder, <span class="type">int</span>[] inorder)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> preorder.length;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftSize</span> <span class="operator">=</span> indexOf(inorder, preorder[<span class="number">0</span>]);</span><br><span class="line">        <span class="type">int</span>[] pre1 = Arrays.copyOfRange(preorder, <span class="number">1</span>, <span class="number">1</span> + leftSize);</span><br><span class="line">        <span class="type">int</span>[] pre2 = Arrays.copyOfRange(preorder, <span class="number">1</span> + leftSize, n);</span><br><span class="line">        <span class="type">int</span>[] in1 = Arrays.copyOfRange(inorder, <span class="number">0</span>, leftSize);</span><br><span class="line">        <span class="type">int</span>[] in2 = Arrays.copyOfRange(inorder, <span class="number">1</span> + leftSize, n);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> buildTree(pre1, in1);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> buildTree(pre2, in2);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(preorder[<span class="number">0</span>], left, right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回 x 在 a 中的下标，保证 x 一定在 a 中</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">indexOf</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; ; i++) </span><br><span class="line">            <span class="keyword">if</span> (a[i] == x) </span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-13"><a href="#C-13" class="headerlink" title="C++"></a>C++</h2><p>用 span 可以避免拷贝</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(span&lt;<span class="type">int</span>&gt; preorder, span&lt;<span class="type">int</span>&gt; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preorder.<span class="built_in">empty</span>())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="type">int</span> left_size = ranges::<span class="built_in">find</span>(inorder, preorder[<span class="number">0</span>]) - inorder.<span class="built_in">begin</span>();</span><br><span class="line">        TreeNode* left = <span class="built_in">build</span>(preorder.<span class="built_in">subspan</span>(<span class="number">1</span>, left_size), inorder.<span class="built_in">subspan</span>(<span class="number">0</span>, left_size));</span><br><span class="line">        TreeNode* right = <span class="built_in">build</span>(preorder.<span class="built_in">subspan</span>(<span class="number">1</span> + left_size), inorder.<span class="built_in">subspan</span>(<span class="number">1</span> + left_size));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[<span class="number">0</span>], left, right);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(preorder, inorder);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>不用 span</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preorder.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="type">int</span> left_size = ranges::<span class="built_in">find</span>(inorder, preorder[<span class="number">0</span>]) - inorder.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pre1</span><span class="params">(preorder.begin() + <span class="number">1</span>, preorder.begin() + <span class="number">1</span> + left_size)</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pre2</span><span class="params">(preorder.begin() + <span class="number">1</span> + left_size, preorder.end())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in1</span><span class="params">(inorder.begin(), inorder.begin() + left_size)</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in2</span><span class="params">(inorder.begin() + <span class="number">1</span> + left_size, inorder.end())</span></span>;</span><br><span class="line">        TreeNode* left = <span class="built_in">buildTree</span>(pre1, in1);</span><br><span class="line">        TreeNode* right = <span class="built_in">buildTree</span>(pre2, in2);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[<span class="number">0</span>], left, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-13"><a href="#Java与C-区别-13" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数组截取</strong></td>
+<td><code>Arrays.copyOfRange(arr, start, end)</code></td>
+<td><code>vector&lt;int&gt;(begin, end)</code></td>
+</tr>
+<tr>
+<td><strong>查找元素</strong></td>
+<td>自定义 <code>indexOf()</code></td>
+<td><code>ranges::find()</code></td>
+</tr>
+<tr>
+<td><strong>空数组检查</strong></td>
+<td><code>n == 0</code></td>
+<td><code>preorder.empty()</code></td>
+</tr>
+<tr>
+<td><strong>数组长度</strong></td>
+<td><code>preorder.length</code></td>
+<td><code>preorder.size()</code></td>
+</tr>
+<tr>
+<td><strong>Span支持</strong></td>
+<td>不支持</td>
+<td>C++20支持span避免拷贝</td>
+</tr>
+</tbody></table>
+<h1 id="106-从后序与中序遍历序列构造二叉树"><a href="#106-从后序与中序遍历序列构造二叉树" class="headerlink" title="106. 从后序与中序遍历序列构造二叉树"></a>106. 从后序与中序遍历序列构造二叉树</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked">106. 从后序与中序遍历序列构造二叉树</a></p>
+</blockquote>
+<h2 id="解题思路-14"><a href="#解题思路-14" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：后序遍历末元素是根节点，中序遍历中根节点左边是左子树，右边是右子树。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：数组为空时返回null</li>
+<li>后序遍历末元素为根节点值</li>
+<li>在中序遍历中找到根节点位置，确定左子树大小</li>
+<li>递归构建左子树（中序[0, leftSize]，后序[0, leftSize]）</li>
+<li>递归构建右子树（中序[leftSize+1, n]，后序[leftSize, n-1]）</li>
+<li>返回根节点</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>后序：左-右-根，中序：左-根-右</li>
+<li>需要查找根节点在中序数组中的位置</li>
+</ul>
+<h2 id="Java-14"><a href="#Java-14" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(<span class="type">int</span>[] inorder, <span class="type">int</span>[] postorder)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> postorder.length;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftSize</span> <span class="operator">=</span> indexOf(inorder, postorder[n - <span class="number">1</span>]);</span><br><span class="line">        <span class="type">int</span>[] in1 = Arrays.copyOfRange(inorder, <span class="number">0</span>, leftSize);</span><br><span class="line">        <span class="type">int</span>[] in2 = Arrays.copyOfRange(inorder, leftSize + <span class="number">1</span>, n);</span><br><span class="line">        <span class="type">int</span>[] post1 = Arrays.copyOfRange(postorder, <span class="number">0</span>, leftSize);</span><br><span class="line">        <span class="type">int</span>[] post2 = Arrays.copyOfRange(postorder, leftSize, n - <span class="number">1</span>);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> buildTree(in1, post1);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> buildTree(in2, post2);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(postorder[n - <span class="number">1</span>], left, right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">indexOf</span><span class="params">(<span class="type">int</span> a[], <span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; ; i++) </span><br><span class="line">            <span class="keyword">if</span> (a[i] == x)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-14"><a href="#C-14" class="headerlink" title="C++"></a>C++</h2><p>用 span 可以避免拷贝</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(span&lt;<span class="type">int</span>&gt; inorder, span&lt;<span class="type">int</span>&gt; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (inorder.<span class="built_in">empty</span>())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="type">int</span> left_size = ranges::<span class="built_in">find</span>(inorder, postorder.<span class="built_in">back</span>()) - inorder.<span class="built_in">begin</span>();</span><br><span class="line">        TreeNode* left = <span class="built_in">build</span>(inorder.<span class="built_in">subspan</span>(<span class="number">0</span>, left_size), postorder.<span class="built_in">subspan</span>(<span class="number">0</span>, left_size));</span><br><span class="line">        TreeNode* right = <span class="built_in">build</span>(inorder.<span class="built_in">subspan</span>(<span class="number">1</span> + left_size), postorder.<span class="built_in">subspan</span>(left_size, postorder.<span class="built_in">size</span>() - left_size - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TreeNode</span>(postorder.<span class="built_in">back</span>(), left, right);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; inorder, vector&lt;<span class="type">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(inorder, postorder);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>不用 span</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; inorder, vector&lt;<span class="type">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (postorder.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="type">int</span> left_size = ranges::<span class="built_in">find</span>(inorder, postorder.<span class="built_in">back</span>()) - inorder.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in1</span><span class="params">(inorder.begin(), inorder.begin() + left_size)</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">in2</span><span class="params">(inorder.begin() + left_size + <span class="number">1</span>, inorder.end())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">post1</span><span class="params">(postorder.begin(), postorder.begin() + left_size)</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">post2</span><span class="params">(postorder.begin() + left_size, postorder.end() - <span class="number">1</span>)</span></span>;</span><br><span class="line">        TreeNode* left = <span class="built_in">buildTree</span>(in1, post1);</span><br><span class="line">        TreeNode* right = <span class="built_in">buildTree</span>(in2, post2);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TreeNode</span>(postorder.<span class="built_in">back</span>(), left, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-14"><a href="#Java与C-区别-14" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数组截取</strong></td>
+<td><code>Arrays.copyOfRange(arr, start, end)</code></td>
+<td><code>vector&lt;int&gt;(begin, end)</code></td>
+</tr>
+<tr>
+<td><strong>查找元素</strong></td>
+<td>自定义 <code>indexOf()</code></td>
+<td><code>ranges::find()</code></td>
+</tr>
+<tr>
+<td><strong>空数组检查</strong></td>
+<td><code>n == 0</code></td>
+<td><code>postorder.empty()</code></td>
+</tr>
+<tr>
+<td><strong>数组长度</strong></td>
+<td><code>postorder.length</code></td>
+<td><code>postorder.size()</code></td>
+</tr>
+<tr>
+<td><strong>取末尾元素</strong></td>
+<td><code>postorder[n-1]</code></td>
+<td><code>postorder.back()</code></td>
+</tr>
+<tr>
+<td><strong>Span支持</strong></td>
+<td>不支持</td>
+<td>C++20支持span避免拷贝</td>
+</tr>
+</tbody></table>
+<h1 id="236-二叉树的最近公共祖先"><a href="#236-二叉树的最近公共祖先" class="headerlink" title="236. 二叉树的最近公共祖先"></a>236. 二叉树的最近公共祖先</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked">236. 二叉树的最近公共祖先</a></p>
+</blockquote>
+<h2 id="解题思路-15"><a href="#解题思路-15" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：后序遍历，自底向上查找两个节点的最近公共祖先。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>递归终止条件：当前节点为空或等于p&#x2F;q时返回当前节点</li>
+<li>递归查找左子树中的p&#x2F;q</li>
+<li>递归查找右子树中的p&#x2F;q</li>
+<li>判断：<ul>
+<li>左右都不为空：当前节点是LCA</li>
+<li>左不为空右为空：返回左子树结果</li>
+<li>右不为空左为空：返回右子树结果</li>
+</ul>
+</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>后序遍历：先找子树再判断</li>
+<li>LCA是左右子树分别包含p和q的第一个节点</li>
+</ul>
+<h2 id="Java-15"><a href="#Java-15" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span> || root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> lowestCommonAncestor(root.left, p, q);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> lowestCommonAncestor(root.right, p, q);</span><br><span class="line">        <span class="keyword">if</span> (left != <span class="literal">null</span> &amp;&amp; right != <span class="literal">null</span>) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (left != <span class="literal">null</span>) <span class="keyword">return</span> left;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-15"><a href="#C-15" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root || root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line">        TreeNode* left = <span class="built_in">lowestCommonAncestor</span>(root-&gt;left, p, q);</span><br><span class="line">        TreeNode* right = <span class="built_in">lowestCommonAncestor</span>(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">if</span> (left &amp;&amp; right) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (left) <span class="keyword">return</span> left;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Java与C-区别-15"><a href="#Java与C-区别-15" class="headerlink" title="Java与C++区别"></a>Java与C++区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>空指针检查</strong></td>
+<td><code>root == null</code></td>
+<td><code>!root</code></td>
+</tr>
+<tr>
+<td><strong>指针访问</strong></td>
+<td><code>root.left</code>, <code>root.right</code></td>
+<td><code>root-&gt;left</code>, <code>root-&gt;right</code></td>
+</tr>
+<tr>
+<td><strong>布尔判断</strong></td>
+<td><code>left != null</code></td>
+<td><code>left</code></td>
+</tr>
+</tbody></table>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E4%BA%8C%E5%8F%89%E6%A0%91/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/06/19/LeetCode-Hot100-%E4%BA%8C%E5%8F%89%E6%A0%91/";
+            const title         = "「LeetCode-Hot100-二叉树」";
+            const excerpt       = `写在前面二叉树的定义：java版12345678910111213//Definition for a binary tree node.public class TreeNode &#123;    int val;    Tree...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a>, <a class="tag-none-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2026-06-20T10:39:34.298Z" itemprop="dateModified">最后编辑：2026-06-20</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" LeetCode-Hot100-图论" href="/2026/06/19/LeetCode-Hot100-图论/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                68
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                9
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                234
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-text">二叉树的定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E7%89%88"><span class="toc-text">java版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%89%88"><span class="toc-text">C++版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#94-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">94. 二叉树的中序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#144-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">144. 二叉树的前序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-1"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#145-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">145. 二叉树的后序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-2"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-text">104. 二叉树的最大深度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-3"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">226. 翻转二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-4"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-4"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">101. 对称二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-5"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-5"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-5"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-5"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84"><span class="toc-text">543. 二叉树的直径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-6"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-6"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-6"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-6"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">102. 二叉树的层序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-7"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-7"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95"><span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95"><span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-7"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-1"><span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-1"><span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-7"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#108-%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">108. 将有序数组转换为二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-8"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-8"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-8"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-8"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">98. 验证二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-9"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-9"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-9"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-9"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%AC-K-%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-text">230. 二叉搜索树中第 K 小的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-10"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-10"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-10"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-10"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#199-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8F%B3%E8%A7%86%E5%9B%BE"><span class="toc-text">199. 二叉树的右视图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-11"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-11"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-2"><span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-2"><span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-11"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95-3"><span class="toc-text">递归解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E8%A7%A3%E6%B3%95-3"><span class="toc-text">迭代解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-11"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#114-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8"><span class="toc-text">114. 二叉树展开为链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-12"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-12"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-12"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-12"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">105. 从前序与中序遍历序列构造二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-13"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-13"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-13"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-13"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#106-%E4%BB%8E%E5%90%8E%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">106. 从后序与中序遍历序列构造二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-14"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-14"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-14"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-14"><span class="toc-text">Java与C++区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#236-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-text">236. 二叉树的最近公共祖先</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-15"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-15"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-15"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E5%8C%BA%E5%88%AB-15"><span class="toc-text">Java与C++区别</span></a></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/01%E8%83%8C%E5%8C%85/" style="font-size: 0.73em;">01背包</a> <a href="/tags/2PC/" style="font-size: 0.6em;">2PC</a> <a href="/tags/%E4%B8%8Eequals/" style="font-size: 0.6em;">==与equals()</a> <a href="/tags/ACID/" style="font-size: 0.67em;">ACID</a> <a href="/tags/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/" style="font-size: 0.6em;">AOP（面向切面编程）</a> <a href="/tags/AQS-AbstractQueuedSynchronizer/" style="font-size: 0.6em;">AQS(AbstractQueuedSynchronizer)</a> <a href="/tags/ArrayList%E5%92%8CLinkedList/" style="font-size: 0.6em;">ArrayList和LinkedList</a> <a href="/tags/AutoFill/" style="font-size: 0.6em;">AutoFill</a> <a href="/tags/Autowired%EF%BC%88%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%EF%BC%89%E5%92%8CSource%EF%BC%88%E8%B5%84%E6%BA%90%E6%B3%A8%E5%85%A5%EF%BC%89%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Autowired（自动注入）和Source（资源注入）注解</a> <a href="/tags/B-%E6%A0%91/" style="font-size: 0.6em;">B+树</a> <a href="/tags/BFS/" style="font-size: 0.67em;">BFS</a> <a href="/tags/Bean%E6%B3%A8%E8%A7%A3/" style="font-size: 0.6em;">Bean注解</a> <a href="/tags/Bean%EF%BC%88%E7%BB%84%E4%BB%B6%EF%BC%89%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" style="font-size: 0.6em;">Bean（组件）的生命周期</a> <a href="/tags/Bellman-Ford%EF%BC%88%E5%8D%95%E6%BA%90%E7%82%B9%EF%BC%8C%E6%9C%89%E8%B4%9F%E6%9D%83%E5%80%BC%E8%BE%B9%EF%BC%8C%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E7%8E%AF%EF%BC%89/" style="font-size: 0.6em;">Bellman-Ford（单源点，有负权值边，无负权值环）</a> <a href="/tags/BlockingQueue/" style="font-size: 0.6em;">BlockingQueue</a> <a href="/tags/C/" style="font-size: 0.8em;">C++</a> <a href="/tags/C-%E5%86%85%E5%AD%98/" style="font-size: 0.6em;">C++内存</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80/" style="font-size: 0.6em;">C++基础</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/19/LeetCode-Hot100-%E4%BA%8C%E5%8F%89%E6%A0%91/"><i class="fa  fa-book"></i> LeetCode-Hot100-二叉树</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/19/LeetCode-Hot100-%E5%9B%BE%E8%AE%BA/"><i class="fa  fa-book"></i> LeetCode-Hot100-图论</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/18/LeetCode-Hot100-%E5%9B%9E%E6%BA%AF/"><i class="fa  fa-book"></i> LeetCode-Hot100-回溯</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/17/LeetCode-Hot100-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"><i class="fa  fa-book"></i> LeetCode-Hot100-贪心算法</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2026/06/16/LeetCode-Hot100-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fa  fa-book"></i> LeetCode-Hot100-动态规划</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- New links -->
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 Hexo 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by John Doe.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
