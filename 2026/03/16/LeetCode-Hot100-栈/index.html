@@ -15,21 +15,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="C++, 栈, 算法" />
+    <meta name="keywords" content="C++, Java, 单调栈, 栈, 算法" />
   
-  <meta name="description" content="20. 有效的括号 C++写法一 12345678910111213141516171819202122class Solution &#123;    unordered_map&lt;char, char&gt; mp &#x3D; &#123;&#123;&#x27;)&#x27;, &#x27;(&#x27;&#125;, &#123;&#x27;]&#x27;, &#x27;[&#x27;&amp;#12">
+  <meta name="description" content="20. 有效的括号 题目链接：20. 有效的括号  解题思路核心思想：利用栈的”后进先出”特性，匹配括号。 算法流程：  如果字符串长度是奇数，直接返回false 遍历字符串： 遇到左括号：入栈 遇到右括号：检查栈顶是否匹配，匹配则出栈，不匹配则返回false   遍历结束后，栈必须为空才有效  三种写法思路：  写法一：哈希表存储右括号→左括号映射，遇到右括号时检查栈顶是否等于对应左括号 写法二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-Hot100-栈">
 <meta property="og:url" content="https://linnnnnnnnnnnnn17.github.io/2026/03/16/LeetCode-Hot100-%E6%A0%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="20. 有效的括号 C++写法一 12345678910111213141516171819202122class Solution &#123;    unordered_map&lt;char, char&gt; mp &#x3D; &#123;&#123;&#x27;)&#x27;, &#x27;(&#x27;&#125;, &#123;&#x27;]&#x27;, &#x27;[&#x27;&amp;#12">
+<meta property="og:description" content="20. 有效的括号 题目链接：20. 有效的括号  解题思路核心思想：利用栈的”后进先出”特性，匹配括号。 算法流程：  如果字符串长度是奇数，直接返回false 遍历字符串： 遇到左括号：入栈 遇到右括号：检查栈顶是否匹配，匹配则出栈，不匹配则返回false   遍历结束后，栈必须为空才有效  三种写法思路：  写法一：哈希表存储右括号→左括号映射，遇到右括号时检查栈顶是否等于对应左括号 写法二">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-16T03:06:39.000Z">
-<meta property="article:modified_time" content="2026-03-16T03:11:24.010Z">
+<meta property="article:modified_time" content="2026-07-04T12:29:41.098Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="栈">
+<meta property="article:tag" content="单调栈">
 <meta name="twitter:card" content="summary">
   
   <!-- 站点验证相关 -->
@@ -141,7 +143,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~4.26K
+                            ~12.84K
                         
                         字
                     </li>
@@ -153,48 +155,355 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1773630684010"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1783168181098"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7-C"><span class="toc-number">1.</span> <span class="toc-text">20. 有效的括号 C++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88-C"><span class="toc-number">2.</span> <span class="toc-text">155.最小栈 C++</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">20. 有效的括号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">1.2.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%80"><span class="toc-number">1.2.1.</span> <span class="toc-text">写法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%BA%8C"><span class="toc-number">1.2.2.</span> <span class="toc-text">写法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">写法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.3.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%80-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">写法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%BA%8C-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">写法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%89-1"><span class="toc-number">1.3.3.</span> <span class="toc-text">写法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">155. 最小栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%85%B3%E4%BA%8E-emplace-%E5%92%8C-push"><span class="toc-number">2.1.</span> <span class="toc-text">前置知识：关于 emplace 和 push</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%9C%E7%94%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">一、基本作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%92%8C-push-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.2.</span> <span class="toc-text">二、和 push 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.1.3.</span> <span class="toc-text">三、自定义类示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E7%94%A8%E6%90%AD%E9%85%8D"><span class="toc-number">2.1.4.</span> <span class="toc-text">四、常用搭配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.2.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-number">2.3.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">2.4.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-1"><span class="toc-number">2.5.</span> <span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">394. 字符串解码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-number">3.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-number">3.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-number">3.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-2"><span class="toc-number">3.4.</span> <span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="toc-number">4.</span> <span class="toc-text">739. 每日温度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-number">4.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-number">4.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-number">4.3.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-3"><span class="toc-number">4.4.</span> <span class="toc-text">Java与C++的区别</span></a></li></ol></li></ol>
                 </div>
             
             <hr />
-            <div itemprop="articleBody"><h1 id="20-有效的括号-C"><a href="#20-有效的括号-C" class="headerlink" title="20. 有效的括号 C++"></a>20. 有效的括号 C++</h1><p><strong>写法一</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    unordered_map&lt;<span class="type">char</span>, <span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>&#125;, &#123;<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>&#125;, &#123;<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) &#123; <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">            <span class="comment">// mp.contains(c) 用来判断 c 是不是 mp 的一个 key</span></span><br><span class="line">            <span class="keyword">if</span> (!mp.<span class="built_in">contains</span>(c)) &#123; <span class="comment">// c 是左括号</span></span><br><span class="line">                st.<span class="built_in">push</span>(c); <span class="comment">// 入栈</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != mp[c]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                &#125;</span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>写法二</strong></p>
-<p>也可以在哈希表&#x2F;数组中保存每个左括号对应的右括号。在遍历到左括号时，把对应的右括号入栈。这样遍历到右括号时，只需看栈顶括号是否一样即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    unordered_map&lt;<span class="type">char</span>, <span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>&#125;, &#123;<span class="string">&#x27;[&#x27;</span>, <span class="string">&#x27;]&#x27;</span>&#125;, &#123;<span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) &#123; <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mp.<span class="built_in">contains</span>(c)) &#123; <span class="comment">// c 是左括号</span></span><br><span class="line">                st.<span class="built_in">push</span>(mp[c]); <span class="comment">// 入栈对应的右括号</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                &#125;</span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>写法三</strong></p>
-<p>用 if-else 代替 mp 。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) &#123; <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;)&#x27;</span>); <span class="comment">// 入栈对应的右括号</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                &#125;</span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="155-最小栈-C"><a href="#155-最小栈-C" class="headerlink" title="155.最小栈 C++"></a>155.最小栈 C++</h1><p>前置知识：关于 <strong>emplace</strong> 和 <strong>push</strong><br>在 C++ 里， <strong>stack</strong>::<strong>emplace</strong> 是用来直接在栈顶“原地构造”元素的函数，比 <strong>push</strong> 更高效。</p>
-<p>一、基本作用</p>
+            <div itemprop="articleBody"><h1 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a>20. 有效的括号</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/description/?envType=study-plan-v2&envId=top-100-liked">20. 有效的括号</a></p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：利用栈的”后进先出”特性，匹配括号。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>如果字符串长度是奇数，直接返回false</li>
+<li>遍历字符串：<ul>
+<li>遇到左括号：入栈</li>
+<li>遇到右括号：检查栈顶是否匹配，匹配则出栈，不匹配则返回false</li>
+</ul>
+</li>
+<li>遍历结束后，栈必须为空才有效</li>
+</ol>
+<p><strong>三种写法思路</strong>：</p>
 <ul>
+<li><strong>写法一</strong>：哈希表存储右括号→左括号映射，遇到右括号时检查栈顶是否等于对应左括号</li>
+<li><strong>写法二</strong>：哈希表存储左括号→右括号映射，遇到左括号时入栈对应的右括号，遇到右括号时检查是否与栈顶相等</li>
+<li><strong>写法三</strong>：不用哈希表，直接用if-else判断，遇到左括号入栈对应右括号</li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="写法一"><a href="#写法一" class="headerlink" title="写法一"></a>写法一</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Character, Character&gt; mp = Map.of(<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>); </span><br><span class="line">    <span class="comment">// 特点：不可变 Map，不能 put/remove，仅查询推荐。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        Deque&lt;Character&gt; st = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">Character</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (!mp.containsKey(c)) st.push(c);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty() || st.peek() != mp.get(c)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="写法二"><a href="#写法二" class="headerlink" title="写法二"></a>写法二</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Character, Character&gt; mp = Map.of(<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;[&#x27;</span>, <span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>); </span><br><span class="line">    <span class="comment">// 特点：不可变 Map，不能 put/remove，仅查询推荐。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        Deque&lt;Character&gt; st = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">Character</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (mp.containsKey(c)) st.push(mp.get(c));</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty() || st.peek() != c) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="写法三"><a href="#写法三" class="headerlink" title="写法三"></a>写法三</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        Deque&lt;Character&gt; st = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">Character</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) st.push(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) st.push(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#123;&#x27;</span>) st.push(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty() || st.peek() != c) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">else</span> st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="写法一-1"><a href="#写法一-1" class="headerlink" title="写法一"></a>写法一</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    unordered_map&lt;<span class="type">char</span>, <span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>&#125;, &#123;<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>&#125;, &#123;<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) </span><br><span class="line">            <span class="comment">// mp.contains(c) 用来判断 c 是不是 mp 的一个 key</span></span><br><span class="line">            <span class="keyword">if</span> (!mp.<span class="built_in">contains</span>(c)) <span class="comment">// c 是左括号</span></span><br><span class="line">                st.<span class="built_in">push</span>(c); <span class="comment">// 入栈</span></span><br><span class="line">            <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != mp[c]) </span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="写法二-1"><a href="#写法二-1" class="headerlink" title="写法二"></a>写法二</h3><p>也可以在哈希表&#x2F;数组中保存每个左括号对应的右括号。在遍历到左括号时，把对应的右括号入栈。这样遍历到右括号时，只需看栈顶括号是否一样即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    unordered_map&lt;<span class="type">char</span>, <span class="type">char</span>&gt; mp = &#123;&#123;<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>&#125;, &#123;<span class="string">&#x27;[&#x27;</span>, <span class="string">&#x27;]&#x27;</span>&#125;, &#123;<span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) </span><br><span class="line">            <span class="keyword">if</span> (mp.<span class="built_in">contains</span>(c)) <span class="comment">// c 是左括号</span></span><br><span class="line">                st.<span class="built_in">push</span>(mp[c]); <span class="comment">// 入栈对应的右括号</span></span><br><span class="line">            <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) </span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="写法三-1"><a href="#写法三-1" class="headerlink" title="写法三"></a>写法三</h3><p>用 if-else 代替 mp 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() % <span class="number">2</span>) <span class="comment">// s 长度必须是偶数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        stack&lt;<span class="type">char</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) </span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) </span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;)&#x27;</span>); <span class="comment">// 入栈对应的右括号</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) </span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#123;&#x27;</span>) </span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> &#123; <span class="comment">// c 是右括号</span></span><br><span class="line">                <span class="keyword">if</span> (st.<span class="built_in">empty</span>() || st.<span class="built_in">top</span>() != c) </span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 没有左括号，或者左括号类型不对</span></span><br><span class="line">                st.<span class="built_in">pop</span>(); <span class="comment">// 出栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>(); <span class="comment">// 所有左括号必须匹配完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-的区别"><a href="#Java与C-的区别" class="headerlink" title="Java与C++的区别"></a>Java与C++的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>栈类型</strong></td>
+<td><code>Deque&lt;Character&gt; st = new LinkedList&lt;&gt;()</code></td>
+<td><code>stack&lt;char&gt; st</code></td>
+</tr>
+<tr>
+<td><strong>栈顶元素</strong></td>
+<td><code>st.peek()</code></td>
+<td><code>st.top()</code></td>
+</tr>
+<tr>
+<td><strong>入栈</strong></td>
+<td><code>st.push(c)</code></td>
+<td><code>st.push(c)</code></td>
+</tr>
+<tr>
+<td><strong>出栈</strong></td>
+<td><code>st.pop()</code></td>
+<td><code>st.pop()</code></td>
+</tr>
+<tr>
+<td><strong>栈是否为空</strong></td>
+<td><code>st.isEmpty()</code></td>
+<td><code>st.empty()</code></td>
+</tr>
+<tr>
+<td><strong>哈希表</strong></td>
+<td><code>Map&lt;Character, Character&gt; mp = Map.of(...)</code></td>
+<td><code>unordered_map&lt;char, char&gt; mp = &#123;...&#125;</code></td>
+</tr>
+<tr>
+<td><strong>判断key存在</strong></td>
+<td><code>mp.containsKey(c)</code></td>
+<td><code>mp.contains(c)</code></td>
+</tr>
+<tr>
+<td><strong>获取value</strong></td>
+<td><code>mp.get(c)</code></td>
+<td><code>mp[c]</code></td>
+</tr>
+<tr>
+<td><strong>字符串长度</strong></td>
+<td><code>s.length()</code></td>
+<td><code>s.length()</code> &#x2F; <code>s.size()</code></td>
+</tr>
+<tr>
+<td><strong>遍历字符串</strong></td>
+<td><code>for (char c : s.toCharArray())</code></td>
+<td><code>for (char c : s)</code></td>
+</tr>
+</tbody></table>
+<h1 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155. 最小栈"></a>155. 最小栈</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-stack/description/?envType=study-plan-v2&envId=top-100-liked">155. 最小栈</a></p>
+</blockquote>
+<h2 id="前置知识：关于-emplace-和-push"><a href="#前置知识：关于-emplace-和-push" class="headerlink" title="前置知识：关于 emplace 和 push"></a>前置知识：关于 <code>emplace</code> 和 <code>push</code></h2><p>在 C++ 里， <strong>stack</strong>::<strong>emplace</strong> 是用来直接在栈顶“原地构造”元素的函数，比 <strong>push</strong> 更高效。</p>
+<h3 id="一、基本作用"><a href="#一、基本作用" class="headerlink" title="一、基本作用"></a>一、基本作用</h3><ul>
 <li>stack 的成员函数，C++11 起支持</li>
 <li>功能：在栈顶直接构造对象，不产生临时对象、不拷贝&#x2F;移动</li>
 <li>用法：把构造函数的参数直接传给 <strong>emplace</strong></li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">stack&lt;string&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="comment">// push：先造临时对象，再拷贝/移动进去</span></span><br><span class="line">st.<span class="built_in">push</span>(<span class="built_in">string</span>(<span class="string">&quot;hello&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// emplace：直接在栈里构造，更高效</span></span><br><span class="line">st.<span class="built_in">emplace</span>(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>二、和 <strong>push</strong> 的区别</p>
-<ul>
+<h3 id="二、和-push-的区别"><a href="#二、和-push-的区别" class="headerlink" title="二、和 push 的区别"></a>二、和 <code>push</code> 的区别</h3><ul>
 <li><strong>push</strong>：传已经建好的对象，可能拷贝&#x2F;移动</li>
 <li><strong>emplace</strong>：传构造参数，原地构造，少一次拷贝&#x2F;移动</li>
 </ul>
 <p>对 <strong>复杂对象</strong>（string、自定义类），<strong>emplace</strong> 明显 <strong>更优</strong>。</p>
-<p>三、自定义类示例</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">int</span> x, string s) : <span class="built_in">x</span>(x), <span class="built_in">s</span>(s) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">stack&lt;A&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="comment">// push：要先构造对象</span></span><br><span class="line">st.<span class="built_in">push</span>(<span class="built_in">A</span>(<span class="number">1</span>, <span class="string">&quot;abc&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// emplace：直接传构造参数</span></span><br><span class="line">st.<span class="built_in">emplace</span>(<span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>四、常用搭配</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">st.<span class="built_in">emplace</span>(<span class="number">10</span>);       <span class="comment">// 等价 push(10)</span></span><br><span class="line">st.<span class="built_in">top</span>();             <span class="comment">// 10</span></span><br><span class="line">st.<span class="built_in">pop</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="三、自定义类示例"><a href="#三、自定义类示例" class="headerlink" title="三、自定义类示例"></a>三、自定义类示例</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">int</span> x, string s) : <span class="built_in">x</span>(x), <span class="built_in">s</span>(s) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">stack&lt;A&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="comment">// push：要先构造对象</span></span><br><span class="line">st.<span class="built_in">push</span>(<span class="built_in">A</span>(<span class="number">1</span>, <span class="string">&quot;abc&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// emplace：直接传构造参数</span></span><br><span class="line">st.<span class="built_in">emplace</span>(<span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="四、常用搭配"><a href="#四、常用搭配" class="headerlink" title="四、常用搭配"></a>四、常用搭配</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">st.<span class="built_in">emplace</span>(<span class="number">10</span>);       <span class="comment">// 等价 push(10)</span></span><br><span class="line">st.<span class="built_in">top</span>();             <span class="comment">// 10</span></span><br><span class="line">st.<span class="built_in">pop</span>();</span><br></pre></td></tr></table></figure>
 <p>简单记：<br>能 emplace 就别 push，尤其是存非基本类型时，效率更高、写法也简洁。</p>
-<p>本题思路：利用原生栈存数值和最小值，每次新元素入栈同时更新最小值。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line">    stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        <span class="comment">// 添加栈底哨兵 INT_MAX</span></span><br><span class="line">        <span class="comment">// 这里的 0 写成任意数都可以，反正用不到</span></span><br><span class="line">        st.<span class="built_in">emplace</span>(<span class="number">0</span>,INT_MAX);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        st.<span class="built_in">emplace</span>(val, <span class="built_in">min</span>(<span class="built_in">getMin</span>(),val));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        st.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().first;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack* obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj-&gt;getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：使用栈存储数值和当前最小值的配对，每次入栈时记录当前最小值。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>初始化栈，压入哨兵元素 <code>[0, INT_MAX]</code>（0为占位值，INT_MAX为初始最小值）</li>
+<li><strong>push</strong>：将 <code>[value, min(getMin(), value)]</code> 压入栈</li>
+<li><strong>pop</strong>：弹出栈顶元素</li>
+<li><strong>top</strong>：返回栈顶元素的第一个值（数值）</li>
+<li><strong>getMin</strong>：返回栈顶元素的第二个值（最小值）</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>栈中每个元素都是一个pair，包含当前值和当前最小值</li>
+<li>哨兵元素避免栈空判断，简化代码</li>
+</ul>
+<h2 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Deque&lt;<span class="type">int</span>[]&gt; st = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MinStack</span><span class="params">()</span> &#123;</span><br><span class="line">        st.push(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0</span>, Integer.MAX_VALUE&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        st.push(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;value, Math.min(getMin(), value)&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        st.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">top</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> st.peek()[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getMin</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> st.peek()[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(value);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line">    stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        <span class="comment">// 添加栈底哨兵 INT_MAX</span></span><br><span class="line">        <span class="comment">// 这里的 0 写成任意数都可以，反正用不到</span></span><br><span class="line">        st.<span class="built_in">emplace</span>(<span class="number">0</span>,INT_MAX);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        st.<span class="built_in">emplace</span>(val, <span class="built_in">min</span>(<span class="built_in">getMin</span>(),val));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        st.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().first;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">top</span>().second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack* obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj-&gt;getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-的区别-1"><a href="#Java与C-的区别-1" class="headerlink" title="Java与C++的区别"></a>Java与C++的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>栈类型</strong></td>
+<td><code>Deque&lt;int[]&gt; st = new LinkedList&lt;&gt;()</code></td>
+<td><code>stack&lt;pair&lt;int, int&gt;&gt; st</code></td>
+</tr>
+<tr>
+<td><strong>栈顶元素</strong></td>
+<td><code>st.peek()</code></td>
+<td><code>st.top()</code></td>
+</tr>
+<tr>
+<td><strong>入栈</strong></td>
+<td><code>st.push(new int[]&#123;value, ...&#125;)</code></td>
+<td><code>st.emplace(val, ...)</code></td>
+</tr>
+<tr>
+<td><strong>出栈</strong></td>
+<td><code>st.pop()</code></td>
+<td><code>st.pop()</code></td>
+</tr>
+<tr>
+<td><strong>Pair访问</strong></td>
+<td><code>st.peek()[0]</code>, <code>st.peek()[1]</code></td>
+<td><code>st.top().first</code>, <code>st.top().second</code></td>
+</tr>
+<tr>
+<td><strong>最小值函数</strong></td>
+<td><code>Math.min(a, b)</code></td>
+<td><code>min(a, b)</code></td>
+</tr>
+<tr>
+<td><strong>整数最大值</strong></td>
+<td><code>Integer.MAX_VALUE</code></td>
+<td><code>INT_MAX</code></td>
+</tr>
+<tr>
+<td><strong>内置Pair</strong></td>
+<td>无内置，用数组代替</td>
+<td><code>pair&lt;int, int&gt;</code></td>
+</tr>
+</tbody></table>
+<h1 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394. 字符串解码"></a>394. 字符串解码</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/description/?envType=study-plan-v2&envId=top-100-liked">394. 字符串解码</a></p>
+</blockquote>
+<h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：使用栈保存遇到 <code>[</code> 之前的状态（已解码字符串和重复次数），遇到 <code>]</code> 时弹出状态并重复当前字符串。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>遍历字符串每个字符：<ul>
+<li><strong>字母</strong>：直接追加到结果字符串</li>
+<li><strong>数字</strong>：累积计算重复次数（考虑多位数）</li>
+<li>**<code>[</code>**：将当前结果字符串和数字压入栈，然后重置结果和数字</li>
+<li>**<code>]</code>**：弹出栈顶状态，将当前结果重复对应次数后追加到之前的结果后</li>
+</ul>
+</li>
+<li>返回最终解码字符串</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>数字可能是多位数，需要累积计算 <code>k = k * 10 + (c - &#39;0&#39;)</code></li>
+<li>遇到 <code>[</code> 时保存状态，遇到 <code>]</code> 时恢复状态并处理重复</li>
+</ul>
+<h2 id="Java-2"><a href="#Java-2" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">// 自定义Pair替代C++ pair&lt;string, int&gt;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Pair</span> &#123;</span><br><span class="line">        String str;</span><br><span class="line">        <span class="type">int</span> num;</span><br><span class="line">        Pair(String s, <span class="type">int</span> n) &#123;</span><br><span class="line">            str = s;</span><br><span class="line">            num = n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decodeString</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        Deque&lt;Pair&gt; stk = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Character.isLetter(c))</span><br><span class="line">                res.append(c);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (Character.isDigit(c))</span><br><span class="line">                k = k * <span class="number">10</span> + (c - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">                <span class="comment">// 把当前字符串和数字压栈，重置</span></span><br><span class="line">                stk.push(<span class="keyword">new</span> <span class="title class_">Pair</span>(res.toString(), k));</span><br><span class="line">                res.setLength(<span class="number">0</span>);</span><br><span class="line">                k = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// &#x27;]&#x27;</span></span><br><span class="line">                <span class="type">Pair</span> <span class="variable">top</span> <span class="operator">=</span> stk.pop();</span><br><span class="line">                <span class="type">StringBuilder</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(top.str);</span><br><span class="line">                <span class="comment">// 拼接k次当前res</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; top.num; i++)</span><br><span class="line">                    temp.append(res);</span><br><span class="line">                res = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">decodeString</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;pair&lt;string, <span class="type">int</span>&gt;&gt; stk;</span><br><span class="line">        string res;</span><br><span class="line">        <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) </span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isalpha</span>(c))</span><br><span class="line">                res += c;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isdigit</span>(c)) </span><br><span class="line">                k = k * <span class="number">10</span> + (c - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">                stk.<span class="built_in">emplace</span>(<span class="built_in">move</span>(res), k);</span><br><span class="line">                k = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">auto</span> [pre_res, pre_k] = stk.<span class="built_in">top</span>();</span><br><span class="line">                stk.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">while</span> (pre_k--)</span><br><span class="line">                    pre_res += res;</span><br><span class="line">                res = <span class="built_in">move</span>(pre_res);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-的区别-2"><a href="#Java与C-的区别-2" class="headerlink" title="Java与C++的区别"></a>Java与C++的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>栈类型</strong></td>
+<td><code>Deque&lt;Pair&gt; stk = new LinkedList&lt;&gt;()</code></td>
+<td><code>stack&lt;pair&lt;string, int&gt;&gt; stk</code></td>
+</tr>
+<tr>
+<td><strong>自定义Pair</strong></td>
+<td>需要手动定义 <code>static class Pair</code></td>
+<td>内置 <code>pair&lt;string, int&gt;</code></td>
+</tr>
+<tr>
+<td><strong>入栈</strong></td>
+<td><code>stk.push(new Pair(res.toString(), k))</code></td>
+<td><code>stk.emplace(move(res), k)</code></td>
+</tr>
+<tr>
+<td><strong>出栈</strong></td>
+<td><code>Pair top = stk.pop()</code></td>
+<td><code>auto [pre_res, pre_k] = stk.top(); stk.pop()</code></td>
+</tr>
+<tr>
+<td><strong>字符串构建</strong></td>
+<td><code>StringBuilder res = new StringBuilder()</code></td>
+<td><code>string res</code></td>
+</tr>
+<tr>
+<td><strong>追加字符</strong></td>
+<td><code>res.append(c)</code></td>
+<td><code>res += c</code></td>
+</tr>
+<tr>
+<td><strong>清空字符串</strong></td>
+<td><code>res.setLength(0)</code></td>
+<td>重新赋值</td>
+</tr>
+<tr>
+<td><strong>移动语义</strong></td>
+<td>无</td>
+<td><code>move(res)</code> 避免拷贝</td>
+</tr>
+<tr>
+<td><strong>字母判断</strong></td>
+<td><code>Character.isLetter(c)</code></td>
+<td><code>isalpha(c)</code></td>
+</tr>
+<tr>
+<td><strong>数字判断</strong></td>
+<td><code>Character.isDigit(c)</code></td>
+<td><code>isdigit(c)</code></td>
+</tr>
+<tr>
+<td><strong>Pair访问</strong></td>
+<td><code>top.str</code>, <code>top.num</code></td>
+<td><code>pre_res</code>, <code>pre_k</code> (结构化绑定)</td>
+</tr>
+</tbody></table>
+<h1 id="739-每日温度"><a href="#739-每日温度" class="headerlink" title="739. 每日温度"></a>739. 每日温度</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked">739. 每日温度</a></p>
+</blockquote>
+<h2 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>核心思想</strong>：使用单调栈（递减栈）记录未找到更高温度的天数索引。</p>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>初始化结果数组，全部为0</li>
+<li>遍历温度数组：<ul>
+<li>当栈不为空且当前温度 &gt; 栈顶索引对应的温度时：<ul>
+<li>弹出栈顶索引 <code>j</code></li>
+<li>设置 <code>ans[j] = i - j</code>（当前天数 - 栈顶天数）</li>
+</ul>
+</li>
+<li>将当前索引 <code>i</code> 压入栈</li>
+</ul>
+</li>
+<li>返回结果数组</li>
+</ol>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>单调栈中存储的是索引，不是温度值</li>
+<li>栈始终保持递减顺序：栈顶是最近的未找到更高温度的天数</li>
+<li>遇到更高温度时，弹出所有比当前温度低的索引并计算天数差</li>
+</ul>
+<h2 id="Java-3"><a href="#Java-3" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] dailyTemperatures(<span class="type">int</span>[] temperatures) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> temperatures.length;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        Deque&lt;Integer&gt; st = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> temperatures[i];</span><br><span class="line">            <span class="keyword">while</span> (!st.isEmpty() &amp;&amp; t &gt; temperatures[st.peek()]) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> st.pop();</span><br><span class="line">                ans[j] = i - j;</span><br><span class="line">            &#125;</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-3"><a href="#C-3" class="headerlink" title="C++"></a>C++</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = temperatures.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> t = temperatures[i];</span><br><span class="line">            <span class="keyword">while</span> (!st.<span class="built_in">empty</span>() &amp;&amp; t &gt; temperatures[st.<span class="built_in">top</span>()]) &#123;</span><br><span class="line">                <span class="type">int</span> j = st.<span class="built_in">top</span>();</span><br><span class="line">                ans[j] = i - j;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            st.<span class="built_in">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java与C-的区别-3"><a href="#Java与C-的区别-3" class="headerlink" title="Java与C++的区别"></a>Java与C++的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>栈类型</strong></td>
+<td><code>Deque&lt;Integer&gt; st = new LinkedList&lt;&gt;()</code></td>
+<td><code>stack&lt;int&gt; st</code></td>
+</tr>
+<tr>
+<td><strong>栈顶元素</strong></td>
+<td><code>st.peek()</code></td>
+<td><code>st.top()</code></td>
+</tr>
+<tr>
+<td><strong>入栈</strong></td>
+<td><code>st.push(i)</code></td>
+<td><code>st.push(i)</code></td>
+</tr>
+<tr>
+<td><strong>出栈</strong></td>
+<td><code>int j = st.pop()</code></td>
+<td><code>int j = st.top(); st.pop()</code></td>
+</tr>
+<tr>
+<td><strong>栈是否为空</strong></td>
+<td><code>st.isEmpty()</code></td>
+<td><code>st.empty()</code></td>
+</tr>
+<tr>
+<td><strong>数组初始化</strong></td>
+<td><code>int[] ans = new int[n]</code>（默认0）</td>
+<td><code>vector&lt;int&gt; ans(n, 0)</code></td>
+</tr>
+<tr>
+<td><strong>数组长度</strong></td>
+<td><code>temperatures.length</code></td>
+<td><code>temperatures.size()</code></td>
+</tr>
+</tbody></table>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -261,8 +570,16 @@
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://linnnnnnnnnnnnn17.github.io/2026/03/16/LeetCode-Hot100-%E6%A0%88/";
             const title         = "「LeetCode-Hot100-栈」";
-            const excerpt       = `20. 有效的括号 C++写法一
-12345678910111213141516171819202122class Solution &#123;    unordered_map&lt;char, char&gt; mp = &#1...`;
+            const excerpt       = `20. 有效的括号
+题目链接：20. 有效的括号
+
+解题思路核心思想：利用栈的”后进先出”特性，匹配括号。
+算法流程：
+
+如果字符串长度是奇数，直接返回false
+遍历字符串：
+遇到左括号：入栈
+遇到右括号：检查栈顶是否匹配，匹配则出...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -281,10 +598,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/%E6%A0%88/" rel="tag">栈</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+                    <a class="tag-none-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-none-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a>, <a class="tag-none-link" href="/tags/%E6%A0%88/" rel="tag">栈</a>, <a class="tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2026-03-16T03:11:24.010Z" itemprop="dateModified">最后编辑：2026-03-16</time>
+                    <time datetime="2026-07-04T12:29:41.098Z" itemprop="dateModified">最后编辑：2026-07-04</time>
                 </div>
             </div>
         </footer>
@@ -335,7 +652,7 @@
                 文章
             </span>
             <span class="count">
-                68
+                69
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -351,7 +668,7 @@
                 标签
             </span>
             <span class="count">
-                234
+                238
             </span>
         </a>
     </div>
@@ -367,14 +684,14 @@
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7-C"><span class="toc-text">20. 有效的括号 C++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88-C"><span class="toc-text">155.最小栈 C++</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="toc-text">20. 有效的括号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%80"><span class="toc-text">写法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%BA%8C"><span class="toc-text">写法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%89"><span class="toc-text">写法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%80-1"><span class="toc-text">写法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%BA%8C-1"><span class="toc-text">写法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%B3%95%E4%B8%89-1"><span class="toc-text">写法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88"><span class="toc-text">155. 最小栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%85%B3%E4%BA%8E-emplace-%E5%92%8C-push"><span class="toc-text">前置知识：关于 emplace 和 push</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%9C%E7%94%A8"><span class="toc-text">一、基本作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%92%8C-push-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">二、和 push 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%A4%BA%E4%BE%8B"><span class="toc-text">三、自定义类示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E7%94%A8%E6%90%AD%E9%85%8D"><span class="toc-text">四、常用搭配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-1"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-1"><span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="toc-text">394. 字符串解码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-2"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-2"><span class="toc-text">Java与C++的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="toc-text">739. 每日温度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-3"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-3"><span class="toc-text">Java与C++的区别</span></a></li></ol></li></ol>
     </div>
 </aside>
                 
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2026wps-cpp-train/">2026wps-cpp-train</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1/">Java高频八股</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">刷题笔记</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%92%95%E9%AB%98%E9%A2%91%E9%A2%98%E7%BB%83%E4%B9%A0/">华为手撕高频题练习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%BB%83%E4%B9%A0/">华为机试练习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3/">课程相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%AB%98%E9%A2%91%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/">高频算法手撕</a><span class="category-list-count">6</span></li></ul>
   </aside>
 
 
@@ -394,6 +711,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2026/07/04/LeetCode-Hot100-%E5%A0%86/"><i class="fa  fa-book"></i> LeetCode-Hot100-堆</a>
+            
+          
         
           
           
@@ -420,11 +743,7 @@
           
         
           
-          
-            <a class="list-group-item" href="/2026/06/16/LeetCode-Hot100-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fa  fa-book"></i> LeetCode-Hot100-动态规划</a>
             
-          
-        
           
             
           
